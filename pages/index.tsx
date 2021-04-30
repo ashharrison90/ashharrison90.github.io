@@ -1,5 +1,6 @@
 import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import styles from '../styles/Home.module.scss'
+import { ThemeToggle } from '../components/ThemeToggle/ThemeToggle'
 
 interface HomeProps {
   buildTimestamp: number
@@ -25,6 +26,8 @@ export default function Home({ buildTimestamp }: HomeProps) {
         </p>
 
         <p>Last updated: {new Date(buildTimestamp).toLocaleString()}</p>
+
+        <ThemeToggle />
 
         <div className={styles.grid}>
           <a href='https://nextjs.org/docs' className={styles.card}>

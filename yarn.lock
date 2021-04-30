@@ -430,7 +430,7 @@ chalk@^4.1.0, chalk@^4.1.1:
     ansi-styles "^4.1.0"
     supports-color "^7.1.0"
 
-chokidar@3.5.1:
+chokidar@3.5.1, "chokidar@>=3.0.0 <4.0.0":
   version "3.5.1"
   resolved "https://na.artifactory.swg-devops.com/artifactory/api/npm/appconnect-npm/chokidar/-/chokidar-3.5.1.tgz?dl=https%3A%2F%2Fregistry.npmjs.org%2Fchokidar%2F-%2Fchokidar-3.5.1.tgz#ee9ce7bbebd2b79f49f304799d5468e31e14e68a"
   integrity sha1-7pznu+vSt59J8wR5nVRo4x4U5oo=
@@ -1004,7 +1004,7 @@ human-signals@^1.1.1:
   resolved "https://na.artifactory.swg-devops.com/artifactory/api/npm/appconnect-npm/human-signals/-/human-signals-1.1.1.tgz?dl=https%3A%2F%2Fregistry.npmjs.org%2Fhuman-signals%2F-%2Fhuman-signals-1.1.1.tgz#c5b1cd14f50aeae09ab6c59fe63ba3395fe4dfa3"
   integrity sha1-xbHNFPUK6uCatsWf5jujOV/k36M=
 
-husky@>=6:
+husky@^6.0.0:
   version "6.0.0"
   resolved "https://na.artifactory.swg-devops.com/artifactory/api/npm/appconnect-npm/husky/-/husky-6.0.0.tgz?dl=https%3A%2F%2Fregistry.npmjs.org%2Fhusky%2F-%2Fhusky-6.0.0.tgz#810f11869adf51604c32ea577edbc377d7f9319e"
   integrity sha1-gQ8RhprfUWBMMupXftvDd9f5MZ4=
@@ -1234,7 +1234,7 @@ lines-and-columns@^1.1.6:
   resolved "https://na.artifactory.swg-devops.com/artifactory/api/npm/appconnect-npm/lines-and-columns/-/lines-and-columns-1.1.6.tgz?dl=https%3A%2F%2Fregistry.npmjs.org%2Flines-and-columns%2F-%2Flines-and-columns-1.1.6.tgz&dl=https%3A%2F%2Fna-sl.artifactory.swg-devops.com%3A443%2Fartifactory%2Fapi%2Fnpm%2Ftaas-central-npm-virtual%2Flines-and-columns%2F-%2Flines-and-columns-1.1.6.tgz%3Fdl%3Dhttps%3A%2F%2Fregistry.npmjs.org%2Flines-and-columns%2F-%2Flines-and-columns-1.1.6.tgz#1c00c743b433cd0a4e80758f7b64a57440d9ff00"
   integrity sha1-HADHQ7QzzQpOgHWPe2SldEDZ/wA=
 
-lint-staged@>=10:
+lint-staged@^10.0.0:
   version "10.5.4"
   resolved "https://na.artifactory.swg-devops.com/artifactory/api/npm/appconnect-npm/lint-staged/-/lint-staged-10.5.4.tgz?dl=https%3A%2F%2Fregistry.npmjs.org%2Flint-staged%2F-%2Flint-staged-10.5.4.tgz#cd153b5f0987d2371fc1d2847a409a2fe705b665"
   integrity sha1-zRU7XwmH0jcfwdKEekCaL+cFtmU=
@@ -1910,6 +1910,13 @@ safe-buffer@~5.1.0, safe-buffer@~5.1.1:
   version "2.1.2"
   resolved "https://na.artifactory.swg-devops.com/artifactory/api/npm/appconnect-npm/safer-buffer/-/safer-buffer-2.1.2.tgz?dl=https%3A%2F%2Fregistry.npmjs.org%2Fsafer-buffer%2F-%2Fsafer-buffer-2.1.2.tgz&dl=https%3A%2F%2Fna-sl.artifactory.swg-devops.com%3A443%2Fartifactory%2Fapi%2Fnpm%2Ftaas-central-npm-virtual%2Fsafer-buffer%2F-%2Fsafer-buffer-2.1.2.tgz%3Fdl%3Dhttps%3A%2F%2Fregistry.npmjs.org%2Fsafer-buffer%2F-%2Fsafer-buffer-2.1.2.tgz#44fa161b0187b9549dd84bb91802f9bd8385cd6a"
   integrity sha1-RPoWGwGHuVSd2Eu5GAL5vYOFzWo=
+
+sass@^1.32.12:
+  version "1.32.12"
+  resolved "https://na.artifactory.swg-devops.com/artifactory/api/npm/appconnect-npm/sass/-/sass-1.32.12.tgz?dl=https%3A%2F%2Fregistry.npmjs.org%2Fsass%2F-%2Fsass-1.32.12.tgz#a2a47ad0f1c168222db5206444a30c12457abb9f"
+  integrity sha1-oqR60PHBaCIttSBkRKMMEkV6u58=
+  dependencies:
+    chokidar ">=3.0.0 <4.0.0"
 
 scheduler@^0.20.2:
   version "0.20.2"
