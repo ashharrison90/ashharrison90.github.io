@@ -1,7 +1,11 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 
-export default function Home() {
+interface HomeProps {
+  buildTimestamp: number
+}
+
+export default function Home({ buildTimestamp }: HomeProps) {
   return (
     <div className={styles.container}>
       <Head>
@@ -19,6 +23,8 @@ export default function Home() {
           Get started by editing{' '}
           <code className={styles.code}>pages/index.js</code>
         </p>
+
+        <p>Last updated: {new Date(buildTimestamp).toLocaleString()}</p>
 
         <div className={styles.grid}>
           <a href='https://nextjs.org/docs' className={styles.card}>
@@ -61,3 +67,9 @@ export default function Home() {
     </div>
   )
 }
+
+export const getStaticProps = () => ({
+  props: {
+    buildTimestamp: Date.now()
+  }
+})
