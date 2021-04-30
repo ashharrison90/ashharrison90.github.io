@@ -1,12 +1,29 @@
 import Head from 'next/head'
+import Link from 'next/link'
+import dynamic from 'next/dynamic'
+import { getAllPosts } from '../lib/api'
 import styles from '../styles/Home.module.scss'
-import { ThemeToggle } from '../components/ThemeToggle/ThemeToggle'
+
+const ThemeToggle = dynamic(() => import('../components/ThemeToggle/ThemeToggle'), {
+  ssr: false,
+})
 
 interface HomeProps {
+  allPosts: {
+    title: string,
+    date: string,
+    author: {
+      name: string,
+      image: string
+    },
+    slug: string,
+    coverImage: string
+    excerpt: string
+  }[]
   buildTimestamp: number
 }
 
-export default function Home({ buildTimestamp }: HomeProps) {
+export default function Home({ allPosts, buildTimestamp }: HomeProps) {
   return (
     <div className={styles.container}>
       <Head>
@@ -24,6 +41,21 @@ export default function Home({ buildTimestamp }: HomeProps) {
           Get started by editing{' '}
           <code className={styles.code}>pages/index.js</code>
         </p>
+
+        {
+          allPosts.map(post => (
+            <Link key={post.slug} as={`/posts/${post.slug}`} href="/posts/[slug]">
+              <a className={styles.card}>
+                <p>{post.title}</p>
+                <p>{post.date}</p>
+                <p>{post.author.name}</p>
+                <p>{post.slug}</p>
+                <p>{post.coverImage}</p>
+                <p>{post.excerpt}</p>
+              </a>
+            </Link>
+          ))
+        }
 
         <p>Last updated: {new Date(buildTimestamp).toLocaleString()}</p>
 
@@ -71,8 +103,20 @@ export default function Home({ buildTimestamp }: HomeProps) {
   )
 }
 
-export const getStaticProps = () => ({
-  props: {
-    buildTimestamp: Date.now()
+export const getStaticProps = () => {
+  const allPosts = getAllPosts([
+    'title',
+    'date',
+    'slug',
+    'author',
+    'coverImage',
+    'excerpt',
+  ])
+  
+  return {
+    props: {
+      allPosts,
+      buildTimestamp: Date.now()
+    }
   }
-})
+}
