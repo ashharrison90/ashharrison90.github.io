@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "build": "next build && next export",
-    "start": "next dev"
+    "lint": "prettier --write .",
+    "start": "next dev",
+    "prepare": "husky install"
   },
   "dependencies": {
     "next": "^10.2.0",
@@ -13,6 +15,12 @@
   },
   "devDependencies": {
     "@types/react": "^17.0.4",
+    "husky": "^6.0.0",
+    "lint-staged": "^10.0.0",
+    "prettier": "^2.2.1",
     "typescript": "^4.2.4"
+  },
+  "lint-staged": {
+    "*.{js,css,md}": "prettier --write"
   }
 }
