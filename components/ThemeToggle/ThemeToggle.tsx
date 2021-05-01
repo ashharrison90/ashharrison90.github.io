@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-const ThemeToggle = () => {
+export default function ThemeToggle () {
   const [useDarkMode, setUseDarkMode] = useState(document.documentElement.dataset.theme === 'dark')
   useEffect(() => {
     document.documentElement.dataset.theme = useDarkMode ? 'dark' : 'light'
@@ -14,5 +14,3 @@ const ThemeToggle = () => {
     </button>
   )
 }
-
-export default ThemeToggle

@@ -1,11 +1,17 @@
 import { useRouter } from 'next/router'
 import ErrorPage from 'next/error'
-import { getPostBySlug, getAllPosts, PostData } from '../../lib/api'
 import Head from 'next/head'
+import { getPostBySlug, getAllPosts, PostData } from '../../lib/api'
 import markdownToHtml from '../../lib/markdownToHtml'
 import { GetStaticPropsContext } from 'next'
+import Layout from '../../components/Layout/Layout'
 
-export default function Post({ post }: { post: PostData }) {
+export interface Props {
+  buildTimestamp: number,
+  post: PostData,
+}
+
+export default function Post({ buildTimestamp, post }: Props) {
   const router = useRouter()
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />
@@ -15,7 +21,7 @@ export default function Post({ post }: { post: PostData }) {
       {router.isFallback ? (
         <div>Loading…</div>
       ) : (
-        <>
+        <Layout buildTimestamp={buildTimestamp}>
           <article className="mb-32">
             <Head>
               <title>
@@ -30,7 +36,7 @@ export default function Post({ post }: { post: PostData }) {
               dangerouslySetInnerHTML={{ __html: post.content ?? '' }}
             />
           </article>
-        </>
+        </Layout>
       )}
     </div>
   )
@@ -49,6 +55,7 @@ export async function getStaticProps({ params }: GetStaticPropsContext<{slug: st
 
   return {
     props: {
+      buildTimestamp: Date.now(),
       post: {
         ...post,
         content,
