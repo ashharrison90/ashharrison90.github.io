@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
 import { getAllPosts } from '../lib/api'
+import PostGrid from '../components/PostGrid/PostGrid'
 import Layout from '../components/Layout/Layout'
 import styles from '../styles/Home.module.scss'
 
@@ -38,20 +39,21 @@ export default function Home({ allPosts, buildTimestamp }: Props) {
           Welcome to <a href='https://nextjs.org'>Next.js!</a>
         </h1>
 
-        {
-          allPosts.map(post => (
-            <Link key={post.slug} as={`/posts/${post.slug}`} href="/posts/[slug]">
-              <a className={styles.card}>
-                <p>{post.title}</p>
-                <p>{post.date}</p>
-                <p>{post.author.name}</p>
-                <p>{post.slug}</p>
-                <p>{post.coverImage}</p>
-                <p>{post.excerpt}</p>
-              </a>
-            </Link>
-          ))
-        }
+        <PostGrid>
+          {
+            allPosts.map(post => (
+              <Link key={post.slug} as={`/posts/${post.slug}`} href="/posts/[slug]">
+                <a className={styles.card}>
+                  <p>{post.title}</p>
+                  <p>{post.date}</p>
+                  <p>{post.slug}</p>
+                  <p>{post.coverImage}</p>
+                  <p>{post.excerpt}</p>
+                </a>
+              </Link>
+            ))
+          }
+        </PostGrid>
 
         <ThemeToggle />
       </main>
@@ -64,7 +66,6 @@ export const getStaticProps = () => {
     'title',
     'date',
     'slug',
-    'author',
     'coverImage',
     'excerpt',
   ])

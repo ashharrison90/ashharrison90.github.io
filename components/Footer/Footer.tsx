@@ -31,6 +31,7 @@ export default function Footer ({ footnote }: Props) {
         {
           (Object.keys(socialData) as SocialData).map((socialType) => (
             <SocialLink
+              key={socialType}
               className={styles.socialLink}
               icon={iconMap[socialType]}
               link={socialData[socialType]}

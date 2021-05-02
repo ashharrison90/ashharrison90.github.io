@@ -12,10 +12,6 @@ export interface PostData {
   title?: string,
   date?: string,
   slug?: string,
-  author?: {
-    name?: string,
-    image?: string
-  },
   content?: string,
   coverImage?: string,
   excerpt?: string

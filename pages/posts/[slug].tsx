@@ -31,7 +31,6 @@ export default function Post({ buildTimestamp, post }: Props) {
             <div>{post.title}</div>
             <div>{post.coverImage}</div>
             <div>{post.date}</div>
-            <div>{post.author?.name}</div>
             <div
               dangerouslySetInnerHTML={{ __html: post.content ?? '' }}
             />
@@ -47,7 +46,6 @@ export async function getStaticProps({ params }: GetStaticPropsContext<{slug: st
     'title',
     'date',
     'slug',
-    'author',
     'content',
     'coverImage',
   ])

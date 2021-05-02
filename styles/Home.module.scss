@@ -36,7 +36,6 @@
 }
 
 .card {
-  margin: 1rem;
   padding: 1.5rem;
   text-align: left;
   color: inherit;
@@ -44,7 +43,6 @@
   border: 1px solid var(--border);
   border-radius: 10px;
   transition: color 0.15s ease, border-color 0.15s ease;
-  width: 45%;
 }
 
 .card:hover,
