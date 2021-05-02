@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import Image from 'next/image'
 import styles from './PostCard.module.scss'
 
 export interface Props {
@@ -21,9 +20,7 @@ export default function PostGrid({
     <Link as={`/posts/${slug}`} href="/posts/[slug]">
       <a className={styles.card}>
         <div className={styles.imageContainer}>
-          <Image
-            layout='fill'
-            objectFit='cover'
+          <img className={styles.image}
             src={coverImage}
           />
         </div>
