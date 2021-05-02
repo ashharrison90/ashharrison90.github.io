@@ -1,10 +1,25 @@
 .footer {
-  align-items: center;
   background-color: var(--container);
   display: flex;
+  flex-direction: column;
   height: 80px;
+  padding: 0.5rem 1rem;
 }
 
 .footnote {
   color: var(--text-secondary);
+  display: flex;
+  font-size: 14px;
+  justify-content: flex-end;
+}
+
+.socialLinks {
+  align-items: flex-end;
+  display: flex;
+  flex: 1;
+  justify-content: center;
+}
+
+.socialLink {
+  margin: 0 4px;
 }

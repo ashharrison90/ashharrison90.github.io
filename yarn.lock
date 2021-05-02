@@ -16,6 +16,11 @@
   dependencies:
     "@babel/highlight" "^7.12.13"
 
+"@babel/helper-plugin-utils@^7.0.0":
+  version "7.13.0"
+  resolved "https://na.artifactory.swg-devops.com/artifactory/api/npm/appconnect-npm/@babel/helper-plugin-utils/-/helper-plugin-utils-7.13.0.tgz?dl=https%3A%2F%2Fregistry.npmjs.org%2F%40babel%2Fhelper-plugin-utils%2F-%2Fhelper-plugin-utils-7.13.0.tgz#806526ce125aed03373bc416a828321e3a6a33af"
+  integrity sha1-gGUmzhJa7QM3O8QWqCgyHjpqM68=
+
 "@babel/helper-validator-identifier@^7.14.0":
   version "7.14.0"
   resolved "https://na.artifactory.swg-devops.com/artifactory/api/npm/appconnect-npm/@babel/helper-validator-identifier/-/helper-validator-identifier-7.14.0.tgz?dl=https%3A%2F%2Fregistry.npmjs.org%2F%40babel%2Fhelper-validator-identifier%2F-%2Fhelper-validator-identifier-7.14.0.tgz#d26cad8a47c65286b15df1547319a5d0bcf27288"
@@ -29,6 +34,11 @@
     "@babel/helper-validator-identifier" "^7.14.0"
     chalk "^2.0.0"
     js-tokens "^4.0.0"
+
+"@babel/parser@^7.0.0":
+  version "7.14.0"
+  resolved "https://na.artifactory.swg-devops.com/artifactory/api/npm/appconnect-npm/@babel/parser/-/parser-7.14.0.tgz?dl=https%3A%2F%2Fregistry.npmjs.org%2F%40babel%2Fparser%2F-%2Fparser-7.14.0.tgz#2f0ebfed92bcddcc8395b91f1895191ce2760380"
+  integrity sha1-Lw6/7ZK83cyDlbkfGJUZHOJ2A4A=
 
 "@babel/runtime@7.12.5":
   version "7.12.5"
@@ -109,6 +119,11 @@
   version "0.14.0"
   resolved "https://na.artifactory.swg-devops.com/artifactory/api/npm/appconnect-npm/@opentelemetry/context-base/-/context-base-0.14.0.tgz?dl=https%3A%2F%2Fregistry.npmjs.org%2F%40opentelemetry%2Fcontext-base%2F-%2Fcontext-base-0.14.0.tgz#c67fc20a4d891447ca1a855d7d70fa79a3533001"
   integrity sha1-xn/CCk2JFEfKGoVdfXD6eaNTMAE=
+
+"@trysound/sax@0.1.1":
+  version "0.1.1"
+  resolved "https://na.artifactory.swg-devops.com/artifactory/api/npm/appconnect-npm/@trysound/sax/-/sax-0.1.1.tgz?dl=https%3A%2F%2Fregistry.npmjs.org%2F%40trysound%2Fsax%2F-%2Fsax-0.1.1.tgz#3348564048e7a2d7398c935d466c0414ebb6a669"
+  integrity sha1-M0hWQEjnotc5jJNdRmwEFOu2pmk=
 
 "@types/mdast@^3.0.0":
   version "3.0.3"
@@ -260,6 +275,17 @@ available-typed-arrays@^1.0.2:
   dependencies:
     array-filter "^1.0.0"
 
+babel-plugin-inline-react-svg@^2.0.1:
+  version "2.0.1"
+  resolved "https://na.artifactory.swg-devops.com/artifactory/api/npm/appconnect-npm/babel-plugin-inline-react-svg/-/babel-plugin-inline-react-svg-2.0.1.tgz?dl=https%3A%2F%2Fregistry.npmjs.org%2Fbabel-plugin-inline-react-svg%2F-%2Fbabel-plugin-inline-react-svg-2.0.1.tgz#68c9c119d643a8f2d7bf939b942534d89ae3ade9"
+  integrity sha1-aMnBGdZDqPLXv5OblCU02Jrjrek=
+  dependencies:
+    "@babel/helper-plugin-utils" "^7.0.0"
+    "@babel/parser" "^7.0.0"
+    lodash.isplainobject "^4.0.6"
+    resolve "^1.20.0"
+    svgo "^2.0.3"
+
 babel-plugin-syntax-jsx@6.18.0:
   version "6.18.0"
   resolved "https://na.artifactory.swg-devops.com/artifactory/api/npm/appconnect-npm/babel-plugin-syntax-jsx/-/babel-plugin-syntax-jsx-6.18.0.tgz?dl=https%3A%2F%2Fregistry.npmjs.org%2Fbabel-plugin-syntax-jsx%2F-%2Fbabel-plugin-syntax-jsx-6.18.0.tgz&dl=https%3A%2F%2Fna-sl.artifactory.swg-devops.com%3A443%2Fartifactory%2Fapi%2Fnpm%2Ftaas-central-npm-virtual%2Fbabel-plugin-syntax-jsx%2F-%2Fbabel-plugin-syntax-jsx-6.18.0.tgz%3Fdl%3Dhttps%3A%2F%2Fregistry.npmjs.org%2Fbabel-plugin-syntax-jsx%2F-%2Fbabel-plugin-syntax-jsx-6.18.0.tgz#0af32a9a6e13ca7a3fd5069e62d7b0f58d0d8946"
@@ -294,6 +320,11 @@ bn.js@^5.0.0, bn.js@^5.1.1:
   version "5.2.0"
   resolved "https://na.artifactory.swg-devops.com/artifactory/api/npm/appconnect-npm/bn.js/-/bn.js-5.2.0.tgz?dl=https%3A%2F%2Fregistry.npmjs.org%2Fbn.js%2F-%2Fbn.js-5.2.0.tgz#358860674396c6997771a9d051fcc1b57d4ae002"
   integrity sha1-NYhgZ0OWxpl3canQUfzBtX1K4AI=
+
+boolbase@^1.0.0:
+  version "1.0.0"
+  resolved "https://na.artifactory.swg-devops.com/artifactory/api/npm/appconnect-npm/boolbase/-/boolbase-1.0.0.tgz?dl=https%3A%2F%2Fregistry.npmjs.org%2Fboolbase%2F-%2Fboolbase-1.0.0.tgz&dl=https%3A%2F%2Fna-sl.artifactory.swg-devops.com%3A443%2Fartifactory%2Fapi%2Fnpm%2Ftaas-central-npm-virtual%2Fboolbase%2F-%2Fboolbase-1.0.0.tgz%3Fdl%3Dhttps%3A%2F%2Fregistry.npmjs.org%2Fboolbase%2F-%2Fboolbase-1.0.0.tgz#68dff5fbe60c51eb37725ea9e3ed310dcc1e776e"
+  integrity sha1-aN/1++YMUes3cl6p4+0xDcwed24=
 
 braces@^3.0.1, braces@~3.0.2:
   version "3.0.2"
@@ -507,6 +538,11 @@ classnames@2.2.6:
   resolved "https://na.artifactory.swg-devops.com/artifactory/api/npm/appconnect-npm/classnames/-/classnames-2.2.6.tgz?dl=https%3A%2F%2Fregistry.npmjs.org%2Fclassnames%2F-%2Fclassnames-2.2.6.tgz#43935bffdd291f326dad0a205309b38d00f650ce"
   integrity sha1-Q5Nb/90pHzJtrQogUwmzjQD2UM4=
 
+classnames@^2.3.1:
+  version "2.3.1"
+  resolved "https://na.artifactory.swg-devops.com/artifactory/api/npm/appconnect-npm/classnames/-/classnames-2.3.1.tgz?dl=https%3A%2F%2Fregistry.npmjs.org%2Fclassnames%2F-%2Fclassnames-2.3.1.tgz#dfcfa3891e306ec1dad105d0e88f4417b8535e8e"
+  integrity sha1-38+jiR4wbsHa0QXQ6I9EF7hTXo4=
+
 clean-stack@^2.0.0:
   version "2.2.0"
   resolved "https://na.artifactory.swg-devops.com/artifactory/api/npm/appconnect-npm/clean-stack/-/clean-stack-2.2.0.tgz?dl=https%3A%2F%2Fregistry.npmjs.org%2Fclean-stack%2F-%2Fclean-stack-2.2.0.tgz#ee8472dbb129e727b31e8a10a427dee9dfe4008b"
@@ -565,6 +601,11 @@ commander@^6.2.0:
   version "6.2.1"
   resolved "https://na.artifactory.swg-devops.com/artifactory/api/npm/appconnect-npm/commander/-/commander-6.2.1.tgz?dl=https%3A%2F%2Fregistry.npmjs.org%2Fcommander%2F-%2Fcommander-6.2.1.tgz#0792eb682dfbc325999bb2b84fddddba110ac73c"
   integrity sha1-B5LraC37wyWZm7K4T93duhEKxzw=
+
+commander@^7.1.0:
+  version "7.2.0"
+  resolved "https://na.artifactory.swg-devops.com/artifactory/api/npm/appconnect-npm/commander/-/commander-7.2.0.tgz?dl=https%3A%2F%2Fregistry.npmjs.org%2Fcommander%2F-%2Fcommander-7.2.0.tgz#a36cb57d0b501ce108e4d20559a150a391d97ab7"
+  integrity sha1-o2y1fQtQHOEI5NIFWaFQo5HZerc=
 
 commondir@^1.0.1:
   version "1.0.1"
@@ -661,6 +702,30 @@ crypto-browserify@3.12.0, crypto-browserify@^3.11.0:
     randombytes "^2.0.0"
     randomfill "^1.0.3"
 
+css-select@^3.1.2:
+  version "3.1.2"
+  resolved "https://na.artifactory.swg-devops.com/artifactory/api/npm/appconnect-npm/css-select/-/css-select-3.1.2.tgz?dl=https%3A%2F%2Fregistry.npmjs.org%2Fcss-select%2F-%2Fcss-select-3.1.2.tgz#d52cbdc6fee379fba97fb0d3925abbd18af2d9d8"
+  integrity sha1-1Sy9xv7jefupf7DTklq70Yry2dg=
+  dependencies:
+    boolbase "^1.0.0"
+    css-what "^4.0.0"
+    domhandler "^4.0.0"
+    domutils "^2.4.3"
+    nth-check "^2.0.0"
+
+css-tree@^1.1.2:
+  version "1.1.3"
+  resolved "https://na.artifactory.swg-devops.com/artifactory/api/npm/appconnect-npm/css-tree/-/css-tree-1.1.3.tgz?dl=https%3A%2F%2Fregistry.npmjs.org%2Fcss-tree%2F-%2Fcss-tree-1.1.3.tgz#eb4870fb6fd7707327ec95c2ff2ab09b5e8db91d"
+  integrity sha1-60hw+2/XcHMn7JXC/yqwm16NuR0=
+  dependencies:
+    mdn-data "2.0.14"
+    source-map "^0.6.1"
+
+css-what@^4.0.0:
+  version "4.0.0"
+  resolved "https://na.artifactory.swg-devops.com/artifactory/api/npm/appconnect-npm/css-what/-/css-what-4.0.0.tgz?dl=https%3A%2F%2Fregistry.npmjs.org%2Fcss-what%2F-%2Fcss-what-4.0.0.tgz#35e73761cab2eeb3d3661126b23d7aa0e8432233"
+  integrity sha1-Nec3Ycqy7rPTZhEmsj16oOhDIjM=
+
 css.escape@1.5.1:
   version "1.5.1"
   resolved "https://na.artifactory.swg-devops.com/artifactory/api/npm/appconnect-npm/css.escape/-/css.escape-1.5.1.tgz?dl=https%3A%2F%2Fregistry.npmjs.org%2Fcss.escape%2F-%2Fcss.escape-1.5.1.tgz&dl=https%3A%2F%2Fna-sl.artifactory.swg-devops.com%3A443%2Fartifactory%2Fapi%2Fnpm%2Ftaas-central-npm-virtual%2Fcss.escape%2F-%2Fcss.escape-1.5.1.tgz%3Fdl%3Dhttps%3A%2F%2Fregistry.npmjs.org%2Fcss.escape%2F-%2Fcss.escape-1.5.1.tgz#42e27d4fa04ae32f931a4b4d4191fa9cddee97cb"
@@ -679,6 +744,13 @@ cssnano-simple@2.0.0:
   integrity sha1-kw2dzYuhBcWmLOcZywCFTaWLXAU=
   dependencies:
     cssnano-preset-simple "^2.0.0"
+
+csso@^4.2.0:
+  version "4.2.0"
+  resolved "https://na.artifactory.swg-devops.com/artifactory/api/npm/appconnect-npm/csso/-/csso-4.2.0.tgz?dl=https%3A%2F%2Fregistry.npmjs.org%2Fcsso%2F-%2Fcsso-4.2.0.tgz#ea3a561346e8dc9f546d6febedd50187cf389529"
+  integrity sha1-6jpWE0bo3J9UbW/r7dUBh884lSk=
+  dependencies:
+    css-tree "^1.1.2"
 
 csstype@^3.0.2:
   version "3.0.8"
@@ -738,6 +810,15 @@ diffie-hellman@^5.0.0:
     miller-rabin "^4.0.0"
     randombytes "^2.0.0"
 
+dom-serializer@^1.0.1:
+  version "1.3.1"
+  resolved "https://na.artifactory.swg-devops.com/artifactory/api/npm/appconnect-npm/dom-serializer/-/dom-serializer-1.3.1.tgz?dl=https%3A%2F%2Fregistry.npmjs.org%2Fdom-serializer%2F-%2Fdom-serializer-1.3.1.tgz#d845a1565d7c041a95e5dab62184ab41e3a519be"
+  integrity sha1-2EWhVl18BBqV5dq2IYSrQeOlGb4=
+  dependencies:
+    domelementtype "^2.0.1"
+    domhandler "^4.0.0"
+    entities "^2.0.0"
+
 domain-browser@4.19.0:
   version "4.19.0"
   resolved "https://na.artifactory.swg-devops.com/artifactory/api/npm/appconnect-npm/domain-browser/-/domain-browser-4.19.0.tgz?dl=https%3A%2F%2Fregistry.npmjs.org%2Fdomain-browser%2F-%2Fdomain-browser-4.19.0.tgz#1093e17c0a17dbd521182fe90d49ac1370054af1"
@@ -747,6 +828,27 @@ domain-browser@^1.1.1:
   version "1.2.0"
   resolved "https://na.artifactory.swg-devops.com/artifactory/api/npm/appconnect-npm/domain-browser/-/domain-browser-1.2.0.tgz?dl=https%3A%2F%2Fregistry.npmjs.org%2Fdomain-browser%2F-%2Fdomain-browser-1.2.0.tgz#3d31f50191a6749dd1375a7f522e823d42e54eda"
   integrity sha1-PTH1AZGmdJ3RN1p/Ui6CPULlTto=
+
+domelementtype@^2.0.1, domelementtype@^2.2.0:
+  version "2.2.0"
+  resolved "https://na.artifactory.swg-devops.com/artifactory/api/npm/appconnect-npm/domelementtype/-/domelementtype-2.2.0.tgz?dl=https%3A%2F%2Fregistry.npmjs.org%2Fdomelementtype%2F-%2Fdomelementtype-2.2.0.tgz#9a0b6c2782ed6a1c7323d42267183df9bd8b1d57"
+  integrity sha1-mgtsJ4LtahxzI9QiZxg9+b2LHVc=
+
+domhandler@^4.0.0, domhandler@^4.2.0:
+  version "4.2.0"
+  resolved "https://na.artifactory.swg-devops.com/artifactory/api/npm/appconnect-npm/domhandler/-/domhandler-4.2.0.tgz?dl=https%3A%2F%2Fregistry.npmjs.org%2Fdomhandler%2F-%2Fdomhandler-4.2.0.tgz#f9768a5f034be60a89a27c2e4d0f74eba0d8b059"
+  integrity sha1-+XaKXwNL5gqJonwuTQ9066DYsFk=
+  dependencies:
+    domelementtype "^2.2.0"
+
+domutils@^2.4.3:
+  version "2.6.0"
+  resolved "https://na.artifactory.swg-devops.com/artifactory/api/npm/appconnect-npm/domutils/-/domutils-2.6.0.tgz?dl=https%3A%2F%2Fregistry.npmjs.org%2Fdomutils%2F-%2Fdomutils-2.6.0.tgz#2e15c04185d43fb16ae7057cb76433c6edb938b7"
+  integrity sha1-LhXAQYXUP7Fq5wV8t2Qzxu25OLc=
+  dependencies:
+    dom-serializer "^1.0.1"
+    domelementtype "^2.2.0"
+    domhandler "^4.2.0"
 
 electron-to-chromium@^1.3.634:
   version "1.3.723"
@@ -796,6 +898,11 @@ enquirer@^2.3.6:
   integrity sha1-Kn/l3WNKHkElqXXsmU/1RW3Dc00=
   dependencies:
     ansi-colors "^4.1.1"
+
+entities@^2.0.0:
+  version "2.2.0"
+  resolved "https://na.artifactory.swg-devops.com/artifactory/api/npm/appconnect-npm/entities/-/entities-2.2.0.tgz?dl=https%3A%2F%2Fregistry.npmjs.org%2Fentities%2F-%2Fentities-2.2.0.tgz#098dc90ebb83d8dffa089d55256b351d34c4da55"
+  integrity sha1-CY3JDruD2N/6CJ1VJWs1HTTE2lU=
 
 error-ex@^1.3.1:
   version "1.3.2"
@@ -1229,6 +1336,13 @@ is-callable@^1.1.4, is-callable@^1.2.3:
   resolved "https://na.artifactory.swg-devops.com/artifactory/api/npm/appconnect-npm/is-callable/-/is-callable-1.2.3.tgz?dl=https%3A%2F%2Fregistry.npmjs.org%2Fis-callable%2F-%2Fis-callable-1.2.3.tgz#8b1e0500b73a1d76c70487636f368e519de8db8e"
   integrity sha1-ix4FALc6HXbHBIdjbzaOUZ3o244=
 
+is-core-module@^2.2.0:
+  version "2.3.0"
+  resolved "https://na.artifactory.swg-devops.com/artifactory/api/npm/appconnect-npm/is-core-module/-/is-core-module-2.3.0.tgz?dl=https%3A%2F%2Fregistry.npmjs.org%2Fis-core-module%2F-%2Fis-core-module-2.3.0.tgz#d341652e3408bca69c4671b79a0954a3d349f887"
+  integrity sha1-00FlLjQIvKacRnG3mglUo9NJ+Ic=
+  dependencies:
+    has "^1.0.3"
+
 is-date-object@^1.0.1:
   version "1.0.2"
   resolved "https://na.artifactory.swg-devops.com/artifactory/api/npm/appconnect-npm/is-date-object/-/is-date-object-1.0.2.tgz?dl=https%3A%2F%2Fregistry.npmjs.org%2Fis-date-object%2F-%2Fis-date-object-1.0.2.tgz&dl=https%3A%2F%2Fna-sl.artifactory.swg-devops.com%3A443%2Fartifactory%2Fapi%2Fnpm%2Ftaas-central-npm-virtual%2Fis-date-object%2F-%2Fis-date-object-1.0.2.tgz%3Fdl%3Dhttps%3A%2F%2Fregistry.npmjs.org%2Fis-date-object%2F-%2Fis-date-object-1.0.2.tgz#bda736f2cd8fd06d32844e7743bfa7494c3bfd7e"
@@ -1456,6 +1570,11 @@ locate-path@^5.0.0:
   dependencies:
     p-locate "^4.1.0"
 
+lodash.isplainobject@^4.0.6:
+  version "4.0.6"
+  resolved "https://na.artifactory.swg-devops.com/artifactory/api/npm/appconnect-npm/lodash.isplainobject/-/lodash.isplainobject-4.0.6.tgz?dl=https%3A%2F%2Fregistry.npmjs.org%2Flodash.isplainobject%2F-%2Flodash.isplainobject-4.0.6.tgz&dl=https%3A%2F%2Fna-sl.artifactory.swg-devops.com%3A443%2Fartifactory%2Fapi%2Fnpm%2Ftaas-central-npm-virtual%2Flodash.isplainobject%2F-%2Flodash.isplainobject-4.0.6.tgz%3Fdl%3Dhttps%3A%2F%2Fregistry.npmjs.org%2Flodash.isplainobject%2F-%2Flodash.isplainobject-4.0.6.tgz#7c526a52d89b45c45cc690b88163be0497f550cb"
+  integrity sha1-fFJqUtibRcRcxpC4gWO+BJf1UMs=
+
 lodash.sortby@^4.7.0:
   version "4.7.0"
   resolved "https://na.artifactory.swg-devops.com/artifactory/api/npm/appconnect-npm/lodash.sortby/-/lodash.sortby-4.7.0.tgz?dl=https%3A%2F%2Fregistry.npmjs.org%2Flodash.sortby%2F-%2Flodash.sortby-4.7.0.tgz#edd14c824e2cc9c1e0b0a1b42bb5210516a42438"
@@ -1560,6 +1679,11 @@ mdast-util-to-string@^2.0.0:
   version "2.0.0"
   resolved "https://na.artifactory.swg-devops.com/artifactory/api/npm/appconnect-npm/mdast-util-to-string/-/mdast-util-to-string-2.0.0.tgz?dl=https%3A%2F%2Fregistry.npmjs.org%2Fmdast-util-to-string%2F-%2Fmdast-util-to-string-2.0.0.tgz#b8cfe6a713e1091cb5b728fc48885a4767f8b97b"
   integrity sha1-uM/mpxPhCRy1tyj8SIhaR2f4uXs=
+
+mdn-data@2.0.14:
+  version "2.0.14"
+  resolved "https://na.artifactory.swg-devops.com/artifactory/api/npm/appconnect-npm/mdn-data/-/mdn-data-2.0.14.tgz?dl=https%3A%2F%2Fregistry.npmjs.org%2Fmdn-data%2F-%2Fmdn-data-2.0.14.tgz#7113fc4281917d63ce29b43446f701e68c25ba50"
+  integrity sha1-cRP8QoGRfWPOKbQ0RvcB5owlulA=
 
 mdurl@^1.0.0:
   version "1.0.1"
@@ -1751,6 +1875,13 @@ npm-run-path@^4.0.0:
   dependencies:
     path-key "^3.0.0"
 
+nth-check@^2.0.0:
+  version "2.0.0"
+  resolved "https://na.artifactory.swg-devops.com/artifactory/api/npm/appconnect-npm/nth-check/-/nth-check-2.0.0.tgz?dl=https%3A%2F%2Fregistry.npmjs.org%2Fnth-check%2F-%2Fnth-check-2.0.0.tgz#1bb4f6dac70072fc313e8c9cd1417b5074c0a125"
+  integrity sha1-G7T22scAcvwxPoyc0UF7UHTAoSU=
+  dependencies:
+    boolbase "^1.0.0"
+
 object-assign@^4.1.1:
   version "4.1.1"
   resolved "https://na.artifactory.swg-devops.com/artifactory/api/npm/appconnect-npm/object-assign/-/object-assign-4.1.1.tgz?dl=https%3A%2F%2Fregistry.npmjs.org%2Fobject-assign%2F-%2Fobject-assign-4.1.1.tgz&dl=https%3A%2F%2Fna-sl.artifactory.swg-devops.com%3A443%2Fartifactory%2Fapi%2Fnpm%2Ftaas-central-npm-virtual%2Fobject-assign%2F-%2Fobject-assign-4.1.1.tgz%3Fdl%3Dhttps%3A%2F%2Fregistry.npmjs.org%2Fobject-assign%2F-%2Fobject-assign-4.1.1.tgz#2109adc7965887cfc05cbbd442cac8bfbb360863"
@@ -1900,6 +2031,11 @@ path-key@^3.0.0, path-key@^3.1.0:
   version "3.1.1"
   resolved "https://na.artifactory.swg-devops.com/artifactory/api/npm/appconnect-npm/path-key/-/path-key-3.1.1.tgz?dl=https%3A%2F%2Fregistry.npmjs.org%2Fpath-key%2F-%2Fpath-key-3.1.1.tgz#581f6ade658cbba65a0d3380de7753295054f375"
   integrity sha1-WB9q3mWMu6ZaDTOA3ndTKVBU83U=
+
+path-parse@^1.0.6:
+  version "1.0.6"
+  resolved "https://na.artifactory.swg-devops.com/artifactory/api/npm/appconnect-npm/path-parse/-/path-parse-1.0.6.tgz?dl=https%3A%2F%2Fregistry.npmjs.org%2Fpath-parse%2F-%2Fpath-parse-1.0.6.tgz&dl=https%3A%2F%2Fna-sl.artifactory.swg-devops.com%3A443%2Fartifactory%2Fapi%2Fnpm%2Ftaas-central-npm-virtual%2Fpath-parse%2F-%2Fpath-parse-1.0.6.tgz%3Fdl%3Dhttps%3A%2F%2Fregistry.npmjs.org%2Fpath-parse%2F-%2Fpath-parse-1.0.6.tgz#d62dbb5679405d72c4737ec58600e9ddcf06d24c"
+  integrity sha1-1i27VnlAXXLEc37FhgDp3c8G0kw=
 
 path-type@^4.0.0:
   version "4.0.0"
@@ -2166,6 +2302,14 @@ resolve-from@^4.0.0:
   resolved "https://na.artifactory.swg-devops.com/artifactory/api/npm/appconnect-npm/resolve-from/-/resolve-from-4.0.0.tgz?dl=https%3A%2F%2Fregistry.npmjs.org%2Fresolve-from%2F-%2Fresolve-from-4.0.0.tgz&dl=https%3A%2F%2Fna-sl.artifactory.swg-devops.com%3A443%2Fartifactory%2Fapi%2Fnpm%2Ftaas-central-npm-virtual%2Fresolve-from%2F-%2Fresolve-from-4.0.0.tgz%3Fdl%3Dhttps%3A%2F%2Fregistry.npmjs.org%2Fresolve-from%2F-%2Fresolve-from-4.0.0.tgz#4abcd852ad32dd7baabfe9b40e00a36db5f392e6"
   integrity sha1-SrzYUq0y3Xuqv+m0DgCjbbXzkuY=
 
+resolve@^1.20.0:
+  version "1.20.0"
+  resolved "https://na.artifactory.swg-devops.com/artifactory/api/npm/appconnect-npm/resolve/-/resolve-1.20.0.tgz?dl=https%3A%2F%2Fregistry.npmjs.org%2Fresolve%2F-%2Fresolve-1.20.0.tgz#629a013fb3f70755d6f0b7935cc1c2c5378b1975"
+  integrity sha1-YpoBP7P3B1XW8LeTXMHCxTeLGXU=
+  dependencies:
+    is-core-module "^2.2.0"
+    path-parse "^1.0.6"
+
 restore-cursor@^3.1.0:
   version "3.1.0"
   resolved "https://na.artifactory.swg-devops.com/artifactory/api/npm/appconnect-npm/restore-cursor/-/restore-cursor-3.1.0.tgz?dl=https%3A%2F%2Fregistry.npmjs.org%2Frestore-cursor%2F-%2Frestore-cursor-3.1.0.tgz&dl=https%3A%2F%2Fna-sl.artifactory.swg-devops.com%3A443%2Fartifactory%2Fapi%2Fnpm%2Ftaas-central-npm-virtual%2Frestore-cursor%2F-%2Frestore-cursor-3.1.0.tgz%3Fdl%3Dhttps%3A%2F%2Fregistry.npmjs.org%2Frestore-cursor%2F-%2Frestore-cursor-3.1.0.tgz#39f67c54b3a7a58cea5236d95cf0034239631f7e"
@@ -2321,6 +2465,11 @@ sprintf-js@~1.0.2:
   version "1.0.3"
   resolved "https://na.artifactory.swg-devops.com/artifactory/api/npm/appconnect-npm/sprintf-js/-/sprintf-js-1.0.3.tgz?dl=https%3A%2F%2Fregistry.npmjs.org%2Fsprintf-js%2F-%2Fsprintf-js-1.0.3.tgz&dl=https%3A%2F%2Fna-sl.artifactory.swg-devops.com%3A443%2Fartifactory%2Fapi%2Fnpm%2Ftaas-central-npm-virtual%2Fsprintf-js%2F-%2Fsprintf-js-1.0.3.tgz%3Fdl%3Dhttps%3A%2F%2Fregistry.npmjs.org%2Fsprintf-js%2F-%2Fsprintf-js-1.0.3.tgz#04e6926f662895354f3dd015203633b857297e2c"
   integrity sha1-BOaSb2YolTVPPdAVIDYzuFcpfiw=
+
+stable@^0.1.8:
+  version "0.1.8"
+  resolved "https://na.artifactory.swg-devops.com/artifactory/api/npm/appconnect-npm/stable/-/stable-0.1.8.tgz?dl=https%3A%2F%2Fregistry.npmjs.org%2Fstable%2F-%2Fstable-0.1.8.tgz&dl=https%3A%2F%2Fna-sl.artifactory.swg-devops.com%3A443%2Fartifactory%2Fapi%2Fnpm%2Ftaas-central-npm-virtual%2Fstable%2F-%2Fstable-0.1.8.tgz%3Fdl%3Dhttps%3A%2F%2Fregistry.npmjs.org%2Fstable%2F-%2Fstable-0.1.8.tgz#836eb3c8382fe2936feaf544631017ce7d47a3cf"
+  integrity sha1-g26zyDgv4pNv6vVEYxAXzn1Ho88=
 
 stacktrace-parser@0.1.10:
   version "0.1.10"
@@ -2506,6 +2655,19 @@ supports-color@^8.0.0:
   integrity sha1-zW/BfihQDP9WwbhsCn/UpUpzAFw=
   dependencies:
     has-flag "^4.0.0"
+
+svgo@^2.0.3:
+  version "2.3.0"
+  resolved "https://na.artifactory.swg-devops.com/artifactory/api/npm/appconnect-npm/svgo/-/svgo-2.3.0.tgz?dl=https%3A%2F%2Fregistry.npmjs.org%2Fsvgo%2F-%2Fsvgo-2.3.0.tgz#6b3af81d0cbd1e19c83f5f63cec2cb98c70b5373"
+  integrity sha1-azr4HQy9HhnIP19jzsLLmMcLU3M=
+  dependencies:
+    "@trysound/sax" "0.1.1"
+    chalk "^4.1.0"
+    commander "^7.1.0"
+    css-select "^3.1.2"
+    css-tree "^1.1.2"
+    csso "^4.2.0"
+    stable "^0.1.8"
 
 through@^2.3.8:
   version "2.3.8"

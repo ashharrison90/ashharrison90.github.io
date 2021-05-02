@@ -1,0 +1,15 @@
+.link {
+  color: var(--icon-secondary);
+  padding: 4px;
+
+  &:hover,
+  &:focus {
+    color: var(--focus)
+  }
+}
+
+.link svg {
+  fill: currentColor;
+  height: 24px;
+  width: 24px;
+}
