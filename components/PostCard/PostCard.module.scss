@@ -1,0 +1,32 @@
+.card {
+  background-color: var(--container);
+  text-align: left;
+  color: inherit;
+  text-decoration: none;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.imageContainer {
+  height: 50%;
+  position: relative;
+}
+
+.card:hover,
+.card:focus,
+.card:active {
+  color: var(--focus);
+  border-color: var(--focus);
+}
+
+.card h2 {
+  margin: 0 0 1rem 0;
+  font-size: 1.5rem;
+}
+
+.card p {
+  margin: 0;
+  font-size: 1.25rem;
+  line-height: 1.5;
+}

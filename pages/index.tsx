@@ -1,8 +1,8 @@
 import Head from 'next/head'
-import Link from 'next/link'
 import dynamic from 'next/dynamic'
 import { getAllPosts } from '../lib/api'
 import PostGrid from '../components/PostGrid/PostGrid'
+import PostCard from '../components/PostCard/PostCard'
 import Layout from '../components/Layout/Layout'
 import styles from '../styles/Home.module.scss'
 
@@ -42,15 +42,14 @@ export default function Home({ allPosts, buildTimestamp }: Props) {
         <PostGrid>
           {
             allPosts.map(post => (
-              <Link key={post.slug} as={`/posts/${post.slug}`} href="/posts/[slug]">
-                <a className={styles.card}>
-                  <p>{post.title}</p>
-                  <p>{post.date}</p>
-                  <p>{post.slug}</p>
-                  <p>{post.coverImage}</p>
-                  <p>{post.excerpt}</p>
-                </a>
-              </Link>
+              <PostCard
+                key={post.slug}
+                coverImage={post.coverImage}
+                date={post.date}
+                excerpt={post.excerpt}
+                slug={post.slug}
+                title={post.title}
+              />
             ))
           }
         </PostGrid>
