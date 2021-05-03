@@ -38,6 +38,6 @@
 .card:hover,
 .card:focus,
 .card:active {
-  // color: var(--focus);
   border-color: var(--focus);
+  outline: none;
 }

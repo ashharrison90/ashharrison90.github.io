@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import dynamic from 'next/dynamic'
+import Link from 'next/link'
 import { getAllPosts } from '../lib/api'
 import PostGrid from '../components/PostGrid/PostGrid'
 import PostCard from '../components/PostCard/PostCard'
@@ -39,6 +40,7 @@ export default function Home({ allPosts, buildTimestamp }: Props) {
           Welcome to <a href='https://nextjs.org'>Next.js!</a>
         </h1>
 
+        <h2>Posts</h2>
         <PostGrid>
           {
             allPosts.map(post => (
@@ -53,6 +55,9 @@ export default function Home({ allPosts, buildTimestamp }: Props) {
             ))
           }
         </PostGrid>
+        <Link href="/posts">
+          <button>View all posts</button>
+        </Link>
 
         <ThemeToggle />
       </main>

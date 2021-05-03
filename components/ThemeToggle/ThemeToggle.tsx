@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import styles from './ThemeToggle.module.scss'
 
 export default function ThemeToggle () {
   const [useDarkMode, setUseDarkMode] = useState(document.documentElement.dataset.theme === 'dark')
@@ -8,6 +9,7 @@ export default function ThemeToggle () {
 
   return (
     <button
+      className={styles.toggle}
       onClick={() => setUseDarkMode(!useDarkMode)}
     >
       Toggle theme!
