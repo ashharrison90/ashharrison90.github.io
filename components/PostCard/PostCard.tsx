@@ -9,7 +9,7 @@ export interface Props {
   title: string
 }
 
-export default function PostGrid({
+export default function PostCard({
   coverImage,
   date,
   excerpt,
@@ -18,15 +18,12 @@ export default function PostGrid({
 }: Props) {
   return (
     <Link as={`/posts/${slug}`} href="/posts/[slug]">
-      <a className={styles.card}>
-        <div className={styles.imageContainer}>
-          <img className={styles.image}
-            src={coverImage}
-          />
+      <a className={styles.card} style={{ backgroundImage: `url(${coverImage})` }}>
+        <div className={styles.textContainer}>
+          <div className={styles.date}>{(new Date(date)).toLocaleDateString()}</div>
+          <h3 className={styles.title}>{title}</h3>
+          <div className={styles.excerpt}>{excerpt}</div>
         </div>
-        <p>{title}</p>
-        <p>{(new Date(date)).toLocaleDateString()}</p>
-        <p>{excerpt}</p>
       </a>
     </Link>
   )

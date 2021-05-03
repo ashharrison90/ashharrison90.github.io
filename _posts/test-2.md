@@ -1,6 +1,6 @@
 ---
-title: 'Test 2'
-excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Praesent elementum facilisis leo vel fringilla est ullamcorper eget. At imperdiet dui accumsan sit amet nulla facilities morbi tempus.'
+title: 'This one also has a longer title'
+excerpt: 'But a short excerpt.'
 coverImage: '/assets/blog/hello-world/cover.jpg'
 date: '2021-05-02T14:26:07.322Z'
 ---
