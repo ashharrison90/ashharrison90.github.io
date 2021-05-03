@@ -37,8 +37,11 @@ export default function Home({ allPosts, buildTimestamp }: Props) {
     <div className={styles.parallaxContainer}>
       <div className={styles.background} />
       <div className={styles.foreground}>
-        <div className={styles.heroTitle}>
-          <h1>hi</h1>
+        <div className={styles.heroTitleContainer}>
+          <h1 className={styles.heroTitle}>
+            hi<br/>
+            i'm ash
+          </h1>
           <button className={styles.goToContent} onClick={test}>Scroll</button>
         </div>
         <div className={styles.content}>

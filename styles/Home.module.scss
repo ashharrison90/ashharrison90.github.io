@@ -28,14 +28,26 @@
   background-color: var(--background);
 }
 
-.heroTitle {
+.heroTitleContainer {
   align-items: center;
   color: var(--hero-title);
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  font-size: 60px;
+  min-height: 100vh;
+  position: relative;
+}
+
+.heroTitle {
+  align-self: center;
+  flex: 1 1;
+  max-width: 1024px;
+  padding: 0 1rem;
+}
+
+.goToContent {
+  bottom: 1rem;
+  position: absolute;
 }
 
 .main {
