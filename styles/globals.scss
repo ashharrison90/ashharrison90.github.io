@@ -12,6 +12,11 @@ body {
   box-sizing: border-box;
 }
 
+h1,
+h2 {
+  font-size: 3em;
+}
+
 :root[data-theme='light'] {
   --background: #fff;
   --border: #e0e0e0;
@@ -21,6 +26,7 @@ body {
   --disabled-secondary: #c6c6c6;
   --error: #da1e28;
   --focus: #0f62fe;
+  --hero-title: #fff;
   --icon-primary: #000;
   --icon-secondary: #525252;
   --information: #0043ce;
@@ -41,6 +47,7 @@ body {
   --disabled-secondary: #6f6f6f;
   --error: #fa4d56;
   --focus: #fff;
+  --hero-title: #262626;
   --icon-primary: #f4f4f4;
   --icon-secondary: #c6c6c6;
   --information: #4589ff;

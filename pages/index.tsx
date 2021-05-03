@@ -38,7 +38,7 @@ export default function Home({ allPosts, buildTimestamp }: Props) {
       <div className={styles.background} />
       <div className={styles.foreground}>
         <div className={styles.heroTitle}>
-          <h1>HELLO</h1>
+          <h1>hi</h1>
           <button className={styles.goToContent} onClick={test}>Scroll</button>
         </div>
         <div className={styles.content}>
