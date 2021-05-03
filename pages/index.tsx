@@ -11,6 +11,12 @@ const ThemeToggle = dynamic(() => import('../components/ThemeToggle/ThemeToggle'
   ssr: false,
 })
 
+const test = () => {
+  document.querySelector(`.${styles.content}`)?.scrollIntoView({
+    behavior: 'smooth'
+  });
+}
+
 export interface Props {
   allPosts: {
     title: string,
@@ -33,6 +39,7 @@ export default function Home({ allPosts, buildTimestamp }: Props) {
       <div className={styles.foreground}>
         <div className={styles.heroTitle}>
           <h1>HELLO</h1>
+          <button className={styles.goToContent} onClick={test}>Scroll</button>
         </div>
         <div className={styles.content}>
           <Layout buildTimestamp={buildTimestamp}>
@@ -43,11 +50,8 @@ export default function Home({ allPosts, buildTimestamp }: Props) {
             </Head>
 
             <main className={styles.main}>
-              <h1 className={styles.title}>
-                Welcome to <a href='https://nextjs.org'>Next.js!</a>
-              </h1>
-
-              <h2>Posts</h2>
+              <h2>about</h2>
+              <h2>posts</h2>
               <PostGrid>
                 {
                   allPosts.map(post => (
@@ -62,7 +66,7 @@ export default function Home({ allPosts, buildTimestamp }: Props) {
                   ))
                 }
               </PostGrid>
-              <Link href="/posts">
+              <Link href='/posts'>
                 <button>View all posts</button>
               </Link>
 

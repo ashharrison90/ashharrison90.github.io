@@ -22,19 +22,17 @@ export default function Post({ buildTimestamp, post }: Props) {
         <div>Loading…</div>
       ) : (
         <Layout buildTimestamp={buildTimestamp}>
-          <article className="mb-32">
-            <Head>
-              <title>
-                {post.title}
-              </title>
-            </Head>
-            <div>{post.title}</div>
-            <div>{post.coverImage}</div>
-            <div>{post.date}</div>
-            <div
-              dangerouslySetInnerHTML={{ __html: post.content ?? '' }}
-            />
-          </article>
+          <Head>
+            <title>
+              {post.title}
+            </title>
+          </Head>
+          <h1>{post.title}</h1>
+          <div>{post.coverImage}</div>
+          <div>{(new Date(post.date!)).toLocaleDateString()}</div>
+          <div
+            dangerouslySetInnerHTML={{ __html: post.content ?? '' }}
+          />
         </Layout>
       )}
     </div>

@@ -12,11 +12,13 @@
 }
 
 .textContainer {
+  backdrop-filter: blur(4px);
   background-color: rgba(var(--container--rgb), 0.6);
   display: grid;
   grid-template-rows: 50% 25% 25%;
   height: 100%;
   padding: 0.5rem;
+  transition: backdrop-filter 0.5s ease;
   width: 100%;
 }
 
@@ -40,4 +42,8 @@
 .card:active {
   border-color: var(--focus);
   outline: none;
+
+  .textContainer {
+    backdrop-filter: none;
+  }
 }
