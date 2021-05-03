@@ -3,8 +3,10 @@
   padding: 4px;
 
   &:hover,
-  &:focus {
-    color: var(--focus)
+  &:focus,
+  &:active {
+    color: var(--focus);
+    outline: none;
   }
 }
 
