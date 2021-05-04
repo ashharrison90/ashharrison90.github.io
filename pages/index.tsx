@@ -54,6 +54,9 @@ export default function Home({ allPosts, buildTimestamp }: Props) {
 
             <main className={styles.main}>
               <h2>about</h2>
+              <Link href='/about'>
+                <button>About</button>
+              </Link>
               <h2>posts</h2>
               <PostGrid>
                 {

@@ -20,7 +20,7 @@ export interface Props {
   buildTimestamp: number
 }
 
-export default function Home({ allPosts, buildTimestamp }: Props) {
+export default function Posts({ allPosts, buildTimestamp }: Props) {
   return (
     <Layout buildTimestamp={buildTimestamp}>
       <Head>
@@ -28,7 +28,7 @@ export default function Home({ allPosts, buildTimestamp }: Props) {
       </Head>
 
       <h1 className={styles.title}>
-        Posts
+        posts
       </h1>
 
       <PostGrid>

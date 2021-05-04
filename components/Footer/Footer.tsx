@@ -10,12 +10,12 @@ import Twitter from './assets/twitter.svg'
 import styles from './Footer.module.scss'
 
 const iconMap: Record<string, ReactNode> = {
-  'email': <Email />,
-  'github': <Github />,
-  'linkedin': <LinkedIn />,
-  'facebook': <Facebook />,
-  'instagram': <Instagram />,
-  'twitter': <Twitter />
+  email: <Email />,
+  github: <Github />,
+  linkedin: <LinkedIn />,
+  facebook: <Facebook />,
+  instagram: <Instagram />,
+  twitter: <Twitter />
 }
 
 export interface Props {
