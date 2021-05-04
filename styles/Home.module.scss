@@ -1,6 +1,6 @@
 .parallaxContainer {
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   overflow-x: hidden;
   overflow-y: scroll;
   perspective: 4px;
@@ -32,8 +32,8 @@
   align-items: center;
   color: var(--hero-title);
   display: flex;
+  height: 100vh;
   justify-content: center;
-  min-height: 100vh;
   position: relative;
 }
 

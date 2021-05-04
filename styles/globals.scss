@@ -8,6 +8,13 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
+html,
+body,
+#__next {
+  height: 100%;
+  width: 100%;
+}
+
 * {
   box-sizing: border-box;
 }
