@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { getAllPosts } from '../lib/api'
+import { getAllPosts } from '../lib/postsApi'
 import PostGrid from '../components/PostGrid/PostGrid'
 import PostCard from '../components/PostCard/PostCard'
 import Layout from '../components/Layout/Layout'
@@ -50,13 +50,7 @@ export default function Posts({ allPosts, buildTimestamp }: Props) {
 }
 
 export const getStaticProps = () => {
-  const allPosts = getAllPosts([
-    'title',
-    'date',
-    'slug',
-    'coverImage',
-    'excerpt',
-  ])
+  const allPosts = getAllPosts()
   
   return {
     props: {

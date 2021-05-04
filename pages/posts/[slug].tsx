@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router'
 import ErrorPage from 'next/error'
 import Head from 'next/head'
-import { getPostBySlug, getAllPosts, PostData } from '../../lib/api'
+import { getPostBySlug, getAllPosts, PostData } from '../../lib/postsApi'
 import markdownToHtml from '../../lib/markdownToHtml'
 import { GetStaticPropsContext } from 'next'
 import Layout from '../../components/Layout/Layout'
@@ -13,7 +13,7 @@ export interface Props {
 
 export default function Post({ buildTimestamp, post }: Props) {
   const router = useRouter()
-  if (!router.isFallback && !post?.slug) {
+  if (!router.isFallback && !post.slug) {
     return <ErrorPage statusCode={404} />
   }
   return (
@@ -40,13 +40,7 @@ export default function Post({ buildTimestamp, post }: Props) {
 }
 
 export async function getStaticProps({ params }: GetStaticPropsContext<{slug: string}>) {
-  const post = getPostBySlug(params!.slug, [
-    'title',
-    'date',
-    'slug',
-    'content',
-    'coverImage',
-  ])
+  const post = getPostBySlug(params!.slug)
   const content = await markdownToHtml(post.content || '')
 
   return {
@@ -61,7 +55,7 @@ export async function getStaticProps({ params }: GetStaticPropsContext<{slug: st
 }
 
 export async function getStaticPaths() {
-  const posts = getAllPosts(['slug'])
+  const posts = getAllPosts()
 
   return {
     paths: posts.map((post) => {
