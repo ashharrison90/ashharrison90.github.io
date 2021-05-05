@@ -35,7 +35,8 @@ export interface Props {
 export default function Home({ allPosts, buildTimestamp }: Props) {
   return (
     <div className={styles.parallaxContainer}>
-      <div className={styles.background} />
+      <div className={styles.heroBackground} />
+      <div className={styles.heroCutout} />
       <div className={styles.foreground}>
         <div className={styles.heroTitleContainer}>
           <h1 className={styles.heroTitle}>

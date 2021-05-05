@@ -6,11 +6,13 @@ import JobSummary from '../components/JobSummary/JobSummary'
 import markdownToHtml from '../lib/markdownToHtml'
 import Ibm from '../public/assets/about/ibm.svg'
 import Qinetiq from '../public/assets/about/qinetiq.svg'
+import Durham from '../public/assets/about/durham.svg'
 import { ReactNode } from 'react'
 
 const iconMap: Record<string, ReactNode> = {
   ibm: <Ibm />,
-  qinetiq: <Qinetiq />
+  qinetiq: <Qinetiq />,
+  durham: <Durham />
 }
 
 export interface Props {
