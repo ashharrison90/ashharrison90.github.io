@@ -17,7 +17,7 @@ export default function PostCard({
   title
 }: Props) {
   return (
-    <Link as={`/posts/${slug}`} href="/posts/[slug]">
+    <Link as={`/posts/${slug}`} href='/posts/[slug]'>
       <a className={styles.card} style={{ backgroundImage: `url(${coverImage})` }}>
         <div className={styles.textContainer}>
           <div className={styles.date}>{(new Date(date)).toLocaleDateString()}</div>

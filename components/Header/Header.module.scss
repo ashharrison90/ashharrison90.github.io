@@ -1,0 +1,31 @@
+.header {
+  align-items: center;
+  background-color: var(--container);
+  color: var(--text-secondary);
+  display: flex;
+  font-size: 1.5em;
+  font-weight: bold;
+  height: 80px;
+  justify-content: flex-end;
+  padding: 0 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.pageLink {
+  color: inherit;
+  margin: 0 0.5rem;
+  text-decoration: none;
+
+  &:hover,
+  &:focus,
+  &:active {
+    color: var(--focus);
+    outline: none;
+  }
+}
+
+.activePage {
+  color: var(--text-primary);
+}
