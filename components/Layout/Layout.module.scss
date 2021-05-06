@@ -1,12 +1,79 @@
 .container {
-  min-height: 100vh;
+  height: 100%;
+  width: 100%;
+}
+
+.parallaxContainer {
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  perspective: 8px;
+  perspective-origin: 0 0;
+  width: 100%;
+}
+
+.heroBackground,
+.heroCutout {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-position: 70%;
+  background-size: cover;
+  transform-origin: 0 0;
+}
+
+.heroBackground {
+  background-image: url('/assets/home/hero-background.png');
+  transform: translateZ(-8px) scale(2);
+}
+
+.heroCutout {
+  background-image: url('/assets/home/hero-cutout.png');
+  transform: translateZ(-4px) scale(1.5);
+}
+
+.foreground {
   display: flex;
   flex-direction: column;
+  min-height: 100%;
+  transform-origin: 0 0;
+  transform: translateZ(0);
+}
+
+.heroTitleContainer {
+  align-items: center;
+  color: var(--hero-title);
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  position: relative;
+}
+
+.heroTitle {
+  align-self: flex-end;
+  flex: 1 1;
+  max-width: 1024px;
+  padding: 0 1rem;
+  text-shadow: 0 0 10px var(--text-primary);
+}
+
+.goToContent {
+  bottom: 1rem;
+  position: absolute;
+}
+
+.contentContainer {
+  align-items: center;
+  background-color: var(--background);
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  margin-top: 80px;
 }
 
 .content {
-  align-self: center;
-  flex: 1;
   max-width: 1024px;
   padding: 0 1rem 4rem 1rem;
   width: 100%;
