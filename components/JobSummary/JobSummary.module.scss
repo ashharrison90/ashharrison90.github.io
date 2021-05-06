@@ -1,3 +1,26 @@
+.icon {
+  max-width: 50%;
+}
+
 .icon svg {
-  height: 4rem;
+  width: 100%;
+}
+
+.header {
+  align-items: center;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  flex-wrap: wrap-reverse;
+  justify-content: space-between;
+  padding: 1rem 0;
+  position: relative;
+}
+
+.company {
+  margin: 0;
+}
+
+.date,
+.jobTitle {
+  color: var(--text-secondary);
 }

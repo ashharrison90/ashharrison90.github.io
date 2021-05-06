@@ -14,6 +14,7 @@ const formatDate = (dateString: string) => {
 
 export interface Props {
   children: ReactNode,
+  className?: string,
   company: string,
   jobTitle: string,
   icon: ReactNode,
@@ -23,6 +24,7 @@ export interface Props {
 
 export default function JobSummary({
   children,
+  className,
   company,
   jobTitle,
   icon,
@@ -30,15 +32,18 @@ export default function JobSummary({
   endDate
 }: Props) {
   return (
-    <>
-      <h2>{company}</h2>
-      <div>{jobTitle}</div>
-      <div className={styles.date}>{formatDate(startDate)} - {formatDate(endDate)}</div>
-      <div className={styles.icon}>
-        {icon}
+    <div className={className}>
+      <div className={styles.header}>
+        <div className={styles.title}>
+          <h2 className={styles.company}>{company}</h2>
+          <div className={styles.jobTitle}>{jobTitle}</div>
+          <div className={styles.date}>{formatDate(startDate)} - {formatDate(endDate)}</div>
+        </div>
+        <div className={styles.icon}>
+          {icon}
+        </div>
       </div>
-      {/* <img className={styles.icon} src={icon} /> */}
       {children}
-    </>
+    </div>
   )
 }

@@ -35,6 +35,7 @@ export default function About({ buildTimestamp, jobs }: Props) {
         jobs.map(job => (
           <JobSummary
             key={job.company}
+            className={styles.jobSummary}
             company={job.company}
             jobTitle={job.jobTitle}
             icon={iconMap[job.icon]}
