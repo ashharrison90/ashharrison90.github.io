@@ -3,8 +3,8 @@
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 1009.1 417.3" xml:space="preserve">
 <style type="text/css">
-	.st0{fill:#002337;}
-	.st1{fill:#702567;}
+	.st0{fill:var(--logo-durham-primary);}
+	.st1{fill:var(--logo-durham-secondary);}
 </style>
 <g>
 	<path class="st0" d="M838,417.3c9.9,0,16.2-4.9,21.7-18.5l27.4-67.5h-10.4l-21,54.5l-23.8-54.5h-10.8l29.7,65.1
