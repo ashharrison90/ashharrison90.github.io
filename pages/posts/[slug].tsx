@@ -17,7 +17,7 @@ export default function Post({ buildTimestamp, post }: Props) {
     return <ErrorPage statusCode={404} />
   }
   return (
-    <div>
+    <>
       {router.isFallback ? (
         <div>Loading…</div>
       ) : (
@@ -35,7 +35,7 @@ export default function Post({ buildTimestamp, post }: Props) {
           />
         </Layout>
       )}
-    </div>
+    </>
   )
 }
 
