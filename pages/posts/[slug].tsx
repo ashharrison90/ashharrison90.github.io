@@ -5,6 +5,7 @@ import { getPostBySlug, getAllPosts, PostData } from '../../lib/postsApi'
 import markdownToHtml from '../../lib/markdownToHtml'
 import { GetStaticPropsContext } from 'next'
 import Layout from '../../components/Layout/Layout'
+import styles from '../../styles/[slug].module.scss'
 
 export interface Props {
   buildTimestamp: number,
@@ -27,9 +28,11 @@ export default function Post({ buildTimestamp, post }: Props) {
               {post.title}
             </title>
           </Head>
-          <h1>{post.title}</h1>
-          <div>{post.coverImage}</div>
-          <div>{(new Date(post.date!)).toLocaleDateString()}</div>
+          <img className={styles.coverImage} src={post.coverImage} />
+          <div className={styles.titleContainer}>
+            <h1 className={styles.title}>{post.title}</h1>
+            <div className={styles.date}>{(new Date(post.date!)).toLocaleDateString()}</div>
+          </div>
           <div
             dangerouslySetInnerHTML={{ __html: post.content ?? '' }}
           />

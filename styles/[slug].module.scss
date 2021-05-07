@@ -1,0 +1,18 @@
+.coverImage {
+  margin-top: 6rem;
+  width: 100%;
+}
+
+.titleContainer {
+  border-bottom: 1px solid var(--border);
+  margin: 2rem 0;
+}
+
+.title,
+.date {
+  margin: 1rem 0;
+}
+
+.date {
+  color: var(--text-secondary);
+}
