@@ -9,32 +9,9 @@
   justify-content: flex-end;
   padding: 0 1rem;
   position: fixed;
-  transition: background-color 0.5s ease;
+  transition: opacity 0.5s ease;
   width: 100%;
   z-index: 1;
-}
-
-.pageLinksContainer {
-  align-items: center;
-  display: flex;
-  transition: background-color 0.5s ease;
-}
-
-.heroStyling {
-  background-color: transparent;
-  color: var(--hero-text-secondary);
-
-  .pageLink {
-    &:hover,
-    &:focus,
-    &:active {
-      color: var(--hero-text-primary);
-    }
-  }
-
-  .activePage {
-    color: var(--hero-text-primary);
-  }
 }
 
 .pageLink {
@@ -52,5 +29,4 @@
 
 .activePage {
   color: var(--text-primary);
-  font-size: 2rem;
 }
