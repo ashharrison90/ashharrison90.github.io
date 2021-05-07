@@ -44,7 +44,7 @@
 
 .heroTitleContainer {
   align-items: center;
-  color: var(--hero-title);
+  color: var(--hero-text-primary);
   display: flex;
   height: 100vh;
   justify-content: center;
@@ -56,7 +56,7 @@
   flex: 1 1;
   max-width: 1024px;
   padding: 0 1rem;
-  text-shadow: 0 0 10px var(--text-primary);
+  text-shadow: 0 0 10px var(--hero-text-shadow);
 }
 
 .goToContent {
@@ -70,7 +70,6 @@
   display: flex;
   flex: 1;
   flex-direction: column;
-  margin-top: 80px;
 }
 
 .content {

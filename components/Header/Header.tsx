@@ -4,10 +4,13 @@ import classnames from 'classnames'
 import styles from './Header.module.scss'
 
 
-export default function Header() {
+export default function Header({ isForHero }: { isForHero?: boolean }) {
   const router = useRouter()
   return (
-    <nav className={styles.header}>
+    <nav className={classnames(
+      styles.header,
+      {[styles.heroStyling]: isForHero}
+    )}>
       <Link href='/'>
         <a className={classnames(
           styles.pageLink,

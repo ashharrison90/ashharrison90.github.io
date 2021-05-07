@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react'
 import { ReactNode } from 'react'
 import Footer from '../Footer/Footer'
 import Header from '../Header/Header'
@@ -9,17 +10,33 @@ export interface Props {
   showHero?: boolean
 }
 
-const test = () => {
-  document.querySelector(`.${styles.content}`)?.scrollIntoView({
-    behavior: 'smooth'
-  });
-}
-
 export default function Layout({ buildTimestamp, children, showHero = false }: Props) {
+  const [showHeaderBackground, setShowHeaderBackground] = useState(!showHero)
+  const containerRef = useRef<HTMLDivElement>(null)
+  const contentRef = useRef<HTMLDivElement>(null)
+  useEffect(() => {
+    if (showHero && containerRef.current) {
+      const handleScroll = () => {
+        setShowHeaderBackground(containerRef.current!.scrollTop > 40)
+      }
+      containerRef.current.addEventListener('scroll', handleScroll);
+    }
+  }, []);
+
+  const scrollContentIntoView = () => {
+    contentRef.current!.scrollIntoView({
+      behavior: 'smooth'
+    })
+  }
+
   return (
     <div className={styles.container}>
-      <Header />
-      <div className={styles.parallaxContainer}>
+      <Header isForHero={showHero && !showHeaderBackground} />
+      <div
+        id='parallaxContainer'
+        className={styles.parallaxContainer}
+        ref={containerRef}
+      >
         {
           showHero &&
             <>
@@ -35,10 +52,10 @@ export default function Layout({ buildTimestamp, children, showHero = false }: P
                   hi<br/>
                   i'm ash
                 </h1>
-                <button className={styles.goToContent} onClick={test}>Scroll</button>
+                <button className={styles.goToContent} onClick={scrollContentIntoView}>Scroll</button>
               </div>
           }
-          <div className={styles.contentContainer}>
+          <div className={styles.contentContainer} ref={contentRef}>
             <div className={styles.content}>{children}</div>
           </div>
           <Footer
