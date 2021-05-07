@@ -16,3 +16,26 @@
 .date {
   color: var(--text-secondary);
 }
+
+.content {
+  figure {
+    margin: 1rem 0;
+    position: relative;
+
+    img {
+      height: 100%;
+      object-fit: contain;
+      width: 100%;
+    }
+  }
+
+  figcaption {
+    background-color: var(--container);
+    bottom: 0;
+    color: var(--text-secondary);
+    left: 0;
+    padding: 1rem;
+    position: absolute;
+    right: 0;
+  }
+}

@@ -1012,6 +1012,13 @@ extend@^3.0.0:
   resolved "https://na.artifactory.swg-devops.com/artifactory/api/npm/appconnect-npm/extend/-/extend-3.0.2.tgz?dl=https%3A%2F%2Fregistry.npmjs.org%2Fextend%2F-%2Fextend-3.0.2.tgz&dl=https%3A%2F%2Fna-sl.artifactory.swg-devops.com%3A443%2Fartifactory%2Fapi%2Fnpm%2Ftaas-central-npm-virtual%2Fextend%2F-%2Fextend-3.0.2.tgz%3Fdl%3Dhttps%3A%2F%2Fregistry.npmjs.org%2Fextend%2F-%2Fextend-3.0.2.tgz#f8b1136b4071fbd8eb140aff858b1019ec2915fa"
   integrity sha1-+LETa0Bx+9jrFAr/hYsQGewpFfo=
 
+fault@^1.0.0:
+  version "1.0.4"
+  resolved "https://na.artifactory.swg-devops.com/artifactory/api/npm/appconnect-npm/fault/-/fault-1.0.4.tgz?dl=https%3A%2F%2Fregistry.npmjs.org%2Ffault%2F-%2Ffault-1.0.4.tgz#eafcfc0a6d214fc94601e170df29954a4f842f13"
+  integrity sha1-6vz8Cm0hT8lGAeFw3ymVSk+ELxM=
+  dependencies:
+    format "^0.2.0"
+
 figures@^3.2.0:
   version "3.2.0"
   resolved "https://na.artifactory.swg-devops.com/artifactory/api/npm/appconnect-npm/figures/-/figures-3.2.0.tgz?dl=https%3A%2F%2Fregistry.npmjs.org%2Ffigures%2F-%2Ffigures-3.2.0.tgz#625c18bd293c604dc4a8ddb2febf0c88341746af"
@@ -1047,6 +1054,11 @@ foreach@^2.0.5:
   version "2.0.5"
   resolved "https://na.artifactory.swg-devops.com/artifactory/api/npm/appconnect-npm/foreach/-/foreach-2.0.5.tgz?dl=https%3A%2F%2Fregistry.npmjs.org%2Fforeach%2F-%2Fforeach-2.0.5.tgz&dl=https%3A%2F%2Fna-sl.artifactory.swg-devops.com%3A443%2Fartifactory%2Fapi%2Fnpm%2Ftaas-central-npm-virtual%2Fforeach%2F-%2Fforeach-2.0.5.tgz%3Fdl%3Dhttps%3A%2F%2Fregistry.npmjs.org%2Fforeach%2F-%2Fforeach-2.0.5.tgz#0bee005018aeb260d0a3af3ae658dd0136ec1b99"
   integrity sha1-C+4AUBiusmDQo6865ljdATbsG5k=
+
+format@^0.2.0:
+  version "0.2.2"
+  resolved "https://na.artifactory.swg-devops.com/artifactory/api/npm/appconnect-npm/format/-/format-0.2.2.tgz?dl=https%3A%2F%2Fregistry.npmjs.org%2Fformat%2F-%2Fformat-0.2.2.tgz&dl=https%3A%2F%2Fna-sl.artifactory.swg-devops.com%3A443%2Fartifactory%2Fapi%2Fnpm%2Ftaas-central-npm-virtual%2Fformat%2F-%2Fformat-0.2.2.tgz%3Fdl%3Dhttps%3A%2F%2Fregistry.npmjs.org%2Fformat%2F-%2Fformat-0.2.2.tgz#d6170107e9efdc4ed30c9dc39016df942b5cb58b"
+  integrity sha1-1hcBB+nv3E7TDJ3DkBbflCtctYs=
 
 fsevents@~2.3.1:
   version "2.3.2"
@@ -1194,6 +1206,11 @@ he@1.2.0:
   version "1.2.0"
   resolved "https://na.artifactory.swg-devops.com/artifactory/api/npm/appconnect-npm/he/-/he-1.2.0.tgz?dl=https%3A%2F%2Fregistry.npmjs.org%2Fhe%2F-%2Fhe-1.2.0.tgz&dl=https%3A%2F%2Fna-sl.artifactory.swg-devops.com%3A443%2Fartifactory%2Fapi%2Fnpm%2Ftaas-central-npm-virtual%2Fhe%2F-%2Fhe-1.2.0.tgz%3Fdl%3Dhttps%3A%2F%2Fregistry.npmjs.org%2Fhe%2F-%2Fhe-1.2.0.tgz#84ae65fa7eafb165fddb61566ae14baf05664f0f"
   integrity sha1-hK5l+n6vsWX922FWauFLrwVmTw8=
+
+highlight.js@^10.7.2, highlight.js@~10.7.0:
+  version "10.7.2"
+  resolved "https://na.artifactory.swg-devops.com/artifactory/api/npm/appconnect-npm/highlight.js/-/highlight.js-10.7.2.tgz?dl=https%3A%2F%2Fregistry.npmjs.org%2Fhighlight.js%2F-%2Fhighlight.js-10.7.2.tgz#89319b861edc66c48854ed1e6da21ea89f847360"
+  integrity sha1-iTGbhh7cZsSIVO0ebaIeqJ+Ec2A=
 
 hmac-drbg@^1.0.1:
   version "1.0.1"
@@ -1614,6 +1631,14 @@ loose-envify@^1.1.0, loose-envify@^1.4.0:
   integrity sha1-ce5R+nvkyuwaY4OffmgtgTLTDK8=
   dependencies:
     js-tokens "^3.0.0 || ^4.0.0"
+
+lowlight@^1.2.0:
+  version "1.20.0"
+  resolved "https://na.artifactory.swg-devops.com/artifactory/api/npm/appconnect-npm/lowlight/-/lowlight-1.20.0.tgz?dl=https%3A%2F%2Fregistry.npmjs.org%2Flowlight%2F-%2Flowlight-1.20.0.tgz#ddb197d33462ad0d93bf19d17b6c301aa3941888"
+  integrity sha1-3bGX0zRirQ2TvxnRe2wwGqOUGIg=
+  dependencies:
+    fault "^1.0.0"
+    highlight.js "~10.7.0"
 
 make-dir@^3.0.2:
   version "3.1.0"
@@ -2259,6 +2284,14 @@ regenerator-runtime@^0.13.4:
   version "0.13.7"
   resolved "https://na.artifactory.swg-devops.com/artifactory/api/npm/appconnect-npm/regenerator-runtime/-/regenerator-runtime-0.13.7.tgz?dl=https%3A%2F%2Fregistry.npmjs.org%2Fregenerator-runtime%2F-%2Fregenerator-runtime-0.13.7.tgz#cac2dacc8a1ea675feaabaeb8ae833898ae46f55"
   integrity sha1-ysLazIoepnX+qrrriugziYrkb1U=
+
+remark-highlight.js@^6.0.0:
+  version "6.0.0"
+  resolved "https://na.artifactory.swg-devops.com/artifactory/api/npm/appconnect-npm/remark-highlight.js/-/remark-highlight.js-6.0.0.tgz?dl=https%3A%2F%2Fregistry.npmjs.org%2Fremark-highlight.js%2F-%2Fremark-highlight.js-6.0.0.tgz#cb05387ddddeb078f0b61ce6299f6323f05098fc"
+  integrity sha1-ywU4fd3esHjwthzmKZ9jI/BQmPw=
+  dependencies:
+    lowlight "^1.2.0"
+    unist-util-visit "^2.0.0"
 
 remark-html@^13.0.1:
   version "13.0.1"
