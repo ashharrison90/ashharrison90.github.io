@@ -23,12 +23,6 @@ export default function Layout({ children, showHero = false }: Props) {
     }
   }, []);
 
-  const scrollContentIntoView = () => {
-    contentRef.current!.scrollIntoView({
-      behavior: 'smooth'
-    })
-  }
-
   return (
     <div className={styles.container}>
       <Header
@@ -52,11 +46,10 @@ export default function Layout({ children, showHero = false }: Props) {
           {
             showHero &&
               <div className={styles.heroTitleContainer}>
-                <h1 className={styles.heroTitle}>
-                  hi<br/>
-                  i'm ash
-                </h1>
-                <button className={styles.goToContent} onClick={scrollContentIntoView}>Scroll</button>
+                <div>
+                  <h1 className={styles.line1}>hi</h1>
+                  <h1 className={styles.line2}>i'm ash</h1>
+                </div>
               </div>
           }
           <div className={styles.contentContainer} ref={contentRef}>
