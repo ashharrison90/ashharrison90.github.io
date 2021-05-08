@@ -17,7 +17,7 @@ export default function Layout({ children, showHero = false }: Props) {
   useEffect(() => {
     if (showHero && containerRef.current) {
       const handleScroll = () => {
-        setShowHeader(containerRef.current!.scrollTop > 40)
+        setShowHeader(containerRef.current!.scrollTop > 0)
       }
       containerRef.current.addEventListener('scroll', handleScroll);
     }
