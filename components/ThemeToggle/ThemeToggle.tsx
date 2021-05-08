@@ -8,11 +8,17 @@ export default function ThemeToggle () {
   }, [useDarkMode])
 
   return (
-    <button
-      className={styles.toggle}
-      onClick={() => setUseDarkMode(!useDarkMode)}
-    >
-      Toggle theme!
-    </button>
+    <div className={styles.toggleContainer}>
+      <input
+        id='darkModeToggle'
+        checked={useDarkMode}
+        className={styles.input}
+        onChange={event => setUseDarkMode(event.target.checked)}
+        type='checkbox'
+      />
+      <label className={styles.toggle} htmlFor='darkModeToggle'>
+        <span className={styles.toggleButton}></span>
+      </label>
+    </div>
   )
 }

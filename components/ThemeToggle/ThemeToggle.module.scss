@@ -1,1 +1,43 @@
-.toggle {}
+.toggleContainer {
+  display: flex;
+}
+
+.toggle {
+  display: flex;
+  cursor: pointer;
+  width: 48px;
+  height: 24px;
+  background: var(--icon-secondary);
+  border-radius: 24px;
+  position: relative;
+  transition: background-color .2s;
+}
+
+.toggleButton {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  border-radius: 20px;
+  transition: 0.5s ease;
+  background: var(--background);
+}
+
+.input {
+  height: 0;
+  margin: 0;
+  width: 0;
+}
+
+.input:checked + .toggle .toggleButton {
+  left: calc(100% - 2px);
+  transform: translateX(-100%);
+}
+
+.input:focus + .toggle {
+  box-shadow: 0 0 0 1px var(--focus);
+}
+.toggle:active .toggleButton {
+  width: 30px;
+}
