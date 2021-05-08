@@ -16,13 +16,12 @@ const iconMap: Record<string, ReactNode> = {
 }
 
 export interface Props {
-  buildTimestamp: number,
   jobs: JobData[]
 }
 
-export default function About({ buildTimestamp, jobs }: Props) {
+export default function About({ jobs }: Props) {
   return (
-    <Layout buildTimestamp={buildTimestamp}>
+    <Layout>
       <Head>
         <title>About</title>
       </Head>
@@ -61,7 +60,6 @@ export async function getStaticProps () {
 
   return {
     props: {
-      buildTimestamp: Date.now(),
       jobs: newJobs
     }
   }

@@ -17,11 +17,10 @@ hljs.registerLanguage('python', python);
 import 'highlight.js/styles/monokai-sublime.css';
 
 export interface Props {
-  buildTimestamp: number,
-  post: PostData,
+  post: PostData
 }
 
-export default function Post({ buildTimestamp, post }: Props) {
+export default function Post({ post }: Props) {
   useEffect(() => {
     hljs.highlightAll()
   }, [])
@@ -34,7 +33,7 @@ export default function Post({ buildTimestamp, post }: Props) {
       {router.isFallback ? (
         <div>Loading…</div>
       ) : (
-        <Layout buildTimestamp={buildTimestamp}>
+        <Layout>
           <Head>
             <title>
               {post.title}
@@ -61,7 +60,6 @@ export async function getStaticProps({ params }: GetStaticPropsContext<{slug: st
 
   return {
     props: {
-      buildTimestamp: Date.now(),
       post: {
         ...post,
         content,

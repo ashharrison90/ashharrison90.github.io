@@ -2,19 +2,12 @@
   background-color: var(--container);
   display: flex;
   flex-direction: column;
-  height: 80px;
+  height: 60px;
   padding: 0.5rem 1rem;
 }
 
-.footnote {
-  color: var(--text-secondary);
-  display: flex;
-  font-size: 12px;
-  justify-content: flex-end;
-}
-
 .socialLinks {
-  align-items: flex-end;
+  align-items: center;
   display: flex;
   flex: 1;
   justify-content: center;

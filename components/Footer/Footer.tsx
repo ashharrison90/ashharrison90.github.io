@@ -18,13 +18,9 @@ const iconMap: Record<string, ReactNode> = {
   twitter: <Twitter />
 }
 
-export interface Props {
-  footnote?: string
-}
-
 type SocialData = Array<keyof typeof socialData>
 
-export default function Footer ({ footnote }: Props) {
+export default function Footer () {
   return (
     <div className={styles.footer}>
       <div className={styles.socialLinks}>
@@ -38,9 +34,6 @@ export default function Footer ({ footnote }: Props) {
             />
           ))
         }
-      </div>
-      <div className={styles.footnote}>
-        {footnote}
       </div>
     </div>
   )

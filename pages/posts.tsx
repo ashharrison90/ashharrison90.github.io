@@ -17,12 +17,11 @@ export interface Props {
     coverImage: string
     excerpt: string
   }[]
-  buildTimestamp: number
 }
 
-export default function Posts({ allPosts, buildTimestamp }: Props) {
+export default function Posts({ allPosts }: Props) {
   return (
-    <Layout buildTimestamp={buildTimestamp}>
+    <Layout>
       <Head>
         <title>Posts</title>
       </Head>
@@ -54,8 +53,7 @@ export const getStaticProps = () => {
   
   return {
     props: {
-      allPosts,
-      buildTimestamp: Date.now()
+      allPosts
     }
   }
 }

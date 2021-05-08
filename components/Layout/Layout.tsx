@@ -6,12 +6,11 @@ import Header from '../Header/Header'
 import styles from './Layout.module.scss'
 
 export interface Props {
-  buildTimestamp: number,
   children: ReactNode,
   showHero?: boolean
 }
 
-export default function Layout({ buildTimestamp, children, showHero = false }: Props) {
+export default function Layout({ children, showHero = false }: Props) {
   const [showHeader, setShowHeader] = useState(!showHero)
   const containerRef = useRef<HTMLDivElement>(null)
   const contentRef = useRef<HTMLDivElement>(null)
@@ -63,9 +62,7 @@ export default function Layout({ buildTimestamp, children, showHero = false }: P
           <div className={styles.contentContainer} ref={contentRef}>
             <div className={styles.content}>{children}</div>
           </div>
-          <Footer
-            footnote={`Last updated: ${new Date(buildTimestamp).toLocaleDateString()}`}
-          />
+          <Footer />
         </div>
       </div>
     </div>
