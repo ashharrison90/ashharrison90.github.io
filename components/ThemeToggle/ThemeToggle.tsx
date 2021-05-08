@@ -7,13 +7,18 @@ export default function ThemeToggle () {
     document.documentElement.dataset.theme = useDarkMode ? 'dark' : 'light'
   }, [useDarkMode])
 
+  const handleToggleTheme = (useDarkMode: boolean) => {
+    window.localStorage.setItem('theme', useDarkMode ? 'dark' : 'light')
+    setUseDarkMode(useDarkMode)
+  }
+
   return (
     <div className={styles.toggleContainer}>
       <input
         id='darkModeToggle'
         checked={useDarkMode}
         className={styles.input}
-        onChange={event => setUseDarkMode(event.target.checked)}
+        onChange={event => handleToggleTheme(event.target.checked)}
         type='checkbox'
       />
       <label className={styles.toggle} htmlFor='darkModeToggle'>
