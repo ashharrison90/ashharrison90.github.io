@@ -7,10 +7,26 @@
   cursor: pointer;
   width: 48px;
   height: 24px;
-  background: var(--icon-secondary);
+  background: var(--container-alt);
   border-radius: 24px;
   position: relative;
   transition: background-color .2s;
+}
+
+.lightIcon,
+.darkIcon {
+  font-size: 16px;
+  line-height: 16px;
+  position: absolute;
+  top: 4px;
+}
+
+.lightIcon {
+  left: 4px;
+}
+
+.darkIcon {
+  right: 4px;
 }
 
 .toggleButton {
@@ -37,7 +53,4 @@
 
 .input:focus + .toggle {
   box-shadow: 0 0 0 1px var(--focus);
-}
-.toggle:active .toggleButton {
-  width: 30px;
 }

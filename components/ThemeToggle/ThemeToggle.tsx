@@ -17,6 +17,8 @@ export default function ThemeToggle () {
         type='checkbox'
       />
       <label className={styles.toggle} htmlFor='darkModeToggle'>
+        <span className={styles.lightIcon}>&#9728;&#65039;</span>
+        <span className={styles.darkIcon}>&#127769;</span>
         <span className={styles.toggleButton}></span>
       </label>
     </div>
