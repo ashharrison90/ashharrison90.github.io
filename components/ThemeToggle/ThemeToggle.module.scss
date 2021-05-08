@@ -16,17 +16,19 @@
 .lightIcon,
 .darkIcon {
   font-size: 16px;
+  left: calc(100% - 20px);
   line-height: 16px;
   position: absolute;
   top: 4px;
+  transition: left, opacity, 0.5s ease;
 }
 
 .lightIcon {
-  left: 4px;
+  opacity: 0;
 }
 
 .darkIcon {
-  right: 4px;
+  opacity: 1;
 }
 
 .toggleButton {
@@ -46,9 +48,24 @@
   width: 0;
 }
 
-.input:checked + .toggle .toggleButton {
-  left: calc(100% - 2px);
-  transform: translateX(-100%);
+.input:checked + .toggle {
+  .toggleButton {
+    left: calc(100% - 2px);
+    transform: translateX(-100%);
+  }
+
+  .lightIcon,
+  .darkIcon {
+    left: 4px;
+  }
+
+  .lightIcon {
+    opacity: 1;
+  }
+
+  .darkIcon {
+    opacity: 0;
+  }
 }
 
 .input:focus + .toggle {
