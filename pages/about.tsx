@@ -12,7 +12,7 @@ import { ReactNode } from 'react'
 const iconMap: Record<string, ReactNode> = {
   ibm: <Ibm />,
   qinetiq: <Qinetiq />,
-  durham: <Durham />
+  durham: <Durham />,
 }
 
 export interface Props {
@@ -26,42 +26,37 @@ export default function About({ jobs }: Props) {
         <title>about</title>
       </Head>
 
-      <h1 className={styles.title}>
-        about
-      </h1>
-      {
-        jobs.map(job => (
-          <JobSummary
-            key={job.company}
-            className={styles.jobSummary}
-            company={job.company}
-            jobTitle={job.jobTitle}
-            icon={iconMap[job.icon]}
-            startDate={job.startDate}
-            endDate={job.endDate}
-            website={job.website}
-          >
-            <div
-              dangerouslySetInnerHTML={{ __html: job.content }}
-            />
-          </JobSummary>
-        ))
-      }
+      <h1 className={styles.title}>about</h1>
+      {jobs.map((job) => (
+        <JobSummary
+          key={job.company}
+          className={styles.jobSummary}
+          company={job.company}
+          jobTitle={job.jobTitle}
+          icon={iconMap[job.icon]}
+          startDate={job.startDate}
+          endDate={job.endDate}
+          website={job.website}
+        >
+          <div dangerouslySetInnerHTML={{ __html: job.content }} />
+        </JobSummary>
+      ))}
     </Layout>
   )
 }
 
-export async function getStaticProps () {
+export async function getStaticProps() {
   const jobs = getAllJobs()
-  const newJobs = await Promise.all(jobs.map(async job => ({
-    ...job,
-    content: await markdownToHtml(job.content)
-  })))
+  const newJobs = await Promise.all(
+    jobs.map(async (job) => ({
+      ...job,
+      content: await markdownToHtml(job.content),
+    }))
+  )
 
   return {
     props: {
-      jobs: newJobs
-    }
+      jobs: newJobs,
+    },
   }
 }
-

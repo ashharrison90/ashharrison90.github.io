@@ -9,11 +9,11 @@ export function getPostSlugs() {
 }
 
 export interface PostData {
-  title: string,
-  date: string,
-  slug: string,
-  content: string,
-  coverImage: string,
+  title: string
+  date: string
+  slug: string
+  content: string
+  coverImage: string
   excerpt: string
 }
 
@@ -22,12 +22,7 @@ export function getPostBySlug(slug: string) {
   const fullPath = join(postsDirectory, `${realSlug}.md`)
   const fileContents = fs.readFileSync(fullPath, 'utf8')
   const { data, content } = matter(fileContents)
-  const {
-    coverImage,
-    date,
-    excerpt,
-    title
-  } = data
+  const { coverImage, date, excerpt, title } = data
 
   return {
     content,
@@ -35,7 +30,7 @@ export function getPostBySlug(slug: string) {
     date,
     excerpt,
     slug: realSlug,
-    title
+    title,
   }
 }
 
@@ -44,6 +39,6 @@ export function getAllPosts(limit?: number) {
   const posts = slugs
     .map((slug) => getPostBySlug(slug))
     // sort posts by date in descending order
-    .sort((post1, post2) => ((post1.date) > (post2.date) ? -1 : 1))
+    .sort((post1, post2) => (post1.date > post2.date ? -1 : 1))
   return limit ? posts.slice(0, limit) : posts
 }

@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react'
 import styles from './ThemeToggle.module.scss'
 
-export default function ThemeToggle () {
-  const [useDarkMode, setUseDarkMode] = useState(document.documentElement.dataset.theme === 'dark')
+export default function ThemeToggle() {
+  const [useDarkMode, setUseDarkMode] = useState(
+    document.documentElement.dataset.theme === 'dark'
+  )
   useEffect(() => {
     document.documentElement.dataset.theme = useDarkMode ? 'dark' : 'light'
   }, [useDarkMode])
@@ -18,7 +20,7 @@ export default function ThemeToggle () {
         id='darkModeToggle'
         checked={useDarkMode}
         className={styles.input}
-        onChange={event => handleToggleTheme(event.target.checked)}
+        onChange={(event) => handleToggleTheme(event.target.checked)}
         type='checkbox'
       />
       <label className={styles.toggle} htmlFor='darkModeToggle'>

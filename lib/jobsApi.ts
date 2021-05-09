@@ -5,12 +5,12 @@ import matter from 'gray-matter'
 const jobsDirectory = join(process.cwd(), '_jobs')
 
 export interface JobData {
-  company: string,
-  content: string,
-  jobTitle: string,
-  icon: string,
-  startDate: string,
-  endDate: string,
+  company: string
+  content: string
+  jobTitle: string
+  icon: string
+  startDate: string
+  endDate: string
   website: string
 }
 
@@ -18,14 +18,7 @@ export function getJobById(id: string) {
   const fullPath = join(jobsDirectory, id)
   const fileContents = fs.readFileSync(fullPath, 'utf8')
   const { data, content } = matter(fileContents)
-  const {
-    company,
-    jobTitle,
-    icon,
-    startDate,
-    endDate,
-    website
-  } = data
+  const { company, jobTitle, icon, startDate, endDate, website } = data
 
   return {
     company,
@@ -34,7 +27,7 @@ export function getJobById(id: string) {
     icon,
     startDate,
     endDate,
-    website
+    website,
   }
 }
 

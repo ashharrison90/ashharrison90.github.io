@@ -3,16 +3,13 @@ import classnames from 'classnames'
 import styles from './PostGrid.module.scss'
 
 export interface Props {
-  children: ReactNode,
+  children: ReactNode
   className?: string
 }
 
 export default function PostGrid({ children, className }: Props) {
   return (
-    <div className={classnames(
-      styles.gridContainer,
-      className
-    )}>
+    <div className={classnames(styles.gridContainer, className)}>
       {children}
     </div>
   )

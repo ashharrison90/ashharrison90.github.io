@@ -5,21 +5,21 @@ const formatDate = (dateString: string) => {
   if (dateString === 'present') {
     return 'Present'
   } else {
-    return (new Date(dateString)).toLocaleDateString(undefined ,{
+    return new Date(dateString).toLocaleDateString(undefined, {
       year: 'numeric',
-      month: 'long'
+      month: 'long',
     })
   }
 }
 
 export interface Props {
-  children: ReactNode,
-  className?: string,
-  company: string,
-  jobTitle: string,
-  icon: ReactNode,
-  startDate: string,
-  endDate: string,
+  children: ReactNode
+  className?: string
+  company: string
+  jobTitle: string
+  icon: ReactNode
+  startDate: string
+  endDate: string
   website: string
 }
 
@@ -31,7 +31,7 @@ export default function JobSummary({
   icon,
   startDate,
   endDate,
-  website
+  website,
 }: Props) {
   return (
     <div className={className}>
@@ -41,11 +41,11 @@ export default function JobSummary({
             <h2 className={styles.company}>{company}</h2>
           </a>
           <div className={styles.jobTitle}>{jobTitle}</div>
-          <div className={styles.date}>{formatDate(startDate)} - {formatDate(endDate)}</div>
+          <div className={styles.date}>
+            {formatDate(startDate)} - {formatDate(endDate)}
+          </div>
         </div>
-        <div className={styles.icon}>
-          {icon}
-        </div>
+        <div className={styles.icon}>{icon}</div>
       </div>
       {children}
     </div>

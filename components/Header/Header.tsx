@@ -15,30 +15,36 @@ export interface Props {
 export default function Header({ className }: Props) {
   const router = useRouter()
   return (
-    <div className={classnames(
-      styles.header,
-      className
-    )}>
+    <div className={classnames(styles.header, className)}>
       <ThemeToggle />
 
       <nav className={styles.pageLinks}>
         <Link href='/'>
-          <a className={classnames(
-            styles.pageLink,
-            {[styles.activePage]: router.pathname === '/'}
-          )}>home</a>
+          <a
+            className={classnames(styles.pageLink, {
+              [styles.activePage]: router.pathname === '/',
+            })}
+          >
+            home
+          </a>
         </Link>
         <Link href='/about'>
-          <a className={classnames(
-            styles.pageLink,
-            {[styles.activePage]: router.pathname === '/about'}
-          )}>about</a>
+          <a
+            className={classnames(styles.pageLink, {
+              [styles.activePage]: router.pathname === '/about',
+            })}
+          >
+            about
+          </a>
         </Link>
         <Link href='/posts'>
-          <a className={classnames(
-            styles.pageLink,
-            {[styles.activePage]: router.pathname === '/posts'}
-          )}>posts</a>
+          <a
+            className={classnames(styles.pageLink, {
+              [styles.activePage]: router.pathname === '/posts',
+            })}
+          >
+            posts
+          </a>
         </Link>
       </nav>
     </div>

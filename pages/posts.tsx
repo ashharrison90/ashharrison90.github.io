@@ -7,13 +7,13 @@ import styles from '../styles/Posts.module.scss'
 
 export interface Props {
   allPosts: {
-    title: string,
-    date: string,
+    title: string
+    date: string
     author: {
-      name: string,
+      name: string
       image: string
-    },
-    slug: string,
+    }
+    slug: string
     coverImage: string
     excerpt: string
   }[]
@@ -26,23 +26,19 @@ export default function Posts({ allPosts }: Props) {
         <title>posts</title>
       </Head>
 
-      <h1 className={styles.title}>
-        posts
-      </h1>
+      <h1 className={styles.title}>posts</h1>
 
       <PostGrid>
-        {
-          allPosts.map(post => (
-            <PostCard
-              key={post.slug}
-              coverImage={post.coverImage}
-              date={post.date}
-              excerpt={post.excerpt}
-              slug={post.slug}
-              title={post.title}
-            />
-          ))
-        }
+        {allPosts.map((post) => (
+          <PostCard
+            key={post.slug}
+            coverImage={post.coverImage}
+            date={post.date}
+            excerpt={post.excerpt}
+            slug={post.slug}
+            title={post.title}
+          />
+        ))}
       </PostGrid>
     </Layout>
   )
@@ -50,10 +46,10 @@ export default function Posts({ allPosts }: Props) {
 
 export const getStaticProps = () => {
   const allPosts = getAllPosts()
-  
+
   return {
     props: {
-      allPosts
-    }
+      allPosts,
+    },
   }
 }

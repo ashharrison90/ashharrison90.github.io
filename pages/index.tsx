@@ -9,13 +9,13 @@ import styles from '../styles/Home.module.scss'
 
 export interface Props {
   allPosts: {
-    title: string,
-    date: string,
+    title: string
+    date: string
     author: {
-      name: string,
+      name: string
       image: string
-    },
-    slug: string,
+    }
+    slug: string
     coverImage: string
     excerpt: string
   }[]
@@ -35,32 +35,37 @@ export default function Home({ allPosts }: Props) {
             <h2>about</h2>
             <p>I'm a software engineer based in the UK.</p>
             <p>
-              Passionate about everything frontend, with a focus on clean, testable and maintainable code.
+              Passionate about everything frontend, with a focus on clean,
+              testable and maintainable code.
             </p>
-            <p>Outside of work, I'm a keen footballer and gamer; anything from Overwatch to Overcooked. Gym or mountain biking when the motivation strikes. Music and friends when it doesn't.</p>
+            <p>
+              Outside of work, I'm a keen footballer and gamer; anything from
+              Overwatch to Overcooked. Gym or mountain biking when the
+              motivation strikes. Music and friends when it doesn't.
+            </p>
           </div>
-          <LinkButton className={styles.aboutButton} href='/about'>Learn more</LinkButton>
+          <LinkButton className={styles.aboutButton} href='/about'>
+            Learn more
+          </LinkButton>
         </div>
 
         <div className={styles.posts}>
           <h2>posts</h2>
-          <PostGrid
-            className={styles.postGrid}
-          >
-            {
-              allPosts.map(post => (
-                <PostCard
-                  key={post.slug}
-                  coverImage={post.coverImage}
-                  date={post.date}
-                  excerpt={post.excerpt}
-                  slug={post.slug}
-                  title={post.title}
-                />
-              ))
-            }
+          <PostGrid className={styles.postGrid}>
+            {allPosts.map((post) => (
+              <PostCard
+                key={post.slug}
+                coverImage={post.coverImage}
+                date={post.date}
+                excerpt={post.excerpt}
+                slug={post.slug}
+                title={post.title}
+              />
+            ))}
           </PostGrid>
-          <LinkButton className={styles.postsButton} href='/posts'>View all posts</LinkButton>
+          <LinkButton className={styles.postsButton} href='/posts'>
+            View all posts
+          </LinkButton>
         </div>
       </main>
     </Layout>
@@ -69,10 +74,10 @@ export default function Home({ allPosts }: Props) {
 
 export const getStaticProps = () => {
   const allPosts = getAllPosts(6)
-  
+
   return {
     props: {
-      allPosts
-    }
+      allPosts,
+    },
   }
 }

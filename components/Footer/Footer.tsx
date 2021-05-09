@@ -15,25 +15,23 @@ const iconMap: Record<string, ReactNode> = {
   linkedin: <LinkedIn />,
   facebook: <Facebook />,
   instagram: <Instagram />,
-  twitter: <Twitter />
+  twitter: <Twitter />,
 }
 
 type SocialData = Array<keyof typeof socialData>
 
-export default function Footer () {
+export default function Footer() {
   return (
     <div className={styles.footer}>
       <div className={styles.socialLinks}>
-        {
-          (Object.keys(socialData) as SocialData).map((socialType) => (
-            <SocialLink
-              key={socialType}
-              className={styles.socialLink}
-              icon={iconMap[socialType]}
-              link={socialData[socialType]}
-            />
-          ))
-        }
+        {(Object.keys(socialData) as SocialData).map((socialType) => (
+          <SocialLink
+            key={socialType}
+            className={styles.socialLink}
+            icon={iconMap[socialType]}
+            link={socialData[socialType]}
+          />
+        ))}
       </div>
     </div>
   )

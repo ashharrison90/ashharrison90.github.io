@@ -1,12 +1,11 @@
-
 import Link from 'next/link'
 import { ReactNode } from 'react'
 import classnames from 'classnames'
 import styles from './LinkButton.module.scss'
 
 export interface Props {
-  children: ReactNode,
-  className?: string,
+  children: ReactNode
+  className?: string
   href: string
 }
 
