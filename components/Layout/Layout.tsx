@@ -6,7 +6,7 @@ import Header from '../Header/Header'
 import styles from './Layout.module.scss'
 
 export interface Props {
-  children: ReactNode,
+  children: ReactNode
   showHero?: boolean
 }
 
@@ -19,45 +19,39 @@ export default function Layout({ children, showHero = false }: Props) {
       const handleScroll = () => {
         setShowHeader(containerRef.current!.scrollTop > 0)
       }
-      containerRef.current.addEventListener('scroll', handleScroll);
+      containerRef.current.addEventListener('scroll', handleScroll)
     }
-  }, []);
+  }, [])
 
   return (
     <div className={styles.container}>
       <Header
         className={classnames({
-          [styles.hideHeader]: !showHeader
+          [styles.hideHeader]: !showHeader,
         })}
       />
-      <div
-        className={styles.parallaxContainer}
-        ref={containerRef}
-      >
-        {
-          showHero &&
-            <>
-              <div className={styles.heroBackground} />
-              <div className={styles.heroCutout} />
-            </>
-        }
+      <div className={styles.parallaxContainer} ref={containerRef}>
+        {showHero && (
+          <>
+            <div className={styles.heroBackground} />
+            <div className={styles.heroCutout} />
+          </>
+        )}
         <div className={styles.foreground}>
-          {
-            showHero &&
-              <div className={styles.heroTitleContainer}>
-                <div>
-                  <h1 className={styles.line1}>hi</h1>
-                  <h1 className={styles.line2}>i'm ash</h1>
-                </div>
+          {showHero && (
+            <div className={styles.heroTitleContainer}>
+              <div>
+                <h1 className={styles.line1}>hi</h1>
+                <h1 className={styles.line2}>i'm ash</h1>
               </div>
-          }
+            </div>
+          )}
           <div className={styles.contentContainer} ref={contentRef}>
-            <div className={classnames(
-              styles.content,
-              {
-                [styles.padContent]: !showHero
-              }
-            )}>
+            <div
+              className={classnames(styles.content, {
+                [styles.padContent]: !showHero,
+              })}
+            >
               {children}
             </div>
           </div>

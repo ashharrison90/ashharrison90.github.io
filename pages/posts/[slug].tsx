@@ -1,20 +1,20 @@
 import { useRouter } from 'next/router'
 import ErrorPage from 'next/error'
 import Head from 'next/head'
-import { useEffect } from 'react';
+import { useEffect } from 'react'
 import { getPostBySlug, getAllPosts, PostData } from '../../lib/postsApi'
 import markdownToHtml from '../../lib/markdownToHtml'
 import { GetStaticPropsContext } from 'next'
 import Layout from '../../components/Layout/Layout'
 import styles from '../../styles/[slug].module.scss'
-import hljs from 'highlight.js/lib/core';
-import javascript from 'highlight.js/lib/languages/javascript';
-import typescript from 'highlight.js/lib/languages/typescript';
-import python from 'highlight.js/lib/languages/python';
-hljs.registerLanguage('javascript', javascript);
-hljs.registerLanguage('typescript', typescript);
-hljs.registerLanguage('python', python);
-import 'highlight.js/styles/monokai-sublime.css';
+import hljs from 'highlight.js/lib/core'
+import javascript from 'highlight.js/lib/languages/javascript'
+import typescript from 'highlight.js/lib/languages/typescript'
+import python from 'highlight.js/lib/languages/python'
+hljs.registerLanguage('javascript', javascript)
+hljs.registerLanguage('typescript', typescript)
+hljs.registerLanguage('python', python)
+import 'highlight.js/styles/monokai-sublime.css'
 
 export interface Props {
   post: PostData
@@ -35,14 +35,14 @@ export default function Post({ post }: Props) {
       ) : (
         <Layout>
           <Head>
-            <title>
-              {post.title}
-            </title>
+            <title>{post.title}</title>
           </Head>
           <img className={styles.coverImage} src={post.coverImage} />
           <div className={styles.titleContainer}>
             <h1 className={styles.title}>{post.title}</h1>
-            <div className={styles.date}>{(new Date(post.date!)).toLocaleDateString()}</div>
+            <div className={styles.date}>
+              {new Date(post.date!).toLocaleDateString()}
+            </div>
           </div>
           <div
             className={styles.content}
@@ -54,7 +54,9 @@ export default function Post({ post }: Props) {
   )
 }
 
-export async function getStaticProps({ params }: GetStaticPropsContext<{slug: string}>) {
+export async function getStaticProps({
+  params,
+}: GetStaticPropsContext<{ slug: string }>) {
   const post = getPostBySlug(params!.slug)
   const content = await markdownToHtml(post.content || '')
 

@@ -8,13 +8,13 @@
   margin: 2em 0;
 }
 
-.title,
-.date {
-  margin: 1em 0;
+.title {
+  margin: 0;
 }
 
 .date {
   color: var(--text-secondary);
+  margin-bottom: 1em;
 }
 
 .content {
@@ -33,6 +33,7 @@
     background-color: var(--container);
     bottom: 0;
     color: var(--text-secondary);
+    font-size: 0.8em;
     left: 0;
     padding: 0.5em;
     position: absolute;
