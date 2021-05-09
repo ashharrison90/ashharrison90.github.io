@@ -31,7 +31,6 @@ export default function Layout({ children, showHero = false }: Props) {
         })}
       />
       <div
-        id='parallaxContainer'
         className={styles.parallaxContainer}
         ref={containerRef}
       >
