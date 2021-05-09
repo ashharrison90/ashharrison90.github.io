@@ -54,6 +54,18 @@
   padding: 0 1em;
   position: relative;
   width: 100%;
+
+  @media screen and (min-width: 480px) {
+    h1 {
+      font-size: 6em;
+    }
+  }
+
+  @media screen and (min-width: 720px) {
+    h1 {
+      font-size: 8em;
+    }
+  }
 }
 
 @keyframes cursor {
