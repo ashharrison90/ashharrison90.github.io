@@ -6,6 +6,7 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-size: 112.5%;
 }
 
 html,
@@ -18,6 +19,21 @@ body,
 * {
   -webkit-tap-highlight-color: transparent;
   box-sizing: border-box;
+}
+
+a {
+  color: var(--focus);
+  text-decoration: none;
+
+  &:hover,
+  &:focus,
+  &:active {
+    text-decoration: underline;
+  }
+}
+
+p {
+  line-height: 1.5em;
 }
 
 h1 {

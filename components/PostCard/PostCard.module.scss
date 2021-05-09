@@ -15,13 +15,9 @@
   display: grid;
   grid-template-rows: 50% 25% 25%;
   height: 100%;
-  padding: 0.5rem;
+  padding: 0.5em;
   transition: backdrop-filter 0.5s ease;
   width: 100%;
-}
-
-.title {
-  font-size: 1.5rem;
 }
 
 .date {
@@ -40,6 +36,7 @@
 .card:active {
   box-shadow: 0 0 0 3px var(--focus);
   outline: none;
+  text-decoration: none;
 
   .textContainer {
     backdrop-filter: none;

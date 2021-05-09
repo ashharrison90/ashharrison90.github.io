@@ -10,7 +10,8 @@ export interface JobData {
   jobTitle: string,
   icon: string,
   startDate: string,
-  endDate: string
+  endDate: string,
+  website: string
 }
 
 export function getJobById(id: string) {
@@ -22,7 +23,8 @@ export function getJobById(id: string) {
     jobTitle,
     icon,
     startDate,
-    endDate
+    endDate,
+    website
   } = data
 
   return {
@@ -31,7 +33,8 @@ export function getJobById(id: string) {
     jobTitle,
     icon,
     startDate,
-    endDate
+    endDate,
+    website
   }
 }
 

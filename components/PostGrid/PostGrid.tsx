@@ -1,13 +1,18 @@
 import { ReactNode } from 'react'
+import classnames from 'classnames'
 import styles from './PostGrid.module.scss'
 
 export interface Props {
-  children: ReactNode
+  children: ReactNode,
+  className?: string
 }
 
-export default function PostGrid({ children }: Props) {
+export default function PostGrid({ children, className }: Props) {
   return (
-    <div className={styles.gridContainer}>
+    <div className={classnames(
+      styles.gridContainer,
+      className
+    )}>
       {children}
     </div>
   )

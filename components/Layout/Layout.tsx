@@ -52,7 +52,14 @@ export default function Layout({ children, showHero = false }: Props) {
               </div>
           }
           <div className={styles.contentContainer} ref={contentRef}>
-            <div className={styles.content}>{children}</div>
+            <div className={classnames(
+              styles.content,
+              {
+                [styles.padContent]: !showHero
+              }
+            )}>
+              {children}
+            </div>
           </div>
           <Footer />
         </div>

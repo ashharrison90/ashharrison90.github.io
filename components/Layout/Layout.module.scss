@@ -51,7 +51,7 @@
   height: 100vh;
   justify-content: flex-end;
   max-width: 1024px;
-  padding: 0 1rem;
+  padding: 0 1em;
   position: relative;
   width: 100%;
 }
@@ -76,7 +76,6 @@
 .line1,
 .line2 {
   border-right: 0.12em solid transparent;
-  font-size: 6rem;
   overflow: hidden;
   white-space: nowrap;
 }
@@ -104,10 +103,13 @@
 }
 
 .content {
-  margin-top: 40px;
   max-width: 1024px;
-  padding: 0 1rem 4rem 1rem;
+  padding: 0 1em 4em 1em;
   width: 100%;
+}
+
+.padContent {
+  margin-top: 40px;
 }
 
 .hideHeader {

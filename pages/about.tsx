@@ -23,13 +23,12 @@ export default function About({ jobs }: Props) {
   return (
     <Layout>
       <Head>
-        <title>About</title>
+        <title>about</title>
       </Head>
 
       <h1 className={styles.title}>
         about
       </h1>
-
       {
         jobs.map(job => (
           <JobSummary
@@ -40,6 +39,7 @@ export default function About({ jobs }: Props) {
             icon={iconMap[job.icon]}
             startDate={job.startDate}
             endDate={job.endDate}
+            website={job.website}
           >
             <div
               dangerouslySetInnerHTML={{ __html: job.content }}

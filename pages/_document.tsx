@@ -21,7 +21,9 @@ class MyDocument extends Document {
 
     return (
       <Html>
-        <Head />
+        <Head>
+          <link rel='icon' type='image/svg' href='/favicon.svg' />
+        </Head>
         <body>
           <script dangerouslySetInnerHTML={{ __html: setInitialTheme }} />
           <Main />

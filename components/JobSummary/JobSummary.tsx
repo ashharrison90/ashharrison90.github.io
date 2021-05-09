@@ -19,7 +19,8 @@ export interface Props {
   jobTitle: string,
   icon: ReactNode,
   startDate: string,
-  endDate: string
+  endDate: string,
+  website: string
 }
 
 export default function JobSummary({
@@ -29,13 +30,16 @@ export default function JobSummary({
   jobTitle,
   icon,
   startDate,
-  endDate
+  endDate,
+  website
 }: Props) {
   return (
     <div className={className}>
       <div className={styles.header}>
         <div className={styles.title}>
-          <h2 className={styles.company}>{company}</h2>
+          <a className={styles.companyLink} target='_blank' href={website}>
+            <h2 className={styles.company}>{company}</h2>
+          </a>
           <div className={styles.jobTitle}>{jobTitle}</div>
           <div className={styles.date}>{formatDate(startDate)} - {formatDate(endDate)}</div>
         </div>

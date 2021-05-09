@@ -15,12 +15,16 @@
   position: relative;
 
   > * {
-    margin-bottom: 1rem;
+    margin-bottom: 1em;
   }
 }
 
 .company {
   margin: 0;
+}
+
+.companyLink {
+  display: inline-block;
 }
 
 .date,

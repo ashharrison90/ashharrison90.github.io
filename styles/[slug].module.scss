@@ -1,16 +1,16 @@
 .coverImage {
-  margin-top: 2rem;
+  margin-top: 2em;
   width: 100%;
 }
 
 .titleContainer {
   border-bottom: 1px solid var(--border);
-  margin: 2rem 0;
+  margin: 2em 0;
 }
 
 .title,
 .date {
-  margin: 1rem 0;
+  margin: 1em 0;
 }
 
 .date {
@@ -19,7 +19,7 @@
 
 .content {
   figure {
-    margin: 1rem 0;
+    margin: 1em 0;
     position: relative;
 
     img {
@@ -34,7 +34,7 @@
     bottom: 0;
     color: var(--text-secondary);
     left: 0;
-    padding: 0.5rem;
+    padding: 0.5em;
     position: absolute;
     right: 0;
   }

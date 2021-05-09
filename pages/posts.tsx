@@ -23,7 +23,7 @@ export default function Posts({ allPosts }: Props) {
   return (
     <Layout>
       <Head>
-        <title>Posts</title>
+        <title>posts</title>
       </Head>
 
       <h1 className={styles.title}>
