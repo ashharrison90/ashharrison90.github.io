@@ -7,7 +7,7 @@
   background-position: center;
   background-size: cover;
   position: relative;
-  height: 400px;
+  height: 350px;
 }
 
 .textContainer {
@@ -39,7 +39,7 @@
 .card:hover,
 .card:focus,
 .card:active {
-  box-shadow: 0 0 0 1px var(--focus);
+  box-shadow: 0 0 0 3px var(--focus);
   outline: none;
 
   .textContainer {

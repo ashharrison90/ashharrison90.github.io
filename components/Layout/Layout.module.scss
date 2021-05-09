@@ -64,7 +64,7 @@
 @keyframes line1Typing {
   from { width: 0 }
   to { width: 100% }
-  75% { width: 0 }
+  66% { width: 0 }
 }
 
 @keyframes line2Typing {
@@ -84,15 +84,15 @@
 .line1 {
   margin-bottom: 0;
   animation:
-    line1Typing 2s steps(3, end),
-    cursor 1s step-end 4;
+    line1Typing 1.5s steps(2, end),
+    cursor 1s step-end 3;
 }
 
 .line2 {
   margin-top: 0;
   animation:
-    line2Typing 5s steps(6, end),
-    cursor 1s step-end infinite 4s;
+    line2Typing 4s steps(6, end),
+    cursor 1s step-end infinite 3s;
 }
 
 .contentContainer {

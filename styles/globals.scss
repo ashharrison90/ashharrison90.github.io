@@ -16,6 +16,7 @@ body,
 }
 
 * {
+  -webkit-tap-highlight-color: transparent;
   box-sizing: border-box;
 }
 
@@ -35,7 +36,6 @@ h2 {
   --container--rgb: 244, 244, 244;
   --focus: #0f62fe;
   --hero-text-primary: #fff;
-  --hero-text-secondary: #c6c6c6;
   --icon-primary: #000;
   --icon-secondary: #525252;
   --logo-durham-primary: #002337;
@@ -54,7 +54,6 @@ h2 {
   --container--rgb: 57, 57, 57;
   --focus: #fff;
   --hero-text-primary: #262626;
-  --hero-text-secondary: #525252;
   --icon-primary: #f4f4f4;
   --icon-secondary: #c6c6c6;
   --logo-durham-primary: #f4f4f4;

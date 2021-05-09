@@ -1,0 +1,20 @@
+.button {
+  background-color: var(--background);
+  border: 3px solid var(--focus);
+  border-radius: 4px;
+  color: var(--focus);
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;;
+  min-height: 40px;
+  padding: 0.5rem 1rem;
+  text-transform: lowercase;
+
+  &:active,
+  &:hover,
+  &:focus {
+    outline: none;
+    color: var(--background);
+    background-color: var(--focus);
+  }
+}

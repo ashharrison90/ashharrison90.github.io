@@ -1,9 +1,9 @@
 import Head from 'next/head'
-import Link from 'next/link'
 import { getAllPosts } from '../lib/postsApi'
 import PostGrid from '../components/PostGrid/PostGrid'
 import PostCard from '../components/PostCard/PostCard'
 import Layout from '../components/Layout/Layout'
+import LinkButton from '../components/LinkButton/LinkButton'
 import styles from '../styles/Home.module.scss'
 
 export interface Props {
@@ -30,29 +30,29 @@ export default function Home({ allPosts }: Props) {
       </Head>
 
       <main>
-        <h2>about</h2>
-        <Link href='/about'>
-          <button>About</button>
-        </Link>
+        <div className={styles.about}>
+          <h2>about</h2>
+          <LinkButton className={styles.aboutButton} href='/about'>About</LinkButton>
+        </div>
 
-        <h2>posts</h2>
-        <PostGrid>
-          {
-            allPosts.map(post => (
-              <PostCard
-                key={post.slug}
-                coverImage={post.coverImage}
-                date={post.date}
-                excerpt={post.excerpt}
-                slug={post.slug}
-                title={post.title}
-              />
-            ))
-          }
-        </PostGrid>
-        <Link href='/posts'>
-          <button>View all posts</button>
-        </Link>
+        <div className={styles.posts}>
+          <h2>posts</h2>
+          <PostGrid>
+            {
+              allPosts.map(post => (
+                <PostCard
+                  key={post.slug}
+                  coverImage={post.coverImage}
+                  date={post.date}
+                  excerpt={post.excerpt}
+                  slug={post.slug}
+                  title={post.title}
+                />
+              ))
+            }
+          </PostGrid>
+          <LinkButton className={styles.postsButton} href='/posts'>View all posts</LinkButton>
+        </div>
       </main>
     </Layout>
   )

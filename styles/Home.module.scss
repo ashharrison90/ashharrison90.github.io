@@ -1,0 +1,11 @@
+.about,
+.posts {
+  display: flex;
+  flex-direction: column;
+}
+
+.aboutButton,
+.postsButton {
+  align-self: center;
+  margin: 2rem 0;
+}
