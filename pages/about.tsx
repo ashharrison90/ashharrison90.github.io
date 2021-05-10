@@ -24,6 +24,7 @@ export default function About({ jobs }: Props) {
     <Layout>
       <Head>
         <title>about</title>
+        <meta name='description' content='All about me!' />
       </Head>
 
       <h1 className={styles.title}>about</h1>

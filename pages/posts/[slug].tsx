@@ -36,6 +36,7 @@ export default function Post({ post }: Props) {
         <Layout>
           <Head>
             <title>{post.title}</title>
+            <meta name='description' content={post.excerpt} />
           </Head>
           <img className={styles.coverImage} src={post.coverImage} />
           <div className={styles.titleContainer}>

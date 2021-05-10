@@ -24,6 +24,10 @@ export default function Posts({ allPosts }: Props) {
     <Layout>
       <Head>
         <title>posts</title>
+        <meta
+          name='description'
+          content='A dumping ground for thoughts from my brain.'
+        />
       </Head>
 
       <h1 className={styles.title}>posts</h1>
