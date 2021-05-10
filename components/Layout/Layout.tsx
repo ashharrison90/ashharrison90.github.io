@@ -12,12 +12,23 @@ export interface Props {
 
 export default function Layout({ children, showHero = false }: Props) {
   const [showHeader, setShowHeader] = useState(!showHero)
+  const [heroTitleBackgroundOpacity, setHeroTitleBackgroundOpacity] = useState(
+    0
+  )
   const containerRef = useRef<HTMLDivElement>(null)
   const contentRef = useRef<HTMLDivElement>(null)
   useEffect(() => {
     if (showHero && containerRef.current) {
       const handleScroll = () => {
         setShowHeader(containerRef.current!.scrollTop > 0)
+        // doing this all the time wouldn't be very good for perfomance
+        // let's split it into intervals of 0.1
+        // and stop once we're past 1
+        const scrollScaleFactor =
+          Math.round(
+            10 * (containerRef.current!.scrollTop / window.innerHeight)
+          ) / 10
+        setHeroTitleBackgroundOpacity(Math.min(scrollScaleFactor, 1))
       }
       containerRef.current.addEventListener('scroll', handleScroll)
     }
@@ -37,7 +48,12 @@ export default function Layout({ children, showHero = false }: Props) {
             <div className={styles.heroCutout} />
           </>
         )}
-        <div className={styles.foreground}>
+        <div
+          className={styles.foreground}
+          style={{
+            backgroundColor: `rgba(var(--hero-background-rgb), ${heroTitleBackgroundOpacity})`,
+          }}
+        >
           {showHero && (
             <div className={styles.heroTitleContainer}>
               <div>

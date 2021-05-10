@@ -19,6 +19,7 @@
   left: calc(100% - 20px);
   line-height: 16px;
   position: absolute;
+  text-rendering: optimizeLegibility; // handle a weird bug in safari with emojis not aligning correctly
   top: 4px;
   transition: left, opacity, 0.5s ease;
 }
@@ -45,6 +46,7 @@
 .input {
   height: 0;
   margin: 0;
+  opacity: 0;
   width: 0;
 }
 
