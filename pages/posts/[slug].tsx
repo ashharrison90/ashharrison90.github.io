@@ -28,17 +28,26 @@ export default function Post({ post }: Props) {
   if (!router.isFallback && !post.slug) {
     return <ErrorPage statusCode={404} />
   }
+  const backgroundContent = (
+    <div
+      className={styles.coverImage}
+      style={{ backgroundImage: `url(${post.coverImage})` }}
+    />
+  )
+  const foregroundContent = <div className={styles.padder} />
   return (
     <>
       {router.isFallback ? (
         <div>Loading…</div>
       ) : (
-        <Layout>
+        <Layout
+          foregroundContent={foregroundContent}
+          backgroundContent={backgroundContent}
+        >
           <Head>
             <title>{post.title}</title>
             <meta name='description' content={post.excerpt} />
           </Head>
-          <img className={styles.coverImage} src={post.coverImage} />
           <div className={styles.titleContainer}>
             <h1 className={styles.title}>{post.title}</h1>
             <div className={styles.date}>

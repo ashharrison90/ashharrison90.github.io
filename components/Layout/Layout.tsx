@@ -6,29 +6,39 @@ import Header from '../Header/Header'
 import styles from './Layout.module.scss'
 
 export interface Props {
+  backgroundContent?: ReactNode
   children: ReactNode
-  showHero?: boolean
+  foregroundContent?: ReactNode
+  hideHeaderUntilScroll?: boolean
 }
 
-export default function Layout({ children, showHero = false }: Props) {
-  const [showHeader, setShowHeader] = useState(!showHero)
-  const [heroTitleBackgroundOpacity, setHeroTitleBackgroundOpacity] = useState(
-    0
-  )
+export default function Layout({
+  backgroundContent,
+  children,
+  foregroundContent,
+  hideHeaderUntilScroll = false,
+}: Props) {
+  const [showHeader, setShowHeader] = useState(!hideHeaderUntilScroll)
+  const [backgroundContentFade, setBackgroundContentFade] = useState(0)
   const containerRef = useRef<HTMLDivElement>(null)
-  const contentRef = useRef<HTMLDivElement>(null)
+  const foregroundContentRef = useRef<HTMLDivElement>(null)
   useEffect(() => {
-    if (showHero && containerRef.current) {
+    if (containerRef.current && (foregroundContent || hideHeaderUntilScroll)) {
       const handleScroll = () => {
-        setShowHeader(containerRef.current!.scrollTop > 0)
+        if (hideHeaderUntilScroll) {
+          setShowHeader(containerRef.current!.scrollTop > 0)
+        }
         // doing this all the time wouldn't be very good for perfomance
         // let's split it into intervals of 0.1
         // and stop once we're past 1
-        const scrollScaleFactor =
-          Math.round(
-            10 * (containerRef.current!.scrollTop / window.innerHeight)
-          ) / 10
-        setHeroTitleBackgroundOpacity(Math.min(scrollScaleFactor, 1))
+        if (foregroundContent) {
+          const height = foregroundContentRef.current?.getBoundingClientRect()
+            .height!
+          const top = foregroundContentRef.current?.getBoundingClientRect().top!
+          const scrollScaleFactor =
+            Math.round(10 * (Math.abs(top) / height)) / 10
+          setBackgroundContentFade(Math.min(scrollScaleFactor, 1))
+        }
       }
       containerRef.current.addEventListener('scroll', handleScroll)
     }
@@ -42,30 +52,24 @@ export default function Layout({ children, showHero = false }: Props) {
         })}
       />
       <div className={styles.parallaxContainer} ref={containerRef}>
-        {showHero && (
-          <>
-            <div className={styles.heroBackground} />
-            <div className={styles.heroCutout} />
-          </>
-        )}
+        {backgroundContent}
         <div
           className={styles.foreground}
           style={{
-            backgroundColor: `rgba(var(--hero-background-rgb), ${heroTitleBackgroundOpacity})`,
+            backgroundColor: `rgba(var(--hero-background-rgb), ${backgroundContentFade})`,
           }}
         >
-          {showHero && (
-            <div className={styles.heroTitleContainer}>
-              <div>
-                <h1 className={styles.line1}>hi</h1>
-                <h1 className={styles.line2}>i'm ash</h1>
-              </div>
-            </div>
-          )}
-          <div className={styles.contentContainer} ref={contentRef}>
+          <div
+            ref={foregroundContentRef}
+            className={styles.foregroundContentRef}
+          >
+            {foregroundContent}
+          </div>
+          <div className={styles.contentContainer}>
             <div
               className={classnames(styles.content, {
-                [styles.padContent]: !showHero,
+                [styles.padContent]:
+                  !foregroundContent && !hideHeaderUntilScroll,
               })}
             >
               {children}

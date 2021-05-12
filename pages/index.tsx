@@ -21,8 +21,28 @@ export interface Props {
 }
 
 export default function Home({ allPosts }: Props) {
+  const backgroundContent = (
+    <>
+      <div className={styles.heroBackground} />
+      <div className={styles.heroCutout} />
+    </>
+  )
+
+  const foregroundContent = (
+    <div className={styles.heroTitleContainer}>
+      <div>
+        <h1 className={styles.line1}>hi</h1>
+        <h1 className={styles.line2}>i'm ash</h1>
+      </div>
+    </div>
+  )
+
   return (
-    <Layout showHero>
+    <Layout
+      hideHeaderUntilScroll
+      backgroundContent={backgroundContent}
+      foregroundContent={foregroundContent}
+    >
       <Head>
         <title>hi, i'm ash</title>
         <meta
