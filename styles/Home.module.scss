@@ -15,12 +15,10 @@
 .heroCutout {
   background-position: 70%;
   background-size: cover;
-  bottom: 0;
+  height: 100vh;
   position: absolute;
-  right: 0;
-  top: 0;
   transform-origin: 0 0;
-  left: 0;
+  width: 100vw;
 }
 
 .heroBackground {
