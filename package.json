@@ -31,6 +31,6 @@
     "typescript": "^4.2.4"
   },
   "lint-staged": {
-    "*.{ts,tsx,js,scss,css,md}": "stylelint --fix **/*.scss && prettier --write ."
+    "*.{ts,tsx,js,scss,css,md}": "yarn lint"
   }
 }
