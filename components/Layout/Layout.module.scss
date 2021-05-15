@@ -18,7 +18,11 @@
   min-height: 100%;
   transform-origin: 0 0;
   transform: translateZ(0);
-  transition: background-color 0.5s linear;
+  transition: background-color, backdrop-filter 0.5s linear;
+}
+
+.blur {
+  backdrop-filter: blur(20px);
 }
 
 .foregroundContentRef {

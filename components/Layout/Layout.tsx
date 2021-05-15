@@ -7,6 +7,7 @@ import styles from './Layout.module.scss'
 
 export interface Props {
   backgroundContent?: ReactNode
+  blurBackground?: boolean
   children: ReactNode
   foregroundContent?: ReactNode
   hideHeaderUntilScroll?: boolean
@@ -14,6 +15,7 @@ export interface Props {
 
 export default function Layout({
   backgroundContent,
+  blurBackground,
   children,
   foregroundContent,
   hideHeaderUntilScroll = false,
@@ -54,7 +56,9 @@ export default function Layout({
       <div className={styles.parallaxContainer} ref={containerRef}>
         {backgroundContent}
         <div
-          className={styles.foreground}
+          className={classnames(styles.foreground, {
+            [styles.blur]: blurBackground,
+          })}
           style={{
             backgroundColor: `rgba(var(--hero-background-rgb), ${backgroundContentFade})`,
           }}

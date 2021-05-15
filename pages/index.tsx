@@ -1,4 +1,6 @@
 import Head from 'next/head'
+import { useState, useEffect } from 'react'
+import classnames from 'classnames'
 import { getAllPosts } from '../lib/postsApi'
 import PostGrid from '../components/PostGrid/PostGrid'
 import PostCard from '../components/PostCard/PostCard'
@@ -21,10 +23,25 @@ export interface Props {
 }
 
 export default function Home({ allPosts }: Props) {
+  const [pageLoaded, setPageLoaded] = useState(false)
+  useEffect(() => {
+    window.addEventListener('load', () => {
+      setPageLoaded(true)
+    })
+  })
   const backgroundContent = (
     <>
-      <div className={styles.heroBackground} />
-      <div className={styles.heroCutout} />
+      <div className={styles.fallback} />
+      <div
+        className={classnames(styles.heroBackground, {
+          [styles.hide]: !pageLoaded,
+        })}
+      />
+      <div
+        className={classnames(styles.heroCutout, {
+          [styles.hide]: !pageLoaded,
+        })}
+      />
     </>
   )
 
@@ -40,6 +57,7 @@ export default function Home({ allPosts }: Props) {
   return (
     <Layout
       hideHeaderUntilScroll
+      blurBackground={!pageLoaded}
       backgroundContent={backgroundContent}
       foregroundContent={foregroundContent}
     >

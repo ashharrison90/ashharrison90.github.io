@@ -11,6 +11,7 @@
   margin: 1em 0;
 }
 
+.fallback,
 .heroBackground,
 .heroCutout {
   background-position: 70%;
@@ -19,6 +20,20 @@
   position: absolute;
   transform-origin: 0 0;
   width: 100vw;
+}
+
+.hide {
+  opacity: 0;
+}
+
+.fallback {
+  background-image: url('/assets/home/hero-fallback.png');
+  transform: translateZ(-8px) scale(2);
+}
+
+.heroBackground,
+.heroCutout {
+  transition: opacity 0.5s ease;
 }
 
 .heroBackground {
