@@ -48,6 +48,7 @@ h2 {
 :root[data-theme='light'] {
   --background: #fff;
   --border: #e0e0e0;
+  --card-brightness: 5;
   --container: #f4f4f4;
   --container-alt: #a8a8a8;
   --container--rgb: 244, 244, 244;
@@ -67,6 +68,7 @@ h2 {
 :root[data-theme='dark'] {
   --background: #262626;
   --border: #525252;
+  --card-brightness: 0.6;
   --container: #393939;
   --container-alt: #6f6f6f;
   --container--rgb: 57, 57, 57;

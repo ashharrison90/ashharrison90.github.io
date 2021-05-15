@@ -7,8 +7,12 @@
 .aboutButton,
 .postsButton,
 .postGrid {
-  align-self: center;
   margin: 1em 0;
+}
+
+.aboutButton,
+.postsButton {
+  align-self: center;
 }
 
 .fallback,

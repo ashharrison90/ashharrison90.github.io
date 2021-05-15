@@ -22,11 +22,13 @@ export default function PostCard({
         className={styles.card}
         style={{ backgroundImage: `url(${coverImage})` }}
       >
-        <div className={styles.textContainer}>
+        <div className={styles.dateContainer}>
           <div className={styles.date}>
             {new Date(date).toLocaleDateString()}
           </div>
-          <h3 className={styles.title}>{title}</h3>
+        </div>
+        <div className={styles.titleContainer}>
+          <div className={styles.title}>{title}</div>
           <div className={styles.excerpt}>{excerpt}</div>
         </div>
       </a>

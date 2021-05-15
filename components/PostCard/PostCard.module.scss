@@ -1,36 +1,44 @@
 .card {
   background-position: center;
   background-size: cover;
-  border: 1px solid var(--border);
   color: inherit;
+  display: flex;
+  flex-direction: column;
   height: 350px;
-  overflow: hidden;
-  position: relative;
-  text-align: left;
+  justify-content: space-between;
   text-decoration: none;
 }
 
-.textContainer {
-  backdrop-filter: blur(4px);
-  background-color: rgba(var(--container--rgb), 0.6);
-  display: grid;
-  grid-template-rows: 50% 25% 25%;
-  height: 100%;
-  padding: 0.5em;
-  transition: backdrop-filter 0.5s ease;
-  width: 100%;
-}
-
+.titleContainer,
 .date {
-  display: flex;
-  flex: 1;
-  flex-basis: 50%;
-  font-size: 0.8em;
-  justify-content: flex-end;
+  backdrop-filter: blur(4px) brightness(var(--card-brightness));
+  padding: 0.5rem;
 }
 
+.dateContainer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1rem;
+}
+
+.titleContainer {
+  margin-bottom: 1rem;
+  width: calc(100% - 0.5rem);
+}
+
+.title {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.title,
 .excerpt {
-  overflow: hidden;
+  margin: 0.5rem 0;
+}
+
+.date,
+.excerpt {
+  font-size: 0.8em;
 }
 
 .card:hover,
@@ -38,8 +46,4 @@
 .card:active {
   outline: 3px solid var(--focus);
   text-decoration: none;
-
-  .textContainer {
-    backdrop-filter: none;
-  }
 }
