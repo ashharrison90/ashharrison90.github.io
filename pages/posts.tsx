@@ -3,7 +3,6 @@ import { getAllPosts } from '../lib/postsApi'
 import PostGrid from '../components/PostGrid/PostGrid'
 import PostCard from '../components/PostCard/PostCard'
 import Layout from '../components/Layout/Layout'
-import styles from '../styles/Posts.module.scss'
 
 export interface Props {
   allPosts: {
@@ -30,7 +29,7 @@ export default function Posts({ allPosts }: Props) {
         />
       </Head>
 
-      <h1 className={styles.title}>posts</h1>
+      <h1>posts</h1>
 
       <PostGrid>
         {allPosts.map((post) => (

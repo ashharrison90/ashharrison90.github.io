@@ -12,6 +12,12 @@ Clone the repo:
 git clone https://github.com/ashharrison90/ashharrison90.github.io.git
 ```
 
+Install:
+
+```bash
+yarn install
+```
+
 To run the development server on http://localhost:3000:
 
 ```bash
