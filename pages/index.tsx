@@ -25,9 +25,15 @@ export interface Props {
 export default function Home({ allPosts }: Props) {
   const [pageLoaded, setPageLoaded] = useState(false)
   useEffect(() => {
-    window.addEventListener('load', () => {
+    function handlePageLoad() {
       setPageLoaded(true)
-    })
+    }
+    if (document.readyState === 'complete') {
+      handlePageLoad()
+    } else {
+      window.addEventListener('load', handlePageLoad)
+      return () => window.removeEventListener('load', handlePageLoad)
+    }
   })
   const backgroundContent = (
     <>
