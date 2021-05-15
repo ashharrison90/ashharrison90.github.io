@@ -14,8 +14,9 @@
 
 .content {
   figure {
+    display: flex;
+    flex-direction: column;
     margin: 1em 0;
-    position: relative;
 
     img {
       height: 100%;
@@ -26,13 +27,9 @@
 
   figcaption {
     background-color: var(--container);
-    bottom: 0;
     color: var(--text-secondary);
     font-size: 0.8em;
-    left: 0;
     padding: 0.5em;
-    position: absolute;
-    right: 0;
   }
 }
 

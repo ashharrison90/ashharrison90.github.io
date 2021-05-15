@@ -1,7 +1,7 @@
 ---
 title: 'Building this site'
 excerpt: 'My motivations for building a personal site, and some lessons learned along the way.'
-coverImage: '/assets/blog/building-this-site/code2.png'
+coverImage: '/assets/blog/building-this-site/code.png'
 date: '2021-05-09T15:40:07.322Z'
 ---
 
@@ -9,33 +9,31 @@ In early May, I had a week's holiday and decided to finally build the site I've 
 
 ## Why?
 
-Because I'm extremely narcissistic.
+**Narcissism.**
 
 Actually, the motivations for building this site are hopefully relatable.
 
 Working on the same internal copyrighted project for a few years was starting to stifle my experience with other languages, frameworks, build tools, etc. Having recently gone through a round of interviews at various companies, two issues kept cropping up: a lack of TypeScript experience and a lack of publically available code examples.
 
-So, some basic requirements. This site should:
+So, some basic requirements to attempt to address that. This site should:
 
 - be written in TypeScript
 - use some new bootstrap (i.e. not Create React App)
 - function as a place to demonstrate **production quality** code
 
-That last point is actually a bigger deal than it sounds, and probably overkill. I don't know many personal sites with a robust set of unit/e2e tests - but that's the intention here.
+That last point is probably overkill. I don't know many personal sites with a robust set of unit and end-to-end tests, but that's my intention here.
 
 ## Implementation
 
+That brings us on to some implementation decisions.
+
 In terms of static site generators, there are [quite a few options](https://jamstack.org/generators). However, after deciding to stick with React, it starts to become a bit of a two horse race between [Next.js](https://nextjs.org/) and [Gatsby](https://www.gatsbyjs.com/).
 
-```typescript
-var text = 'hello'
-```
+I ended up choosing Next.js, primarily because of it's flexibility. Whilst Gatsby is designed purely as a static site generator, the main focus of Next.js is server side rendering. It just so happens to _also_ offer static site generation.
 
 <figure>
-  <img src='/assets/blog/hello-world/cover.jpg' alt="my alt text"/>
-  <figcaption>This is my caption text.</figcaption>
+  <img src='/assets/blog/building-this-site/peopleUsingNext.png' alt="Companies using Next.js"/>
+  <figcaption>Lots of companies are starting to adopt Next.js</figcaption>
 </figure>
 
-## Lorem Ipsum
-
-Tristique senectus et netus et malesuada fames ac turpis. Ridiculous mus mauris vitae ultricies leo integer malesuada nunc vel. In mollis nunc sed id semper. Egestas tellus rutrum tellus pellentesque. Phasellus vestibulum lorem sed risus ultricies tristique nulla. Quis blandit turpis cursus in hac habitasse platea dictumst quisque. Eros donec ac odio tempor orci dapibus ultrices. Aliquam sem et tortor consequat id porta nibh. Adipiscing elit duis tristique sollicitudin nibh sit amet commodo nulla. Diam vulputate ut pharetra sit amet. Ut tellus elementum sagittis vitae et leo. Arcu non odio euismod lacinia at quis risus sed vulputate.
+So if this site ever evolves to the point where it needs a dynamic backend, it can! At the same time, I also gain experience with a framework that [a lot of companies are now using.](https://nextjs.org/showcase) Win-win.
