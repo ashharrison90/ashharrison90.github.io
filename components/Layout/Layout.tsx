@@ -34,8 +34,8 @@ export default function Layout({
         // let's split it into intervals of 0.1
         // and stop once we're past 1
         if (foregroundContent) {
-          const height = foregroundContentRef.current?.getBoundingClientRect()
-            .height!
+          const height =
+            foregroundContentRef.current?.getBoundingClientRect().height!
           const top = foregroundContentRef.current?.getBoundingClientRect().top!
           const scrollScaleFactor =
             Math.round(10 * (Math.abs(top) / height)) / 10
