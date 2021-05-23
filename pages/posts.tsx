@@ -3,6 +3,7 @@ import { getAllPosts } from '../lib/postsApi'
 import PostGrid from '../components/PostGrid/PostGrid'
 import PostCard from '../components/PostCard/PostCard'
 import Layout from '../components/Layout/Layout'
+import styles from '../styles/Posts.module.scss'
 
 export interface Props {
   allPosts: {
@@ -31,7 +32,18 @@ export default function Posts({ allPosts }: Props) {
 
       <h1>posts</h1>
 
-      <PostGrid>
+      <p>
+        Read my ramblings. I'm aiming for a post every couple of weeks. Will it
+        happen?{' '}
+        <sub>
+          No,{' '}
+          <sub>
+            probably <sub>not.</sub>
+          </sub>
+        </sub>
+      </p>
+
+      <PostGrid className={styles.postGrid}>
         {allPosts.map((post) => (
           <PostCard
             key={post.slug}
