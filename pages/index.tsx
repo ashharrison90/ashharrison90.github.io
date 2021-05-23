@@ -53,7 +53,7 @@ export default function Home({ allPosts }: Props) {
 
   const foregroundContent = (
     <div className={styles.heroTitleContainer}>
-      <div>
+      <div className={styles.heroTitle}>
         <h1 className={styles.line1}>hi</h1>
         <h1 className={styles.line2}>i'm ash</h1>
       </div>
@@ -71,7 +71,7 @@ export default function Home({ allPosts }: Props) {
         <title>hi, i'm ash</title>
         <meta
           name='description'
-          content='I am a software engineer based in the UK. I specialize in all things frontend, with a focus on clean, testable and maintainable code.'
+          content='The personal site of Ashley Harrison.'
         />
       </Head>
 

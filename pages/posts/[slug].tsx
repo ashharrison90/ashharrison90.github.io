@@ -11,9 +11,11 @@ import hljs from 'highlight.js/lib/core'
 import javascript from 'highlight.js/lib/languages/javascript'
 import typescript from 'highlight.js/lib/languages/typescript'
 import python from 'highlight.js/lib/languages/python'
+import scss from 'highlight.js/lib/languages/scss'
 hljs.registerLanguage('javascript', javascript)
 hljs.registerLanguage('typescript', typescript)
 hljs.registerLanguage('python', python)
+hljs.registerLanguage('scss', scss)
 import 'highlight.js/styles/monokai-sublime.css'
 
 export interface Props {

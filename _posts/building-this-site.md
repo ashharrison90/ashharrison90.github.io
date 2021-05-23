@@ -19,21 +19,118 @@ So, some basic requirements to attempt to address that. This site should:
 
 - be written in TypeScript
 - use some new bootstrap (i.e. not Create React App)
+- should have a mobile first design
 - function as a place to demonstrate **production quality** code
 
-That last point is probably overkill. I don't know many personal sites with a robust set of unit and end-to-end tests, but that's my intention here.
+I'll probably regret that last point.
 
 ## Implementation
 
-That brings us on to some implementation decisions.
+As with most blogs or portfolio sites, there isn't really a need for a backend server to be running to dynamically generate pages. The content lends itself to being statically generated.
+
+This has a couple of advantages:
+
+1. It's **fast**. Being statically generated means that all we're serving up to the end user is the exact same chunk of html and javascript every time. This allows for improved caching, and faster load times as a result.
+1. It's **cheap**. Not having to run a backend server reduces costs dramatically. This site is currently hosted using [GitHub Pages](https://pages.github.com/) for free.
 
 In terms of static site generators, there are [quite a few options](https://jamstack.org/generators). However, after deciding to stick with React, it starts to become a bit of a two horse race between [Next.js](https://nextjs.org/) and [Gatsby](https://www.gatsbyjs.com/).
 
 I ended up choosing Next.js, primarily because of it's flexibility. Whilst Gatsby is designed purely as a static site generator, the main focus of Next.js is server side rendering. It just so happens to _also_ offer static site generation.
 
 <figure>
-  <img src='/assets/blog/building-this-site/peopleUsingNext.png' alt="Companies using Next.js"/>
+  <img src='/assets/blog/building-this-site/people-using-next.png' alt="Lots of companies are starting to adopt Next.js"/>
   <figcaption>Lots of companies are starting to adopt Next.js</figcaption>
 </figure>
 
-So if this site ever evolves to the point where it needs a dynamic backend, it can! At the same time, I also gain experience with a framework that [a lot of companies are now using.](https://nextjs.org/showcase) Win-win.
+So if this site ever evolves to the point where it needs a dynamic backend, it can! At the same time, I also gain experience with a framework that a lot of companies are now using. Win-win.
+
+## Design
+
+Didn't have one.
+
+This will probably come as no surprise to anyone, but I'm not a designer. I ended up playing around with most things in the browser until I was happy. The optimal solution is probably to use wireframes up front.
+
+The only thing I'm not quite happy with is the card design for each post. But that's ok - it's good enough for now, and I'm sure it'll be tweaked in the future.
+
+<figure>
+  <img src='/assets/blog/building-this-site/card-design.png' alt="The current card design."/>
+  <figcaption>The current card design.</figcaption>
+</figure>
+
+## Colours
+
+One thing I wanted for the site was a theme toggle or dark mode toggle. There are [various benefits](https://blog.weekdone.com/why-you-should-switch-on-dark-mode/) to this, but I find the biggest one is that it forces you to pare back and structure your styles properly. Simplicity is key. A few different background shades, a couple of choices for text, a splash of colour for interactive elements, etc.
+
+What I've ended up with is a `globals.scss` file at the root of the project that looks something like:
+
+```scss
+:root[data-theme='light'] {
+  --background: #fff;
+  --border: #e0e0e0;
+  --card-brightness: 5;
+  --container: #f4f4f4;
+  --container-alt: #a8a8a8;
+  --container--rgb: 244, 244, 244;
+  --focus: #0f9bfe;
+  --hero-background-rgb: 0, 0, 0;
+  --hero-text-primary: #fff;
+  --icon-primary: #000;
+  --icon-secondary: #525252;
+  --logo-durham-primary: #002337;
+  --logo-durham-secondary: #702567;
+  --logo-ibm: #1f70c1;
+  --logo-qinetiq: #002744;
+  --text-primary: #000;
+  --text-secondary: #525252;
+}
+
+:root[data-theme='dark'] {
+  --background: #262626;
+  --border: #525252;
+  --card-brightness: 0.6;
+  --container: #393939;
+  --container-alt: #6f6f6f;
+  --container--rgb: 57, 57, 57;
+  --focus: #60bdff;
+  --hero-background-rgb: 244, 244, 244;
+  --hero-text-primary: #262626;
+  --icon-primary: #f4f4f4;
+  --icon-secondary: #c6c6c6;
+  --logo-durham-primary: #f4f4f4;
+  --logo-durham-secondary: #f4f4f4;
+  --logo-ibm: #1f70c1;
+  --logo-qinetiq: #f4f4f4;
+  --text-primary: #f4f4f4;
+  --text-secondary: #c6c6c6;
+}
+```
+
+This is nice as it makes changes to the theme extremely easy. In less than a minute I can change the site from a fairly muted modern colour palette to a kaleidoscopic nightmare.
+
+<figure>
+  <img src='/assets/blog/building-this-site/kaleidoscopic-nightmare.png' alt="A kaleidoscopic nightmare."/>
+  <figcaption>A kaleidoscopic nightmare.</figcaption>
+</figure>
+
+Originally I was intending to use a CSS-in-JS library, something like [styled components](https://styled-components.com/) or [Emotion](https://emotion.sh/docs/introduction). But Next.js [supports css modules](https://nextjs.org/docs/basic-features/built-in-css-support#adding-component-level-css) out of the box, so I've stuck with that and been pleasantly suprised.
+
+## Next steps
+
+There's a few things I haven't gotten to yet.
+
+Firstly, testing. Turns out it's very easy to postpone testing when there's no real requirement and only one person working on the code. Who knew?
+
+<figure>
+  <img src='/assets/blog/building-this-site/no-tests.png' alt="Whoops!"/>
+  <figcaption>Whoops!</figcaption>
+</figure>
+
+Nevertheless, I'm still committed to adding tests. In the real world, good tests are one of the most important aspects of a project. I'm also going to use it as an opportunity to experiment with some more new frameworks I haven't had chance to use yet, e.g. [Playwright](https://playwright.dev/) instead of [Cypress](https://www.cypress.io/).
+
+Secondly, performance and SEO. Given how lightweight the site currently is, I don't foresee many problems. But it's just an excuse to play around with [Lighthouse](https://developers.google.com/web/tools/lighthouse) a bit more.
+
+And finally, grab myself a nice domain to host it on! Although that might mean [a lot of searching](https://domains.google.com/registrar/search?searchTerm=ash&tab=1).
+
+## The code
+
+If you're curious about anything, feel free to check it all out on [GitHub](https://github.com/ashharrison90/ashharrison90.github.io).
