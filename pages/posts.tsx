@@ -34,13 +34,7 @@ export default function Posts({ allPosts }: Props) {
 
       <p>
         Read my ramblings. I'm aiming for a post every couple of weeks. Will it
-        happen?{' '}
-        <sub>
-          No,{' '}
-          <sub>
-            probably <sub>not.</sub>
-          </sub>
-        </sub>
+        happen? No, probably not.
       </p>
 
       <PostGrid className={styles.postGrid}>
