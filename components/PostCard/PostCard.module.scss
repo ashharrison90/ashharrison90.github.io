@@ -9,9 +9,9 @@
   text-decoration: none;
 }
 
-.titleContainer,
-.date {
-  backdrop-filter: blur(4px) brightness(var(--card-brightness));
+.date,
+.titleContainer {
+  background-color: var(--container);
   padding: 0.5rem;
 }
 
@@ -46,4 +46,10 @@
 .card:active {
   outline: 3px solid var(--focus);
   text-decoration: none;
+
+  .date,
+  .titleContainer {
+    background-color: var(--focus);
+    color: var(--background);
+  }
 }
