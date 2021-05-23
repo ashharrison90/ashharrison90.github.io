@@ -131,6 +131,6 @@ Secondly, performance and SEO. Given how lightweight the site currently is, I do
 
 And finally, grab myself a nice domain to host it on! Although that might mean [a lot of searching](https://domains.google.com/registrar/search?searchTerm=ash&tab=1).
 
-## The code
+## Code
 
 If you're curious about anything, feel free to check it all out on [GitHub](https://github.com/ashharrison90/ashharrison90.github.io).

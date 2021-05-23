@@ -81,14 +81,15 @@ export default function Home({ allPosts }: Props) {
             <h2>about</h2>
             <p>I'm a software engineer based in the UK.</p>
             <p>
-              I specialize in all things frontend, with a focus on clean,
-              testable and maintainable code.
+              I specialize in all things frontend, with a focus on{' '}
+              <strong>clean</strong>, <strong>testable</strong> and{' '}
+              <strong>maintainable</strong> code.
             </p>
             <p>
               When I'm not typing on a keyboard, you can find me{' '}
               <s>typing on a keyboard</s> gaming, playing football and hanging
-              out with friends. Gym or mountain biking when the motivation
-              strikes. Music and films when it doesn't.
+              out with friends. Gym or mountain biking if I'm feeling motivated.
+              Music and films if I'm not.
             </p>
           </div>
           <LinkButton className={styles.aboutButton} href='/about'>

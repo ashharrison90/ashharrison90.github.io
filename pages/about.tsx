@@ -28,6 +28,14 @@ export default function About({ jobs }: Props) {
       </Head>
 
       <h1 className={styles.title}>about</h1>
+
+      <q>
+        Find a job you enjoy doing, and you will never have to work a day in
+        your life.
+      </q>
+      <cite> - Mark Twain</cite>
+      <p>But did Mark Twain ever develop software? No. Stupid.</p>
+
       {jobs.map((job) => (
         <JobSummary
           key={job.company}
