@@ -10,7 +10,7 @@ export interface JobData {
   jobTitle: string
   icon: string
   startDate: string
-  endDate: string
+  endDate?: string
   website: string
 }
 
@@ -20,15 +20,20 @@ export function getJobById(id: string) {
   const { data, content } = matter(fileContents)
   const { company, jobTitle, icon, startDate, endDate, website } = data
 
-  return {
+  const jobData: JobData = {
     company,
     content,
     jobTitle,
     icon,
     startDate,
-    endDate,
     website,
   }
+
+  if (endDate) {
+    jobData.endDate = endDate
+  }
+
+  return jobData
 }
 
 export function getAllJobs() {
@@ -36,6 +41,16 @@ export function getAllJobs() {
   const jobs = jobIds
     .map((id) => getJobById(id))
     // sort jobs by end date in descending order
-    .sort((post1, post2) => (post1.endDate > post2.endDate ? -1 : 1))
+    .sort((job1, job2) => {
+      if (job1.endDate && job2.endDate) {
+        return job1.endDate > job2.endDate ? -1 : 1
+      } else if (job1.endDate && !job2.endDate) {
+        return 1
+      } else if (!job1.endDate && job2.endDate) {
+        return -1
+      } else {
+        return job1.startDate > job2.startDate ? -1 : 1
+      }
+    })
   return jobs
 }

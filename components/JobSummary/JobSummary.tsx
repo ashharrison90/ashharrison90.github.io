@@ -1,15 +1,13 @@
 import { ReactNode } from 'react'
 import styles from './JobSummary.module.scss'
 
-const formatDate = (dateString: string) => {
-  if (dateString === 'present') {
-    return 'Present'
-  } else {
-    return new Date(dateString).toLocaleDateString(undefined, {
-      year: 'numeric',
-      month: 'long',
-    })
-  }
+const formatDate = (dateString: string | undefined) => {
+  return dateString
+    ? new Date(dateString).toLocaleDateString(undefined, {
+        year: 'numeric',
+        month: 'long',
+      })
+    : 'Present'
 }
 
 export interface Props {
@@ -19,7 +17,7 @@ export interface Props {
   jobTitle: string
   icon: ReactNode
   startDate: string
-  endDate: string
+  endDate?: string
   website: string
 }
 

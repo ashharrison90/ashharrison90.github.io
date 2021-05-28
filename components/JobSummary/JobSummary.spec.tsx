@@ -66,7 +66,6 @@ describe('JobSummary', () => {
         icon={mockIcon}
         jobTitle={mockJobTitle}
         startDate={mockStartDate}
-        endDate='present'
         website={mockWebsite}
       >
         {mockSummary}
