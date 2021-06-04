@@ -7,12 +7,14 @@ import markdownToHtml from '../lib/markdownToHtml'
 import Ibm from '../public/assets/about/ibm.svg'
 import Qinetiq from '../public/assets/about/qinetiq.svg'
 import Durham from '../public/assets/about/durham.svg'
+import Grafana from '../public/assets/about/grafana.svg'
 import { ReactNode } from 'react'
 
 const iconMap: Record<string, ReactNode> = {
+  durham: <Durham />,
+  grafana: <Grafana />,
   ibm: <Ibm />,
   qinetiq: <Qinetiq />,
-  durham: <Durham />,
 }
 
 export interface Props {

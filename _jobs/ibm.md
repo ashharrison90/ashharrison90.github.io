@@ -3,6 +3,7 @@ company: 'IBM'
 jobTitle: 'Front End Developer'
 icon: 'ibm'
 startDate: '2014-10-01T00:00:00.000Z'
+endDate: '2021-06-07T00:00:00.000Z'
 website: 'https://www.ibm.com'
 ---
 
