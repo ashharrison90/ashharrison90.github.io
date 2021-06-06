@@ -1,7 +1,9 @@
 .button {
-  background-color: var(--background);
-  border: 3px solid var(--focus);
-  color: var(--focus);
+  background: linear-gradient(var(--interactive), var(--interactive-alt));
+  background-position: 0% 10%;
+  background-size: 100% 300%;
+  border: none;
+  color: var(--background);
   cursor: pointer;
   font-family: inherit;
   font-size: inherit;
@@ -13,8 +15,7 @@
   &:active,
   &:hover,
   &:focus {
+    background-position: 0% 90%;
     outline: none;
-    color: var(--background);
-    background-color: var(--focus);
   }
 }

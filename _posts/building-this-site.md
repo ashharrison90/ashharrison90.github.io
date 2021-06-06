@@ -71,7 +71,7 @@ What I've ended up with is a `globals.scss` file at the root of the project that
   --container: #f4f4f4;
   --container-alt: #a8a8a8;
   --container--rgb: 244, 244, 244;
-  --focus: #0f9bfe;
+  --interactive: #0f9bfe;
   --hero-background-rgb: 0, 0, 0;
   --hero-text-primary: #fff;
   --icon-primary: #000;
@@ -91,7 +91,7 @@ What I've ended up with is a `globals.scss` file at the root of the project that
   --container: #393939;
   --container-alt: #6f6f6f;
   --container--rgb: 57, 57, 57;
-  --focus: #60bdff;
+  --interactive: #60bdff;
   --hero-background-rgb: 244, 244, 244;
   --hero-text-primary: #262626;
   --icon-primary: #f4f4f4;

@@ -1,6 +1,7 @@
 .card {
   background-position: center;
   background-size: cover;
+  border: 2px solid var(--interactive);
   color: inherit;
   display: flex;
   flex-direction: column;
@@ -11,7 +12,10 @@
 
 .date,
 .titleContainer {
-  background-color: var(--container);
+  background: linear-gradient(var(--interactive), var(--interactive-alt));
+  background-position: 0% 10%;
+  background-size: 100% 300%;
+  color: var(--background);
   padding: 0.5rem;
 }
 
@@ -44,12 +48,12 @@
 .card:hover,
 .card:focus,
 .card:active {
-  outline: 3px solid var(--focus);
+  border: 2px solid var(--interactive-alt);
+  outline: none;
   text-decoration: none;
 
   .date,
   .titleContainer {
-    background-color: var(--focus);
-    color: var(--background);
+    background-position: 0% 90%;
   }
 }

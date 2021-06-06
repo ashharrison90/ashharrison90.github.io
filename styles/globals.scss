@@ -22,7 +22,7 @@ body,
 }
 
 a {
-  color: var(--focus);
+  color: var(--interactive);
   text-decoration: none;
 
   &:hover,
@@ -52,11 +52,12 @@ h2 {
   --container: #f4f4f4;
   --container-alt: #a8a8a8;
   --container--rgb: 244, 244, 244;
-  --focus: #0f9bfe;
   --hero-background-rgb: 0, 0, 0;
   --hero-text-primary: #fff;
   --icon-primary: #000;
   --icon-secondary: #525252;
+  --interactive: #0f9bfe;
+  --interactive-alt: #ac007f;
   --logo-durham-primary: #002337;
   --logo-durham-secondary: #702567;
   --logo-grafana: #0a0a0a;
@@ -73,11 +74,12 @@ h2 {
   --container: #393939;
   --container-alt: #6f6f6f;
   --container--rgb: 57, 57, 57;
-  --focus: #60bdff;
   --hero-background-rgb: 244, 244, 244;
   --hero-text-primary: #262626;
   --icon-primary: #f4f4f4;
   --icon-secondary: #c6c6c6;
+  --interactive: #60bdff;
+  --interactive-alt: #e475c7;
   --logo-durham-primary: #f4f4f4;
   --logo-durham-secondary: #f4f4f4;
   --logo-grafana: #f4f4f4;

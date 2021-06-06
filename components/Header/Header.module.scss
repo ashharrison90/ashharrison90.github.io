@@ -29,12 +29,12 @@
   &:hover,
   &:focus,
   &:active {
-    color: var(--focus);
+    color: var(--interactive);
     outline: none;
     text-decoration: none;
   }
 }
 
 .activePage {
-  color: var(--focus);
+  color: var(--interactive);
 }
