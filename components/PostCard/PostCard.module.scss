@@ -1,12 +1,12 @@
 .card {
   background-position: center;
   background-size: cover;
-  border: 2px solid var(--interactive);
   color: inherit;
   display: flex;
   flex-direction: column;
   height: 350px;
   justify-content: space-between;
+  outline: 1px solid var(--interactive);
   text-decoration: none;
 }
 
@@ -48,8 +48,7 @@
 .card:hover,
 .card:focus,
 .card:active {
-  border: 2px solid var(--interactive-alt);
-  outline: none;
+  outline: 2px solid var(--interactive-alt);
   text-decoration: none;
 
   .date,
