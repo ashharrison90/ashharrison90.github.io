@@ -48,16 +48,15 @@ h2 {
 :root[data-theme='light'] {
   --background: #fff;
   --border: #e0e0e0;
-  --card-brightness: 5;
   --container: #f4f4f4;
   --container-alt: #a8a8a8;
-  --container--rgb: 244, 244, 244;
+  --focus: #de4bae;
+  --focus-alt: #773787;
   --hero-background-rgb: 0, 0, 0;
-  --hero-text-primary: #fff;
   --icon-primary: #000;
   --icon-secondary: #525252;
   --interactive: #0f9bfe;
-  --interactive-alt: #bd00ae;
+  --interactive-alt: #0353a6;
   --logo-durham-primary: #002337;
   --logo-durham-secondary: #702567;
   --logo-grafana: #0a0a0a;
@@ -70,16 +69,15 @@ h2 {
 :root[data-theme='dark'] {
   --background: #262626;
   --border: #525252;
-  --card-brightness: 0.6;
   --container: #393939;
   --container-alt: #6f6f6f;
-  --container--rgb: 57, 57, 57;
+  --focus: #dd8dff;
+  --focus-alt: #fcb1b8;
   --hero-background-rgb: 244, 244, 244;
-  --hero-text-primary: #262626;
   --icon-primary: #f4f4f4;
   --icon-secondary: #c6c6c6;
   --interactive: #60bdff;
-  --interactive-alt: #dd8dff;
+  --interactive-alt: #9ffbff;
   --logo-durham-primary: #f4f4f4;
   --logo-durham-secondary: #f4f4f4;
   --logo-grafana: #f4f4f4;

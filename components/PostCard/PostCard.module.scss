@@ -12,9 +12,11 @@
 
 .date,
 .titleContainer {
-  background: linear-gradient(var(--interactive), var(--interactive-alt));
-  background-position: 0% 10%;
-  background-size: 100% 300%;
+  background: linear-gradient(
+    120deg,
+    var(--interactive),
+    var(--interactive-alt)
+  );
   color: var(--background);
   padding: 0.5rem;
 }
@@ -48,11 +50,11 @@
 .card:hover,
 .card:focus,
 .card:active {
-  outline: 2px solid var(--interactive-alt);
+  outline: 2px solid var(--focus);
   text-decoration: none;
 
   .date,
   .titleContainer {
-    background-position: 0% 90%;
+    background: linear-gradient(120deg, var(--focus), var(--focus-alt));
   }
 }

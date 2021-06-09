@@ -1,7 +1,9 @@
 .button {
-  background: linear-gradient(var(--interactive), var(--interactive-alt));
-  background-position: 0% 10%;
-  background-size: 100% 300%;
+  background: linear-gradient(
+    120deg,
+    var(--interactive),
+    var(--interactive-alt)
+  );
   border: none;
   color: var(--background);
   cursor: pointer;
@@ -15,7 +17,7 @@
   &:active,
   &:hover,
   &:focus {
-    background-position: 0% 90%;
+    background: linear-gradient(120deg, var(--focus), var(--focus-alt));
     outline: none;
   }
 }
