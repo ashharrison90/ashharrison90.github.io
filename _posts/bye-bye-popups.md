@@ -1,0 +1,113 @@
+---
+title: 'Bye bye popups'
+excerpt: "I never liked them anyway. Here's how Google ruined my day."
+coverImage: '/assets/blog/bye-bye-popups/popups-demo-page.png'
+date: '2021-06-11T17:00:07.322Z'
+---
+
+In April, for about 5 hours, our custom popups completely disappeared.
+
+## "At least the tests caught it"
+
+At the time, we used [Cypress](https://www.cypress.io/) for our end-to-end tests. We have a test that runs locally that looks something like:
+
+```javascript
+describe('sticky header and breadcrumbs', () => {
+  beforeEach(() => {
+    cy.visit('/#/popup-next')
+    cy.get('.expression-editor-popup-next').eq(0).as('popup')
+  })
+
+  it('has sticky header when source is expanded (not scrolled yet)', () => {
+    cy.get('@popup').within(() => {
+      cy.get('.expression-editor-popup-next__entity--stuck').within(() => {
+        cy.get('.expression-editor-popup-next__source-heading-title').should(
+          'have.attr',
+          'title',
+          'Workday / Operation / Operation'
+        )
+        const titleParts = cy.get(
+          '.expression-editor-popup-next__source-heading-title-part'
+        )
+        titleParts.should('have.length', 3)
+        titleParts.eq(0).should('have.text', 'Workday')
+        titleParts.eq(1).should('have.text', 'Operation')
+        titleParts.eq(2).should('have.text', 'Operation')
+      })
+    })
+  })
+})
+```
+
+The actual behaviour being tested here isn't particularly important. The gist of it is that we're navigating to the popup demo page, finding the first popup and testing that the sticky header is displaying the correct information.
+
+Our automated build runs and the test fails. One nice thing about Cypress is it can output videos or screenshots of your tests runs at the point of failure. So I go to the build system to take a look, and...
+
+<figure>
+  <img src='/assets/blog/bye-bye-popups/missing-popups.png' alt="What happened to our popups?!"/>
+  <figcaption>What happened to our popups?!</figcaption>
+</figure>
+
+They're all gone! Ok. We can work with that. At least it makes sense why the test is failing. Now to recreate locally.
+
+...and of course it passes.
+
+At this point, we're not too concerned. Everyone that's worked in software knows these things happen every day. A package updates and breaks some of your behaviour. No big deal, that's what the tests are for. And until the tests are passing nothing will get pushed to production anyway.
+
+Eventually (like 2 hours later) we track it down to a newer version of Chrome (90) being installed on the CI. Updating Chrome locally now shows the behaviour as well. Unfortunately, it's not just limited to tests or our demo environment. It's happening everywhere.
+
+Including production.
+
+## Some history
+
+The product I was working on at the time began life as an AngularJS application. This is a particularly common story for most products written 5 or 6 years ago. AngularJS was a well-established framework, and React's terms of use [left a lot to be desired](https://medium.com/bits-and-pixels/a-compelling-reason-not-to-use-reactjs-beac24402f7b).
+
+Fast forward a couple of years and the growth of React, coupled with the impending [end of AngularJS's LTS](https://blog.angular.io/stable-angularjs-and-long-term-support-7e077635ee9c), meant a migration plan was needed. Enter [`react2angular`](https://www.npmjs.com/package/react2angular). This allowed for a gradual transition of the components to React implementations.
+
+The process looked something like:
+
+- pick a component with no dependencies on other AngularJS components
+- create a new like-for-like React implementation
+- replace the definition of the AngularJS component with the new React implementation
+- move up the component tree and repeat
+
+Eventually, you reach the top of the component tree and can convert the whole application. In places that haven't been completely converted yet, there might be some code that looks like:
+
+```javascript
+import Popup from '../react/popup/popup'
+export default angular.module('uimapper')
+  ...
+  .component('popup', react2angular(Popup))
+```
+
+This shows the definition an AngularJS component, `popup`, using `react2angular` to alias that component to the newer React implementation.
+
+So why does any of this matter?
+
+## Naming conventions are important
+
+Well, for anyone that's unfamiliar with AngularJS, this will then be inserted into the DOM as `<popup>`.
+
+Tucked away in the changes for Chrome 90 was [this commit.](https://chromium.googlesource.com/chromium/src/+/2024c426de3346666cb45f9c65ad9dec2246be99) After some googling, it turns out [Chrome is starting to implement a native `<popup>` element.](https://www.chromestatus.com/feature/5463833265045504) In doing so, they've added some new styles to the Chrome style sheet to handle the display of this element.
+
+<figure>
+  <img src='/assets/blog/bye-bye-popups/popup-style.png' alt="The offending style."/>
+  <figcaption>Some helpful new styles.</figcaption>
+</figure>
+
+At this point, cogs are finally starting to turn. Remember our component from earlier? What did we call it?
+
+> `popup`
+
+We're fucking idiots. A short rename later, and we're back in business:
+
+<figure>
+  <img src='/assets/blog/bye-bye-popups/popups-demo-page.png' alt="What the demo page should look like."/>
+  <figcaption>What the demo page should look like.</figcaption>
+</figure>
+
+## Takeaways
+
+There's now a [helpful support issue](https://support.google.com/chrome/thread/106244569/chrome-90-hides-my-websites-popup-dialogs-interial-popup-open?hl=en) discussing the problem, where it's pointed out that the [HTML spec requires that custom elements include a `-`.](https://html.spec.whatwg.org/multipage/custom-elements.html#valid-custom-element-name) And, of course, they're right. Never create custom elements without including a `-` in the name!
+
+That didn't make it any less annoying to figure out at the time.
