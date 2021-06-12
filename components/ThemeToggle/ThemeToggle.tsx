@@ -15,13 +15,14 @@ export default function ThemeToggle() {
   return (
     <div className={styles.toggleContainer}>
       <input
-        id='darkModeToggle'
+        id='themeToggle'
+        aria-label='themeToggle'
         checked={useDarkMode}
         className={styles.input}
         onChange={(event) => handleToggleTheme(event.target.checked)}
         type='checkbox'
       />
-      <label className={styles.toggle} htmlFor='darkModeToggle'>
+      <label className={styles.toggle} htmlFor='themeToggle'>
         <span className={styles.lightIcon}>&#9728;&#65039;</span>
         <span className={styles.darkIcon}>&#127769;</span>
         <span className={styles.toggleButton}></span>

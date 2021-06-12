@@ -9,17 +9,23 @@ describe('ThemeToggle', () => {
   })
 
   it('displays a toggle input', () => {
-    const toggle = screen.getByRole('checkbox') as HTMLInputElement
+    const toggle = screen.getByRole('checkbox', {
+      name: 'themeToggle',
+    }) as HTMLInputElement
     expect(toggle).toBeInTheDocument()
   })
 
   it('defaults to the initial theme specified in document.documentElement.dataset.theme', () => {
-    const toggle = screen.getByRole('checkbox') as HTMLInputElement
+    const toggle = screen.getByRole('checkbox', {
+      name: 'themeToggle',
+    }) as HTMLInputElement
     expect(toggle.checked).toEqual(true)
   })
 
   it('toggles the theme when clicked', () => {
-    const toggle = screen.getByRole('checkbox') as HTMLInputElement
+    const toggle = screen.getByRole('checkbox', {
+      name: 'themeToggle',
+    }) as HTMLInputElement
     expect(toggle.checked).toEqual(true)
 
     userEvent.click(toggle)
