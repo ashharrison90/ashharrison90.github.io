@@ -5,12 +5,10 @@ export default function ThemeToggle() {
   const [useDarkMode, setUseDarkMode] = useState(
     document.documentElement.dataset.theme === 'dark'
   )
-  useEffect(() => {
-    document.documentElement.dataset.theme = useDarkMode ? 'dark' : 'light'
-  }, [useDarkMode])
 
   const handleToggleTheme = (useDarkMode: boolean) => {
     window.localStorage.setItem('theme', useDarkMode ? 'dark' : 'light')
+    document.documentElement.dataset.theme = useDarkMode ? 'dark' : 'light'
     setUseDarkMode(useDarkMode)
   }
 
