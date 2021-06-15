@@ -1,12 +1,27 @@
-import Link from 'next/link'
 import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
 import classnames from 'classnames'
+import PageLink from '../PageLink/PageLink'
 import styles from './Header.module.scss'
 
 const ThemeToggle = dynamic(() => import('../ThemeToggle/ThemeToggle'), {
   ssr: false,
 })
+
+const PAGE_LINKS = [
+  {
+    label: 'Home',
+    href: '/',
+  },
+  {
+    label: 'About',
+    href: '/about',
+  },
+  {
+    label: 'Posts',
+    href: '/posts',
+  },
+]
 
 export interface Props {
   className: string
@@ -18,34 +33,16 @@ export default function Header({ className }: Props) {
     <div className={classnames(styles.header, className)}>
       <ThemeToggle />
 
-      <nav className={styles.pageLinks}>
-        <Link href='/'>
-          <a
-            className={classnames(styles.pageLink, {
-              [styles.activePage]: router.pathname === '/',
-            })}
-          >
-            home
-          </a>
-        </Link>
-        <Link href='/about'>
-          <a
-            className={classnames(styles.pageLink, {
-              [styles.activePage]: router.pathname === '/about',
-            })}
-          >
-            about
-          </a>
-        </Link>
-        <Link href='/posts'>
-          <a
-            className={classnames(styles.pageLink, {
-              [styles.activePage]: router.pathname === '/posts',
-            })}
-          >
-            posts
-          </a>
-        </Link>
+      <nav>
+        {PAGE_LINKS.map(({ label, href }) => (
+          <PageLink
+            key={href}
+            className={styles.pageLinks}
+            href={href}
+            isActive={router.pathname === href}
+            label={label}
+          />
+        ))}
       </nav>
     </div>
   )

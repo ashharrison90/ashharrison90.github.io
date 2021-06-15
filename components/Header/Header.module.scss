@@ -13,10 +13,8 @@
   z-index: 1;
 }
 
-.pageLink {
-  color: inherit;
+.pageLinks {
   margin: 0 0.5em;
-  text-decoration: none;
 
   &:first-of-type {
     margin-left: 0;
@@ -25,16 +23,4 @@
   &:last-of-type {
     margin-right: 0;
   }
-
-  &:hover,
-  &:focus,
-  &:active {
-    color: var(--interactive);
-    outline: none;
-    text-decoration: none;
-  }
-}
-
-.activePage {
-  color: var(--interactive);
 }
