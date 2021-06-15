@@ -34,15 +34,15 @@
 }
 
 .coverImage {
-  background-position: center;
+  background-position: top;
   background-size: cover;
+  height: 100%;
   position: absolute;
   transform: translateZ(-4px) scale(5);
-  transform-origin: 0 0;
+  transform-origin: bottom right;
   width: 100%;
 }
 
-.padder,
-.coverImage {
+.padder {
   height: 50vh;
 }

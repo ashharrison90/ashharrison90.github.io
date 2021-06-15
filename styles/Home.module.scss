@@ -22,7 +22,7 @@
   background-size: cover;
   height: 100vh;
   position: absolute;
-  transform-origin: 0 0;
+  transform-origin: bottom right;
   width: 100vw;
 }
 
@@ -33,11 +33,6 @@
 .fallback {
   background-image: url('/assets/home/hero-fallback.png');
   transform: translateZ(-1px) scale(2);
-}
-
-.heroBackground,
-.heroCutout {
-  transition: opacity 0.5s ease;
 }
 
 .heroBackground {

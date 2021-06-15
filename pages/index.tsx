@@ -37,7 +37,11 @@ export default function Home({ allPosts }: Props) {
   })
   const backgroundContent = (
     <>
-      <div className={styles.fallback} />
+      <div
+        className={classnames(styles.fallback, {
+          [styles.hide]: pageLoaded,
+        })}
+      />
       <div
         className={classnames(styles.heroBackground, {
           [styles.hide]: !pageLoaded,
