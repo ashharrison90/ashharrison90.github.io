@@ -8,7 +8,7 @@
   justify-content: space-between;
   padding: 0 1em;
   position: fixed;
-  transition: opacity 0.5s ease;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
   width: 100%;
   z-index: 1;
 }
