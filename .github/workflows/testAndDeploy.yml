@@ -1,0 +1,30 @@
+name: Test and Deploy
+on: push
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2
+      - name: Install 🔧
+        run: npm install
+      - name: Test 🔧
+        run: npm test
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    needs: test
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2
+      - name: Install 🔧
+        run: npm install
+      - name: Build 🔧
+        run: |
+          npm run build
+          touch out/.nojekyll
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@4.1.1
+        with:
+          BRANCH: gh-pages # The branch the action should deploy to.
+          FOLDER: out # The folder the action should deploy.
