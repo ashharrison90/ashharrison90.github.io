@@ -16,7 +16,7 @@ export interface Props {
 
 export default function Layout({
   backgroundContent,
-  backgroundHeight,
+  backgroundHeight = 0,
   blurBackground,
   children,
   foregroundContent,
@@ -67,7 +67,10 @@ export default function Layout({
         >
           <div
             ref={foregroundContentRef}
-            style={{ height: `${backgroundHeight}%` }}
+            style={{
+              height: `${backgroundHeight}%`,
+              minHeight: `${backgroundHeight}%`,
+            }}
             className={styles.foregroundContentRef}
           >
             {foregroundContent}
