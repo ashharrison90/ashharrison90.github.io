@@ -5,11 +5,16 @@ import styles from './PageLink.module.scss'
 export interface Props {
   className?: string
   href: string
-  isActive: boolean
+  isActive?: boolean
   label: string
 }
 
-export default function PageLink({ className, href, isActive, label }: Props) {
+export default function PageLink({
+  className,
+  href,
+  isActive = false,
+  label,
+}: Props) {
   return (
     <Link href={href}>
       <a
