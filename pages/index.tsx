@@ -69,6 +69,7 @@ export default function Home({ allPosts }: Props) {
       hideHeaderUntilScroll
       blurBackground={!pageLoaded}
       backgroundContent={backgroundContent}
+      backgroundHeight={100}
       foregroundContent={foregroundContent}
     >
       <Head>

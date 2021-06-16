@@ -7,6 +7,7 @@ import styles from './Layout.module.scss'
 
 export interface Props {
   backgroundContent?: ReactNode
+  backgroundHeight?: number
   blurBackground?: boolean
   children: ReactNode
   foregroundContent?: ReactNode
@@ -15,6 +16,7 @@ export interface Props {
 
 export default function Layout({
   backgroundContent,
+  backgroundHeight,
   blurBackground,
   children,
   foregroundContent,
@@ -65,6 +67,7 @@ export default function Layout({
         >
           <div
             ref={foregroundContentRef}
+            style={{ height: `${backgroundHeight}%` }}
             className={styles.foregroundContentRef}
           >
             {foregroundContent}

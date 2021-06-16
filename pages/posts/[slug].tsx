@@ -45,6 +45,7 @@ export default function Post({ post }: Props) {
         <Layout
           foregroundContent={foregroundContent}
           backgroundContent={backgroundContent}
+          backgroundHeight={50}
         >
           <Head>
             <title>{post.title}</title>

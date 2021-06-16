@@ -13,12 +13,11 @@
 }
 
 .foreground {
-  display: flex;
-  flex-direction: column;
-  min-height: 100%;
+  height: 100%;
   transform-origin: bottom right;
   transform: translateZ(0);
   transition: background-color 0.5s linear, backdrop-filter 0.5s linear;
+  width: 100%;
 }
 
 .blur {
@@ -28,6 +27,7 @@
 .foregroundContentRef {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 .contentContainer {
