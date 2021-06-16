@@ -10,6 +10,8 @@ jobs:
         run: npm install
       - name: Test 🔧
         run: npm test
+      - name: Build 🔧
+        run: npm run build
   build-and-deploy:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
