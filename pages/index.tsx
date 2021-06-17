@@ -57,7 +57,7 @@ export default function Home({ allPosts }: Props) {
 
   const foregroundContent = (
     <div className={styles.heroTitleContainer}>
-      <div className={styles.heroTitle}>
+      <div>
         <h1 className={styles.line1}>hi</h1>
         <h1 className={styles.line2}>i'm ash</h1>
       </div>
