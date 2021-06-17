@@ -19,5 +19,6 @@
   &:focus {
     background: linear-gradient(120deg, var(--focus), var(--focus-alt));
     outline: none;
+    text-decoration: none;
   }
 }

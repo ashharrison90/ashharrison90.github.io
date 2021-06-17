@@ -12,9 +12,9 @@ export interface Props {
 export default function LinkButton({ children, className, href }: Props) {
   return (
     <Link href={href}>
-      <button className={classnames(styles.button, className)}>
+      <a role='button' className={classnames(styles.button, className)}>
         {children}
-      </button>
+      </a>
     </Link>
   )
 }
