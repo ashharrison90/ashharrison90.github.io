@@ -24,7 +24,7 @@ const PAGE_LINKS = [
 ]
 
 export interface Props {
-  className: string
+  className?: string
 }
 
 export default function Header({ className }: Props) {
