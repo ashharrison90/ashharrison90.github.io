@@ -29,7 +29,7 @@ type SocialData = Array<keyof typeof socialData>
 
 export default function Footer() {
   return (
-    <div className={styles.footer}>
+    <footer className={styles.footer}>
       <div className={styles.socialLinks}>
         {(Object.keys(socialData) as SocialData).map((socialType) => (
           <SocialLink
@@ -40,6 +40,6 @@ export default function Footer() {
           />
         ))}
       </div>
-    </div>
+    </footer>
   )
 }

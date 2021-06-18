@@ -30,7 +30,7 @@ export interface Props {
 export default function Header({ className }: Props) {
   const router = useRouter()
   return (
-    <div className={classnames(styles.header, className)}>
+    <header className={classnames(styles.header, className)}>
       <ThemeToggle />
 
       <nav>
@@ -44,6 +44,6 @@ export default function Header({ className }: Props) {
           />
         ))}
       </nav>
-    </div>
+    </header>
   )
 }

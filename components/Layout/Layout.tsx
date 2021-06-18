@@ -55,9 +55,10 @@ export default function Layout({
           [styles.hideHeader]: !showHeader,
         })}
       />
-      <div className={styles.parallaxContainer} ref={containerRef}>
+      <div className={styles.parallaxContainer} ref={containerRef} role='main'>
         {backgroundContent}
         <div
+          data-testid='backgroundOverlay'
           className={classnames(styles.foreground, {
             [styles.blur]: blurBackground,
           })}
