@@ -49,11 +49,6 @@ describe('JobSummary', () => {
     expect(dateRange).toBeInTheDocument()
   })
 
-  it('displays the company name', () => {
-    const companyName = screen.getByText(mockCompany)
-    expect(companyName).toBeInTheDocument()
-  })
-
   it('displays the summary', () => {
     const summary = screen.getByText(mockSummary)
     expect(summary).toBeInTheDocument()

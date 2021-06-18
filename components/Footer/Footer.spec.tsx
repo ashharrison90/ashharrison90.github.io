@@ -2,9 +2,42 @@ import { render, screen } from '@testing-library/react'
 import Footer from './Footer'
 
 describe('Footer', () => {
-  it('has the correct number of social links', () => {
+  beforeEach(() => {
     render(<Footer />)
-    const links = screen.getAllByRole('link')
-    expect(links.length).toEqual(6)
+  })
+
+  it('renders a footer', () => {
+    const footer = screen.getByRole('contentinfo')
+    expect(footer).toBeInTheDocument()
+  })
+
+  it('has an email link', () => {
+    const link = screen.getByRole('link', { name: 'email' })
+    expect(link).toBeInTheDocument()
+  })
+
+  it('has a github link', () => {
+    const link = screen.getByRole('link', { name: 'github' })
+    expect(link).toBeInTheDocument()
+  })
+
+  it('has a linkedin link', () => {
+    const link = screen.getByRole('link', { name: 'linkedin' })
+    expect(link).toBeInTheDocument()
+  })
+
+  it('has a facebook link', () => {
+    const link = screen.getByRole('link', { name: 'facebook' })
+    expect(link).toBeInTheDocument()
+  })
+
+  it('has an instagram link', () => {
+    const link = screen.getByRole('link', { name: 'instagram' })
+    expect(link).toBeInTheDocument()
+  })
+
+  it('has a twitter link', () => {
+    const link = screen.getByRole('link', { name: 'twitter' })
+    expect(link).toBeInTheDocument()
   })
 })

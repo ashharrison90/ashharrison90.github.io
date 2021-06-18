@@ -13,6 +13,18 @@ jest.mock('next/router', () => ({
 }))
 
 describe('Header', () => {
+  it('renders a header element', async () => {
+    render(<Header />)
+    const header = await screen.findByRole('banner')
+    expect(header).toBeInTheDocument()
+  })
+
+  it('renders a navigation section', async () => {
+    render(<Header />)
+    const navigation = await screen.findByRole('navigation')
+    expect(navigation).toBeInTheDocument()
+  })
+
   it('has a link to the home page', async () => {
     render(<Header />)
     const link = await screen.findByRole('link', { name: 'Home' })
@@ -34,7 +46,7 @@ describe('Header', () => {
   it('contains the theme toggle', async () => {
     render(<Header />)
     const themeToggle = await screen.findByRole('checkbox', {
-      name: 'themeToggle',
+      name: 'Toggle theme',
     })
     expect(themeToggle).toBeInTheDocument()
   })

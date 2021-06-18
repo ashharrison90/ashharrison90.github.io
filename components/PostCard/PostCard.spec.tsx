@@ -40,6 +40,11 @@ describe('PostCard', () => {
     expect(date).toBeInTheDocument()
   })
 
+  it('uses the title to name the link', () => {
+    const link = screen.getByRole('link', { name: mockTitle })
+    expect(link).toBeInTheDocument()
+  })
+
   it('takes you to the post when clicked', () => {
     const link = screen.getByRole('link')
     expect(link).toHaveAttribute('href', `/posts/${mockSlug}`)

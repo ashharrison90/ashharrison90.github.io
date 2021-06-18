@@ -19,6 +19,7 @@ export default function PostCard({
   return (
     <Link as={`/posts/${slug}`} href='/posts/[slug]'>
       <a
+        aria-label={title}
         className={styles.card}
         style={{ backgroundImage: `url(${coverImage})` }}
       >

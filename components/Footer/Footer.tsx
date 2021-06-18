@@ -36,6 +36,7 @@ export default function Footer() {
             key={socialType}
             className={styles.socialLink}
             icon={iconMap[socialType]}
+            label={socialType}
             link={socialData[socialType]}
           />
         ))}

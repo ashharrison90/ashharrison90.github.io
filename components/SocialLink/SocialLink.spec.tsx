@@ -3,53 +3,37 @@ import SocialLink from './SocialLink'
 
 describe('SocialLink', () => {
   const myMockClass = 'mockClass'
+  const myMockLabel = 'mockLabel'
   const myMockLink = 'testLink'
   const myMockElement = <div data-testid='mockIcon' />
 
-  it('sets the link correctly', () => {
+  beforeEach(() => {
     render(
       <SocialLink
+        label={myMockLabel}
         link={myMockLink}
         icon={myMockElement}
         className={myMockClass}
       />
     )
-    const link = screen.getByRole('link')
+  })
+
+  it('sets the link correctly', () => {
+    const link = screen.getByRole('link', { name: myMockLabel })
     expect(link).toHaveAttribute('href', myMockLink)
   })
 
   it('opens the link in a new tab', () => {
-    render(
-      <SocialLink
-        link={myMockLink}
-        icon={myMockElement}
-        className={myMockClass}
-      />
-    )
-    const link = screen.getByRole('link')
+    const link = screen.getByRole('link', { name: myMockLabel })
     expect(link).toHaveAttribute('target', '_blank')
   })
 
   it('attaches any class passed to the link', () => {
-    render(
-      <SocialLink
-        link={myMockLink}
-        icon={myMockElement}
-        className={myMockClass}
-      />
-    )
-    const link = screen.getByRole('link')
+    const link = screen.getByRole('link', { name: myMockLabel })
     expect(link.className).toContain(myMockClass)
   })
 
   it('renders the icon', () => {
-    render(
-      <SocialLink
-        link={myMockLink}
-        icon={myMockElement}
-        className={myMockClass}
-      />
-    )
     const icon = screen.getByTestId('mockIcon')
     expect(icon).toBeInTheDocument()
   })

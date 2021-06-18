@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import styles from './ThemeToggle.module.scss'
 
 export default function ThemeToggle() {
@@ -16,7 +16,7 @@ export default function ThemeToggle() {
     <div className={styles.toggleContainer}>
       <input
         id='themeToggle'
-        aria-label='themeToggle'
+        aria-label='Toggle theme'
         checked={useDarkMode}
         className={styles.input}
         onChange={(event) => handleToggleTheme(event.target.checked)}
