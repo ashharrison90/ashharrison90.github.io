@@ -33,13 +33,17 @@ describe('Layout', () => {
     })
 
     it('renders the foreground content passed to it', async () => {
-      component.rerender(<Layout foregroundContent={mockForeground}></Layout>)
+      component.rerender(
+        <Layout foregroundContent={mockForeground}>{mockChild}</Layout>
+      )
       const link = await screen.findByTestId(foregroundId)
       expect(link).toBeInTheDocument()
     })
 
     it('renders the background content passed to it', async () => {
-      component.rerender(<Layout backgroundContent={mockBackground}></Layout>)
+      component.rerender(
+        <Layout backgroundContent={mockBackground}>{mockChild}</Layout>
+      )
       const link = await screen.findByTestId(backgroundId)
       expect(link).toBeInTheDocument()
     })
