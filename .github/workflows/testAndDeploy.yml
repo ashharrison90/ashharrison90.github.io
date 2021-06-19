@@ -13,7 +13,9 @@ jobs:
       - name: Build 🔧
         run: npm run build
       - name: E2E 🔧
-        run: npm run test-e2e-ci
+        run: |
+          npx playwright install-deps
+          npm run test-e2e-ci
   build-and-deploy:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
