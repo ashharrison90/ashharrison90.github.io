@@ -99,7 +99,6 @@ describe('Layout', () => {
         await screen.findByTestId(childId)
       })
 
-      // TODO: fix this test. it's just here for coverage at the moment...
       it('dims the background once scrolled', async () => {
         let backgroundOverlay = await screen.findByTestId('backgroundOverlay')
         expect(backgroundOverlay).toBeInTheDocument()
@@ -107,11 +106,24 @@ describe('Layout', () => {
           backgroundColor: 'rgba(var(--hero-background-rgb), 0)',
         })
         const scrollContainer = await screen.findByRole('main')
+        jest
+          .spyOn(global.HTMLElement.prototype, 'getBoundingClientRect')
+          .mockReturnValue({
+            bottom: 0,
+            height: 1000,
+            left: 0,
+            right: 0,
+            toJSON: () => {},
+            top: 500,
+            width: 0,
+            x: 0,
+            y: 0,
+          })
         fireEvent.scroll(scrollContainer, { target: { scrollTop: 100 } })
         backgroundOverlay = await screen.findByTestId('backgroundOverlay')
         expect(backgroundOverlay).toBeInTheDocument()
         expect(backgroundOverlay).toHaveStyle({
-          backgroundColor: 'rgba(var(--hero-background-rgb), 0)',
+          backgroundColor: 'rgba(var(--hero-background-rgb), 0.5)',
         })
       })
     })
