@@ -12,6 +12,8 @@ jobs:
         run: npm test
       - name: Build 🔧
         run: npm run build
+      - name: E2E 🔧
+        run: npm run test-e2e-ci
   build-and-deploy:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
