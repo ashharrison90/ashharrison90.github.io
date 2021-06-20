@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import { useState, useEffect } from 'react'
 import classnames from 'classnames'
-import { getAllPosts } from '../lib/postsApi'
+import { getAllPosts, PostData } from '../lib/postsApi'
 import PostGrid from '../components/PostGrid/PostGrid'
 import PostCard from '../components/PostCard/PostCard'
 import Layout from '../components/Layout/Layout'
@@ -9,17 +9,7 @@ import LinkButton from '../components/LinkButton/LinkButton'
 import styles from '../styles/Home.module.scss'
 
 export interface Props {
-  allPosts: {
-    title: string
-    date: string
-    author: {
-      name: string
-      image: string
-    }
-    slug: string
-    coverImage: string
-    excerpt: string
-  }[]
+  allPosts: PostData[]
 }
 
 export default function Home({ allPosts }: Props) {
@@ -34,20 +24,23 @@ export default function Home({ allPosts }: Props) {
       window.addEventListener('load', handlePageLoad)
       return () => window.removeEventListener('load', handlePageLoad)
     }
-  })
+  }, [])
   const backgroundContent = (
     <>
       <div
+        data-testid='heroFallback'
         className={classnames(styles.fallback, {
           [styles.hide]: pageLoaded,
         })}
       />
       <div
+        data-testid='heroBackground'
         className={classnames(styles.heroBackground, {
           [styles.hide]: !pageLoaded,
         })}
       />
       <div
+        data-testid='heroCutout'
         className={classnames(styles.heroCutout, {
           [styles.hide]: !pageLoaded,
         })}

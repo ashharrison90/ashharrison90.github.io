@@ -1,4 +1,3 @@
-import { useRouter } from 'next/router'
 import ErrorPage from 'next/error'
 import Head from 'next/head'
 import { useEffect } from 'react'
@@ -26,10 +25,7 @@ export default function Post({ post }: Props) {
   useEffect(() => {
     hljs.highlightAll()
   }, [])
-  const router = useRouter()
-  if (!router.isFallback && !post.slug) {
-    return <ErrorPage statusCode={404} />
-  }
+
   const backgroundContent = (
     <div
       className={styles.coverImage}
@@ -37,33 +33,28 @@ export default function Post({ post }: Props) {
     />
   )
   const foregroundContent = <div className={styles.padder} />
+
   return (
-    <>
-      {router.isFallback ? (
-        <div>Loading…</div>
-      ) : (
-        <Layout
-          foregroundContent={foregroundContent}
-          backgroundContent={backgroundContent}
-          backgroundHeight={50}
-        >
-          <Head>
-            <title>{post.title}</title>
-            <meta name='description' content={post.excerpt} />
-          </Head>
-          <div className={styles.titleContainer}>
-            <h1 className={styles.title}>{post.title}</h1>
-            <div className={styles.date}>
-              {new Date(post.date!).toLocaleDateString()}
-            </div>
-          </div>
-          <div
-            className={styles.content}
-            dangerouslySetInnerHTML={{ __html: post.content ?? '' }}
-          />
-        </Layout>
-      )}
-    </>
+    <Layout
+      foregroundContent={foregroundContent}
+      backgroundContent={backgroundContent}
+      backgroundHeight={50}
+    >
+      <Head>
+        <title>{post.title}</title>
+        <meta name='description' content={post.excerpt} />
+      </Head>
+      <div className={styles.titleContainer}>
+        <h1 className={styles.title}>{post.title}</h1>
+        <div className={styles.date}>
+          {new Date(post.date!).toLocaleDateString()}
+        </div>
+      </div>
+      <div
+        className={styles.content}
+        dangerouslySetInnerHTML={{ __html: post.content }}
+      />
+    </Layout>
   )
 }
 
@@ -71,7 +62,7 @@ export async function getStaticProps({
   params,
 }: GetStaticPropsContext<{ slug: string }>) {
   const post = getPostBySlug(params!.slug)
-  const content = await markdownToHtml(post.content || '')
+  const content = await markdownToHtml(post.content)
 
   return {
     props: {
