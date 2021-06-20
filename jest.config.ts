@@ -21,13 +21,21 @@ export default {
 
   // An array of glob patterns indicating a set of files for which coverage information should be collected
   // collectCoverageFrom: undefined,
+  // collectCoverageFrom: [
+  //   "**/*.ts?(x)"
+  // ],
 
   // The directory where Jest should output its coverage files
   coverageDirectory: 'coverage',
 
   // An array of regexp pattern strings used to skip coverage collection
   // coveragePathIgnorePatterns: [
-  //   "/node_modules/"
+  //   "/node_modules/",
+  //   "/pages/_app.tsx",
+  //   "/pages/_document.tsx",
+  //   ".spec.tsx?$",
+  //   ".d.ts$",
+  //   ".config.ts$"
   // ],
 
   // Indicates which provider should be used to instrument code for coverage
@@ -161,7 +169,7 @@ export default {
   // ],
 
   // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
-  testPathIgnorePatterns: ['/node_modules/', '/test-e2e/'],
+  testPathIgnorePatterns: ['/node_modules/', '/__test__/e2e/'],
 
   // The regexp pattern or array of patterns that Jest uses to detect test files
   // testRegex: [],
