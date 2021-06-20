@@ -1,22 +1,12 @@
 import Head from 'next/head'
-import { getAllPosts } from '../lib/postsApi'
+import { getAllPosts, PostData } from '../lib/postsApi'
 import PostGrid from '../components/PostGrid/PostGrid'
 import PostCard from '../components/PostCard/PostCard'
 import Layout from '../components/Layout/Layout'
 import styles from '../styles/Posts.module.scss'
 
 export interface Props {
-  allPosts: {
-    title: string
-    date: string
-    author: {
-      name: string
-      image: string
-    }
-    slug: string
-    coverImage: string
-    excerpt: string
-  }[]
+  allPosts: PostData[]
 }
 
 export default function Posts({ allPosts }: Props) {
