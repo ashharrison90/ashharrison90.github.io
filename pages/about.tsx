@@ -4,16 +4,11 @@ import Layout from '../components/Layout/Layout'
 import styles from '../styles/About.module.scss'
 import JobSummary from '../components/JobSummary/JobSummary'
 import markdownToHtml from '../lib/markdownToHtml'
-import IbmSvg from '../public/assets/about/ibm.svg'
-import QinetiqSvg from '../public/assets/about/qinetiq.svg'
-import DurhamSvg from '../public/assets/about/durham.svg'
-import GrafanaSvg from '../public/assets/about/grafana.svg'
+import Ibm from '../public/assets/about/ibm.svg'
+import Qinetiq from '../public/assets/about/qinetiq.svg'
+import Durham from '../public/assets/about/durham.svg'
+import Grafana from '../public/assets/about/grafana.svg'
 import { ReactNode } from 'react'
-
-const Durham = DurhamSvg as any
-const Ibm = IbmSvg as any
-const Grafana = GrafanaSvg as any
-const Qinetiq = QinetiqSvg as any
 
 const iconMap: Record<string, ReactNode> = {
   durham: <Durham />,

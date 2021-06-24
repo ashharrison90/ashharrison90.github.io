@@ -1,20 +1,13 @@
 import { ReactNode } from 'react'
 import socialData from './assets/socialData.json'
 import SocialLink from '../SocialLink/SocialLink'
-import EmailSvg from './assets/envelope.svg'
-import GithubSvg from './assets/github.svg'
-import LinkedInSvg from './assets/linkedin.svg'
-import FacebookSvg from './assets/facebook.svg'
-import InstagramSvg from './assets/instagram.svg'
-import TwitterSvg from './assets/twitter.svg'
+import Email from './assets/envelope.svg'
+import Github from './assets/github.svg'
+import LinkedIn from './assets/linkedin.svg'
+import Facebook from './assets/facebook.svg'
+import Instagram from './assets/instagram.svg'
+import Twitter from './assets/twitter.svg'
 import styles from './Footer.module.scss'
-
-const Email = EmailSvg as any
-const Github = GithubSvg as any
-const LinkedIn = LinkedInSvg as any
-const Facebook = FacebookSvg as any
-const Instagram = InstagramSvg as any
-const Twitter = TwitterSvg as any
 
 const iconMap: Record<string, ReactNode> = {
   email: <Email />,
