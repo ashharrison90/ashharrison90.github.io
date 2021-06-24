@@ -38,7 +38,10 @@
   background-size: cover;
   height: 100%;
   position: absolute;
-  transform: translateZ(-4px) scale(5);
+  // why is this scale so weird?
+  // because windows doesn't calculate the scale properly.
+  // so we have to overscale slightly to prevent an ugly gap
+  transform: translateZ(-4px) scale(5.1);
   transform-origin: bottom right;
   width: 100%;
 }
