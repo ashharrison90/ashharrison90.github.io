@@ -31,6 +31,7 @@ export default {
     '/pages/_app.tsx',
     '/pages/_document.tsx',
     '.spec.tsx?$',
+    '.stories.tsx?$',
     '.d.ts$',
     '.config.ts$',
   ],
