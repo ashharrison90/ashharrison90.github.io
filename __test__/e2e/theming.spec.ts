@@ -1,6 +1,3 @@
-// hack for now
-import ''
-
 describe('theming', () => {
   const themeToggleSelector = '[aria-label="Toggle theme"]'
 
@@ -34,3 +31,6 @@ describe('theming', () => {
     expect(await page.isChecked(themeToggleSelector)).toEqual(true)
   })
 })
+
+// slight hack to let typescript know this is a module
+export {}
