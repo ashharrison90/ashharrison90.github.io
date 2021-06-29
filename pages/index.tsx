@@ -90,7 +90,7 @@ export default function Home({ allPosts }: Props) {
               Music and films if I'm not.
             </p>
           </div>
-          <LinkButton className={styles.aboutButton} href='about'>
+          <LinkButton className={styles.aboutButton} href='/about'>
             Learn more
           </LinkButton>
         </div>
@@ -109,7 +109,7 @@ export default function Home({ allPosts }: Props) {
               />
             ))}
           </PostGrid>
-          <LinkButton className={styles.postsButton} href='posts'>
+          <LinkButton className={styles.postsButton} href='/posts'>
             View all posts
           </LinkButton>
         </div>
