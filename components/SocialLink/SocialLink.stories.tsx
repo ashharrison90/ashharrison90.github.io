@@ -17,7 +17,7 @@ const icons = {
 }
 
 export default {
-  title: 'Components/SocialLink',
+  title: 'Components/Footer/SocialLink',
   component: SocialLink,
   argTypes: {
     className: {

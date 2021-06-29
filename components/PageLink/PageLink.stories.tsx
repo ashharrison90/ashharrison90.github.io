@@ -2,7 +2,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 import PageLink from './PageLink'
 
 export default {
-  title: 'Components/PageLink',
+  title: 'Components/Header/PageLink',
   component: PageLink,
   argTypes: {
     className: {
