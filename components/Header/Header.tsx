@@ -11,15 +11,15 @@ const ThemeToggle = dynamic(() => import('../ThemeToggle/ThemeToggle'), {
 const PAGE_LINKS = [
   {
     label: 'Home',
-    href: '/',
+    href: '',
   },
   {
     label: 'About',
-    href: '/about',
+    href: 'about',
   },
   {
     label: 'Posts',
-    href: '/posts',
+    href: 'posts',
   },
 ]
 
