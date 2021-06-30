@@ -1,12 +1,12 @@
 import { ReactNode } from 'react'
 import socialData from './assets/socialData.json'
 import SocialLink from '../SocialLink/SocialLink'
-import Email from './assets/envelope.svg'
-import Github from './assets/github.svg'
-import LinkedIn from './assets/linkedin.svg'
-import Facebook from './assets/facebook.svg'
-import Instagram from './assets/instagram.svg'
-import Twitter from './assets/twitter.svg'
+import Email from '../../public/assets/icons/envelope.svg'
+import Github from '../../public/assets/icons/github.svg'
+import LinkedIn from '../../public/assets/icons/linkedin.svg'
+import Facebook from '../../public/assets/icons/facebook.svg'
+import Instagram from '../../public/assets/icons/instagram.svg'
+import Twitter from '../../public/assets/icons/twitter.svg'
 import styles from './Footer.module.scss'
 
 const iconMap: Record<string, ReactNode> = {

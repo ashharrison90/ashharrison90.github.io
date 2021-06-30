@@ -23,4 +23,19 @@ describe('PostTitle', () => {
     const date = screen.getByText(mockDate)
     expect(date).toBeInTheDocument()
   })
+
+  it('has a "Share to LinkedIn" link', () => {
+    const link = screen.getByRole('link', { name: 'Share to LinkedIn' })
+    expect(link).toBeInTheDocument()
+  })
+
+  it('has a "Share to Reddit" link', () => {
+    const link = screen.getByRole('link', { name: 'Share to Reddit' })
+    expect(link).toBeInTheDocument()
+  })
+
+  it('has a "Share to Twitter" link', () => {
+    const link = screen.getByRole('link', { name: 'Share to Twitter' })
+    expect(link).toBeInTheDocument()
+  })
 })
