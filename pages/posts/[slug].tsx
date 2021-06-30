@@ -1,4 +1,3 @@
-import ErrorPage from 'next/error'
 import Head from 'next/head'
 import { useEffect } from 'react'
 import { getPostBySlug, getAllPosts, PostData } from '../../lib/postsApi'
@@ -16,6 +15,7 @@ hljs.registerLanguage('typescript', typescript)
 hljs.registerLanguage('python', python)
 hljs.registerLanguage('scss', scss)
 import 'highlight.js/styles/monokai-sublime.css'
+import PostTitle from '../../components/PostTitle/PostTitle'
 
 export interface Props {
   post: PostData
@@ -44,12 +44,7 @@ export default function Post({ post }: Props) {
         <title>{post.title}</title>
         <meta name='description' content={post.excerpt} />
       </Head>
-      <div className={styles.titleContainer}>
-        <h1 className={styles.title}>{post.title}</h1>
-        <div className={styles.date}>
-          {new Date(post.date!).toLocaleDateString()}
-        </div>
-      </div>
+      <PostTitle date={post.date} title={post.title} />
       <div
         className={styles.content}
         dangerouslySetInnerHTML={{ __html: post.content }}
