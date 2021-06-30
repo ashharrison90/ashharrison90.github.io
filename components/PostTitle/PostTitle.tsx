@@ -1,4 +1,5 @@
 import SocialLink from '../SocialLink/SocialLink'
+import ShareButton from '../ShareButton/ShareButton'
 import LinkedIn from '../../public/assets/icons/linkedin.svg'
 import Reddit from '../../public/assets/icons/reddit.svg'
 import Twitter from '../../public/assets/icons/twitter.svg'
@@ -39,9 +40,11 @@ const shareData: Record<string, ShareData> = {
 
 export default function PostTitle({ date, title }: Props) {
   const [pageUrl, setPageUrl] = useState('')
+  const [isNativeShare, setIsNativeShare] = useState(false)
 
   useEffect(() => {
     setPageUrl(window.location.href)
+    setIsNativeShare(!!navigator.share)
   }, [])
 
   return (
@@ -52,6 +55,7 @@ export default function PostTitle({ date, title }: Props) {
           {new Date(date!).toLocaleDateString()}
         </div>
         <div className={styles.shareLinks}>
+          {isNativeShare && <ShareButton title={title} url={pageUrl} />}
           {Object.keys(shareData).map((item) => (
             <SocialLink
               key={item}

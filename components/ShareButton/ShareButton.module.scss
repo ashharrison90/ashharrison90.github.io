@@ -1,0 +1,22 @@
+.button {
+  background-color: transparent;
+  border: none;
+  color: var(--icon-secondary);
+  cursor: pointer;
+  display: flex;
+  margin: 0;
+  padding: 4px;
+
+  &:hover,
+  &:focus,
+  &:active {
+    color: var(--interactive);
+    outline: none;
+  }
+}
+
+.button svg {
+  fill: currentColor;
+  height: 24px;
+  width: 24px;
+}
