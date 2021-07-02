@@ -27,19 +27,25 @@ export default function Home({ allPosts }: Props) {
   }, [])
   const backgroundContent = (
     <>
-      <div
+      <img
+        alt=''
+        src='/assets/home/hero-fallback.png'
         data-testid='heroFallback'
         className={classnames(styles.fallback, {
           [styles.hide]: pageLoaded,
         })}
       />
-      <div
+      <img
+        alt='A nice background'
+        src='/assets/home/hero-background.png'
         data-testid='heroBackground'
         className={classnames(styles.heroBackground, {
           [styles.hide]: !pageLoaded,
         })}
       />
-      <div
+      <img
+        alt='Me'
+        src='/assets/home/hero-cutout.png'
         data-testid='heroCutout'
         className={classnames(styles.heroCutout, {
           [styles.hide]: !pageLoaded,

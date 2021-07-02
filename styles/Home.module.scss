@@ -18,9 +18,9 @@
 .fallback,
 .heroBackground,
 .heroCutout {
-  background-position: 75%;
-  background-size: cover;
   height: 100%;
+  object-fit: cover;
+  object-position: 75%;
   position: absolute;
   transform-origin: bottom right;
   width: 100%;
@@ -31,7 +31,6 @@
 }
 
 .fallback {
-  background-image: url('/assets/home/hero-fallback.png');
   box-shadow: inset 0 0 60px 0 black;
   // why is this scale so weird?
   // because windows doesn't calculate the scale properly.
@@ -40,7 +39,6 @@
 }
 
 .heroBackground {
-  background-image: url('/assets/home/hero-background.png');
   // why is this scale so weird?
   // because windows doesn't calculate the scale properly.
   // so we have to overscale slightly to prevent an ugly gap
@@ -48,7 +46,6 @@
 }
 
 .heroCutout {
-  background-image: url('/assets/home/hero-cutout.png');
   box-shadow: inset 0 0 60px 0 black;
   // why is this scale so weird?
   // because windows doesn't calculate the scale properly.

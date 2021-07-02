@@ -20,9 +20,9 @@
 }
 
 .coverImage {
-  background-position: top;
-  background-size: cover;
   height: 100%;
+  object-fit: cover;
+  object-position: top;
   position: absolute;
   // why is this scale so weird?
   // because windows doesn't calculate the scale properly.

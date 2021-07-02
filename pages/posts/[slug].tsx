@@ -27,10 +27,7 @@ export default function Post({ post }: Props) {
   }, [])
 
   const backgroundContent = (
-    <div
-      className={styles.coverImage}
-      style={{ backgroundImage: `url(${post.coverImage})` }}
-    />
+    <img alt='' className={styles.coverImage} src={post.coverImage} />
   )
   const foregroundContent = <div className={styles.padder} />
 
