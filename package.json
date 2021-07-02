@@ -39,7 +39,7 @@
     "css-loader": "^5.2.6",
     "gray-matter": "^4.0.3",
     "highlight.js": "^11.0.1",
-    "husky": "^6.0.0",
+    "husky": "^7.0.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^27.0.4",
     "jest-circus": "^27.0.4",
