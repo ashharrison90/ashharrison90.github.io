@@ -16,6 +16,8 @@ jobs:
         run: |
           npx playwright install-deps
           npm run test-e2e-ci
+      - name: Lighthouse 💡
+        run: npm run test-lighthouse
   build-and-deploy:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
