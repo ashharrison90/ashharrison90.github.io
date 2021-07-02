@@ -16,6 +16,7 @@ export default function SocialLink({ className, label, link, icon }: Props) {
       className={classnames(styles.link, className)}
       href={link}
       target='_blank'
+      rel='noreferrer'
     >
       {icon}
     </a>

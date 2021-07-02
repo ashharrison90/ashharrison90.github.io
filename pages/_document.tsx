@@ -20,7 +20,7 @@ class MyDocument extends Document {
     `
 
     return (
-      <Html>
+      <Html lang='en-GB'>
         <Head>
           <link rel='icon' type='image/svg' href='/favicon.svg' />
         </Head>

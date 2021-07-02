@@ -91,7 +91,7 @@ export default function Home({ allPosts }: Props) {
             </p>
           </div>
           <LinkButton className={styles.aboutButton} href='/about'>
-            Learn more
+            More about me
           </LinkButton>
         </div>
 
