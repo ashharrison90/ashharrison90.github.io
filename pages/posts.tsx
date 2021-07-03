@@ -21,10 +21,6 @@ const postFilter = (post: PostData, searchString: string) => {
 
 export default function Posts({ allPosts }: Props) {
   const [searchString, setSearchString] = useState('')
-  const searchRef = useRef<HTMLInputElement>(null)
-  useEffect(() => {
-    searchRef.current!.focus()
-  }, [])
 
   const filteredPosts = allPosts.filter((post) =>
     postFilter(post, searchString)
@@ -49,8 +45,8 @@ export default function Posts({ allPosts }: Props) {
       <div className={styles.searchContainer}>
         <Search
           className={styles.search}
-          ref={searchRef}
           onChange={(evt) => setSearchString(evt.target.value)}
+          placeholder='Search posts'
         />
       </div>
       <PostGrid className={styles.postGrid}>

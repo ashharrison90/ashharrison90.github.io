@@ -4,7 +4,6 @@ module.exports = {
       preset: 'lighthouse:no-pwa',
       assertions: {
         'csp-xss': 'off', // can't set the csp effectively with a static site in github pages
-        'non-composited-animations': 'off', // hero text animation
         'unused-javascript': 'off', // nextjs prefetching pages
         'uses-responsive-images': ['error', { maxLength: 1 }], // hero cutout image
       },

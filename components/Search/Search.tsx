@@ -1,20 +1,20 @@
-import { forwardRef, InputHTMLAttributes } from 'react'
+import { ChangeEvent } from 'react'
 import classnames from 'classnames'
 import styles from './Search.module.scss'
 
-const Search = forwardRef<
-  HTMLInputElement,
-  InputHTMLAttributes<HTMLInputElement>
->(({ className, onChange }, ref) => {
+export interface Props {
+  className?: string
+  onChange: (evt: ChangeEvent<HTMLInputElement>) => void
+  placeholder?: string
+}
+
+export default function Search({ className, onChange, placeholder }: Props) {
   return (
     <input
       type='search'
       className={classnames(className, styles.input)}
       onChange={onChange}
-      placeholder='Search posts'
-      ref={ref}
+      placeholder={placeholder}
     />
   )
-})
-
-export default Search
+}

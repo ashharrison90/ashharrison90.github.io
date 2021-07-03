@@ -1,4 +1,4 @@
-import { render, RenderResult, screen } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import Posts, { getStaticProps } from '../../pages/posts'
 import { PostData } from '../../lib/postsApi'
 import userEvent from '@testing-library/user-event'
@@ -16,11 +16,10 @@ jest.mock('next/router', () => ({
 
 describe('Posts', () => {
   let posts: PostData[]
-  let component: RenderResult
 
   beforeEach(async () => {
     posts = (await getStaticProps()).props.allPosts
-    component = render(<Posts allPosts={posts} />)
+    render(<Posts allPosts={posts} />)
     await screen.findByRole('heading', { name: 'posts' })
   })
 
@@ -51,12 +50,6 @@ describe('Posts', () => {
       const postExcerpt = await screen.findByText(post.excerpt)
       expect(postExcerpt).toBeInTheDocument()
     }
-  })
-
-  it('focuses the searchbox on first render', async () => {
-    const search = await screen.findByPlaceholderText('Search posts')
-    expect(search).toBeInTheDocument()
-    expect(document.activeElement).toBe(search)
   })
 
   it('filters the posts correctly when using the searchbox', async () => {
