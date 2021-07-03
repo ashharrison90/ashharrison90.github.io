@@ -1,0 +1,19 @@
+.input {
+  background-color: var(--container);
+  border: none;
+  color: var(--text-primary);
+  font: inherit;
+  outline: 1px solid var(--interactive);
+  padding: 0.5em;
+
+  &:active,
+  &:focus,
+  &:hover {
+    outline: 2px solid var(--focus);
+  }
+
+  &::placeholder {
+    color: var(--text-secondary);
+    text-transform: lowercase;
+  }
+}

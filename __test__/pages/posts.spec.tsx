@@ -1,6 +1,7 @@
-import { render, screen } from '@testing-library/react'
+import { render, RenderResult, screen } from '@testing-library/react'
 import Posts, { getStaticProps } from '../../pages/posts'
 import { PostData } from '../../lib/postsApi'
+import userEvent from '@testing-library/user-event'
 
 jest.mock('next/router', () => ({
   useRouter() {
@@ -15,10 +16,11 @@ jest.mock('next/router', () => ({
 
 describe('Posts', () => {
   let posts: PostData[]
+  let component: RenderResult
 
   beforeEach(async () => {
     posts = (await getStaticProps()).props.allPosts
-    render(<Posts allPosts={posts} />)
+    component = render(<Posts allPosts={posts} />)
     await screen.findByRole('heading', { name: 'posts' })
   })
 
@@ -49,5 +51,28 @@ describe('Posts', () => {
       const postExcerpt = await screen.findByText(post.excerpt)
       expect(postExcerpt).toBeInTheDocument()
     }
+  })
+
+  it('focuses the searchbox on first render', async () => {
+    const search = await screen.findByPlaceholderText('Search posts')
+    expect(search).toBeInTheDocument()
+    expect(document.activeElement).toBe(search)
+  })
+
+  it('filters the posts correctly when using the searchbox', async () => {
+    const postToFilter = posts[0]
+    const search = await screen.findByPlaceholderText('Search posts')
+    expect(search).toBeInTheDocument()
+    userEvent.type(search, postToFilter.title)
+    expect(search).toHaveValue(postToFilter.title)
+    posts.forEach((post) => {
+      if (post === postToFilter) {
+        const postTitle = screen.getByRole('link', { name: post.title })
+        expect(postTitle).toBeInTheDocument()
+      } else {
+        const postTitle = screen.queryByRole('link', { name: post.title })
+        expect(postTitle).toBe(null)
+      }
+    })
   })
 })

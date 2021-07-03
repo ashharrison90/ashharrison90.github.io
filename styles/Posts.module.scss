@@ -1,3 +1,9 @@
-.postGrid {
-  margin-top: 3em;
+.searchContainer {
+  display: flex;
+  justify-content: flex-end;
+  margin: 1em 0 1em 0;
+}
+
+.search {
+  max-width: 100%;
 }
