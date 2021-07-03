@@ -15,7 +15,7 @@ export interface Props {
   className?: string
   company: string
   jobTitle: string
-  icon: ReactNode
+  icon?: ReactNode
   startDate: string
   endDate?: string
   website: string

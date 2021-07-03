@@ -1,5 +1,5 @@
 import styles from './ShareButton.module.scss'
-import Share from '../../public/assets/icons/share.svg'
+import Share from './assets/share.svg'
 
 export interface Props {
   title: string

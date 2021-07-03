@@ -23,7 +23,7 @@ describe('jobsApi', () => {
       readFileSpy.mockRestore()
     })
 
-    it('looks in the _jobs folder for the specified post', () => {
+    it('looks in the correct folder for the specified post', () => {
       readFileSpy.mockImplementation(
         () =>
           `---
@@ -38,7 +38,7 @@ ${mockContent}`
 
       const result = getJobById('foo')
       expect(readFileSpy).toHaveBeenCalledWith(
-        expect.stringMatching('_jobs/foo'),
+        expect.stringMatching('__content__/about/jobs/foo'),
         'utf8'
       )
       expect(result).toEqual({
@@ -87,7 +87,7 @@ ${mockContent}`
       beforeEach(() => {
         readdirSyncSpy = jest
           .spyOn(fs, 'readdirSync')
-          .mockReturnValue(new Array(2).fill(''))
+          .mockReturnValue(new Array(2).fill('.md'))
         readFileSpy = jest.spyOn(fs, 'readFileSync')
       })
 

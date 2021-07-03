@@ -12,32 +12,32 @@ describe('Footer', () => {
   })
 
   it('has an email link', () => {
-    const link = screen.getByRole('link', { name: 'email' })
+    const link = screen.getByRole('link', { name: /email/ })
     expect(link).toBeInTheDocument()
   })
 
   it('has a github link', () => {
-    const link = screen.getByRole('link', { name: 'github' })
+    const link = screen.getByRole('link', { name: /github/ })
     expect(link).toBeInTheDocument()
   })
 
   it('has a linkedin link', () => {
-    const link = screen.getByRole('link', { name: 'linkedin' })
+    const link = screen.getByRole('link', { name: /linkedin/ })
     expect(link).toBeInTheDocument()
   })
 
   it('has a facebook link', () => {
-    const link = screen.getByRole('link', { name: 'facebook' })
+    const link = screen.getByRole('link', { name: /facebook/ })
     expect(link).toBeInTheDocument()
   })
 
   it('has an instagram link', () => {
-    const link = screen.getByRole('link', { name: 'instagram' })
+    const link = screen.getByRole('link', { name: /instagram/ })
     expect(link).toBeInTheDocument()
   })
 
   it('has a twitter link', () => {
-    const link = screen.getByRole('link', { name: 'twitter' })
+    const link = screen.getByRole('link', { name: /twitter/ })
     expect(link).toBeInTheDocument()
   })
 })

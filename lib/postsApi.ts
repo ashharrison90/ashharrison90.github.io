@@ -2,11 +2,7 @@ import fs from 'fs'
 import { join } from 'path'
 import matter from 'gray-matter'
 
-const postsDirectory = join(process.cwd(), '_posts')
-
-export function getPostSlugs() {
-  return fs.readdirSync(postsDirectory)
-}
+const POSTS_DIR = join(process.cwd(), '__content__', 'posts')
 
 export interface PostData {
   title: string
@@ -19,7 +15,7 @@ export interface PostData {
 
 export function getPostBySlug(slug: string) {
   const realSlug = slug.replace(/\.md$/, '')
-  const fullPath = join(postsDirectory, `${realSlug}.md`)
+  const fullPath = join(POSTS_DIR, `${realSlug}.md`)
   const fileContents = fs.readFileSync(fullPath, 'utf8')
   const { data, content } = matter(fileContents)
   const { coverImage, date, excerpt, title } = data
@@ -35,7 +31,7 @@ export function getPostBySlug(slug: string) {
 }
 
 export function getAllPosts(limit?: number) {
-  const slugs = getPostSlugs()
+  const slugs = fs.readdirSync(POSTS_DIR).filter((file) => file.endsWith('.md'))
   const posts = slugs
     .map((slug) => getPostBySlug(slug))
     // sort posts by date in descending order

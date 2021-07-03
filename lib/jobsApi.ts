@@ -2,7 +2,7 @@ import fs from 'fs'
 import { join } from 'path'
 import matter from 'gray-matter'
 
-const jobsDirectory = join(process.cwd(), '_jobs')
+const JOBS_DIR = join(process.cwd(), '__content__', 'about', 'jobs')
 
 export interface JobData {
   company: string
@@ -15,7 +15,7 @@ export interface JobData {
 }
 
 export function getJobById(id: string) {
-  const fullPath = join(jobsDirectory, id)
+  const fullPath = join(JOBS_DIR, id)
   const fileContents = fs.readFileSync(fullPath, 'utf8')
   const { data, content } = matter(fileContents)
   const { company, jobTitle, icon, startDate, endDate, website } = data
@@ -37,7 +37,7 @@ export function getJobById(id: string) {
 }
 
 export function getAllJobs() {
-  const jobIds = fs.readdirSync(jobsDirectory)
+  const jobIds = fs.readdirSync(JOBS_DIR).filter((file) => file.endsWith('.md'))
   const jobs = jobIds
     .map((id) => getJobById(id))
     // sort jobs by end date in descending order

@@ -5,15 +5,15 @@ describe('SocialLink', () => {
   const myMockClass = 'mockClass'
   const myMockLabel = 'mockLabel'
   const myMockLink = 'testLink'
-  const myMockElement = <div data-testid='mockIcon' />
+  const myMockType = 'mockType'
 
   beforeEach(() => {
     render(
       <SocialLink
-        label={myMockLabel}
+        ariaLabel={myMockLabel}
         link={myMockLink}
-        icon={myMockElement}
         className={myMockClass}
+        type={myMockType}
       />
     )
   })
@@ -31,10 +31,5 @@ describe('SocialLink', () => {
   it('attaches any class passed to the link', () => {
     const link = screen.getByRole('link', { name: myMockLabel })
     expect(link.className).toContain(myMockClass)
-  })
-
-  it('renders the icon', () => {
-    const icon = screen.getByTestId('mockIcon')
-    expect(icon).toBeInTheDocument()
   })
 })

@@ -1,35 +1,30 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import SocialLink from './SocialLink'
-import Envelope from '../Footer/assets/envelope.svg'
-import Facebook from '../Footer/assets/facebook.svg'
-import Github from '../Footer/assets/github.svg'
-import Instagram from '../Footer/assets/instagram.svg'
-import Linkedin from '../Footer/assets/linkedin.svg'
-import Twitter from '../Footer/assets/twitter.svg'
-
-const icons = {
-  email: <Envelope />,
-  facebook: <Facebook />,
-  github: <Github />,
-  instagram: <Instagram />,
-  linkedin: <Linkedin />,
-  twitter: <Twitter />,
-}
 
 export default {
-  title: 'Components/Footer/SocialLink',
+  title: 'Components/SocialLink',
   component: SocialLink,
   argTypes: {
+    ariaLabel: {
+      defaultValue: 'myAccessibleLabel',
+    },
     className: {
       defaultValue: 'myCustomClass',
     },
-    icon: {
+    type: {
       defaultValue: 'facebook',
-      mapping: icons,
-      options: Object.keys(icons),
-    },
-    label: {
-      defaultValue: 'myAccessibleLabel',
+      control: {
+        options: [
+          'email',
+          'facebook',
+          'github',
+          'instagram',
+          'linkedin',
+          'reddit',
+          'twitter',
+        ],
+        type: 'select',
+      },
     },
     link: {
       defaultValue: 'https://www.google.com',
