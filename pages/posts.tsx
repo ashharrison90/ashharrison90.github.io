@@ -5,7 +5,7 @@ import PostCard from '../components/PostCard/PostCard'
 import Search from '../components/Search/Search'
 import Layout from '../components/Layout/Layout'
 import styles from '../styles/Posts.module.scss'
-import { useState, useRef, useEffect } from 'react'
+import { useState } from 'react'
 
 export interface Props {
   allPosts: PostData[]
@@ -13,10 +13,13 @@ export interface Props {
 
 const postFilter = (post: PostData, searchString: string) => {
   const searchStringLower = searchString.toLowerCase()
-  return (
-    post.title.toLowerCase().includes(searchStringLower) ||
-    post.excerpt.toLowerCase().includes(searchStringLower)
-  )
+  const words = searchStringLower.split(' ')
+  return words.some((word) => {
+    return (
+      post.title.toLowerCase().includes(word) ||
+      post.excerpt.toLowerCase().includes(word)
+    )
+  })
 }
 
 export default function Posts({ allPosts }: Props) {
@@ -56,6 +59,7 @@ export default function Posts({ allPosts }: Props) {
             coverImage={post.coverImage}
             date={post.date}
             excerpt={post.excerpt}
+            searchString={searchString}
             slug={post.slug}
             title={post.title}
           />
