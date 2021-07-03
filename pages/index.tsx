@@ -6,6 +6,7 @@ import PostGrid from '../components/PostGrid/PostGrid'
 import PostCard from '../components/PostCard/PostCard'
 import Layout from '../components/Layout/Layout'
 import LinkButton from '../components/LinkButton/LinkButton'
+import Typewriter from 'typewriter-effect'
 import styles from '../styles/Home.module.scss'
 
 export interface Props {
@@ -56,10 +57,20 @@ export default function Home({ allPosts }: Props) {
 
   const foregroundContent = (
     <div className={styles.heroTitleContainer}>
-      <div>
-        <h1 className={styles.line1}>hi</h1>
-        <h1 className={styles.line2}>i'm ash</h1>
-      </div>
+      <h1>
+        <Typewriter
+          options={{
+            cursor: '',
+          }}
+          onInit={(typewriter) => {
+            typewriter
+              .typeString('hi')
+              .pauseFor(1000)
+              .typeString("<br />i'm ash")
+              .start()
+          }}
+        />
+      </h1>
     </div>
   )
 

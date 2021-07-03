@@ -22,10 +22,8 @@ describe('About', () => {
 
   it('shows the title', async () => {
     render(<Index allPosts={posts} />)
-    const title1 = await screen.findByRole('heading', { name: 'hi' })
-    const title2 = await screen.findByRole('heading', { name: "i'm ash" })
-    expect(title1).toBeInTheDocument()
-    expect(title2).toBeInTheDocument()
+    const title = await screen.findByRole('heading', { name: 'hi' })
+    expect(title).toBeInTheDocument()
   })
 
   it('hides the header', async () => {

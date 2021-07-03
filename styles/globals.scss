@@ -92,3 +92,8 @@ h2 {
   --text-primary: #f4f4f4;
   --text-secondary: #c6c6c6;
 }
+
+.Typewriter__cursor {
+  border-right: 0.12em solid;
+  color: var(--interactive);
+}
