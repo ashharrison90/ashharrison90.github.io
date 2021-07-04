@@ -77,4 +77,13 @@ describe('Posts', () => {
     const postCards = screen.getAllByTestId('PostCard')
     expect(postCards.length).toBeLessThanOrEqual(posts.length)
   })
+
+  it('shows the empty state if the search does not match', async () => {
+    const search = await screen.findByPlaceholderText('Search posts')
+    expect(search).toBeInTheDocument()
+    userEvent.type(search, 'YUNOEXIST')
+
+    const emptyState = screen.getByText('Nothing found')
+    expect(emptyState).toBeInTheDocument()
+  })
 })

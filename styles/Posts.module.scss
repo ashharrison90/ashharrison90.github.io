@@ -1,9 +1,13 @@
 .searchContainer {
   display: flex;
-  justify-content: flex-end;
-  margin: 1em 0 1em 0;
+  justify-content: center;
+  margin: 2em 0;
 }
 
 .search {
   max-width: 100%;
+}
+
+.emptySearch {
+  margin: 2em 0;
 }

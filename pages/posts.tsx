@@ -4,6 +4,7 @@ import PostGrid from '../components/PostGrid/PostGrid'
 import PostCard from '../components/PostCard/PostCard'
 import Search from '../components/Search/Search'
 import Layout from '../components/Layout/Layout'
+import EmptyState from '../components/EmptyState/EmptyState'
 import styles from '../styles/Posts.module.scss'
 import { useState } from 'react'
 
@@ -59,6 +60,9 @@ export default function Posts({ allPosts }: Props) {
           />
         ))}
       </PostGrid>
+      {!filteredPosts.length && (
+        <EmptyState className={styles.emptySearch} message='Nothing found' />
+      )}
     </Layout>
   )
 }
