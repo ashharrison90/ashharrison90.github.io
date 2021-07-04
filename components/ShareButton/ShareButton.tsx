@@ -1,5 +1,5 @@
 import styles from './ShareButton.module.scss'
-import Share from './assets/share.svg'
+import Share from '@fortawesome/fontawesome-free/svgs/solid/share-alt.svg'
 
 export interface Props {
   title: string

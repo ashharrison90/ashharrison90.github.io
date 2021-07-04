@@ -1,10 +1,15 @@
+.container {
+  position: relative;
+}
+
 .input {
   background-color: var(--container);
   border: none;
   color: var(--text-primary);
   font: inherit;
   outline: 1px solid var(--interactive);
-  padding: 0.5em;
+  padding: 0.5em 2em 0.5em 0.5em;
+  width: 100%;
 
   &:active,
   &:focus,
@@ -16,4 +21,12 @@
     color: var(--text-secondary);
     text-transform: lowercase;
   }
+}
+
+.icon {
+  fill: var(--icon-secondary);
+  height: 100%;
+  padding: 10px;
+  position: absolute;
+  right: 0;
 }
