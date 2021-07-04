@@ -23,6 +23,7 @@ export default function PostCard({
     <Link as={`/posts/${slug}`} href='/posts/[slug]'>
       <a
         aria-label={title}
+        data-testid='PostCard'
         className={styles.card}
         style={{ backgroundImage: `url(${coverImage})` }}
       >
@@ -34,14 +35,12 @@ export default function PostCard({
         <div className={styles.titleContainer}>
           <div className={styles.title}>
             <Highlighter
-              autoEscape={true}
               searchWords={searchString?.split(' ') ?? []}
               textToHighlight={title}
             />
           </div>
           <div className={styles.excerpt}>
             <Highlighter
-              autoEscape={true}
               searchWords={searchString?.split(' ') ?? []}
               textToHighlight={excerpt}
             />

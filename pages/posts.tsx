@@ -11,23 +11,23 @@ export interface Props {
   allPosts: PostData[]
 }
 
-const postFilter = (post: PostData, searchString: string) => {
-  const searchStringLower = searchString.toLowerCase()
-  const words = searchStringLower.split(' ')
-  return words.some((word) => {
-    return (
-      post.title.toLowerCase().includes(word) ||
-      post.excerpt.toLowerCase().includes(word)
-    )
-  })
-}
-
 export default function Posts({ allPosts }: Props) {
   const [searchString, setSearchString] = useState('')
 
-  const filteredPosts = allPosts.filter((post) =>
-    postFilter(post, searchString)
-  )
+  const postFilter = (post: PostData) => {
+    const words = searchString.toLowerCase().match(/\S+/g) ?? []
+    return (
+      !words.length ||
+      words.some((word) => {
+        return (
+          post.title.toLowerCase().includes(word) ||
+          post.excerpt.toLowerCase().includes(word)
+        )
+      })
+    )
+  }
+
+  const filteredPosts = allPosts.filter(postFilter)
   return (
     <Layout>
       <Head>

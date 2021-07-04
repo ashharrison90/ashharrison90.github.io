@@ -52,20 +52,29 @@ describe('Posts', () => {
     }
   })
 
-  it('filters the posts correctly when using the searchbox', async () => {
+  it('can filter posts by title', async () => {
     const postToFilter = posts[0]
     const search = await screen.findByPlaceholderText('Search posts')
     expect(search).toBeInTheDocument()
     userEvent.type(search, postToFilter.title)
     expect(search).toHaveValue(postToFilter.title)
-    posts.forEach((post) => {
-      if (post === postToFilter) {
-        const postTitle = screen.getByRole('link', { name: post.title })
-        expect(postTitle).toBeInTheDocument()
-      } else {
-        const postTitle = screen.queryByRole('link', { name: post.title })
-        expect(postTitle).toBe(null)
-      }
-    })
+
+    const filteredPost = screen.getByRole('link', { name: postToFilter.title })
+    expect(filteredPost).toBeInTheDocument()
+    const postCards = screen.getAllByTestId('PostCard')
+    expect(postCards.length).toBeLessThanOrEqual(posts.length)
+  })
+
+  it('can filter posts by excerpt', async () => {
+    const postToFilter = posts[0]
+    const search = await screen.findByPlaceholderText('Search posts')
+    expect(search).toBeInTheDocument()
+    userEvent.type(search, postToFilter.excerpt)
+    expect(search).toHaveValue(postToFilter.excerpt)
+
+    const filteredPost = screen.getByRole('link', { name: postToFilter.title })
+    expect(filteredPost).toBeInTheDocument()
+    const postCards = screen.getAllByTestId('PostCard')
+    expect(postCards.length).toBeLessThanOrEqual(posts.length)
   })
 })
