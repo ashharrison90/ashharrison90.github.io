@@ -15,15 +15,9 @@ export default function Posts({ allPosts }: Props) {
   const [searchString, setSearchString] = useState('')
 
   const postFilter = (post: PostData) => {
-    const words = searchString.toLowerCase().match(/\S+/g) ?? []
     return (
-      !words.length ||
-      words.some((word) => {
-        return (
-          post.title.toLowerCase().includes(word) ||
-          post.excerpt.toLowerCase().includes(word)
-        )
-      })
+      post.title.toLowerCase().includes(searchString.toLowerCase()) ||
+      post.excerpt.toLowerCase().includes(searchString.toLowerCase())
     )
   }
 
