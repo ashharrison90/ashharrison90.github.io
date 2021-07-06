@@ -21,6 +21,9 @@ export default {
     slug: {
       defaultValue: 'an-interesting-title',
     },
+    tags: {
+      defaultValue: ['typescript', 'react'],
+    },
     title: {
       defaultValue: 'An interesting title',
     },

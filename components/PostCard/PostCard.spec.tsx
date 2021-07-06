@@ -7,6 +7,7 @@ describe('PostCard', () => {
   const mockExcerpt = 'mockExcerpt'
   const mockSlug = 'mockSlug'
   const mockTitle = 'mockTitle'
+  const mockTags = ['mockTag']
 
   beforeEach(() => {
     jest.spyOn(Date.prototype, 'toLocaleDateString').mockReturnValue(mockDate)
@@ -16,6 +17,7 @@ describe('PostCard', () => {
         date={mockDate}
         excerpt={mockExcerpt}
         slug={mockSlug}
+        tags={mockTags}
         title={mockTitle}
       />
     )
@@ -38,6 +40,13 @@ describe('PostCard', () => {
   it('displays the date in a local format', () => {
     const date = screen.getByText(mockDate)
     expect(date).toBeInTheDocument()
+  })
+
+  it('displays the tags with a #', () => {
+    mockTags.forEach((mockTag) => {
+      const tag = screen.getByText(`#${mockTag.toLowerCase()}`)
+      expect(tag).toBeInTheDocument()
+    })
   })
 
   it('uses the title to name the link', () => {

@@ -1,6 +1,10 @@
 .titleContainer {
   border-bottom: 1px solid var(--border);
-  margin: 2em 0;
+  margin: 1em 0;
+}
+
+.tags {
+  font-size: 0.8em;
 }
 
 .title {
@@ -8,16 +12,18 @@
 }
 
 .infoContainer {
-  align-items: center;
+  align-items: flex-end;
   display: flex;
   justify-content: space-between;
-  margin: 1em 0;
+  margin: 1rem 0;
 }
 
 .shareLinks {
   display: flex;
 }
 
-.date {
+.date,
+.tags {
+  font-size: 0.8em;
   color: var(--text-secondary);
 }

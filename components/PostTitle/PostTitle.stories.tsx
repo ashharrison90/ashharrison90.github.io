@@ -11,6 +11,13 @@ export default {
         type: 'date',
       },
     },
+    excerpt: {
+      defaultValue:
+        'Some more interesting information that expands on the title',
+    },
+    tags: {
+      defaultValue: ['javascript', 'typescript', 'react', 'nextjs'],
+    },
     title: {
       defaultValue: 'An interesting title',
     },

@@ -8,6 +8,7 @@ export interface Props {
   excerpt: string
   searchString?: string
   slug: string
+  tags: Array<string>
   title: string
 }
 
@@ -17,6 +18,7 @@ export default function PostCard({
   excerpt,
   searchString,
   slug,
+  tags,
   title,
 }: Props) {
   return (
@@ -43,6 +45,14 @@ export default function PostCard({
             <Highlighter
               searchWords={searchString?.split(' ') ?? []}
               textToHighlight={excerpt}
+            />
+          </div>
+          <div className={styles.tags}>
+            <Highlighter
+              searchWords={searchString?.split(' ') ?? []}
+              textToHighlight={tags
+                .map((tag) => `#${tag.toLowerCase()}`)
+                .join(' ')}
             />
           </div>
         </div>

@@ -26,8 +26,10 @@ export default function Post({ post }: Props) {
     hljs.highlightAll()
   }, [])
 
+  const { content, coverImage, date, excerpt, tags, title } = post
+
   const backgroundContent = (
-    <img alt='' className={styles.coverImage} src={post.coverImage} />
+    <img alt='' className={styles.coverImage} src={coverImage} />
   )
   const foregroundContent = <div className={styles.padder} />
 
@@ -38,13 +40,13 @@ export default function Post({ post }: Props) {
       backgroundHeight={50}
     >
       <Head>
-        <title>{post.title}</title>
-        <meta name='description' content={post.excerpt} />
+        <title>{title}</title>
+        <meta name='description' content={excerpt} />
       </Head>
-      <PostTitle date={post.date} title={post.title} />
+      <PostTitle date={date} excerpt={excerpt} tags={tags} title={title} />
       <div
         className={styles.content}
-        dangerouslySetInnerHTML={{ __html: post.content }}
+        dangerouslySetInnerHTML={{ __html: content }}
       />
     </Layout>
   )

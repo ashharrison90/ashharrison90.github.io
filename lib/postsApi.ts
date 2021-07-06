@@ -5,6 +5,7 @@ import matter from 'gray-matter'
 const POSTS_DIR = join(process.cwd(), '__content__', 'posts')
 
 export interface PostData {
+  tags: Array<string>
   title: string
   date: string
   slug: string
@@ -18,7 +19,7 @@ export function getPostBySlug(slug: string) {
   const fullPath = join(POSTS_DIR, `${realSlug}.md`)
   const fileContents = fs.readFileSync(fullPath, 'utf8')
   const { data, content } = matter(fileContents)
-  const { coverImage, date, excerpt, title } = data
+  const { coverImage, date, excerpt, tags, title } = data
 
   return {
     content,
@@ -26,6 +27,7 @@ export function getPostBySlug(slug: string) {
     date,
     excerpt,
     slug: realSlug,
+    tags,
     title,
   }
 }

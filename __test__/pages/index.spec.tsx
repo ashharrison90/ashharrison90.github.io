@@ -13,7 +13,7 @@ jest.mock('next/router', () => ({
   },
 }))
 
-describe('About', () => {
+describe('Homepage', () => {
   let posts: PostData[]
 
   beforeEach(async () => {

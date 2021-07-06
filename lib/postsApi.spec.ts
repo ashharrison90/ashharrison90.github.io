@@ -13,6 +13,7 @@ describe('postsApi', () => {
     const mockExcerpt = 'mockExcerpt'
     const mockTitle = 'mockTitle'
     const mockSlug = 'mockSlug'
+    const mockTags = ['mockTag', 'mockTag2']
     let readFileSpy: jest.SpyInstance
 
     beforeEach(() => {
@@ -31,6 +32,7 @@ title: ${mockTitle}
 excerpt: ${mockExcerpt}
 coverImage: ${mockCoverImage}
 date: ${mockDate}
+tags: [${mockTags}]
 ---
 ${mockContent}`
       )
@@ -46,6 +48,7 @@ ${mockContent}`
         date: mockDate,
         excerpt: mockExcerpt,
         slug: mockSlug,
+        tags: mockTags,
         title: mockTitle,
       })
     })

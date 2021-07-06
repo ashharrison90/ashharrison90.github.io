@@ -1,11 +1,10 @@
 ---
 title: 'Building this site'
-excerpt: 'My motivations for building a personal site, and some lessons learned along the way.'
+excerpt: "I had a week's holiday and decided to finally build the site I've been telling myself I'll do for the last 6 years."
 coverImage: '/assets/blog/building-this-site/code.png'
 date: '2021-05-09T15:40:07.322Z'
+tags: ['javascript', 'typescript', 'react', 'nextjs', 'design']
 ---
-
-In early May, I had a week's holiday and decided to finally build the site I've been telling myself I'll do for the last 6 years.
 
 ## Why?
 

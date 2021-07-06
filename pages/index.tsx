@@ -117,6 +117,7 @@ export default function Home({ allPosts }: Props) {
                 date={post.date}
                 excerpt={post.excerpt}
                 slug={post.slug}
+                tags={post.tags}
                 title={post.title}
               />
             ))}

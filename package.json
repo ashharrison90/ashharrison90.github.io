@@ -13,7 +13,7 @@
     "test-e2e-ci": "start-server-and-test serve http://localhost:5000 test-e2e",
     "test-e2e-headed": "PWDEBUG=1 jest -c jest-e2e.config.ts",
     "test-lighthouse": "lhci autorun",
-    "storybook": "start-storybook -p 6006"
+    "storybook": "start-storybook -p 6006 -s public"
   },
   "dependencies": {},
   "devDependencies": {

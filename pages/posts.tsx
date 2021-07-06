@@ -18,7 +18,10 @@ export default function Posts({ allPosts }: Props) {
   const postFilter = (post: PostData) => {
     return (
       post.title.toLowerCase().includes(searchString.toLowerCase()) ||
-      post.excerpt.toLowerCase().includes(searchString.toLowerCase())
+      post.excerpt.toLowerCase().includes(searchString.toLowerCase()) ||
+      post.tags.some((tag) =>
+        tag.toLowerCase().includes(searchString.toLowerCase())
+      )
     )
   }
 
@@ -56,6 +59,7 @@ export default function Posts({ allPosts }: Props) {
             excerpt={post.excerpt}
             searchString={searchString}
             slug={post.slug}
+            tags={post.tags}
             title={post.title}
           />
         ))}

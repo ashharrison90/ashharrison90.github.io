@@ -1,13 +1,12 @@
 ---
 title: 'Bye bye popups'
-excerpt: "I never liked them anyway. Here's how Google ruined my day."
+excerpt: "For about 5 hours, our custom popups completely disappeared. Here's how Google ruined my day."
 coverImage: '/assets/blog/bye-bye-popups/popups-demo-page.png'
 date: '2021-06-11T17:00:07.322Z'
+tags: ['javascript', 'angularjs', 'cypress', 'chrome']
 ---
 
-In April, for about 5 hours, our custom popups completely disappeared.
-
-## "At least the tests caught it"
+## End to end tests are important
 
 At the time, we used [Cypress](https://www.cypress.io/) for our end-to-end tests. We have a test that runs locally that looks something like:
 
@@ -84,7 +83,7 @@ This shows the definition an AngularJS component, `popup`, using `react2angular`
 
 So why does any of this matter?
 
-## Naming conventions are important
+## Naming conventions are more important
 
 Well, for anyone that's unfamiliar with AngularJS, this will then be inserted into the DOM as `<popup>`.
 
