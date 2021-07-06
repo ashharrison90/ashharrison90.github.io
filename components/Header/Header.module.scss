@@ -22,3 +22,14 @@
     margin-right: 0;
   }
 }
+
+.postPageLink {
+  align-items: center;
+  background-color: var(--container);
+  display: flex;
+  height: 40px;
+  padding: 0 1em;
+  position: fixed;
+  top: 40px;
+  right: 0;
+}

@@ -43,6 +43,19 @@ describe('Header', () => {
     expect(link).toBeInTheDocument()
   })
 
+  it('renders an extra link when on an individual post', async () => {
+    const useRouter = jest.spyOn(require('next/router'), 'useRouter')
+    useRouter.mockImplementation(() => ({
+      route: '/',
+      pathname: '/',
+      query: '',
+      asPath: '/posts/foo',
+    }))
+    render(<Header />)
+    const link = await screen.findByRole('link', { name: '/foo' })
+    expect(link).toBeInTheDocument()
+  })
+
   it('contains the theme toggle', async () => {
     render(<Header />)
     const themeToggle = await screen.findByRole('checkbox', {

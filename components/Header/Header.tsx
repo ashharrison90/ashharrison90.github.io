@@ -34,15 +34,26 @@ export default function Header({ className }: Props) {
       <ThemeToggle />
 
       <nav>
-        {PAGE_LINKS.map(({ label, href }) => (
+        <div>
+          {PAGE_LINKS.map(({ label, href }) => (
+            <PageLink
+              key={href}
+              className={styles.pageLinks}
+              href={href}
+              isActive={router.pathname === href}
+              label={label}
+            />
+          ))}
+        </div>
+        {router.asPath.startsWith('/posts/') && (
           <PageLink
-            key={href}
-            className={styles.pageLinks}
-            href={href}
-            isActive={router.pathname === href}
-            label={label}
+            key={router.asPath}
+            className={styles.postPageLink}
+            href={router.asPath}
+            isActive
+            label={router.asPath.replace('/posts', '')}
           />
-        ))}
+        )}
       </nav>
     </header>
   )
