@@ -27,3 +27,9 @@
   font-size: 0.8em;
   color: var(--text-secondary);
 }
+
+.rightHandSide {
+  align-items: flex-end;
+  display: flex;
+  flex-direction: column;
+}
