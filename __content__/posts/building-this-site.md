@@ -1,7 +1,7 @@
 ---
 title: 'Building this site'
 excerpt: "I had a week's holiday and decided to finally build the site I've been telling myself I'll do for the last 6 years."
-coverImage: '/assets/blog/building-this-site/code.png'
+coverImage: '/assets/blog/building-this-site/code.webp'
 date: '2021-05-09T15:40:07.322Z'
 tags: ['javascript', 'typescript', 'react', 'nextjs', 'design']
 ---
@@ -37,7 +37,7 @@ In terms of static site generators, there are [quite a few options](https://jams
 I ended up choosing Next.js, primarily because of it's flexibility. Whilst Gatsby is designed purely as a static site generator, the main focus of Next.js is server side rendering. It just so happens to _also_ offer static site generation.
 
 <figure>
-  <img src='/assets/blog/building-this-site/people-using-next.png' alt="Lots of companies are starting to adopt Next.js"/>
+  <img src='/assets/blog/building-this-site/people-using-next.webp' alt="Lots of companies are starting to adopt Next.js"/>
   <figcaption>Lots of companies are starting to adopt Next.js</figcaption>
 </figure>
 
@@ -52,7 +52,7 @@ This will probably come as no surprise to anyone, but I'm not a designer. I ende
 The only thing I'm not quite happy with is the card design for each post. But that's ok - it's good enough for now, and I'm sure it'll be tweaked in the future.
 
 <figure>
-  <img src='/assets/blog/building-this-site/card-design.png' alt="The current card design."/>
+  <img src='/assets/blog/building-this-site/card-design.webp' alt="The current card design."/>
   <figcaption>The current card design.</figcaption>
 </figure>
 
@@ -107,7 +107,7 @@ What I've ended up with is a `globals.scss` file at the root of the project that
 This is nice as it makes changes to the theme extremely easy. In less than a minute I can change the site from a fairly muted modern colour palette to a kaleidoscopic nightmare.
 
 <figure>
-  <img src='/assets/blog/building-this-site/kaleidoscopic-nightmare.png' alt="A kaleidoscopic nightmare."/>
+  <img src='/assets/blog/building-this-site/kaleidoscopic-nightmare.webp' alt="A kaleidoscopic nightmare."/>
   <figcaption>A kaleidoscopic nightmare.</figcaption>
 </figure>
 
@@ -120,7 +120,7 @@ There's a few things I haven't gotten to yet.
 Firstly, testing. Turns out it's very easy to postpone testing when there's no real requirement and only one person working on the code. Who knew?
 
 <figure>
-  <img src='/assets/blog/building-this-site/no-tests.png' alt="Whoops!"/>
+  <img src='/assets/blog/building-this-site/no-tests.webp' alt="Whoops!"/>
   <figcaption>Whoops!</figcaption>
 </figure>
 

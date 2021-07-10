@@ -30,7 +30,7 @@ export default function Home({ allPosts }: Props) {
     <>
       <img
         alt=''
-        src='/assets/home/hero-fallback.png'
+        src='/assets/home/hero-fallback.webp'
         data-testid='heroFallback'
         className={classnames(styles.fallback, {
           [styles.hide]: pageLoaded,
@@ -38,7 +38,7 @@ export default function Home({ allPosts }: Props) {
       />
       <img
         alt='A nice background'
-        src='/assets/home/hero-background.png'
+        src='/assets/home/hero-background.webp'
         data-testid='heroBackground'
         className={classnames(styles.heroBackground, {
           [styles.hide]: !pageLoaded,
@@ -46,7 +46,7 @@ export default function Home({ allPosts }: Props) {
       />
       <img
         alt='Me'
-        src='/assets/home/hero-cutout.png'
+        src='/assets/home/hero-cutout.webp'
         data-testid='heroCutout'
         className={classnames(styles.heroCutout, {
           [styles.hide]: !pageLoaded,

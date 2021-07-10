@@ -1,7 +1,7 @@
 ---
 title: 'Bye bye popups'
 excerpt: "For about 5 hours, our custom popups completely disappeared. Here's how Google ruined my day."
-coverImage: '/assets/blog/bye-bye-popups/popups-demo-page.png'
+coverImage: '/assets/blog/bye-bye-popups/popups-demo-page.webp'
 date: '2021-06-11T17:00:07.322Z'
 tags: ['javascript', 'angularjs', 'cypress', 'chrome']
 ---
@@ -43,7 +43,7 @@ The actual behaviour being tested here isn't particularly important. The gist of
 Our automated build runs and the test fails. One nice thing about Cypress is it can output videos or screenshots of your tests runs at the point of failure. So I go to the build system to take a look, and...
 
 <figure>
-  <img src='/assets/blog/bye-bye-popups/missing-popups.png' alt="What happened to our popups?!"/>
+  <img src='/assets/blog/bye-bye-popups/missing-popups.webp' alt="What happened to our popups?!"/>
   <figcaption>What happened to our popups?!</figcaption>
 </figure>
 
@@ -90,7 +90,7 @@ Well, for anyone that's unfamiliar with AngularJS, this will then be inserted in
 Tucked away in the changes for Chrome 90 was [this commit.](https://chromium.googlesource.com/chromium/src/+/2024c426de3346666cb45f9c65ad9dec2246be99) After some googling, it turns out [Chrome is starting to implement a native `<popup>` element.](https://www.chromestatus.com/feature/5463833265045504) In doing so, they've added some new styles to the Chrome style sheet to handle the display of this element.
 
 <figure>
-  <img src='/assets/blog/bye-bye-popups/popup-style.png' alt="The offending style."/>
+  <img src='/assets/blog/bye-bye-popups/popup-style.webp' alt="The offending style."/>
   <figcaption>Some helpful new styles.</figcaption>
 </figure>
 
@@ -101,7 +101,7 @@ At this point, cogs are finally starting to turn. Remember our component from ea
 We're fucking idiots. A short rename later, and we're back in business:
 
 <figure>
-  <img src='/assets/blog/bye-bye-popups/popups-demo-page.png' alt="What the demo page should look like."/>
+  <img src='/assets/blog/bye-bye-popups/popups-demo-page.webp' alt="What the demo page should look like."/>
   <figcaption>What the demo page should look like.</figcaption>
 </figure>
 

@@ -6,7 +6,7 @@ export default {
   component: PostCard,
   argTypes: {
     coverImage: {
-      defaultValue: '/assets/blog/building-this-site/code.png',
+      defaultValue: '/assets/blog/building-this-site/code.webp',
     },
     date: {
       defaultValue: '2020-10-01T00:00:00.000Z',
