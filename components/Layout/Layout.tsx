@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { ReactNode } from 'react'
 import classnames from 'classnames'
 import Footer from '../Footer/Footer'
@@ -14,6 +14,8 @@ export interface Props {
   hideHeaderUntilScroll?: boolean
 }
 
+let prevScrollTop = 0
+
 export default function Layout({
   backgroundContent,
   backgroundHeight = 0,
@@ -26,35 +28,31 @@ export default function Layout({
   const [backgroundContentFade, setBackgroundContentFade] = useState(0)
   const containerRef = useRef<HTMLDivElement>(null)
   const foregroundContentRef = useRef<HTMLDivElement>(null)
-  useEffect(() => {
-    if (containerRef.current && (foregroundContent || hideHeaderUntilScroll)) {
-      const handleScroll = () => {
-        if (hideHeaderUntilScroll) {
-          setShowHeader(containerRef.current!.scrollTop > 0)
-        }
-        // doing this all the time wouldn't be very good for perfomance
-        // let's split it into intervals of 0.1
-        // and stop once we're past 1
-        if (foregroundContent) {
-          const height =
-            foregroundContentRef.current?.getBoundingClientRect().height!
-          const top = foregroundContentRef.current?.getBoundingClientRect().top!
-          const scrollScaleFactor =
-            Math.round(10 * (Math.abs(top) / height)) / 10
-          setBackgroundContentFade(Math.min(scrollScaleFactor, 1))
-        }
-      }
-      containerRef.current.addEventListener('scroll', handleScroll)
+  const handleScroll = () => {
+    if (hideHeaderUntilScroll) {
+      setShowHeader(containerRef.current!.scrollTop > 0)
+    } else {
+      setShowHeader(containerRef.current!.scrollTop < prevScrollTop)
+      prevScrollTop = containerRef.current!.scrollTop
     }
+    // doing this all the time wouldn't be very good for perfomance
+    // let's split it into intervals of 0.1
+    // and stop once we're past 1
+    if (foregroundContent) {
+      const height =
+        foregroundContentRef.current?.getBoundingClientRect().height!
+      const top = foregroundContentRef.current?.getBoundingClientRect().top!
+      const scrollScaleFactor = Math.round(10 * (Math.abs(top) / height)) / 10
+      setBackgroundContentFade(Math.min(scrollScaleFactor, 1))
+    }
+  }
+  useEffect(() => {
+    containerRef.current!.addEventListener('scroll', handleScroll)
   }, [])
 
   return (
     <div className={styles.container}>
-      <Header
-        className={classnames({
-          [styles.hideHeader]: !showHeader,
-        })}
-      />
+      <Header show={showHeader} />
       <div className={styles.parallaxContainer} ref={containerRef} role='main'>
         {backgroundContent}
         <div

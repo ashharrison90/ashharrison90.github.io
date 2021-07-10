@@ -71,18 +71,18 @@ describe('Layout', () => {
       it('hides the header initially', async () => {
         const header = await screen.findByRole('banner')
         expect(header).toBeInTheDocument()
-        expect(header).toHaveClass('hideHeader')
+        expect(header).toHaveClass('hide')
       })
 
       it('shows the header once scrolled', async () => {
         let header = await screen.findByRole('banner')
         expect(header).toBeInTheDocument()
-        expect(header).toHaveClass('hideHeader')
+        expect(header).toHaveClass('hide')
         const scrollContainer = await screen.findByRole('main')
         fireEvent.scroll(scrollContainer, { target: { scrollTop: 100 } })
         header = await screen.findByRole('banner')
         expect(header).toBeInTheDocument()
-        expect(header).not.toHaveClass('hideHeader')
+        expect(header).not.toHaveClass('hide')
       })
     })
 

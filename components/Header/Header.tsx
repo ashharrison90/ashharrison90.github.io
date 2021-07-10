@@ -24,13 +24,17 @@ const PAGE_LINKS = [
 ]
 
 export interface Props {
-  className?: string
+  show: boolean
 }
 
-export default function Header({ className }: Props) {
+export default function Header({ show }: Props) {
   const router = useRouter()
   return (
-    <header className={classnames(styles.header, className)}>
+    <header
+      className={classnames(styles.header, {
+        [styles.hide]: !show,
+      })}
+    >
       <ThemeToggle />
 
       <nav>
@@ -48,7 +52,9 @@ export default function Header({ className }: Props) {
         {router.asPath.startsWith('/posts/') && (
           <PageLink
             key={router.asPath}
-            className={styles.postPageLink}
+            className={classnames(styles.postPageLink, {
+              [styles.hide]: !show,
+            })}
             href={router.asPath}
             isActive
             label={router.asPath.replace('/posts', '')}

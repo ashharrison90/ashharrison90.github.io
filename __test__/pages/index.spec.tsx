@@ -30,7 +30,7 @@ describe('Homepage', () => {
     render(<Index allPosts={posts} />)
     const header = await screen.findByRole('banner')
     expect(header).toBeInTheDocument()
-    expect(header).toHaveClass('hideHeader')
+    expect(header).toHaveClass('hide')
   })
 
   it('shows the footer', async () => {

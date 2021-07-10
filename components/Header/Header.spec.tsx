@@ -14,31 +14,31 @@ jest.mock('next/router', () => ({
 
 describe('Header', () => {
   it('renders a header element', async () => {
-    render(<Header />)
+    render(<Header show />)
     const header = await screen.findByRole('banner')
     expect(header).toBeInTheDocument()
   })
 
   it('renders a navigation section', async () => {
-    render(<Header />)
+    render(<Header show />)
     const navigation = await screen.findByRole('navigation')
     expect(navigation).toBeInTheDocument()
   })
 
   it('has a link to the home page', async () => {
-    render(<Header />)
+    render(<Header show />)
     const link = await screen.findByRole('link', { name: 'Home' })
     expect(link).toBeInTheDocument()
   })
 
   it('has a link to the about page', async () => {
-    render(<Header />)
+    render(<Header show />)
     const link = await screen.findByRole('link', { name: 'About' })
     expect(link).toBeInTheDocument()
   })
 
   it('has a link to the posts page', async () => {
-    render(<Header />)
+    render(<Header show />)
     const link = await screen.findByRole('link', { name: 'Posts' })
     expect(link).toBeInTheDocument()
   })
@@ -51,13 +51,13 @@ describe('Header', () => {
       query: '',
       asPath: '/posts/foo',
     }))
-    render(<Header />)
+    render(<Header show />)
     const link = await screen.findByRole('link', { name: '/foo' })
     expect(link).toBeInTheDocument()
   })
 
   it('contains the theme toggle', async () => {
-    render(<Header />)
+    render(<Header show />)
     const themeToggle = await screen.findByRole('checkbox', {
       name: 'Toggle theme',
     })
