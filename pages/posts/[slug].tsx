@@ -7,10 +7,12 @@ import Layout from '../../components/Layout/Layout'
 import styles from '../../styles/[slug].module.scss'
 import hljs from 'highlight.js/lib/core'
 import javascript from 'highlight.js/lib/languages/javascript'
+import json from 'highlight.js/lib/languages/json'
 import typescript from 'highlight.js/lib/languages/typescript'
 import python from 'highlight.js/lib/languages/python'
 import scss from 'highlight.js/lib/languages/scss'
 hljs.registerLanguage('javascript', javascript)
+hljs.registerLanguage('json', json)
 hljs.registerLanguage('typescript', typescript)
 hljs.registerLanguage('python', python)
 hljs.registerLanguage('scss', scss)

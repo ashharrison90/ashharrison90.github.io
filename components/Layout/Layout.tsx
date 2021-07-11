@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { ReactNode } from 'react'
 import classnames from 'classnames'
 import Footer from '../Footer/Footer'
