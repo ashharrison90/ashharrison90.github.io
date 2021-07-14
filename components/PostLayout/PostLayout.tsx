@@ -1,10 +1,10 @@
 import Head from 'next/head'
-import { useEffect } from 'react'
-import { getPostBySlug, getAllPosts, PostData } from '../../lib/postsApi'
-import markdownToHtml from '../../lib/markdownToHtml'
-import { GetStaticPropsContext } from 'next'
-import Layout from '../../components/Layout/Layout'
-import styles from '../../styles/[slug].module.scss'
+import { ReactNode, useEffect } from 'react'
+import { PostMetadata } from '../../lib/postsApi'
+import Layout from '../Layout/Layout'
+import PostTitle from '../PostTitle/PostTitle'
+import styles from './PostLayout.module.scss'
+
 import hljs from 'highlight.js/lib/core'
 import javascript from 'highlight.js/lib/languages/javascript'
 import json from 'highlight.js/lib/languages/json'
@@ -17,18 +17,18 @@ hljs.registerLanguage('typescript', typescript)
 hljs.registerLanguage('python', python)
 hljs.registerLanguage('scss', scss)
 import 'highlight.js/styles/monokai-sublime.css'
-import PostTitle from '../../components/PostTitle/PostTitle'
 
 export interface Props {
-  post: PostData
+  children: ReactNode
+  metadata: PostMetadata
 }
 
-export default function Post({ post }: Props) {
+export default function PostLayout({ children, metadata }: Props) {
   useEffect(() => {
     hljs.highlightAll()
   }, [])
 
-  const { content, coverImage, date, excerpt, tags, title } = post
+  const { coverImage, date, excerpt, tags, title } = metadata
 
   const backgroundContent = (
     <img alt='' className={styles.coverImage} src={coverImage} />
@@ -46,41 +46,7 @@ export default function Post({ post }: Props) {
         <meta name='description' content={excerpt} />
       </Head>
       <PostTitle date={date} excerpt={excerpt} tags={tags} title={title} />
-      <div
-        className={styles.content}
-        dangerouslySetInnerHTML={{ __html: content }}
-      />
+      <div className={styles.postLayout}>{children}</div>
     </Layout>
   )
-}
-
-export async function getStaticProps({
-  params,
-}: GetStaticPropsContext<{ slug: string }>) {
-  const post = getPostBySlug(params!.slug)
-  const content = await markdownToHtml(post.content)
-
-  return {
-    props: {
-      post: {
-        ...post,
-        content,
-      },
-    },
-  }
-}
-
-export async function getStaticPaths() {
-  const posts = getAllPosts()
-
-  return {
-    paths: posts.map((post) => {
-      return {
-        params: {
-          slug: post.slug,
-        },
-      }
-    }),
-    fallback: false,
-  }
 }

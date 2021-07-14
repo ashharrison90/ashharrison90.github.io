@@ -1,26 +1,38 @@
 import { render, screen } from '@testing-library/react'
-import PostCard from './PostCard'
+import PostLayout from './PostLayout'
 
-describe('PostCard', () => {
+jest.mock('next/router', () => ({
+  useRouter() {
+    return {
+      route: '/',
+      pathname: '',
+      query: '',
+      asPath: '',
+    }
+  },
+}))
+
+describe('PostLayout', () => {
   const mockCoverImage = 'mockCoverImage'
   const mockDate = 'mockDate'
   const mockExcerpt = 'mockExcerpt'
   const mockSlug = 'mockSlug'
   const mockTitle = 'mockTitle'
   const mockTags = ['mockTag']
+  const mockContent = 'mockContent'
+  const mockMetadata = {
+    coverImage: mockCoverImage,
+    date: mockDate,
+    excerpt: mockExcerpt,
+    slug: mockSlug,
+    tags: mockTags,
+    title: mockTitle,
+  }
 
-  beforeEach(() => {
+  beforeEach(async () => {
     jest.spyOn(Date.prototype, 'toLocaleDateString').mockReturnValue(mockDate)
-    render(
-      <PostCard
-        coverImage={mockCoverImage}
-        date={mockDate}
-        excerpt={mockExcerpt}
-        slug={mockSlug}
-        tags={mockTags}
-        title={mockTitle}
-      />
-    )
+    render(<PostLayout metadata={mockMetadata}>{mockContent}</PostLayout>)
+    await screen.findByText(mockContent)
   })
 
   afterEach(() => {
@@ -28,7 +40,7 @@ describe('PostCard', () => {
   })
 
   it('displays the title', () => {
-    const title = screen.getByText(mockTitle)
+    const title = screen.getByRole('heading', { name: mockTitle })
     expect(title).toBeInTheDocument()
   })
 
@@ -49,21 +61,8 @@ describe('PostCard', () => {
     })
   })
 
-  it('uses the title to name the link', () => {
-    const link = screen.getByRole('link', { name: mockTitle })
-    expect(link).toBeInTheDocument()
-  })
-
-  it('takes you to the post when clicked', () => {
-    const link = screen.getByRole('link')
-    expect(link).toHaveAttribute('href', `/posts/${mockSlug}`)
-  })
-
-  it('the link displays the coverImage', () => {
-    const link = screen.getByRole('link')
-    expect(link).toHaveAttribute(
-      'style',
-      `background-image: url(${mockCoverImage});`
-    )
+  it('displays the content', () => {
+    const date = screen.getByText(mockContent)
+    expect(date).toBeInTheDocument()
   })
 })

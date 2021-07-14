@@ -1,24 +1,19 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import Layout from './Layout'
+import PostLayout from './PostLayout'
 
 export default {
-  title: 'Components/Layout',
-  component: Layout,
+  title: 'Components/PostLayout',
+  component: PostLayout,
   argTypes: {
-    backgroundContent: {
-      defaultValue: (
-        <div
-          style={{
-            backgroundColor: 'red',
-            height: '100%',
-            width: '100%',
-            position: 'absolute',
-          }}
-        />
-      ),
-    },
-    backgroundHeight: {
-      defaultValue: 50,
+    metadata: {
+      defaultValue: {
+        tags: ['javascript', 'typescript', 'react'],
+        title: 'An interesting title',
+        date: '2020-10-01T00:00:00.000Z',
+        slug: 'an-interesting-post',
+        coverImage: '/assets/blog/building-this-site/code.webp',
+        excerpt: 'Some more interesting information that expands on the title',
+      },
     },
     children: {
       defaultValue: (
@@ -33,10 +28,9 @@ export default {
         </p>
       ),
     },
-    foregroundContent: <h1>HELLO</h1>,
   },
-} as ComponentMeta<typeof Layout>
+} as ComponentMeta<typeof PostLayout>
 
-export const RendersCorrectly: ComponentStory<typeof Layout> = (args) => (
-  <Layout {...args} />
+export const RendersCorrectly: ComponentStory<typeof PostLayout> = (args) => (
+  <PostLayout {...args} />
 )

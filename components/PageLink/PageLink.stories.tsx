@@ -9,7 +9,7 @@ export default {
       defaultValue: 'myCustomClass',
     },
     href: {
-      defaultValue: 'about',
+      defaultValue: 'https://www.google.com',
     },
     label: {
       defaultValue: 'label',

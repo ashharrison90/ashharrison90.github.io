@@ -1,10 +1,12 @@
----
-title: 'Bye bye popups'
-excerpt: "For about 5 hours, our custom popups completely disappeared. Here's how Google ruined my day."
-coverImage: '/assets/blog/bye-bye-popups/popups-demo-page.webp'
-date: '2021-06-11T17:00:07.322Z'
-tags: ['javascript', 'angularjs', 'cypress', 'chrome']
----
+import PostLayout from '../../components/PostLayout/PostLayout'
+
+export const metadata = {
+  title: 'Bye bye popups',
+  excerpt: "For about 5 hours, our custom popups completely disappeared. Here's how Google ruined my day.",
+  coverImage: '/assets/blog/bye-bye-popups/popups-demo-page.webp',
+  date: '2021-06-11T17:00:07.322Z',
+  tags: ['javascript', 'angularjs', 'cypress', 'chrome'],
+}
 
 ## End to end tests are important
 
@@ -110,3 +112,5 @@ We're fucking idiots. A short rename later, and we're back in business:
 There's now a [helpful support issue](https://support.google.com/chrome/thread/106244569/chrome-90-hides-my-websites-popup-dialogs-interial-popup-open?hl=en) discussing the problem, where it's pointed out that the [HTML spec requires that custom elements include a `-`.](https://html.spec.whatwg.org/multipage/custom-elements.html#valid-custom-element-name) And, of course, they're right. Never create custom elements without including a `-` in the name!
 
 That didn't make it any less annoying to figure out at the time.
+
+export default ({ children }) => <PostLayout metadata={metadata}>{children}</PostLayout>

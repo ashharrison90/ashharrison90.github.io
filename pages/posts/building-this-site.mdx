@@ -1,10 +1,12 @@
----
-title: 'Building this site'
-excerpt: "I had a week's holiday and decided to finally build the site I've been telling myself I'll do for the last 6 years."
-coverImage: '/assets/blog/building-this-site/code.webp'
-date: '2021-05-09T15:40:07.322Z'
-tags: ['javascript', 'typescript', 'react', 'nextjs', 'design']
----
+import PostLayout from '../../components/PostLayout/PostLayout'
+
+export const metadata = {
+  title: 'Building this site',
+  excerpt: "I had a week's holiday and decided to finally build the site I've been telling myself I'll do for the last 6 years.",
+  coverImage: '/assets/blog/building-this-site/code.webp',
+  date: '2021-05-09T15:40:07.322Z',
+  tags: ['javascript', 'typescript', 'react', 'nextjs', 'design']
+}
 
 ## Why?
 
@@ -133,3 +135,5 @@ And finally, grab myself a nice domain to host it on! Although that might mean [
 ## Code
 
 If you're curious about anything, feel free to check it all out on [GitHub](https://github.com/ashharrison90/ashharrison90.github.io).
+
+export default ({ children }) => <PostLayout metadata={metadata}>{children}</PostLayout>

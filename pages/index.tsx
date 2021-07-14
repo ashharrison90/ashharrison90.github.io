@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import { useState, useEffect } from 'react'
 import classnames from 'classnames'
-import { getAllPosts, PostData } from '../lib/postsApi'
+import { getAllPosts, PostMetadata } from '../lib/postsApi'
 import PostGrid from '../components/PostGrid/PostGrid'
 import PostCard from '../components/PostCard/PostCard'
 import Layout from '../components/Layout/Layout'
@@ -10,7 +10,7 @@ import Typewriter from 'typewriter-effect'
 import styles from '../styles/Home.module.scss'
 
 export interface Props {
-  allPosts: PostData[]
+  allPosts: PostMetadata[]
 }
 
 export default function Home({ allPosts }: Props) {
@@ -131,8 +131,8 @@ export default function Home({ allPosts }: Props) {
   )
 }
 
-export const getStaticProps = () => {
-  const allPosts = getAllPosts(6)
+export const getStaticProps = async () => {
+  const allPosts = await getAllPosts(6)
 
   return {
     props: {

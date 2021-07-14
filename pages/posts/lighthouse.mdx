@@ -1,10 +1,12 @@
----
-title: 'Lighthouse'
-excerpt: 'How to improve your site for everyone using Lighthouse CI reports.'
-coverImage: '/assets/blog/lighthouse/lighthouse.webp'
-date: '2021-07-11T17:40:07.322Z'
-tags: ['lighthouse', 'accessibility', 'seo', 'performance']
----
+import PostLayout from '../../components/PostLayout/PostLayout'
+
+export const metadata = {
+  title: 'Lighthouse',
+  excerpt: 'How to improve your site for everyone using Lighthouse CI reports.',
+  coverImage: '/assets/blog/lighthouse/lighthouse.webp',
+  date: '2021-07-11T17:40:07.322Z',
+  tags: ['lighthouse', 'accessibility', 'seo', 'performance']
+}
 
 ## What is Lighthouse?
 
@@ -110,3 +112,5 @@ There's 2 things to note:
 ## Final thoughts
 
 Lighthouse is a good start for maintaining a baseline level of performance and accessibility, but it's not a complete solution and it definitely has its faults.
+
+export default ({ children }) => <PostLayout metadata={metadata}>{children}</PostLayout>

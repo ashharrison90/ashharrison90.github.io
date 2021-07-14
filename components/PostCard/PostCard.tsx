@@ -50,9 +50,7 @@ export default function PostCard({
           <div className={styles.tags}>
             <Highlighter
               searchWords={searchString?.split(' ') ?? []}
-              textToHighlight={tags
-                .map((tag) => `#${tag.toLowerCase()}`)
-                .join(' ')}
+              textToHighlight={tags.map((tag) => `#${tag}`).join(' ')}
             />
           </div>
         </div>

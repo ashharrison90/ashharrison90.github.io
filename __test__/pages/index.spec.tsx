@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/react'
-import { PostData } from '../../lib/postsApi'
+import { PostMetadata } from '../../lib/postsApi'
 import Index, { getStaticProps } from '../../pages/index'
+import fs from 'fs'
 
 jest.mock('next/router', () => ({
   useRouter() {
@@ -13,11 +14,45 @@ jest.mock('next/router', () => ({
   },
 }))
 
+jest.mock('../../pages/posts/building-this-site.mdx', () => ({
+  metadata: {
+    coverImage: '/assets/blog/building-this-site/code.webp',
+    date: '2021-05-09T15:40:07.322Z',
+    excerpt:
+      "I had a week's holiday and decided to finally build the site I've been telling myself I'll do for the last 6 years.",
+    slug: 'building-this-site',
+    tags: ['javascript', 'typescript', 'react', 'nextjs', 'design'],
+    title: 'Building this site',
+  },
+}))
+
+jest.mock('../../pages/posts/bye-bye-popups.mdx', () => ({
+  metadata: {
+    title: 'Bye bye popups',
+    excerpt:
+      "For about 5 hours, our custom popups completely disappeared. Here's how Google ruined my day.",
+    coverImage: '/assets/blog/bye-bye-popups/popups-demo-page.webp',
+    date: '2021-06-11T17:00:07.322Z',
+    slug: 'bye-bye-popups',
+    tags: ['javascript', 'angularjs', 'cypress', 'chrome'],
+  },
+}))
+
 describe('Homepage', () => {
-  let posts: PostData[]
+  let posts: PostMetadata[]
+  let readdirSyncSpy: jest.SpyInstance
 
   beforeEach(async () => {
+    readdirSyncSpy = jest.spyOn(fs, 'readdirSync')
+    readdirSyncSpy.mockReturnValue([
+      'building-this-site.mdx',
+      'bye-bye-popups.mdx',
+    ])
     posts = (await getStaticProps()).props.allPosts
+  })
+
+  afterEach(() => {
+    readdirSyncSpy.mockRestore()
   })
 
   it('shows the title', async () => {

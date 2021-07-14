@@ -12,7 +12,7 @@ export default {
       defaultValue: 'myCustomClass',
     },
     href: {
-      defaultValue: 'about',
+      defaultValue: 'https://www.google.com',
     },
   },
 } as ComponentMeta<typeof LinkButton>

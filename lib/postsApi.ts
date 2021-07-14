@@ -1,42 +1,33 @@
 import fs from 'fs'
 import { join } from 'path'
-import matter from 'gray-matter'
 
-const POSTS_DIR = join(process.cwd(), '__content__', 'posts')
+const POSTS_DIR = join(process.cwd(), 'pages', 'posts')
 
-export interface PostData {
+export interface PostMetadata {
   tags: Array<string>
   title: string
   date: string
   slug: string
-  content: string
   coverImage: string
   excerpt: string
 }
 
-export function getPostBySlug(slug: string) {
-  const realSlug = slug.replace(/\.md$/, '')
-  const fullPath = join(POSTS_DIR, `${realSlug}.md`)
-  const fileContents = fs.readFileSync(fullPath, 'utf8')
-  const { data, content } = matter(fileContents)
-  const { coverImage, date, excerpt, tags, title } = data
+export async function getPostMetadata(slug: string) {
+  const realSlug = slug.replace(/\.mdx$/, '')
+  const { metadata } = await import(`../pages/posts/${realSlug}.mdx`)
 
   return {
-    content,
-    coverImage,
-    date,
-    excerpt,
+    ...metadata,
     slug: realSlug,
-    tags,
-    title,
   }
 }
 
-export function getAllPosts(limit?: number) {
-  const slugs = fs.readdirSync(POSTS_DIR).filter((file) => file.endsWith('.md'))
-  const posts = slugs
-    .map((slug) => getPostBySlug(slug))
-    // sort posts by date in descending order
-    .sort((post1, post2) => (post1.date > post2.date ? -1 : 1))
+export async function getAllPosts(limit?: number) {
+  const slugs = fs
+    .readdirSync(POSTS_DIR)
+    .filter((file) => file.endsWith('.mdx'))
+  const posts = await Promise.all(slugs.map((slug) => getPostMetadata(slug)))
+  // sort posts by date in descending order
+  posts.sort((post1, post2) => (post1.date > post2.date ? -1 : 1))
   return limit ? posts.slice(0, limit) : posts
 }

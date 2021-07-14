@@ -1,4 +1,5 @@
 import '../styles/globals.scss'
+import './globals.scss'
 import { addDecorator, addParameters } from '@storybook/react'
 import { withRootAttribute } from 'storybook-addon-root-attribute'
 import { withNextRouter } from 'storybook-addon-next-router'

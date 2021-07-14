@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { getAllPosts, PostData } from '../lib/postsApi'
+import { getAllPosts, PostMetadata } from '../lib/postsApi'
 import PostGrid from '../components/PostGrid/PostGrid'
 import PostCard from '../components/PostCard/PostCard'
 import Search from '../components/Search/Search'
@@ -9,13 +9,13 @@ import styles from '../styles/Posts.module.scss'
 import { useState } from 'react'
 
 export interface Props {
-  allPosts: PostData[]
+  allPosts: PostMetadata[]
 }
 
 export default function Posts({ allPosts }: Props) {
   const [searchString, setSearchString] = useState('')
 
-  const postFilter = (post: PostData) => {
+  const postFilter = (post: PostMetadata) => {
     return (
       post.title.toLowerCase().includes(searchString.toLowerCase()) ||
       post.excerpt.toLowerCase().includes(searchString.toLowerCase()) ||
@@ -71,8 +71,8 @@ export default function Posts({ allPosts }: Props) {
   )
 }
 
-export const getStaticProps = () => {
-  const allPosts = getAllPosts()
+export const getStaticProps = async () => {
+  const allPosts = await getAllPosts()
 
   return {
     props: {

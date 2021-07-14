@@ -1,128 +1,79 @@
-import { getAllPosts, getPostBySlug } from './postsApi'
+import { getAllPosts, getPostMetadata } from './postsApi'
 import fs from 'fs'
 
+jest.mock('../pages/posts/building-this-site.mdx', () => ({
+  metadata: {
+    coverImage: '/assets/blog/building-this-site/code.webp',
+    date: '2021-05-09T15:40:07.322Z',
+    excerpt:
+      "I had a week's holiday and decided to finally build the site I've been telling myself I'll do for the last 6 years.",
+    slug: 'building-this-site',
+    tags: ['javascript', 'typescript', 'react', 'nextjs', 'design'],
+    title: 'Building this site',
+  },
+}))
+
+jest.mock('../pages/posts/bye-bye-popups.mdx', () => ({
+  metadata: {
+    title: 'Bye bye popups',
+    excerpt:
+      "For about 5 hours, our custom popups completely disappeared. Here's how Google ruined my day.",
+    coverImage: '/assets/blog/bye-bye-popups/popups-demo-page.webp',
+    date: '2021-06-11T17:00:07.322Z',
+    slug: 'bye-bye-popups',
+    tags: ['javascript', 'angularjs', 'cypress', 'chrome'],
+  },
+}))
+
 describe('postsApi', () => {
-  afterEach(() => {
-    jest.clearAllMocks()
-  })
-
-  describe('getPostBySlug', () => {
-    const mockContent = 'mockContent'
-    const mockCoverImage = 'mockCoverImage'
-    const mockDate = 'mockDate'
-    const mockExcerpt = 'mockExcerpt'
-    const mockTitle = 'mockTitle'
-    const mockSlug = 'mockSlug'
-    const mockTags = ['mockTag', 'mockTag2']
-    let readFileSpy: jest.SpyInstance
-
-    beforeEach(() => {
-      readFileSpy = jest.spyOn(fs, 'readFileSync')
-    })
-
-    afterEach(() => {
-      readFileSpy.mockRestore()
-    })
-
-    it('looks in the correct folder for the specified post', () => {
-      readFileSpy.mockImplementation(
-        () =>
-          `---
-title: ${mockTitle}
-excerpt: ${mockExcerpt}
-coverImage: ${mockCoverImage}
-date: ${mockDate}
-tags: [${mockTags}]
----
-${mockContent}`
-      )
-
-      const result = getPostBySlug(`${mockSlug}.md`)
-      expect(readFileSpy).toHaveBeenCalledWith(
-        expect.stringMatching(`__content__/posts/${mockSlug}`),
-        'utf8'
-      )
+  describe('getPostMetadata', () => {
+    it('returns the correct metadata for a post', async () => {
+      const result = await getPostMetadata('building-this-site.mdx')
       expect(result).toEqual({
-        content: mockContent,
-        coverImage: mockCoverImage,
-        date: mockDate,
-        excerpt: mockExcerpt,
-        slug: mockSlug,
-        tags: mockTags,
-        title: mockTitle,
+        coverImage: '/assets/blog/building-this-site/code.webp',
+        date: '2021-05-09T15:40:07.322Z',
+        excerpt:
+          "I had a week's holiday and decided to finally build the site I've been telling myself I'll do for the last 6 years.",
+        slug: 'building-this-site',
+        tags: ['javascript', 'typescript', 'react', 'nextjs', 'design'],
+        title: 'Building this site',
       })
     })
   })
 
   describe('getAllPosts', () => {
     let readdirSyncSpy: jest.SpyInstance
-    let readFileSpy: jest.SpyInstance
 
     beforeEach(() => {
-      readdirSyncSpy = jest
-        .spyOn(fs, 'readdirSync')
-        .mockReturnValue(new Array(2).fill('.md'))
-      readFileSpy = jest.spyOn(fs, 'readFileSync')
+      readdirSyncSpy = jest.spyOn(fs, 'readdirSync')
     })
 
     afterEach(() => {
       readdirSyncSpy.mockRestore()
-      readFileSpy.mockRestore()
     })
 
-    it('will order the posts such that the post with the latest date is first', () => {
-      const post1 = `---
-date: '2018-09-01T00:00:00.000Z'
----
-`
-      const post2 = `---
-date: '2016-09-01T00:00:00.000Z'
----
-`
-      const expectedResult = [
-        {
-          content: '',
-          date: '2018-09-01T00:00:00.000Z',
-          slug: '',
-        },
-        {
-          content: '',
-          date: '2016-09-01T00:00:00.000Z',
-          slug: '',
-        },
-      ]
+    it('will order the posts such that the post with the latest date is first', async () => {
+      readdirSyncSpy.mockReturnValueOnce([
+        'building-this-site.mdx',
+        'bye-bye-popups.mdx',
+      ])
+      const allPosts = await getAllPosts()
 
-      readFileSpy.mockReturnValueOnce(post1).mockReturnValueOnce(post2)
-      expect(getAllPosts()).toEqual(expectedResult)
-
-      // Check the other order
-      readFileSpy.mockReturnValueOnce(post2).mockReturnValueOnce(post1)
-      expect(getAllPosts()).toEqual(expectedResult)
+      for (let i = 0; i < allPosts.length; i++) {
+        if (i === allPosts.length - 1) {
+          break
+        }
+        expect(allPosts[i].date > allPosts[i + 1].date)
+      }
     })
 
-    it('will limit the number of returned posts to the limit passed in', () => {
-      const post1 = `---
-date: '2018-09-01T00:00:00.000Z'
----
-`
-      const post2 = `---
-date: '2016-09-01T00:00:00.000Z'
----
-`
-      const expectedResult = [
-        {
-          content: '',
-          date: '2018-09-01T00:00:00.000Z',
-          slug: '',
-        },
-      ]
-
-      readFileSpy.mockReturnValueOnce(post1).mockReturnValueOnce(post2)
-      expect(getAllPosts(1)).toEqual(expectedResult)
-
-      // Check the other order
-      readFileSpy.mockReturnValueOnce(post2).mockReturnValueOnce(post1)
-      expect(getAllPosts(1)).toEqual(expectedResult)
+    it('will limit the number of returned posts to the limit passed in', async () => {
+      readdirSyncSpy.mockReturnValueOnce([
+        'bye-bye-popups.mdx',
+        'building-this-site.mdx',
+      ])
+      const allPosts = await getAllPosts(1)
+      expect(allPosts.length).toEqual(1)
     })
   })
 })
