@@ -5,7 +5,7 @@ export const metadata = {
   excerpt: 'How to improve your site for everyone using Lighthouse CI reports.',
   coverImage: '/assets/blog/lighthouse/lighthouse.webp',
   date: '2021-07-11T17:40:07.322Z',
-  tags: ['lighthouse', 'accessibility', 'seo', 'performance']
+  tags: ['lighthouse', 'accessibility', 'seo', 'performance'],
 }
 
 ## What is Lighthouse?
@@ -17,7 +17,10 @@ This is the description over on [their README](https://github.com/GoogleChrome/l
 If you're reading this in Chrome, you can run Lighthouse right now in the browser. Right click -> `Inspect` anywhere on the page to open the developer tools, and open the `Lighthouse` tab.
 
 <figure>
-  <img src='/assets/blog/lighthouse/chrome-dev-tools.webp' alt="How to find Lighthouse in the Chrome dev tools."/>
+  <img
+    src='/assets/blog/lighthouse/chrome-dev-tools.webp'
+    alt='How to find Lighthouse in the Chrome dev tools.'
+  />
   <figcaption>How to find Lighthouse in the Chrome dev tools.</figcaption>
 </figure>
 
@@ -46,7 +49,10 @@ To get started, I followed [this excellent tutorial](https://web.dev/lighthouse-
 And within half an hour or so, I had my first automated result:
 
 <figure>
-  <img src='/assets/blog/lighthouse/first-run.webp' alt="First Lighthouse run results"/>
+  <img
+    src='/assets/blog/lighthouse/first-run.webp'
+    alt='First Lighthouse run results'
+  />
   <figcaption>Results of the first Lighthouse scan.</figcaption>
 </figure>
 
@@ -68,7 +74,10 @@ Step 2 - spend ages trying to fix the last remaining performance problem only to
 Remember our low performance score from earlier? It's actually being caused by an extremely high [largest contentful paint](https://web.dev/lcp/) time of 7.6s. Largest contentful paint is supposed to measure the time at which the largest element containing content renders. This should include images. However, for some reason, on my site, it's not.
 
 <figure>
-  <img src='/assets/blog/lighthouse/largest-contentful-paint.webp' alt="The largest contentful paint element."/>
+  <img
+    src='/assets/blog/lighthouse/largest-contentful-paint.webp'
+    alt='The largest contentful paint element.'
+  />
   <figcaption>No. Bad Lighthouse.</figcaption>
 </figure>
 
@@ -79,7 +88,10 @@ I will eventually figure out how to make it recognise the images. I suspect it's
 And so, our final results:
 
 <figure>
-  <img src='/assets/blog/lighthouse/final-results.webp' alt="Final Lighthouse run results."/>
+  <img
+    src='/assets/blog/lighthouse/final-results.webp'
+    alt='Final Lighthouse run results.'
+  />
   <figcaption>The final result. For now.</figcaption>
 </figure>
 
@@ -113,4 +125,6 @@ There's 2 things to note:
 
 Lighthouse is a good start for maintaining a baseline level of performance and accessibility, but it's not a complete solution and it definitely has its faults.
 
-export default ({ children }) => <PostLayout metadata={metadata}>{children}</PostLayout>
+export default ({ children }) => (
+  <PostLayout metadata={metadata}>{children}</PostLayout>
+)

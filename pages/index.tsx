@@ -83,10 +83,10 @@ export default function Home({ allPosts }: Props) {
       foregroundContent={foregroundContent}
     >
       <Head>
-        <title>hi, i'm ash</title>
+        <title>Ashley Harrison</title>
         <meta
           name='description'
-          content='The personal site of Ashley Harrison.'
+          content="Hi, I'm Ash. I'm a frontend software developer based in the UK."
         />
       </Head>
 
@@ -94,7 +94,7 @@ export default function Home({ allPosts }: Props) {
         <div className={styles.about}>
           <div>
             <h2>about</h2>
-            <p>I'm a software engineer based in the UK.</p>
+            <p>I'm a frontend software developer based in the UK.</p>
             <p>
               When I'm not typing on a keyboard, you can find me{' '}
               <s>typing on a keyboard</s> gaming, playing football and hanging
