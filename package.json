@@ -40,7 +40,7 @@
     "babel-loader": "^8.2.2",
     "babel-plugin-inline-react-svg": "^2.0.1",
     "classnames": "^2.3.1",
-    "css-loader": "^5.2.6",
+    "css-loader": "^6.0.0",
     "gray-matter": "^4.0.3",
     "highlight.js": "^11.0.1",
     "husky": "^7.0.0",
