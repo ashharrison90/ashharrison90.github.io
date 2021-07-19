@@ -33,7 +33,18 @@ export default {
         </p>
       ),
     },
-    foregroundContent: <h1>HELLO</h1>,
+    foregroundContent: {
+      defaultValue: <h1>HELLO</h1>,
+    },
+    hideHeaderUntilScroll: {
+      defaultValue: false,
+    },
+    metaDescription: {
+      defaultValue: 'The description seen on Google',
+    },
+    metaTitle: {
+      defaultValue: 'The title seen on Google',
+    },
   },
 } as ComponentMeta<typeof Layout>
 
