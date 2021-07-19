@@ -1,20 +1,10 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import PostLayout from './PostLayout'
+import AboutLayout from './AboutLayout'
 
 export default {
-  title: 'Layouts/PostLayout',
-  component: PostLayout,
+  title: 'Layouts/AboutLayout',
+  component: AboutLayout,
   argTypes: {
-    metadata: {
-      defaultValue: {
-        tags: ['javascript', 'typescript', 'react'],
-        title: 'An interesting title',
-        date: '2020-10-01T00:00:00.000Z',
-        slug: 'an-interesting-post',
-        coverImage: '/assets/blog/building-this-site/code.webp',
-        excerpt: 'Some more interesting information that expands on the title',
-      },
-    },
     children: {
       defaultValue: (
         <p>
@@ -29,8 +19,8 @@ export default {
       ),
     },
   },
-} as ComponentMeta<typeof PostLayout>
+} as ComponentMeta<typeof AboutLayout>
 
-export const RendersCorrectly: ComponentStory<typeof PostLayout> = (args) => (
-  <PostLayout {...args} />
+export const RendersCorrectly: ComponentStory<typeof AboutLayout> = (args) => (
+  <AboutLayout {...args} />
 )

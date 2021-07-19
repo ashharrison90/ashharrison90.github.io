@@ -83,7 +83,7 @@ export default function Home({ allPosts }: Props) {
       foregroundContent={foregroundContent}
     >
       <Head>
-        <title>Ashley Harrison</title>
+        <title>Ashley Harrison - Frontend developer</title>
         <meta
           name='description'
           content="Hi, I'm Ash. I'm a frontend software developer based in the UK."

@@ -1,0 +1,41 @@
+import Head from 'next/head'
+import Typewriter from 'typewriter-effect'
+import AboutLayout from '../components/AboutLayout/AboutLayout'
+import styles from '../styles/About.module.scss'
+import skills from '../__content__/about/skills.json'
+import Durham from '../__content__/about/jobs/durham.mdx'
+import Grafana from '../__content__/about/jobs/grafana.mdx'
+import Ibm from '../__content__/about/jobs/ibm.mdx'
+import Qinetiq from '../__content__/about/jobs/qinetiq.mdx'
+
+# about
+
+I specialise in all things frontend, with a focus on **clean**, **testable** and **maintainable** code.<br />
+I work with <Typewriter
+  component='span'
+  options={{
+    cursor: '',
+    loop: true,
+    wrapperClassName: styles.typewriter,
+  }}
+  onInit={(typewriter) => {
+    skills.forEach((skill) => {
+      typewriter.typeString(`${skill}`)
+      typewriter.pauseFor(500)
+      typewriter.deleteAll()
+    })
+    typewriter.start()
+  }}
+/>
+
+> Find a job you enjoy doing, and you will never have to work a day in your life.
+<cite>Mark Twain</cite>
+
+But did Mark Twain ever develop software? No. Stupid.
+
+<Grafana className={styles.jobSummary} />
+<Ibm className={styles.jobSummary} />
+<Qinetiq className={styles.jobSummary} />
+<Durham className={styles.jobSummary} />
+
+export default ({ children }) => <AboutLayout>{children}</AboutLayout>
