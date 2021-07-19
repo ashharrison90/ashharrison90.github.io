@@ -1,4 +1,3 @@
-import Head from 'next/head'
 import { ReactNode, useEffect } from 'react'
 import { PostMetadata } from '../../lib/postsApi'
 import Layout from '../Layout/Layout'
@@ -37,14 +36,12 @@ export default function PostLayout({ children, metadata }: Props) {
 
   return (
     <Layout
-      foregroundContent={foregroundContent}
       backgroundContent={backgroundContent}
       backgroundHeight={50}
+      foregroundContent={foregroundContent}
+      metaDescription={excerpt}
+      metaTitle={title}
     >
-      <Head>
-        <title>{title}</title>
-        <meta name='description' content={excerpt} />
-      </Head>
       <PostTitle date={date} excerpt={excerpt} tags={tags} title={title} />
       <div className={styles.postLayout}>{children}</div>
     </Layout>

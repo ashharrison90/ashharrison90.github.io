@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Typewriter from 'typewriter-effect'
-import AboutLayout from '../components/AboutLayout/AboutLayout'
+import Layout from '../components/Layout/Layout'
 import styles from '../styles/About.module.scss'
 import skills from '../__content__/about/skills.json'
 import Durham from '../__content__/about/jobs/durham.mdx'
@@ -12,23 +12,24 @@ import Qinetiq from '../__content__/about/jobs/qinetiq.mdx'
 
 I specialise in all things frontend, with a focus on **clean**, **testable** and **maintainable** code.<br />
 I work with <Typewriter
-  component='span'
-  options={{
+component='span'
+options={{
     cursor: '',
     loop: true,
     wrapperClassName: styles.typewriter,
   }}
-  onInit={(typewriter) => {
-    skills.forEach((skill) => {
-      typewriter.typeString(`${skill}`)
-      typewriter.pauseFor(500)
-      typewriter.deleteAll()
-    })
-    typewriter.start()
-  }}
+onInit={(typewriter) => {
+skills.forEach((skill) => {
+typewriter.typeString(`${skill}`)
+typewriter.pauseFor(500)
+typewriter.deleteAll()
+})
+typewriter.start()
+}}
 />
 
 > Find a job you enjoy doing, and you will never have to work a day in your life.
+
 <cite>Mark Twain</cite>
 
 But did Mark Twain ever develop software? No. Stupid.
@@ -38,4 +39,11 @@ But did Mark Twain ever develop software? No. Stupid.
 <Qinetiq className={styles.jobSummary} />
 <Durham className={styles.jobSummary} />
 
-export default ({ children }) => <AboutLayout>{children}</AboutLayout>
+export default ({ children }) => (
+  <Layout
+    metaDescription='More about my career so far.'
+    metaTitle='About'
+  >
+    {children}
+  </Layout>
+)

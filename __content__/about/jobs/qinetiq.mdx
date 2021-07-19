@@ -6,7 +6,7 @@ export const metadata = {
   jobTitle: 'Graduate Scientist',
   startDate: '2013-09-01T00:00:00.000Z',
   endDate: '2014-10-01T00:00:00.000Z',
-  website: 'https://www.qinetiq.com'
+  website: 'https://www.qinetiq.com',
 }
 
 Optimising warhead lethality through computer modelling and data analysis.
@@ -16,11 +16,7 @@ Having to occasionally say the first half of that sentence out loud is part of t
 However, my time at QinetiQ gave me the opportunity to solidify my programming knowledge (more Python, R and shell) and gain invaluable client experience.
 
 export default ({ children, className }) => (
-  <JobSummary
-    className={className}
-    {...metadata}
-    icon={<Qinetiq />}
-  >
+  <JobSummary className={className} {...metadata} icon={<Qinetiq />}>
     {children}
   </JobSummary>
 )

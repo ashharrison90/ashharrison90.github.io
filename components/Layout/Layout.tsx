@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { ReactNode } from 'react'
+import Head from 'next/head'
 import classnames from 'classnames'
 import Footer from '../Footer/Footer'
 import Header from '../Header/Header'
@@ -12,6 +13,8 @@ export interface Props {
   children: ReactNode
   foregroundContent?: ReactNode
   hideHeaderUntilScroll?: boolean
+  metaDescription: string
+  metaTitle: string
 }
 
 let prevScrollTop = 0
@@ -23,6 +26,8 @@ export default function Layout({
   children,
   foregroundContent,
   hideHeaderUntilScroll = false,
+  metaDescription,
+  metaTitle,
 }: Props) {
   const [showHeader, setShowHeader] = useState(!hideHeaderUntilScroll)
   const [backgroundContentFade, setBackgroundContentFade] = useState(0)
@@ -52,6 +57,10 @@ export default function Layout({
 
   return (
     <div className={styles.container}>
+      <Head>
+        <title>{metaTitle}</title>
+        <meta name='description' content={metaDescription} />
+      </Head>
       <Header show={showHeader} />
       <div className={styles.parallaxContainer} ref={containerRef} role='main'>
         {backgroundContent}

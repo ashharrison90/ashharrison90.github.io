@@ -1,4 +1,3 @@
-import Head from 'next/head'
 import { getAllPosts, PostMetadata } from '../lib/postsApi'
 import PostGrid from '../components/PostGrid/PostGrid'
 import PostCard from '../components/PostCard/PostCard'
@@ -27,15 +26,10 @@ export default function Posts({ allPosts }: Props) {
 
   const filteredPosts = allPosts.filter(postFilter)
   return (
-    <Layout>
-      <Head>
-        <title>posts</title>
-        <meta
-          name='description'
-          content='A dumping ground for thoughts from my brain.'
-        />
-      </Head>
-
+    <Layout
+      metaDescription='A dumping ground for my ramblings. New posts whenever I can be bothered.'
+      metaTitle='Posts'
+    >
       <h1>posts</h1>
 
       <p>

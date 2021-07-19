@@ -1,4 +1,3 @@
-import Head from 'next/head'
 import { useState, useEffect } from 'react'
 import classnames from 'classnames'
 import { getAllPosts, PostMetadata } from '../lib/postsApi'
@@ -81,15 +80,9 @@ export default function Home({ allPosts }: Props) {
       backgroundContent={backgroundContent}
       backgroundHeight={100}
       foregroundContent={foregroundContent}
+      metaDescription="Hi, I'm Ash. I'm a frontend software developer based in the UK."
+      metaTitle='Ashley Harrison - Frontend developer'
     >
-      <Head>
-        <title>Ashley Harrison - Frontend developer</title>
-        <meta
-          name='description'
-          content="Hi, I'm Ash. I'm a frontend software developer based in the UK."
-        />
-      </Head>
-
       <main>
         <div className={styles.about}>
           <div>
