@@ -101,7 +101,7 @@ export default function Home({ allPosts }: Props) {
         </div>
 
         <div className={styles.posts}>
-          <h2>posts</h2>
+          <h2>latest posts</h2>
           <PostGrid className={styles.postGrid}>
             {allPosts.map((post) => (
               <PostCard
@@ -125,7 +125,7 @@ export default function Home({ allPosts }: Props) {
 }
 
 export const getStaticProps = async () => {
-  const allPosts = await getAllPosts(6)
+  const allPosts = await getAllPosts(3)
 
   return {
     props: {

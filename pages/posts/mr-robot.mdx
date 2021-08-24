@@ -14,24 +14,24 @@ Now that the 2021/2022 Premier League season has officially started, it seems ap
 
 For anyone unfamiliar with fantasy football, it's a game where you pick a hypothetical team of 15 players with the aim of maximising the number of points scored over the course of the season. Each player in your team gains points based on the actions described in the table below.
 
-| Action                                                    | Points  |
-| --------------------------------------------------------- | ------- |
-| Playing up to 60 minutes                                  | 1       |
-| Playing 60 minutes or more (excluding stoppage time)      | 2       |
-| Goal scored by a goalkeeper or defender                   | 6       |
-| Goal scored by a midfielder                               | 5       |
-| Goal scored by a forward                                  | 4       |
-| Goal assist                                               | 3       |
-| Clean sheet by a goalkeeper or defender                   | 4       |
-| Clean sheet by a midfielder                               | 1       |
-| 3 shot saves by a goalkeeper                              | 1       |
-| Penalty save                                              | 5       |
-| Penalty miss                                              | -2      |
-| Bonus points for the best players in a match              | 1-3     |
-| 2 goals conceded by a goalkeeper or defender              | -1      |
-| Yellow card                                               | -1      |
-| Red card                                                  | -3      |
-| Own goal                                                  | -2      |
+| Action                                               | Points |
+| ---------------------------------------------------- | ------ |
+| Playing up to 60 minutes                             | 1      |
+| Playing 60 minutes or more (excluding stoppage time) | 2      |
+| Goal scored by a goalkeeper or defender              | 6      |
+| Goal scored by a midfielder                          | 5      |
+| Goal scored by a forward                             | 4      |
+| Goal assist                                          | 3      |
+| Clean sheet by a goalkeeper or defender              | 4      |
+| Clean sheet by a midfielder                          | 1      |
+| 3 shot saves by a goalkeeper                         | 1      |
+| Penalty save                                         | 5      |
+| Penalty miss                                         | -2     |
+| Bonus points for the best players in a match         | 1-3    |
+| 2 goals conceded by a goalkeeper or defender         | -1     |
+| Yellow card                                          | -1     |
+| Red card                                             | -3     |
+| Own goal                                             | -2     |
 
 Of course, there are certain constraints to make the game challenging. Everyone starts the season with the same initial budget. You must have the correct number of players in each position and can't have more than 3 players from the same team. You can find the full list of rules [over on the website](https://fantasy.premierleague.com/help/rules).
 
@@ -42,6 +42,7 @@ So what does this have to do with Mr Robot? Nothing. It's just the name of my te
 We'll start with what exists already. Back at the start of the 2016/2017 season, I wanted to write something in Python. I set myself the challenge of writing a fantasy football bot in a week. It would decide the team and interact with the fantasy premier league API to make the necessary transfers throughout the season with zero manual intervention.
 
 The code is broadly split into 3 parts:
+
 1. **Web service module**. This is responsible for interacting with the various endpoints the fantasy premier league API provides. It logs in, scrapes player data, fixture data, the current team, makes any transfers and sets the new team and starting lineup.
 1. **Points prediction module**. Given a specific player and fixture data, predict how many points that player will score.
 1. **Linear solver module**. Once we have a list of players and points, construct the best possible team given the various constraints.
@@ -72,15 +73,17 @@ I know, I know. It's a pretty shit implementation. But I only had a week. Give m
 
 ### Linear solver
 
-Fortunately, the linear solver is actually pretty non-shit. It uses a Python module called [PuLP](https://coin-or.github.io/pulp/) to define and solve a [linear optimisation problem](https://en.wikipedia.org/wiki/Linear_programming). 
+Fortunately, the linear solver is actually pretty non-shit. It uses a Python module called [PuLP](https://coin-or.github.io/pulp/) to define and solve a [linear optimisation problem](https://en.wikipedia.org/wiki/Linear_programming).
 
 Let's start by defining the optimisation problem. We want to maximise the total points scored:
+
 ```python
 # Define the squad linear optimisation problem
 squad_prob = pulp.LpProblem('squad', pulp.LpMaximize)
 ```
 
 We then loop through each player and add their data to a set of linear equations:
+
 ```python
 # Loop through every player and add them to the constraints
 all_players = web_service.get_all_player_data()['elements']
@@ -113,6 +116,7 @@ for player in all_players:
 ```
 
 The key part here is the creation of the binary variable `player['selected']` determining whether to select the player or not. This variable either takes the value of 0 or 1. So when evaluating the overall squad points we have an equation of the form:
+
 ```python
 new_squad_points =
   player_1['selected'] * player_1['expected_points'] +
@@ -123,6 +127,7 @@ new_squad_points =
 ```
 
 By setting different values of `selected` for each player, we get different squad points. But what's preventing the solver from selecting every player to give the maximum amount of points? The constraints. These are:
+
 - Must not have more than 3 players from the same team
 - Must have enough bank for the team
 - Must not have a negative bank
@@ -133,6 +138,7 @@ By setting different values of `selected` for each player, we get different squa
 - Must only use the free transfers when making changes
 
 In code:
+
 ```python
 # Account for free transfers and cost transfers
 free_transfers_used = pulp.LpVariable(
@@ -162,7 +168,7 @@ squad_prob.solve()
 
 ### Performance
 
-This would then run nightly as a cron job on a Raspberry Pi. It compares the current date to the next transfer deadline date scraped by the web service. If the days match (i.e. we're on the day of the transfer deadline) it updates the squad. 
+This would then run nightly as a cron job on a Raspberry Pi. It compares the current date to the next transfer deadline date scraped by the web service. If the days match (i.e. we're on the day of the transfer deadline) it updates the squad.
 
 So how has it been doing?
 
@@ -207,7 +213,7 @@ But now that we know a bit more about the code, I think it's pretty obvious that
 
 Enter PyTorch. [PyTorch](https://pytorch.org/) is an open source machine learning framework developed by Facebook. Machine learning works by analysing a set of training data to build a model of the data that can then be used to make future predictions. This sort of problem is particularly suited to machine learning as it can recognise patterns humans might miss.
 
-First, we define the model class. 
+First, we define the model class.
 
 ```python
 from torch.nn import BatchNorm1d, Dropout, Embedding, Linear, Module, ModuleList, ReLU, Sequential
@@ -252,6 +258,7 @@ In basic terms, we're taking the input data and applying a set of transformation
 One layer that's pretty interesting (and actually understandable) is the Dropout layer. [Neural networks are generally prone to overfitting the training data](https://jmlr.org/papers/v15/srivastava14a.html). The idea of a dropout layer is to randomly remove some neurons in the network during training to prevent these neurons from coadaptation. [Here's an excellent article about this by Michael Peng over on medium](https://medium.com/@lipeng2/dropout-is-so-important-e517bbe3ffcc).
 
 Anyway, back to the transformation layers. At the start we don't know exactly what values these transformations should have. We define a [loss function](https://en.wikipedia.org/wiki/Loss_function) that tells us how far away our predicted value is from the real thing, and each time the model runs against the training data it attempts to minimise the loss function. This is known as a **training loop** or **epoch**.
+
 ```python
 # train the model
 def train_model():
@@ -283,11 +290,10 @@ Maybe you've noticed I've skipped over **a lot** of details. I'm not a data scie
 ## Results
 
 <figure>
-  <img
-    src='/assets/blog/mr-robot/team-final.webp'
-    alt='Final team selection'
-  />
-  <figcaption>The final team selection and their point totals after the first gameweek.</figcaption>
+  <img src='/assets/blog/mr-robot/team-final.webp' alt='Final team selection' />
+  <figcaption>
+    The final team selection and their point totals after the first gameweek.
+  </figcaption>
 </figure>
 
 Here's the team and their point totals for week 1. This gave an overall gameweek score of 82, which puts the team at rank 2,004,686 out of ~7 million active players. Definitely not mindblowing, but a promising start nonetheless. Fantasy football is all about consistency. If the team consistently scores 82 that would be well over 3000 points by the end of the season. [Easily enough to win the entire competition](https://www.reddit.com/r/FantasyPL/comments/bowc35/points_needed_to_win_fpl/).
