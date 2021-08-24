@@ -1,0 +1,301 @@
+import PostLayout from '../../components/PostLayout/PostLayout'
+
+export const metadata = {
+  title: 'Mr Robot v3.0',
+  excerpt: 'Using neural networks to pick my fantasy football team.',
+  coverImage: '/assets/blog/mr-robot/elliot.webp',
+  date: '2021-08-24T17:40:07.322Z',
+  tags: ['python', 'machinelearning'],
+}
+
+## Fantasy football overview
+
+Now that the 2021/2022 Premier League season has officially started, it seems appropriate to talk about this side project in a little more detail.
+
+For anyone unfamiliar with fantasy football, it's a game where you pick a hypothetical team of 15 players with the aim of maximising the number of points scored over the course of the season. Each player in your team gains points based on the actions described in the table below.
+
+| Action                                                    | Points  |
+| --------------------------------------------------------- | ------- |
+| Playing up to 60 minutes                                  | 1       |
+| Playing 60 minutes or more (excluding stoppage time)      | 2       |
+| Goal scored by a goalkeeper or defender                   | 6       |
+| Goal scored by a midfielder                               | 5       |
+| Goal scored by a forward                                  | 4       |
+| Goal assist                                               | 3       |
+| Clean sheet by a goalkeeper or defender                   | 4       |
+| Clean sheet by a midfielder                               | 1       |
+| 3 shot saves by a goalkeeper                              | 1       |
+| Penalty save                                              | 5       |
+| Penalty miss                                              | -2      |
+| Bonus points for the best players in a match              | 1-3     |
+| 2 goals conceded by a goalkeeper or defender              | -1      |
+| Yellow card                                               | -1      |
+| Red card                                                  | -3      |
+| Own goal                                                  | -2      |
+
+Of course, there are certain constraints to make the game challenging. Everyone starts the season with the same initial budget. You must have the correct number of players in each position and can't have more than 3 players from the same team. You can find the full list of rules [over on the website](https://fantasy.premierleague.com/help/rules).
+
+So what does this have to do with Mr Robot? Nothing. It's just the name of my team.
+
+## Mr Robot v1.0
+
+We'll start with what exists already. Back at the start of the 2016/2017 season, I wanted to write something in Python. I set myself the challenge of writing a fantasy football bot in a week. It would decide the team and interact with the fantasy premier league API to make the necessary transfers throughout the season with zero manual intervention.
+
+The code is broadly split into 3 parts:
+1. **Web service module**. This is responsible for interacting with the various endpoints the fantasy premier league API provides. It logs in, scrapes player data, fixture data, the current team, makes any transfers and sets the new team and starting lineup.
+1. **Points prediction module**. Given a specific player and fixture data, predict how many points that player will score.
+1. **Linear solver module**. Once we have a list of players and points, construct the best possible team given the various constraints.
+
+Let's look at the last two in a bit more detail.
+
+### Points prediction
+
+```python
+def predict_points(player, fixture_data, gameweek=0):
+    form = float(player['form'])
+    ppg = float(player['points_per_game'])
+    expected_points = max(form, ppg)
+
+    injury_ratio = calculate_injury_multiplier(player)
+    fixture_ratio = calculate_fixture_multiplier(player, fixture_data, gameweek)
+    past_fixture_ratio = calculate_past_fixture_multiplier(player, fixture_data)
+
+    result = expected_points * injury_ratio * fixture_ratio * past_fixture_ratio
+    return result
+```
+
+Given a player, we take the max of their `form` (effectively a running average over the last 3 games) and their `points_per_game` (their mean point score over the season so far). The idea being this would allow in-form players to be substituted in over players with a higher `points_per_game`.
+
+There are also some ratios that normalise the score a bit. **`injury_ratio`** is a value between 0 and 1 describing how likely a player is to play given any injury information. **`fixture_ratio`** is a ratio calculated from the two teams Elo ratings. Players on higher rated teams _should_ score more points when playing against lower rated teams and vice-versa. Finally, **`past_fixture_ratio`** is a ratio of minutes played against total minutes. This is to prevent adding players who may have only played one game but scored highly.
+
+I know, I know. It's a pretty shit implementation. But I only had a week. Give me a break.
+
+### Linear solver
+
+Fortunately, the linear solver is actually pretty non-shit. It uses a Python module called [PuLP](https://coin-or.github.io/pulp/) to define and solve a [linear optimisation problem](https://en.wikipedia.org/wiki/Linear_programming). 
+
+Let's start by defining the optimisation problem. We want to maximise the total points scored:
+```python
+# Define the squad linear optimisation problem
+squad_prob = pulp.LpProblem('squad', pulp.LpMaximize)
+```
+
+We then loop through each player and add their data to a set of linear equations:
+```python
+# Loop through every player and add them to the constraints
+all_players = web_service.get_all_player_data()['elements']
+for player in all_players:
+    fixture_data = web_service.get_player_fixtures(player['id'])
+    player['expected_points_this_gameweek'] = points.predict_points(player, fixture_data)
+    player['selected'] = pulp.LpVariable('player_' + str(player['id']), cat='Binary')
+    teams_represented[player['team'] - 1] += player['selected']
+    player_type = player['element_type']
+    new_squad_points += player['selected'] * player['expected_points_this_gameweek']
+
+    if player_type == 1:
+        num_goal += player['selected']
+    elif player_type == 2:
+        num_def += player['selected']
+    elif player_type == 3:
+        num_mid += player['selected']
+    elif player_type == 4:
+        num_att += player['selected']
+
+    if player['id'] in current_squad_ids:
+        index = current_squad_ids.index(player['id'])
+        selling_price = current_squad['picks'][index]['selling_price']
+        bank += (1 - player['selected']) * selling_price
+        squad_value -= (1 - player['selected']) * player['now_cost']
+    else:
+        num_changes += player['selected']
+        bank -= player['selected'] * player['now_cost']
+        squad_value += player['selected'] * player['now_cost']
+```
+
+The key part here is the creation of the binary variable `player['selected']` determining whether to select the player or not. This variable either takes the value of 0 or 1. So when evaluating the overall squad points we have an equation of the form:
+```python
+new_squad_points =
+  player_1['selected'] * player_1['expected_points'] +
+  player_2['selected'] * player_2['expected_points'] +
+  player_3['selected'] * player_3['expected_points'] +
+  ...
+  player_n['selected'] * player_n['expected_points']
+```
+
+By setting different values of `selected` for each player, we get different squad points. But what's preventing the solver from selecting every player to give the maximum amount of points? The constraints. These are:
+- Must not have more than 3 players from the same team
+- Must have enough bank for the team
+- Must not have a negative bank
+- Must have 2 goalkeepers
+- Must have 5 defenders
+- Must have 5 midfielders
+- Must have 3 forwards
+- Must only use the free transfers when making changes
+
+In code:
+```python
+# Account for free transfers and cost transfers
+free_transfers_used = pulp.LpVariable(
+    'free_transfers_used',
+    cat='Integer',
+    lowBound=0,
+    upBound=free_transfers
+)
+transfer_cost = ((num_changes - free_transfers_used)
+                  * constants.TRANSFER_POINT_DEDUCTION)
+
+# Add problem and constraints
+squad_prob += new_squad_points - transfer_cost
+for team_count in teams_represented:
+    squad_prob += (team_count <= constants.SQUAD_MAX_PLAYERS_SAME_TEAM)
+squad_prob += (squad_value + bank <= total_bank)
+squad_prob += (bank >= 0)
+squad_prob += (num_goal == constants.SQUAD_NUM_GOALKEEPERS)
+squad_prob += (num_def == constants.SQUAD_NUM_DEFENDERS)
+squad_prob += (num_mid == constants.SQUAD_NUM_MIDFIELDERS)
+squad_prob += (num_att == constants.SQUAD_NUM_ATTACKERS)
+squad_prob += (num_changes - free_transfers_used >= 0)
+
+# Solve
+squad_prob.solve()
+```
+
+### Performance
+
+This would then run nightly as a cron job on a Raspberry Pi. It compares the current date to the next transfer deadline date scraped by the web service. If the days match (i.e. we're on the day of the transfer deadline) it updates the squad. 
+
+So how has it been doing?
+
+<figure>
+  <img
+    src='/assets/blog/mr-robot/past-performance.webp'
+    alt='Past performance has been mixed...'
+  />
+  <figcaption>Past performance has been mixed...</figcaption>
+</figure>
+
+I mean... not _great_. To put those numbers into context, there are usually around 6-7 million total players. So top ~40% in its first season then top ~25% for 2 seasons. The final dip is a purely human error: during the season I moved and forgot to plug the Raspberry Pi back in.
+
+Either way, I think we can do better.
+
+## Improvements
+
+Even though I think the linear solver is pretty solid at this point, there is still a small improvement we can make. Whilst we maximise the points for the entire squad, on any given gameweek only the starting 11 players points will contribute to the overall score. Most of the best fantasy football players will therefore try to optimise the score of their starting 11.
+
+This was particularly difficult to formulate as a constraint. Instead I ended up requiring that there were at least 4 "cheap" players in the squad at any time:
+
+```python
+num_cheap = 0
+
+for player in all_players:
+
+  ...
+
+  if player['now_cost'] <= 51.00:
+    num_cheap += player['selected']
+
+  ...
+
+  squad_prob += (num_cheap >= 4)
+```
+
+These will _probably_, although not _necessarily_, be the players on the bench. That leaves us with at least 79.6/11 = 7.24 million per player for the starting 11, as opposed to 100/15 = 6.67 million per player when the budget is shared equally between the whole squad.
+
+But now that we know a bit more about the code, I think it's pretty obvious that the majority of the improvements will need to be made in the points prediction module. So how can we more accurately predict the points each player will score each week? By outsourcing the work to a neural network!
+
+## PyTorch
+
+Enter PyTorch. [PyTorch](https://pytorch.org/) is an open source machine learning framework developed by Facebook. Machine learning works by analysing a set of training data to build a model of the data that can then be used to make future predictions. This sort of problem is particularly suited to machine learning as it can recognise patterns humans might miss.
+
+First, we define the model class. 
+
+```python
+from torch.nn import BatchNorm1d, Dropout, Embedding, Linear, Module, ModuleList, ReLU, Sequential
+import torch
+
+class Model(Module):
+    def __init__(self, embedding_size, num_numerical_cols):
+        super().__init__()
+        self.all_embeddings = ModuleList([Embedding(ni, nf) for ni, nf in embedding_size])
+        self.embedding_dropout = Dropout(0.1)
+        self.batch_norm_num = BatchNorm1d(num_numerical_cols)
+
+        all_layers = []
+        num_categorical_cols = sum((nf for ni, nf in embedding_size))
+        layer_size = num_categorical_cols + num_numerical_cols
+
+        layer_sizes = [100, 50, 25]
+        for i, new_layer_size in enumerate(layer_sizes):
+            all_layers.append(Linear(layer_size, new_layer_size))
+            all_layers.append(ReLU(inplace=True))
+            all_layers.append(BatchNorm1d(new_layer_size))
+            all_layers.append(Dropout(0.2))
+            layer_size = new_layer_size
+
+        all_layers.append(Linear(layer_sizes[-1], 1))
+        self.layers = Sequential(*all_layers)
+
+    def forward(self, x_categorical, x_numerical):
+        embeddings = []
+        for i, e in enumerate(self.all_embeddings):
+            embeddings.append(e(x_categorical[:,i]))
+        x = torch.cat(embeddings, 1)
+        x = self.embedding_dropout(x)
+        x_numerical = self.batch_norm_num(x_numerical)
+        x = torch.cat([x, x_numerical], 1)
+        x = self.layers(x)
+        return x
+```
+
+In basic terms, we're taking the input data and applying a set of transformations. These are known as layers. The constructor sets up the layers which can then be used by the `forward` function. This `forward` function is effectively what is invoked when training the model. You can find lots of information on the different layer types [in the docs](https://pytorch.org/docs/stable/nn.html).
+
+One layer that's pretty interesting (and actually understandable) is the Dropout layer. [Neural networks are generally prone to overfitting the training data](https://jmlr.org/papers/v15/srivastava14a.html). The idea of a dropout layer is to randomly remove some neurons in the network during training to prevent these neurons from coadaptation. [Here's an excellent article about this by Michael Peng over on medium](https://medium.com/@lipeng2/dropout-is-so-important-e517bbe3ffcc).
+
+Anyway, back to the transformation layers. At the start we don't know exactly what values these transformations should have. We define a [loss function](https://en.wikipedia.org/wiki/Loss_function) that tells us how far away our predicted value is from the real thing, and each time the model runs against the training data it attempts to minimise the loss function. This is known as a **training loop** or **epoch**.
+```python
+# train the model
+def train_model():
+    logger.info('Training the model. This could take a long time...')
+    model.train()
+    # define the optimization
+    loss_function = MSELoss()
+    optimizer = SGD(model.parameters(), lr=0.001, momentum=0.9)
+    epochs = 500
+    # enumerate epochs
+    for epoch in range(epochs):
+        # compute the model output
+        predictions = model(categorical_training_data, numerical_training_data).squeeze()
+        # calculate loss compared to actual outputs
+        loss = loss_function(predictions, training_outputs)
+        logger.info('Epoch: {}/{}. Loss: {:.2f}'.format(epoch+1, epochs, loss))
+        # clear the gradients
+        optimizer.zero_grad()
+        # credit assignment
+        loss.backward()
+        # update model weights
+        optimizer.step()
+```
+
+Finally we need data in order to train the model. Huge thanks to [vaastav](https://github.com/vaastav) who has been scraping data since the 2016/2017 season over on the [Fantasy-Premier-League](https://github.com/vaastav/Fantasy-Premier-League) project.
+
+Maybe you've noticed I've skipped over **a lot** of details. I'm not a data scientist. I can't tell you what layers to use, how to pick the number of neurons in each layer, why to pick a certain learning rate or how many epochs are required because I honestly don't know. The numbers above are purely the result of trial and error.
+
+## Results
+
+<figure>
+  <img
+    src='/assets/blog/mr-robot/team-final.webp'
+    alt='Final team selection'
+  />
+  <figcaption>The final team selection and their point totals after the first gameweek.</figcaption>
+</figure>
+
+Here's the team and their point totals for week 1. This gave an overall gameweek score of 82, which puts the team at rank 2,004,686 out of ~7 million active players. Definitely not mindblowing, but a promising start nonetheless. Fantasy football is all about consistency. If the team consistently scores 82 that would be well over 3000 points by the end of the season. [Easily enough to win the entire competition](https://www.reddit.com/r/FantasyPL/comments/bowc35/points_needed_to_win_fpl/).
+
+Earlier we talked about patterns and how machine learning can recognise things we might miss. One thing I definitely missed was that [Mo Salah has scored in the opening game of the previous 4 seasons](https://www.liverpoolfc.com/news/first-team/440750-mohamed-salah-could-set-premier-league-opening-day-record). This season, Salah ended up being the second highest points scorer in the opening gameweek.
+
+I'll try to remember to write an update post at the end of the season. In the mean time, you can [check out all the code here.](https://github.com/ashharrison90/fantasy_pl)
+
+export default ({ children }) => (
+  <PostLayout metadata={metadata}>{children}</PostLayout>
+)

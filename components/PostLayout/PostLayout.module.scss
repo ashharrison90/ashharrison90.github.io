@@ -17,6 +17,20 @@
     font-size: 0.8em;
     padding: 0.5em;
   }
+
+  table {
+    border-spacing: 0;
+    margin: auto;
+
+    td,
+    th {
+      padding: 0.25em 1em;
+    }
+
+    tbody tr:nth-child(odd) {
+      background-color: var(--container);
+    }
+  }
 }
 
 .coverImage {
