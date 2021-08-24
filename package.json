@@ -74,6 +74,7 @@
     "webpack": "^5.40.0"
   },
   "lint-staged": {
-    "*.{ts,tsx,js,scss,css,md}": "yarn lint"
+    "*.scss": "stylelint --fix",
+    "*": "prettier --write"
   }
 }
