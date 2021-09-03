@@ -2,11 +2,10 @@ import '../styles/globals.scss'
 import './globals.scss'
 import { addDecorator, addParameters } from '@storybook/react'
 import { withRootAttribute } from 'storybook-addon-root-attribute'
-import { withNextRouter } from 'storybook-addon-next-router'
+import { RouterContext } from 'next/dist/shared/lib/router-context'
 
 // global
 addDecorator(withRootAttribute)
-addDecorator(withNextRouter)
 addParameters({
   rootAttribute: {
     attribute: 'data-theme',
@@ -30,5 +29,8 @@ export const parameters = {
       color: /(background|color)$/i,
       date: /Date$/,
     },
+  },
+  nextRouter: {
+    Provider: RouterContext.Provider,
   },
 }

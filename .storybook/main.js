@@ -5,6 +5,7 @@ module.exports = {
     '@storybook/addon-essentials',
     '@storybook/preset-scss',
     'storybook-addon-root-attribute/register',
+    'storybook-addon-next-router',
   ],
   core: {
     builder: 'webpack5',

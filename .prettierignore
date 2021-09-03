@@ -18,6 +18,8 @@
 # misc
 .DS_Store
 *.pem
+.gitignore
+.prettierignore
 
 # debug
 npm-debug.log*
@@ -32,3 +34,7 @@ yarn-error.log*
 
 # vercel
 .vercel
+
+# lockfiles
+yarn.lock
+package-lock.json
