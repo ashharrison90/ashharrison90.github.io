@@ -17,7 +17,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@babel/core": "^7.15.4",
+    "@babel/core": "^7.15.5",
     "@fortawesome/fontawesome-free": "^5.15.4",
     "@lhci/cli": "^0.8.1",
     "@mdx-js/loader": "^1.6.22",
