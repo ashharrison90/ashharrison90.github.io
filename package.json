@@ -36,7 +36,7 @@
     "@testing-library/user-event": "^13.2.1",
     "@types/jest": "^27.0.1",
     "@types/node": "^16.7.10",
-    "@types/react": "^17.0.19",
+    "@types/react": "^17.0.21",
     "@types/react-highlight-words": "^0.16.3",
     "babel-loader": "^8.2.2",
     "babel-plugin-inline-react-svg": "^2.0.1",
