@@ -11,11 +11,6 @@ describe('Footer', () => {
     expect(footer).toBeInTheDocument()
   })
 
-  it('has an email link', () => {
-    const link = screen.getByRole('link', { name: /email/ })
-    expect(link).toBeInTheDocument()
-  })
-
   it('has a github link', () => {
     const link = screen.getByRole('link', { name: /github/ })
     expect(link).toBeInTheDocument()

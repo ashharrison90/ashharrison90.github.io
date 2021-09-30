@@ -23,6 +23,11 @@
   display: flex;
 }
 
+.shareLink {
+  min-height: 32px;
+  min-width: 32px;
+}
+
 .date,
 .tags {
   font-size: 0.8em;

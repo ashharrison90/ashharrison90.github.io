@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { ReactNode } from 'react'
 import Head from 'next/head'
 import classnames from 'classnames'
@@ -33,6 +33,7 @@ export default function Layout({
   const [backgroundContentFade, setBackgroundContentFade] = useState(0)
   const containerRef = useRef<HTMLDivElement>(null)
   const foregroundContentRef = useRef<HTMLDivElement>(null)
+  const headerRef = useRef<HTMLElement>(null)
   const handleScroll = () => {
     if (hideHeaderUntilScroll) {
       setShowHeader(containerRef.current!.scrollTop > 0)
@@ -52,6 +53,7 @@ export default function Layout({
     }
   }
   useEffect(() => {
+    headerRef.current!.addEventListener('focusin', () => setShowHeader(true))
     containerRef.current!.addEventListener('scroll', handleScroll)
   }, [])
 
@@ -61,7 +63,7 @@ export default function Layout({
         <title>{metaTitle}</title>
         <meta name='description' content={metaDescription} />
       </Head>
-      <Header show={showHeader} />
+      <Header show={showHeader} ref={headerRef} />
       <div className={styles.parallaxContainer} ref={containerRef} role='main'>
         {backgroundContent}
         <div

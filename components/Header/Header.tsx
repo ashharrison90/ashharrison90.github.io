@@ -1,3 +1,4 @@
+import { forwardRef } from 'react'
 import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
 import classnames from 'classnames'
@@ -27,28 +28,27 @@ export interface Props {
   show: boolean
 }
 
-export default function Header({ show }: Props) {
+const Header = forwardRef<HTMLElement, Props>(({ show }, ref) => {
   const router = useRouter()
   return (
     <header
+      ref={ref}
       className={classnames(styles.header, {
         [styles.hide]: !show,
       })}
     >
       <ThemeToggle />
 
-      <nav>
-        <div>
-          {PAGE_LINKS.map(({ label, href }) => (
-            <PageLink
-              key={href}
-              className={styles.pageLinks}
-              href={href}
-              isActive={router.pathname === href}
-              label={label}
-            />
-          ))}
-        </div>
+      <nav className={styles.nav}>
+        {PAGE_LINKS.map(({ label, href }) => (
+          <PageLink
+            key={href}
+            className={styles.pageLinks}
+            href={href}
+            isActive={router.pathname === href}
+            label={label}
+          />
+        ))}
         {router.asPath.startsWith('/posts/') && (
           <PageLink
             key={router.asPath}
@@ -63,4 +63,6 @@ export default function Header({ show }: Props) {
       </nav>
     </header>
   )
-}
+})
+
+export default Header

@@ -43,13 +43,14 @@ li {
   line-height: 1.5em;
 }
 
-h1 {
-  font-size: 4em;
-  hyphens: auto;
-}
+@media screen and (min-width: 768px) {
+  h1 {
+    font-size: 4em;
+  }
 
-h2 {
-  font-size: 2em;
+  h2 {
+    font-size: 2em;
+  }
 }
 
 input[type='search']::-webkit-search-decoration,

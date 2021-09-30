@@ -1,18 +1,15 @@
 .footer {
+  align-items: stretch;
   background-color: var(--container);
+  border-top: 1px solid var(--border);
   display: flex;
   flex-direction: column;
-  height: 60px;
-  padding: 0.5em 1em;
+  min-height: 44px;
 }
 
 .socialLinks {
-  align-items: center;
+  align-items: stretch;
   display: flex;
   flex: 1;
   justify-content: center;
-}
-
-.socialLink {
-  margin: 0 4px;
 }

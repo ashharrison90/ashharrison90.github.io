@@ -1,15 +1,10 @@
 .link {
+  align-items: center;
   color: var(--icon-secondary);
   display: flex;
-  padding: 4px;
-
-  &:last-of-type {
-    padding: 4px 0 4px 4px;
-  }
-
-  &:first-of-type {
-    padding: 4px 4px 4px 0;
-  }
+  justify-content: center;
+  min-height: 44px;
+  min-width: 44px;
 
   &:hover,
   &:focus,

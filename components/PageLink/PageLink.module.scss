@@ -1,5 +1,8 @@
 .pageLink {
+  align-items: center;
+  border-bottom: 2px solid transparent;
   color: var(--text-secondary);
+  display: flex;
   font-weight: bold;
   text-decoration: none;
   text-transform: lowercase;
@@ -14,5 +17,7 @@
 }
 
 .activePage {
+  border-bottom: 2px solid var(--interactive) !important;
   color: var(--interactive);
+  height: calc(100% + 1px);
 }

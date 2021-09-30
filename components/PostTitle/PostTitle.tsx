@@ -57,6 +57,7 @@ export default function PostTitle({ date, excerpt, tags, title }: Props) {
               {isNativeShare && <ShareButton title={title} url={pageUrl} />}
               {Object.keys(shareData).map((item) => (
                 <SocialLink
+                  className={styles.shareLink}
                   key={item}
                   type={item}
                   ariaLabel={`Share to ${shareData[item].label}`}

@@ -1,4 +1,5 @@
 import { render, screen, fireEvent, RenderResult } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import Layout from './Layout'
 
 jest.mock('next/router', () => ({
@@ -19,11 +20,17 @@ describe('Layout', () => {
   const mockChild = <div data-testid={childId} />
   const mockBackground = <div data-testid={backgroundId} />
   const mockForeground = <div data-testid={foregroundId} />
+  const mockMetaTitle = 'mockTitle'
+  const mockMetaDescription = 'mockDescription'
   let component: RenderResult
 
   describe('when hideHeaderUntilScroll is false', () => {
     beforeEach(async () => {
-      component = render(<Layout>{mockChild}</Layout>)
+      component = render(
+        <Layout metaTitle={mockMetaTitle} metaDescription={mockMetaDescription}>
+          {mockChild}
+        </Layout>
+      )
       await screen.findByTestId(childId)
     })
 
@@ -34,7 +41,13 @@ describe('Layout', () => {
 
     it('renders the foreground content passed to it', async () => {
       component.rerender(
-        <Layout foregroundContent={mockForeground}>{mockChild}</Layout>
+        <Layout
+          foregroundContent={mockForeground}
+          metaTitle={mockMetaTitle}
+          metaDescription={mockMetaDescription}
+        >
+          {mockChild}
+        </Layout>
       )
       const link = await screen.findByTestId(foregroundId)
       expect(link).toBeInTheDocument()
@@ -42,7 +55,13 @@ describe('Layout', () => {
 
     it('renders the background content passed to it', async () => {
       component.rerender(
-        <Layout backgroundContent={mockBackground}>{mockChild}</Layout>
+        <Layout
+          backgroundContent={mockBackground}
+          metaTitle={mockMetaTitle}
+          metaDescription={mockMetaDescription}
+        >
+          {mockChild}
+        </Layout>
       )
       const link = await screen.findByTestId(backgroundId)
       expect(link).toBeInTheDocument()
@@ -61,10 +80,18 @@ describe('Layout', () => {
     })
   })
 
-  describe('when scrolling', () => {
-    describe('when hideHeaderUntilScroll is true', () => {
+  describe('when hideHeaderUntilScroll is true', () => {
+    describe('when scrolling', () => {
       beforeEach(async () => {
-        render(<Layout hideHeaderUntilScroll>{mockChild}</Layout>)
+        render(
+          <Layout
+            hideHeaderUntilScroll
+            metaTitle={mockMetaTitle}
+            metaDescription={mockMetaDescription}
+          >
+            {mockChild}
+          </Layout>
+        )
         await screen.findByTestId(childId)
       })
 
@@ -84,47 +111,59 @@ describe('Layout', () => {
         expect(header).toBeInTheDocument()
         expect(header).not.toHaveClass('hide')
       })
+
+      it('shows the header if any element in the header receives focus', async () => {
+        let header = await screen.findByRole('banner')
+        expect(header).toBeInTheDocument()
+        expect(header).toHaveClass('hide')
+        userEvent.tab()
+        header = await screen.findByRole('banner')
+        expect(header).toBeInTheDocument()
+        expect(header).not.toHaveClass('hide')
+      })
+    })
+  })
+
+  describe('when there is foregroundContent', () => {
+    beforeEach(async () => {
+      render(
+        <Layout
+          foregroundContent={mockForeground}
+          backgroundContent={mockBackground}
+          metaTitle={mockMetaTitle}
+          metaDescription={mockMetaDescription}
+        >
+          {mockChild}
+        </Layout>
+      )
+      await screen.findByTestId(childId)
     })
 
-    describe('when there is foregroundContent', () => {
-      beforeEach(async () => {
-        render(
-          <Layout
-            foregroundContent={mockForeground}
-            backgroundContent={mockBackground}
-          >
-            {mockChild}
-          </Layout>
-        )
-        await screen.findByTestId(childId)
+    it('dims the background once scrolled', async () => {
+      let backgroundOverlay = await screen.findByTestId('backgroundOverlay')
+      expect(backgroundOverlay).toBeInTheDocument()
+      expect(backgroundOverlay).toHaveStyle({
+        backgroundColor: 'rgba(var(--hero-background-rgb), 0)',
       })
-
-      it('dims the background once scrolled', async () => {
-        let backgroundOverlay = await screen.findByTestId('backgroundOverlay')
-        expect(backgroundOverlay).toBeInTheDocument()
-        expect(backgroundOverlay).toHaveStyle({
-          backgroundColor: 'rgba(var(--hero-background-rgb), 0)',
+      const scrollContainer = await screen.findByRole('main')
+      jest
+        .spyOn(global.HTMLElement.prototype, 'getBoundingClientRect')
+        .mockReturnValue({
+          bottom: 0,
+          height: 1000,
+          left: 0,
+          right: 0,
+          toJSON: () => {},
+          top: 500,
+          width: 0,
+          x: 0,
+          y: 0,
         })
-        const scrollContainer = await screen.findByRole('main')
-        jest
-          .spyOn(global.HTMLElement.prototype, 'getBoundingClientRect')
-          .mockReturnValue({
-            bottom: 0,
-            height: 1000,
-            left: 0,
-            right: 0,
-            toJSON: () => {},
-            top: 500,
-            width: 0,
-            x: 0,
-            y: 0,
-          })
-        fireEvent.scroll(scrollContainer, { target: { scrollTop: 100 } })
-        backgroundOverlay = await screen.findByTestId('backgroundOverlay')
-        expect(backgroundOverlay).toBeInTheDocument()
-        expect(backgroundOverlay).toHaveStyle({
-          backgroundColor: 'rgba(var(--hero-background-rgb), 0.5)',
-        })
+      fireEvent.scroll(scrollContainer, { target: { scrollTop: 100 } })
+      backgroundOverlay = await screen.findByTestId('backgroundOverlay')
+      expect(backgroundOverlay).toBeInTheDocument()
+      expect(backgroundOverlay).toHaveStyle({
+        backgroundColor: 'rgba(var(--hero-background-rgb), 0.5)',
       })
     })
   })

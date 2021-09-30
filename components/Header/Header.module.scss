@@ -1,42 +1,43 @@
 .header {
-  align-items: center;
+  align-items: stretch;
   background-color: var(--container);
+  border-bottom: 1px solid var(--border);
   display: flex;
-  height: 40px;
+  height: 44px;
   justify-content: space-between;
   padding: 0 1em;
   position: fixed;
   top: 0;
-  transition: top 0.2s ease-in-out, visibility 0.2s ease-in-out;
+  // transition: top 0.2s ease-in-out, visibility 0.2s ease-in-out;
+  transition: top 0.2s ease-in-out;
   width: 100%;
   z-index: 1;
 }
 
+.nav {
+  align-items: stretch;
+  display: flex;
+}
+
 .pageLinks {
-  margin: 0 0.5em;
-
-  &:first-of-type {
-    margin-left: 0;
-  }
-
-  &:last-of-type {
-    margin-right: 0;
-  }
+  padding: 0 0.5rem;
 }
 
 .postPageLink {
   align-items: center;
   background-color: var(--container);
+  border-bottom: 1px solid var(--border);
+  border-left: 1px solid var(--border);
   display: flex;
-  height: 40px;
-  padding: 0 1em;
+  height: 44px;
+  padding: 0 0.5em;
   position: absolute;
-  top: 40px;
+  top: 43px;
   transition: top 0.2s ease-in-out, visibility 0.2s ease-in-out;
   right: 0;
 }
 
 .hide {
-  top: -40px;
-  visibility: hidden;
+  top: -44px;
+  // visibility: hidden;
 }
