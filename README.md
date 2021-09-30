@@ -2,7 +2,7 @@ My personal site!
 
 Bootstrapped with Next.js, based off the starter project [here.](https://github.com/vercel/next.js/tree/canary/examples/blog-starter-typescript)
 
-See it running on Github Pages @ [ashharrison90.github.io](https://ashharrison90.github.io/)
+See it running on Github Pages @ [ashharrison90.com](https://ashharrison90.com)
 
 ## Getting Started
 
