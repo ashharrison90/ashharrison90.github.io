@@ -10,9 +10,9 @@
   height: 24px;
   background: var(--container-alt);
   border-radius: 24px;
-  box-shadow: 0 0 0 1px var(--interactive);
+  box-shadow: var(--shadow);
   position: relative;
-  transition: background-color 0.2s;
+  transition: all 0.05s ease-in-out;
 }
 
 .lightIcon,
@@ -80,10 +80,15 @@
 .input:hover,
 .input:active {
   + .toggle {
-    box-shadow: 0 0 0 2px var(--focus);
-
     .toggleButton {
       background: linear-gradient(120deg, var(--focus), var(--focus-alt));
     }
+  }
+}
+
+.input:active {
+  + .toggle {
+    box-shadow: var(--shadow-active);
+    transform: scale(0.95);
   }
 }

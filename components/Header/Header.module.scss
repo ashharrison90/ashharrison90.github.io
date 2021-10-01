@@ -8,7 +8,6 @@
   padding: 0 1em;
   position: fixed;
   top: 0;
-  // transition: top 0.2s ease-in-out, visibility 0.2s ease-in-out;
   transition: top 0.2s ease-in-out;
   width: 100%;
   z-index: 1;
@@ -33,11 +32,10 @@
   padding: 0 0.5em;
   position: absolute;
   top: 43px;
-  transition: top 0.2s ease-in-out, visibility 0.2s ease-in-out;
+  transition: top 0.2s ease-in-out;
   right: 0;
 }
 
 .hide {
   top: -44px;
-  // visibility: hidden;
 }

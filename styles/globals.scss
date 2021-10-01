@@ -77,6 +77,8 @@ input[type='search']::-webkit-search-results-decoration {
   --logo-grafana: #0a0a0a;
   --logo-ibm: #1f70c1;
   --logo-qinetiq: #002744;
+  --shadow: 2px 2px 3px 0 rgba(0, 0, 0, 0.9);
+  --shadow-active: 1px 1px 2px 0 rgba(0, 0, 0, 0.95);
   --text-primary: #000;
   --text-secondary: #525252;
 }
@@ -98,6 +100,8 @@ input[type='search']::-webkit-search-results-decoration {
   --logo-grafana: #f4f4f4;
   --logo-ibm: #1f70c1;
   --logo-qinetiq: #f4f4f4;
+  --shadow: 2px 2px 3px 0 rgba(0, 0, 0, 0.9);
+  --shadow-active: 1px 1px 2px 0 rgba(0, 0, 0, 0.95);
   --text-primary: #f4f4f4;
   --text-secondary: #c6c6c6;
 }

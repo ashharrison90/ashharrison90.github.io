@@ -1,9 +1,10 @@
 .pageLink {
   align-items: center;
-  border-bottom: 2px solid transparent;
+  border-bottom: 4px solid transparent;
   color: var(--text-secondary);
   display: flex;
   font-weight: bold;
+  height: calc(100% + 1px);
   text-decoration: none;
   text-transform: lowercase;
 
@@ -17,7 +18,6 @@
 }
 
 .activePage {
-  border-bottom: 2px solid var(--interactive) !important;
+  border-bottom: 4px solid var(--interactive) !important;
   color: var(--interactive);
-  height: calc(100% + 1px);
 }

@@ -5,6 +5,7 @@
     var(--interactive-alt)
   );
   border: none;
+  box-shadow: var(--shadow);
   color: var(--background);
   cursor: pointer;
   font-family: inherit;
@@ -13,6 +14,7 @@
   min-height: 40px;
   padding: 0.5em 1em;
   text-transform: lowercase;
+  transition: all 0.05s ease-in-out;
 
   &:active,
   &:hover,
@@ -20,5 +22,10 @@
     background: linear-gradient(120deg, var(--focus), var(--focus-alt));
     outline: none;
     text-decoration: none;
+  }
+
+  &:active {
+    box-shadow: var(--shadow-active);
+    transform: scale(0.95);
   }
 }
