@@ -24,6 +24,7 @@
   line-height: 24px;
   position: absolute;
   text-rendering: optimizeLegibility; // handle a weird bug in safari with emojis not aligning correctly
+  transform: rotate(90deg);
   top: 4px;
   transition: left, opacity, 0.5s ease;
 }
@@ -67,6 +68,7 @@
   .lightIcon,
   .darkIcon {
     left: 4px;
+    transform: rotate(0);
   }
 
   .lightIcon {
@@ -92,5 +94,11 @@
   + .toggle {
     box-shadow: var(--shadow-active);
     transform: scale(0.95);
+  }
+}
+
+.input:focus-visible {
+  + .toggle {
+    box-shadow: 0 0 0 2px var(--interactive);
   }
 }
