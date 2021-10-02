@@ -50,15 +50,19 @@ const Header = forwardRef<HTMLElement, Props>(({ show }, ref) => {
           />
         ))}
         {router.asPath.startsWith('/posts/') && (
-          <PageLink
-            key={router.asPath}
-            className={classnames(styles.postPageLink, {
+          <div
+            className={classnames(styles.postPageLinkContainer, {
               [styles.hide]: !show,
             })}
-            href={router.asPath}
-            isActive
-            label={router.asPath.replace('/posts', '')}
-          />
+          >
+            <PageLink
+              key={router.asPath}
+              className={styles.postPageLink}
+              href={router.asPath}
+              isActive
+              label={router.asPath.replace('/posts', '')}
+            />
+          </div>
         )}
       </nav>
     </header>

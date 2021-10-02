@@ -1,0 +1,9 @@
+@mixin interactive {
+  box-shadow: var(--shadow);
+  transition: box-shadow 0.05s ease-in-out, transform 0.05s ease-in-out;
+
+  &:active {
+    box-shadow: var(--shadow-active);
+    transform: scale(0.95);
+  }
+}

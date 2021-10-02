@@ -21,11 +21,12 @@
 
 .shareLinks {
   display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .shareLink {
-  min-height: 32px;
-  min-width: 32px;
+  background-color: var(--container);
 }
 
 .date,

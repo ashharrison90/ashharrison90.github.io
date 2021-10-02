@@ -1,9 +1,9 @@
 .header {
-  align-items: stretch;
+  align-items: center;
   background-color: var(--container);
   border-bottom: 1px solid var(--border);
   display: flex;
-  height: 44px;
+  height: 60px;
   justify-content: space-between;
   padding: 0 1em;
   position: fixed;
@@ -16,26 +16,32 @@
 .nav {
   align-items: stretch;
   display: flex;
+  gap: 0.5rem;
 }
 
 .pageLinks {
   padding: 0 0.5rem;
 }
 
-.postPageLink {
+.postPageLinkContainer {
   align-items: center;
   background-color: var(--container);
   border-bottom: 1px solid var(--border);
   border-left: 1px solid var(--border);
   display: flex;
+  height: 60px;
+  padding: 0 1em;
+  position: absolute;
+  right: 0;
+  top: 59px;
+  transition: top 0.2s ease-in-out;
+}
+
+.postPageLink {
   height: 44px;
   padding: 0 0.5em;
-  position: absolute;
-  top: 43px;
-  transition: top 0.2s ease-in-out;
-  right: 0;
 }
 
 .hide {
-  top: -44px;
+  top: -60px;
 }

@@ -11,6 +11,7 @@ export default function Footer() {
         {(Object.keys(socialData) as SocialData).map((socialType) => (
           <SocialLink
             key={socialType}
+            className={styles.socialLink}
             ariaLabel={`Contact me on ${socialType}`}
             link={socialData[socialType]}
             type={socialType}

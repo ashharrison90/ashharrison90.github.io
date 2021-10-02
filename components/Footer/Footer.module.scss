@@ -4,12 +4,17 @@
   border-top: 1px solid var(--border);
   display: flex;
   flex-direction: column;
-  min-height: 44px;
+  min-height: 60px;
+}
+
+.socialLink {
+  background-color: var(--background);
 }
 
 .socialLinks {
-  align-items: stretch;
+  align-items: center;
   display: flex;
   flex: 1;
+  gap: 1rem;
   justify-content: center;
 }

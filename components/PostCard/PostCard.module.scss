@@ -1,14 +1,17 @@
+@import '../../styles/mixins.scss';
+
 .card {
+  @include interactive;
+
   background-position: center;
   background-size: cover;
-  box-shadow: var(--shadow);
+  border-radius: 4px;
   color: inherit;
   display: flex;
   flex-direction: column;
   height: 350px;
   justify-content: space-between;
   text-decoration: none;
-  transition: all 0.05s ease-in-out;
 }
 
 .date,
@@ -64,9 +67,4 @@
   .titleContainer {
     background: linear-gradient(120deg, var(--focus), var(--focus-alt));
   }
-}
-
-.card:active {
-  box-shadow: var(--shadow-active);
-  transform: scale(0.95);
 }

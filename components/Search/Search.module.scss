@@ -1,32 +1,49 @@
+@import '../../styles/mixins.scss';
+
 .container {
   position: relative;
 }
 
+.icon {
+  fill: var(--interactive);
+  height: 100%;
+  padding: 12px;
+  position: absolute;
+  right: 0;
+}
+
 .input {
+  @include interactive;
+
   background-color: var(--container);
   border: none;
+  border-radius: 4px;
   color: var(--text-primary);
   font: inherit;
-  outline: 1px solid var(--interactive);
   padding: 0.5em 2em 0.5em 0.5em;
   width: 100%;
 
   &:active,
   &:focus,
   &:hover {
-    outline: 2px solid var(--focus);
+    outline: none;
+
+    ~ .icon {
+      fill: var(--focus);
+    }
+  }
+
+  &:focus {
+    box-shadow: var(--shadow-active);
+    transform: scale(0.95);
+
+    ~ .icon {
+      transform: scale(0.95);
+    }
   }
 
   &::placeholder {
     color: var(--text-secondary);
     text-transform: lowercase;
   }
-}
-
-.icon {
-  fill: var(--icon-secondary);
-  height: 100%;
-  padding: 12px;
-  position: absolute;
-  right: 0;
 }

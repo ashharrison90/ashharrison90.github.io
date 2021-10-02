@@ -1,10 +1,15 @@
+@import '../../styles/mixins.scss';
+
 .pageLink {
+  @include interactive;
+
   align-items: center;
-  border-bottom: 4px solid transparent;
+  background-color: var(--background);
+  border-radius: 4px;
   color: var(--text-secondary);
   display: flex;
   font-weight: bold;
-  height: calc(100% + 1px);
+  height: 44px;
   text-decoration: none;
   text-transform: lowercase;
 
@@ -18,6 +23,7 @@
 }
 
 .activePage {
-  border-bottom: 4px solid var(--interactive) !important;
+  box-shadow: var(--shadow-active);
   color: var(--interactive);
+  transform: scale(0.95);
 }

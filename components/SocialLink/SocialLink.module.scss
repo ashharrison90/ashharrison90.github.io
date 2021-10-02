@@ -1,5 +1,10 @@
+@import '../../styles/mixins.scss';
+
 .link {
+  @include interactive;
+
   align-items: center;
+  border-radius: 4px;
   color: var(--icon-secondary);
   display: flex;
   justify-content: center;
@@ -16,6 +21,6 @@
 
 .link svg {
   fill: currentColor;
-  height: 24px;
-  width: 24px;
+  height: 28px;
+  width: 28px;
 }
