@@ -1,12 +1,14 @@
+import classnames from 'classnames'
 import styles from './ShareButton.module.scss'
 import Share from '@fortawesome/fontawesome-free/svgs/solid/share-alt.svg'
 
 export interface Props {
+  className?: string
   title: string
   url: string
 }
 
-export default function ShareButton({ title, url }: Props) {
+export default function ShareButton({ className, title, url }: Props) {
   const onClick = async () => {
     try {
       await navigator.share({
@@ -17,7 +19,11 @@ export default function ShareButton({ title, url }: Props) {
   }
 
   return (
-    <button aria-label='Share' className={styles.button} onClick={onClick}>
+    <button
+      aria-label='Share'
+      className={classnames(styles.button, className)}
+      onClick={onClick}
+    >
       <Share />
     </button>
   )

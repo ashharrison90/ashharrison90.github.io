@@ -1,10 +1,19 @@
+@import '../../styles/mixins.scss';
+
 .button {
+  @include interactive;
+
+  align-items: center;
   background-color: transparent;
   border: none;
+  border-radius: 4px;
   color: var(--icon-secondary);
   cursor: pointer;
   display: flex;
+  justify-content: center;
   margin: 0;
+  min-height: 44px;
+  min-width: 44px;
   padding: 4px;
 
   &:hover,
@@ -17,6 +26,6 @@
 
 .button svg {
   fill: currentColor;
-  height: 24px;
-  width: 24px;
+  height: 28px;
+  width: 28px;
 }

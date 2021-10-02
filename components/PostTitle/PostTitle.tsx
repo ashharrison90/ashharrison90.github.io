@@ -54,7 +54,13 @@ export default function PostTitle({ date, excerpt, tags, title }: Props) {
           </div>
           <div className={styles.rightHandSide}>
             <div className={styles.shareLinks}>
-              {isNativeShare && <ShareButton title={title} url={pageUrl} />}
+              {isNativeShare && (
+                <ShareButton
+                  className={styles.shareLink}
+                  title={title}
+                  url={pageUrl}
+                />
+              )}
               {Object.keys(shareData).map((item) => (
                 <SocialLink
                   className={styles.shareLink}
