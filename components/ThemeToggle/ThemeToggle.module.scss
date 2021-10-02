@@ -20,11 +20,11 @@
 .lightIcon,
 .darkIcon {
   font-size: 24px;
-  left: calc(100% - 28px);
+  left: calc(100% - 30px);
   line-height: 24px;
   position: absolute;
   text-rendering: optimizeLegibility; // handle a weird bug in safari with emojis not aligning correctly
-  transform: rotate(90deg);
+  transform: rotate(120deg);
   top: 4px;
   transition: left, opacity, 0.5s ease;
 }
