@@ -27,14 +27,10 @@
   &:focus,
   &:hover {
     outline: none;
-
-    ~ .icon {
-      fill: var(--focus);
-    }
   }
 
   &:focus {
-    box-shadow: var(--shadow-active);
+    box-shadow: 0 0 0 2px var(--interactive);
     transform: scale(0.95);
 
     ~ .icon {
