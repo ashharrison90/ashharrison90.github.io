@@ -1,11 +1,13 @@
-describe('theming', () => {
+import { test, expect } from '@playwright/test'
+
+test.describe('theming', () => {
   const themeToggleSelector = '[aria-label="Toggle theme"]'
 
-  beforeEach(async () => {
+  test.beforeEach(async ({ page }) => {
     await page.goto('http://localhost:5000')
   })
 
-  it('should persist across page navigation', async () => {
+  test('should persist across page navigation', async ({ page }) => {
     await page.evaluate(() =>
       document.querySelector('[role="main"]')!.scrollTo(0, 100)
     )
@@ -18,17 +20,13 @@ describe('theming', () => {
     expect(await page.isChecked(themeToggleSelector)).toEqual(true)
   })
 
-  it('should persist in a new session', async () => {
+  test('should persist across browser refresh', async ({ page }) => {
     await page.evaluate(() =>
       document.querySelector('[role="main"]')!.scrollTo(0, 100)
     )
-    expect(await page.isChecked(themeToggleSelector)).toEqual(true)
-  })
+    expect(await page.isChecked(themeToggleSelector)).toEqual(false)
 
-  it('should persist across browser refresh', async () => {
-    await page.evaluate(() =>
-      document.querySelector('[role="main"]')!.scrollTo(0, 100)
-    )
+    await page.check(themeToggleSelector)
     expect(await page.isChecked(themeToggleSelector)).toEqual(true)
 
     await page.reload()
