@@ -16,7 +16,7 @@ jobs:
         run: npm run build
       - name: E2E 🔧
         run: |
-          npx playwright install
+          npx playwright install-deps
           npm run test-e2e-ci
       - name: Lighthouse 💡
         run: npm run test-lighthouse
