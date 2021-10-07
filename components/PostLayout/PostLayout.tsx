@@ -15,7 +15,6 @@ hljs.registerLanguage('json', json)
 hljs.registerLanguage('typescript', typescript)
 hljs.registerLanguage('python', python)
 hljs.registerLanguage('scss', scss)
-import 'highlight.js/styles/monokai-sublime.css'
 
 export interface Props {
   children: ReactNode
