@@ -131,7 +131,6 @@ input[type='search']::-webkit-search-results-decoration {
   background-color: var(--container);
   color: var(--text-primary);
   display: block;
-  font-size: 0.8em;
   overflow-x: auto;
   padding: 1em;
 
@@ -187,9 +186,5 @@ input[type='search']::-webkit-search-results-decoration {
   .hljs-deletion,
   .hljs-meta {
     color: var(--code--comment);
-  }
-
-  @media screen and (min-width: 768px) {
-    font-size: 1em;
   }
 }
