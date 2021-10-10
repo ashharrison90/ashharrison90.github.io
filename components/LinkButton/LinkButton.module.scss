@@ -3,6 +3,7 @@
 .button {
   @include interactive;
 
+  align-items: center;
   background: linear-gradient(
     120deg,
     var(--interactive),
@@ -12,6 +13,7 @@
   border-radius: 4px;
   color: var(--background);
   cursor: pointer;
+  display: flex;
   font-family: inherit;
   font-size: inherit;
   font-weight: bold;
