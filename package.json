@@ -23,7 +23,7 @@
     "@lhci/cli": "^0.8.1",
     "@mdx-js/loader": "^1.6.22",
     "@mdx-js/react": "^1.6.22",
-    "@next/mdx": "^11.1.2",
+    "@next/mdx": "^12.0.0",
     "@playwright/test": "^1.15.2",
     "@storybook/addon-actions": "^6.3.8",
     "@storybook/addon-essentials": "^6.3.8",
