@@ -19,10 +19,6 @@
   gap: 0.5em;
 }
 
-.pageLinks {
-  padding: 0 0.5em;
-}
-
 .postPageLinkContainer {
   align-items: center;
   background-color: var(--container);
@@ -35,11 +31,6 @@
   right: 0;
   top: 59px;
   transition: top 0.2s ease-in-out;
-}
-
-.postPageLink {
-  height: 44px;
-  padding: 0 0.5em;
 }
 
 .hide {

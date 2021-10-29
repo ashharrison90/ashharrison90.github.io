@@ -27,11 +27,12 @@
 }
 
 .hide {
-  opacity: 0;
+  opacity: 0%;
 }
 
 .fallback {
   box-shadow: inset 0 0 60px 0 black;
+
   // why is this scale so weird?
   // because windows doesn't calculate the scale properly.
   // so we have to overscale slightly to prevent an ugly gap
@@ -47,6 +48,7 @@
 
 .heroCutout {
   box-shadow: inset 0 0 60px 0 black;
+
   // why is this scale so weird?
   // because windows doesn't calculate the scale properly.
   // so we have to overscale slightly to prevent an ugly gap

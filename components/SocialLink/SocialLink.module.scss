@@ -1,4 +1,4 @@
-@import '../../styles/mixins.scss';
+@import '../../styles/mixins';
 
 .link {
   @include interactive;
@@ -6,7 +6,7 @@
   align-items: center;
   border-radius: 4px;
   color: var(--icon-secondary);
-  display: flex;
+  display: inline-flex;
   justify-content: center;
   min-height: 44px;
   min-width: 44px;

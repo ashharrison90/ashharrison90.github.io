@@ -1,4 +1,4 @@
-@import '../../styles/mixins.scss';
+@import '../../styles/mixins';
 
 .button {
   @include interactive;
@@ -13,7 +13,7 @@
   border-radius: 4px;
   color: var(--background);
   cursor: pointer;
-  display: flex;
+  display: inline-flex;
   font-family: inherit;
   font-size: inherit;
   font-weight: bold;

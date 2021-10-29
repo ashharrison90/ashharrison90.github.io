@@ -8,6 +8,8 @@ jobs:
         uses: actions/checkout@v2
       - name: Install 🔧
         run: npm install
+      - name: Lint 🔧
+        run: npm run lint
       - name: Typecheck 🔧
         run: npm run typecheck
       - name: Test 🔧

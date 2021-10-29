@@ -1,4 +1,4 @@
-@import '../../styles/mixins.scss';
+@import '../../styles/mixins';
 
 .pageLink {
   @include interactive;
@@ -7,9 +7,10 @@
   background-color: var(--background);
   border-radius: 4px;
   color: var(--text-secondary);
-  display: flex;
+  display: inline-flex;
   font-weight: bold;
   height: 44px;
+  padding: 0 0.5em;
   text-decoration: none;
   text-transform: lowercase;
 

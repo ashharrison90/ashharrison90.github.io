@@ -4,8 +4,8 @@ body {
   color: var(--text-primary);
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   font-size: 112.5%;
 }
 
@@ -63,28 +63,28 @@ input[type='search']::-webkit-search-results-decoration {
 :root[data-theme='light'] {
   --background: #fff;
   --border: #e0e0e0;
-  --code--comment: #525252;
-  --code--keyword: #d32061;
-  --code--number: #7e5db8;
-  --code--string: #816e00;
-  --code--symbol: #22798a;
-  --code--title: #55790f;
+  --code-comment: #525252;
+  --code-keyword: #d32061;
+  --code-number: #7e5db8;
+  --code-string: #816e00;
+  --code-symbol: #22798a;
+  --code-title: #55790f;
   --container: #f4f4f4;
   --container-alt: #a8a8a8;
-  --focus: #de4b5d;
-  --focus-alt: #773787;
+  --focus: #3dffb3;
+  --focus-alt: #005aff;
   --hero-background-rgb: 0, 0, 0;
   --icon-primary: #000;
   --icon-secondary: #525252;
-  --interactive: #0090f5;
-  --interactive-alt: #0353a6;
+  --interactive: #ff3d89;
+  --interactive-alt: #ffa500;
   --logo-durham-primary: #002337;
   --logo-durham-secondary: #702567;
   --logo-grafana: #0a0a0a;
   --logo-ibm: #1f70c1;
   --logo-qinetiq: #002744;
-  --shadow: 2px 2px 3px 0 rgba(0, 0, 0, 0.9);
-  --shadow-active: 1px 1px 2px 0 rgba(0, 0, 0, 0.95);
+  --shadow: 2px 2px 3px 0 rgb(0 0 0 / 90%);
+  --shadow-active: 1px 1px 2px 0 rgb(0 0 0 / 95%);
   --text-primary: #000;
   --text-secondary: #525252;
 }
@@ -92,16 +92,16 @@ input[type='search']::-webkit-search-results-decoration {
 :root[data-theme='dark'] {
   --background: #262626;
   --border: #525252;
-  --code--comment: #c6c6c6;
-  --code--keyword: #f92672;
-  --code--number: #ae81ff;
-  --code--string: #e6db74;
-  --code--symbol: #66d9ef;
-  --code--title: #a6e22e;
+  --code-comment: #c6c6c6;
+  --code-keyword: #f92672;
+  --code-number: #ae81ff;
+  --code-string: #e6db74;
+  --code-symbol: #66d9ef;
+  --code-title: #a6e22e;
   --container: #393939;
   --container-alt: #6f6f6f;
-  --focus: #fcb1b8;
-  --focus-alt: #dd8dff;
+  --focus: #ff9fc2;
+  --focus-alt: #ffa260;
   --hero-background-rgb: 244, 244, 244;
   --icon-primary: #f4f4f4;
   --icon-secondary: #c6c6c6;
@@ -112,8 +112,8 @@ input[type='search']::-webkit-search-results-decoration {
   --logo-grafana: #f4f4f4;
   --logo-ibm: #1f70c1;
   --logo-qinetiq: #f4f4f4;
-  --shadow: 2px 2px 3px 0 rgba(0, 0, 0, 0.9);
-  --shadow-active: 1px 1px 2px 0 rgba(0, 0, 0, 0.95);
+  --shadow: 2px 2px 3px 0 rgb(0 0 0 / 90%);
+  --shadow-active: 1px 1px 2px 0 rgb(0 0 0 / 95%);
   --text-primary: #f4f4f4;
   --text-secondary: #c6c6c6;
 }
@@ -140,14 +140,14 @@ input[type='search']::-webkit-search-results-decoration {
   .hljs-number,
   .hljs-quote,
   .hljs-regexp {
-    color: var(--code--number);
+    color: var(--code-number);
   }
 
   .hljs-code,
   .hljs-section,
   .hljs-selector-class,
   .hljs-title {
-    color: var(--code--title);
+    color: var(--code-title);
   }
 
   .hljs-strong {
@@ -162,12 +162,12 @@ input[type='search']::-webkit-search-results-decoration {
   .hljs-keyword,
   .hljs-name,
   .hljs-selector-tag {
-    color: var(--code--keyword);
+    color: var(--code-keyword);
   }
 
   .hljs-attribute,
   .hljs-symbol {
-    color: var(--code--symbol);
+    color: var(--code-symbol);
   }
 
   .hljs-addition,
@@ -179,12 +179,12 @@ input[type='search']::-webkit-search-results-decoration {
   .hljs-template-variable,
   .hljs-type,
   .hljs-variable {
-    color: var(--code--string);
+    color: var(--code-string);
   }
 
   .hljs-comment,
   .hljs-deletion,
   .hljs-meta {
-    color: var(--code--comment);
+    color: var(--code-comment);
   }
 }

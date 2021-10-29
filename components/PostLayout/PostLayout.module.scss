@@ -62,6 +62,7 @@
   object-fit: cover;
   object-position: top;
   position: absolute;
+
   // why is this scale so weird?
   // because windows doesn't calculate the scale properly.
   // so we have to overscale slightly to prevent an ugly gap
