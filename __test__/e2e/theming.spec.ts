@@ -4,7 +4,7 @@ test.describe('theming', () => {
   const themeToggleSelector = '[aria-label="Toggle theme"]'
 
   test.beforeEach(async ({ page }) => {
-    await page.goto('http://localhost:5000')
+    await page.goto('http://localhost:3000')
   })
 
   test('should persist across page navigation', async ({ page }) => {
