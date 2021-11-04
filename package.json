@@ -10,7 +10,7 @@
     "start": "next dev",
     "test": "jest",
     "test-e2e": "npx playwright test __test__/e2e --browser=all",
-    "test-e2e-ci": "start-server-and-test serve http://localhost:5000 test-e2e",
+    "test-e2e-ci": "start-server-and-test serve http://localhost:3000 test-e2e",
     "test-e2e-headed": "PWDEBUG=1 npx playwright test __test__/e2e --headed",
     "test-lighthouse": "lhci autorun",
     "typecheck": "tsc",
