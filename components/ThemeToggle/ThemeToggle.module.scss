@@ -92,7 +92,7 @@
 .input:active {
   + .toggle {
     box-shadow: var(--shadow-active);
-    transform: scale(1);
+    transform: scale(0.95);
   }
 }
 
