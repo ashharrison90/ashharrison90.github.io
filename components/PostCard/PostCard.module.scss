@@ -1,4 +1,4 @@
-@import '../../styles/mixins.scss';
+@import '../../styles/mixins';
 
 .card {
   @include interactive;
@@ -67,11 +67,5 @@
 .card:hover,
 .card:focus,
 .card:active {
-  outline: none;
   text-decoration: none;
-
-  .date,
-  .titleContainer {
-    background: linear-gradient(120deg, var(--focus), var(--focus-alt));
-  }
 }

@@ -11,15 +11,12 @@
   font-weight: bold;
   height: 44px;
   padding: 0 0.5em;
-  text-decoration: none;
   text-transform: lowercase;
 
   &:hover,
   &:focus,
   &:active {
     color: var(--interactive);
-    outline: none;
-    text-decoration: none;
   }
 }
 

@@ -1,4 +1,4 @@
-@import '../../styles/mixins.scss';
+@import '../../styles/mixins';
 
 .container {
   position: relative;
@@ -26,16 +26,15 @@
   &:active,
   &:focus,
   &:hover {
-    outline: none;
+    + .icon {
+      transform: scale(1.05);
+      transform-origin: left;
+    }
   }
 
-  &:focus {
-    box-shadow: 0 0 0 2px var(--interactive);
-    transform: scale(0.95);
-
-    ~ .icon {
-      transform: scale(0.95);
-    }
+  &:active {
+    box-shadow: var(--shadow-hover);
+    transform: scale(1.05);
   }
 
   &::placeholder {

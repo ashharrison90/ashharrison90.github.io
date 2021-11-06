@@ -28,10 +28,12 @@
 }
 
 .lightIcon {
+  filter: drop-shadow(1px 1px 1px rgb(0 0 0 / 95%));
   opacity: 0%;
 }
 
 .darkIcon {
+  filter: drop-shadow(1px -1px 1px rgb(0 0 0 / 95%));
   opacity: 100%;
 }
 
@@ -41,6 +43,7 @@
     var(--interactive),
     var(--interactive-alt)
   );
+  box-shadow: var(--shadow-active);
   border-radius: 24px;
   height: 24px;
   position: absolute;
@@ -78,25 +81,23 @@
   }
 }
 
-.input:focus,
-.input:hover,
-.input:active {
+.input:focus-visible,
+.input:hover {
   + .toggle {
-    .toggleButton {
-      background: linear-gradient(120deg, var(--focus), var(--focus-alt));
-    }
+    box-shadow: var(--shadow-hover);
+    transform: scale(1.05);
   }
 }
 
 .input:active {
   + .toggle {
     box-shadow: var(--shadow-active);
-    transform: scale(0.95);
+    transform: scale(1);
   }
 }
 
 .input:focus-visible {
   + .toggle {
-    box-shadow: 0 0 0 2px var(--interactive);
+    outline: 3px solid var(--interactive);
   }
 }

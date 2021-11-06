@@ -20,12 +20,4 @@
   min-height: 44px;
   padding: 0.5em 1em;
   text-transform: lowercase;
-
-  &:active,
-  &:hover,
-  &:focus {
-    background: linear-gradient(120deg, var(--focus), var(--focus-alt));
-    outline: none;
-    text-decoration: none;
-  }
 }

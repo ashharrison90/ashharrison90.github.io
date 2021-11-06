@@ -1,13 +1,26 @@
 @mixin interactive {
   box-shadow: var(--shadow);
   transition: box-shadow 0.05s ease-in-out, transform 0.05s ease-in-out;
+  outline-offset: 0;
 
-  &:active {
-    box-shadow: var(--shadow-active);
-    transform: scale(0.95);
+  &:active,
+  &:hover,
+  &:focus {
+    text-decoration: none;
+  }
+
+  &:hover,
+  &:focus-visible {
+    box-shadow: var(--shadow-hover);
+    transform: scale(1.05);
   }
 
   &:focus-visible {
-    box-shadow: 0 0 0 2px var(--interactive);
+    outline: 3px solid var(--interactive);
+  }
+
+  &:active {
+    box-shadow: var(--shadow-active);
+    transform: scale(1);
   }
 }
