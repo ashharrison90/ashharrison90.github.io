@@ -4,7 +4,7 @@ import { getAllPosts, PostMetadata } from '../lib/postsApi'
 import PostGrid from '../components/PostGrid/PostGrid'
 import PostCard from '../components/PostCard/PostCard'
 import Layout from '../components/Layout/Layout'
-import LinkButton from '../components/LinkButton/LinkButton'
+import Button, { ButtonType } from '../components/Button/Button'
 import Typewriter from 'typewriter-effect'
 import styles from '../styles/Home.module.scss'
 
@@ -95,9 +95,13 @@ export default function Home({ allPosts }: Props) {
               Music and films if I'm not.
             </p>
           </div>
-          <LinkButton className={styles.aboutButton} href='/about'>
+          <Button
+            className={styles.aboutButton}
+            href='/about'
+            kind={ButtonType.Primary}
+          >
             More about me
-          </LinkButton>
+          </Button>
         </div>
 
         <div className={styles.posts}>
@@ -115,9 +119,13 @@ export default function Home({ allPosts }: Props) {
               />
             ))}
           </PostGrid>
-          <LinkButton className={styles.postsButton} href='/posts'>
+          <Button
+            className={styles.postsButton}
+            href='/posts'
+            kind={ButtonType.Primary}
+          >
             View all posts
-          </LinkButton>
+          </Button>
         </div>
       </main>
     </Layout>

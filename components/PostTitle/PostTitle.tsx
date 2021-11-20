@@ -1,7 +1,10 @@
-import SocialLink from '../SocialLink/SocialLink'
-import ShareButton from '../ShareButton/ShareButton'
+import Button, { ButtonType } from '../Button/Button'
+import LinkedIn from '@fortawesome/fontawesome-free/svgs/brands/linkedin.svg'
+import Reddit from '@fortawesome/fontawesome-free/svgs/brands/reddit.svg'
+import Twitter from '@fortawesome/fontawesome-free/svgs/brands/twitter.svg'
 import styles from './PostTitle.module.scss'
-import { useEffect, useState } from 'react'
+import Share from '@fortawesome/fontawesome-free/svgs/solid/share-alt.svg'
+import { ReactNode, useEffect, useState } from 'react'
 
 export interface Props {
   date: string
@@ -11,22 +14,26 @@ export interface Props {
 }
 
 interface ShareData {
+  icon: ReactNode
   label: string
   getShareLink: (url: string, title?: string) => string
 }
 
 const shareData: Record<string, ShareData> = {
   linkedin: {
+    icon: <LinkedIn />,
     label: 'LinkedIn',
     getShareLink: (url) =>
       `https://www.linkedin.com/sharing/share-offsite/?url=${url}`,
   },
   reddit: {
+    icon: <Reddit />,
     label: 'Reddit',
     getShareLink: (url, title) =>
       `https://reddit.com/submit?url=${url}&title=${title}`,
   },
   twitter: {
+    icon: <Twitter />,
     label: 'Twitter',
     getShareLink: (url, title) =>
       `https://twitter.com/intent/tweet?url=${url}&text=${title}`,
@@ -42,6 +49,15 @@ export default function PostTitle({ date, excerpt, tags, title }: Props) {
     setIsNativeShare(!!navigator.share)
   }, [])
 
+  const onShareClick = async () => {
+    try {
+      await navigator.share({
+        title,
+        url: pageUrl,
+      })
+    } catch {}
+  }
+
   return (
     <>
       <div className={styles.titleContainer}>
@@ -55,23 +71,28 @@ export default function PostTitle({ date, excerpt, tags, title }: Props) {
           <div className={styles.rightHandSide}>
             <div className={styles.shareLinks}>
               {isNativeShare && (
-                <ShareButton
+                <Button
                   className={styles.shareLink}
-                  title={title}
-                  url={pageUrl}
-                />
+                  ariaLabel='Share'
+                  kind={ButtonType.Icon}
+                  onClick={onShareClick}
+                >
+                  <Share />
+                </Button>
               )}
               {Object.keys(shareData).map((item) => (
-                <SocialLink
+                <Button
                   className={styles.shareLink}
                   key={item}
-                  type={item}
                   ariaLabel={`Share to ${shareData[item].label}`}
-                  link={shareData[item].getShareLink(
+                  href={shareData[item].getShareLink(
                     encodeURIComponent(pageUrl),
                     encodeURIComponent(title)
                   )}
-                />
+                  kind={ButtonType.Icon}
+                >
+                  {shareData[item].icon}
+                </Button>
               ))}
             </div>
             <div className={styles.date}>

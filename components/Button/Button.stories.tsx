@@ -1,9 +1,9 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import LinkButton from './LinkButton'
+import Button from './Button'
 
 export default {
-  title: 'Components/LinkButton',
-  component: LinkButton,
+  title: 'Components/Button',
+  component: Button,
   argTypes: {
     children: {
       defaultValue: 'Click me',
@@ -15,8 +15,8 @@ export default {
       defaultValue: 'https://www.google.com',
     },
   },
-} as ComponentMeta<typeof LinkButton>
+} as ComponentMeta<typeof Button>
 
-export const RendersCorrectly: ComponentStory<typeof LinkButton> = (args) => (
-  <LinkButton {...args} />
+export const RendersCorrectly: ComponentStory<typeof Button> = (args) => (
+  <Button {...args} />
 )

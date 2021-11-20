@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import PostTitle from './PostTitle'
 
 describe('PostTitle', () => {
@@ -120,5 +121,10 @@ describe('PostTitle', () => {
     )
     const button = screen.getByRole('button', { name: 'Share' })
     expect(button).toBeInTheDocument()
+    userEvent.click(button)
+    expect(navigator.share).toHaveBeenCalledWith({
+      title: mockTitle,
+      url: 'http://localhost/',
+    })
   })
 })

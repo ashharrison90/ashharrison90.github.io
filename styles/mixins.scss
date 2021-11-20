@@ -9,13 +9,15 @@
     text-decoration: none;
   }
 
-  &:hover,
-  &:focus-visible {
+  // Need to keep this separate from focus-visible else this won't work on safari
+  &:hover {
     box-shadow: var(--shadow-hover);
     transform: scale(1.05);
   }
 
   &:focus-visible {
+    box-shadow: var(--shadow-hover);
+    transform: scale(1.05);
     outline: 3px solid var(--interactive);
   }
 
