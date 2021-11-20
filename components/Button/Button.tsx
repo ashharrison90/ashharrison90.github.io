@@ -61,6 +61,7 @@ export default function Button({
       <Link href={href}>
         <a
           aria-label={ariaLabel}
+          rel='noreferrer'
           role='link'
           target={target}
           className={classnames(styles.button, className, {
