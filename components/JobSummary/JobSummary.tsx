@@ -1,4 +1,5 @@
 import { ReactNode } from 'react'
+import classNames from 'classnames'
 import styles from './JobSummary.module.scss'
 
 const formatDate = (dateString: string | undefined) => {
@@ -32,7 +33,7 @@ export default function JobSummary({
   website,
 }: Props) {
   return (
-    <div className={className}>
+    <div className={classNames(styles.container, className)}>
       <div className={styles.header}>
         <div className={styles.title}>
           <a className={styles.companyLink} target='_blank' href={website}>
