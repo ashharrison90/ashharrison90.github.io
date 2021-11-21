@@ -1,5 +1,8 @@
 .jobSummary {
   margin-top: 3em;
+  opacity: 0%;
+  transform: translateX(-10%);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
 }
 
 .typewriter {

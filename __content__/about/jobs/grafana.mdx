@@ -8,14 +8,19 @@ export const metadata = {
   website: 'https://www.grafana.com',
 }
 
-Building and improving the user experience for Grafana, the observability platform behind [all your favourite companies](https://grafana.com/success/?plcmt=footer).
+Building and improving the user experience for Grafana, the observability platform behind [all your favourite companies](https://grafana.com/success).
 
 Current focus is accessibility, the navigation experience and internationalisation.
 
 [Stalk my open source contributions.](https://github.com/grafana/grafana/pulls?page=1&q=is%3Apr+author%3Aashharrison90)
 
-export default ({ children, className }) => (
-  <JobSummary className={className} {...metadata} icon={<Grafana />}>
+export default ({ children, className, innerRef }) => (
+  <JobSummary
+    ref={innerRef}
+    className={className}
+    {...metadata}
+    icon={<Grafana />}
+  >
     {children}
   </JobSummary>
 )

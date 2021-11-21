@@ -15,8 +15,8 @@ Recent projects include the development of the [sample data editor](https://comm
 
 I also managed to submit [a few patents](https://patents.google.com/?q=ibm&inventor=ashley+harrison&oq=ashley+harrison+ibm) along the way.
 
-export default ({ children, className }) => (
-  <JobSummary className={className} {...metadata} icon={<Ibm />}>
+export default ({ children, className, innerRef }) => (
+  <JobSummary ref={innerRef} className={className} {...metadata} icon={<Ibm />}>
     {children}
   </JobSummary>
 )

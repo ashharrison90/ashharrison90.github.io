@@ -30,6 +30,7 @@ export default {
     '/node_modules/',
     '/pages/_app.tsx',
     '/pages/_document.tsx',
+    '/pages/about.tsx',
     '.spec.tsx?$',
     '.stories.tsx?$',
     '.d.ts$',

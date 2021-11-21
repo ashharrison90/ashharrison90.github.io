@@ -15,8 +15,13 @@ Having to occasionally say the first half of that sentence out loud is part of t
 
 However, my time at QinetiQ gave me the opportunity to solidify my programming knowledge (more Python, R and shell) and gain invaluable client experience.
 
-export default ({ children, className }) => (
-  <JobSummary className={className} {...metadata} icon={<Qinetiq />}>
+export default ({ children, className, innerRef }) => (
+  <JobSummary
+    ref={innerRef}
+    className={className}
+    {...metadata}
+    icon={<Qinetiq />}
+  >
     {children}
   </JobSummary>
 )

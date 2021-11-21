@@ -1,4 +1,4 @@
-import { ReactNode } from 'react'
+import { forwardRef, ReactNode } from 'react'
 import classNames from 'classnames'
 import styles from './JobSummary.module.scss'
 
@@ -22,31 +22,38 @@ export interface Props {
   website: string
 }
 
-export default function JobSummary({
-  children,
-  className,
-  company,
-  jobTitle,
-  icon,
-  startDate,
-  endDate,
-  website,
-}: Props) {
-  return (
-    <div className={classNames(styles.container, className)}>
-      <div className={styles.header}>
-        <div className={styles.title}>
-          <a className={styles.companyLink} target='_blank' href={website}>
-            <h2 className={styles.company}>{company}</h2>
-          </a>
-          <div className={styles.jobTitle}>{jobTitle}</div>
-          <div className={styles.date}>
-            {formatDate(startDate)} - {formatDate(endDate)}
+const JobSummary = forwardRef<HTMLDivElement, Props>(
+  (
+    {
+      children,
+      className,
+      company,
+      jobTitle,
+      icon,
+      startDate,
+      endDate,
+      website,
+    },
+    ref
+  ) => {
+    return (
+      <div ref={ref} className={classNames(styles.container, className)}>
+        <div className={styles.header}>
+          <div className={styles.title}>
+            <a className={styles.companyLink} target='_blank' href={website}>
+              <h2 className={styles.company}>{company}</h2>
+            </a>
+            <div className={styles.jobTitle}>{jobTitle}</div>
+            <div className={styles.date}>
+              {formatDate(startDate)} - {formatDate(endDate)}
+            </div>
           </div>
+          <div className={styles.icon}>{icon}</div>
         </div>
-        <div className={styles.icon}>{icon}</div>
+        {children}
       </div>
-      {children}
-    </div>
-  )
-}
+    )
+  }
+)
+
+export default JobSummary
