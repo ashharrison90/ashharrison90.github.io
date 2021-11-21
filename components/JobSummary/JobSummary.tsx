@@ -37,10 +37,19 @@ const JobSummary = forwardRef<HTMLDivElement, Props>(
     ref
   ) => {
     return (
-      <div ref={ref} className={classNames(styles.container, className)}>
+      <div
+        data-testid='job-summary'
+        ref={ref}
+        className={classNames(styles.container, className)}
+      >
         <div className={styles.header}>
           <div className={styles.title}>
-            <a className={styles.companyLink} target='_blank' href={website}>
+            <a
+              className={styles.companyLink}
+              target='_blank'
+              href={website}
+              rel='noreferrer'
+            >
               <h2 className={styles.company}>{company}</h2>
             </a>
             <div className={styles.jobTitle}>{jobTitle}</div>
