@@ -3,12 +3,6 @@
   transition: box-shadow 0.05s ease-in-out, transform 0.05s ease-in-out;
   outline-offset: 0;
 
-  &:active,
-  &:hover,
-  &:focus {
-    text-decoration: none;
-  }
-
   // Need to keep this separate from focus-visible else this won't work on safari
   &:hover {
     box-shadow: var(--shadow-hover);
@@ -21,7 +15,8 @@
     outline: 3px solid var(--interactive);
   }
 
-  &:active {
+  &:active,
+  &:focus {
     box-shadow: var(--shadow-active);
     transform: scale(0.95);
   }

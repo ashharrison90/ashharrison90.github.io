@@ -1,8 +1,6 @@
 @import '../../styles/mixins';
 
 .button {
-  @include interactive;
-
   align-items: center;
   border: none;
   border-radius: 4px;
@@ -16,6 +14,16 @@
   min-height: 44px;
   min-width: 44px;
   text-transform: lowercase;
+
+  &:active,
+  &:hover,
+  &:focus {
+    text-decoration: none;
+  }
+}
+
+.button:not(.isActive) {
+  @include interactive;
 }
 
 .buttonPrimary {
@@ -54,5 +62,6 @@
 
 .isActive {
   box-shadow: var(--shadow-active);
+  cursor: default;
   transform: scale(0.95);
 }

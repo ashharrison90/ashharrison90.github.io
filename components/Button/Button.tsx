@@ -45,6 +45,7 @@ export default function Button({
     return (
       <button
         aria-label={ariaLabel}
+        disabled={isActive}
         onClick={onClick}
         className={classnames(styles.button, className, {
           [styles.isActive]: isActive,
