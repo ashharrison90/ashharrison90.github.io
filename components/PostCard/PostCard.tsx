@@ -31,7 +31,10 @@ export default function PostCard({
       >
         <div className={styles.dateContainer}>
           <div className={styles.date}>
-            {new Date(date).toLocaleDateString()}
+            {new Date(date).toLocaleDateString(undefined, {
+              month: 'long',
+              year: 'numeric',
+            })}
           </div>
         </div>
         <div className={styles.titleContainer}>

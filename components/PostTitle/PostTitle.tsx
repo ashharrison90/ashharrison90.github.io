@@ -96,7 +96,10 @@ export default function PostTitle({ date, excerpt, tags, title }: Props) {
               ))}
             </div>
             <div className={styles.date}>
-              {new Date(date!).toLocaleDateString()}
+              {new Date(date).toLocaleDateString(undefined, {
+                month: 'long',
+                year: 'numeric',
+              })}
             </div>
           </div>
         </div>
