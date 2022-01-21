@@ -1,4 +1,5 @@
 import Button, { ButtonType } from '../Button/Button'
+import Tag from '../Tag/Tag'
 import LinkedIn from '@fortawesome/fontawesome-free/svgs/brands/linkedin.svg'
 import Reddit from '@fortawesome/fontawesome-free/svgs/brands/reddit.svg'
 import Twitter from '@fortawesome/fontawesome-free/svgs/brands/twitter.svg'
@@ -65,7 +66,9 @@ export default function PostTitle({ date, excerpt, tags, title }: Props) {
         <div className={styles.infoContainer}>
           <div className={styles.leftHandSide}>
             <div className={styles.tags}>
-              {tags.map((tag) => `#${tag}`).join(' ')}
+              {tags.map((tag) => (
+                <Tag key={tag} label={tag} />
+              ))}
             </div>
           </div>
           <div className={styles.rightHandSide}>

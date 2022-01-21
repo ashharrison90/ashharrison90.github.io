@@ -59,6 +59,8 @@
 }
 
 .tags {
+  display: flex;
+  gap: 0.25em;
   font-size: 0.6em;
   font-weight: bold;
   margin-top: 0.5rem;

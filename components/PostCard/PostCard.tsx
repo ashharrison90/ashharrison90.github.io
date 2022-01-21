@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import Highlighter from 'react-highlight-words'
+import Tag from '../Tag/Tag'
 import styles from './PostCard.module.scss'
 
 export interface Props {
@@ -51,10 +52,9 @@ export default function PostCard({
             />
           </div>
           <div className={styles.tags}>
-            <Highlighter
-              searchWords={searchString?.split(' ') ?? []}
-              textToHighlight={tags.map((tag) => `#${tag}`).join(' ')}
-            />
+            {tags.map((tag) => (
+              <Tag key={tag} label={tag} searchString={searchString} />
+            ))}
           </div>
         </div>
       </a>
