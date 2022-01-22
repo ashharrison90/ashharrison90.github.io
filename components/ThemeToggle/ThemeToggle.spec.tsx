@@ -1,11 +1,19 @@
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import ThemeToggle from './ThemeToggle'
+import {
+  ThemeContextProvider,
+  Theme,
+} from '../../context/ThemeContext/ThemeContext'
 
 describe('ThemeToggle', () => {
   beforeEach(() => {
-    document.documentElement.dataset.theme = 'dark'
-    render(<ThemeToggle />)
+    localStorage.setItem('theme', Theme.DARK)
+    render(
+      <ThemeContextProvider>
+        <ThemeToggle />
+      </ThemeContextProvider>
+    )
   })
 
   it('displays a toggle input', () => {
@@ -15,7 +23,7 @@ describe('ThemeToggle', () => {
     expect(toggle).toBeInTheDocument()
   })
 
-  it('defaults to the initial theme specified in document.documentElement.dataset.theme', () => {
+  it('defaults to the initial theme specified by the ThemeContext', () => {
     const toggle = screen.getByRole('checkbox', {
       name: 'Toggle theme',
     }) as HTMLInputElement
@@ -30,12 +38,16 @@ describe('ThemeToggle', () => {
 
     userEvent.click(toggle)
     expect(toggle.checked).toEqual(false)
-    expect(document.documentElement.dataset.theme).toEqual('light')
-    expect(localStorage.getItem('theme')).toEqual('light')
+    expect(document.documentElement.getAttribute('data-theme')).toEqual(
+      Theme.LIGHT
+    )
+    expect(localStorage.getItem('theme')).toEqual(Theme.LIGHT)
 
     userEvent.click(toggle)
     expect(toggle.checked).toEqual(true)
-    expect(document.documentElement.dataset.theme).toEqual('dark')
-    expect(localStorage.getItem('theme')).toEqual('dark')
+    expect(document.documentElement.getAttribute('data-theme')).toEqual(
+      Theme.DARK
+    )
+    expect(localStorage.getItem('theme')).toEqual(Theme.DARK)
   })
 })

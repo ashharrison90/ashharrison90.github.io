@@ -1,22 +1,19 @@
-import { useState } from 'react'
+import { useContext } from 'react'
+import { Theme, ThemeContext } from '../../context/ThemeContext/ThemeContext'
 import styles from './ThemeToggle.module.scss'
 
 export default function ThemeToggle() {
-  const [useDarkMode, setUseDarkMode] = useState(
-    document.documentElement.dataset.theme === 'dark'
-  )
+  const { theme, setTheme } = useContext(ThemeContext)
 
   const handleToggleTheme = (useDarkMode: boolean) => {
-    window.localStorage.setItem('theme', useDarkMode ? 'dark' : 'light')
-    document.documentElement.dataset.theme = useDarkMode ? 'dark' : 'light'
-    setUseDarkMode(useDarkMode)
+    setTheme(useDarkMode ? Theme.DARK : Theme.LIGHT)
   }
 
   return (
     <div className={styles.toggleContainer}>
       <input
         id='themeToggle'
-        checked={useDarkMode}
+        checked={theme === 'dark' ? true : false}
         className={styles.input}
         onChange={(event) => handleToggleTheme(event.target.checked)}
         type='checkbox'
