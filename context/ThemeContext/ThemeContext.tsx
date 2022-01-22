@@ -24,11 +24,11 @@ export const ThemeContextProvider = ({ children }: Props) => {
   useEffect(() => {
     const theme =
       window.localStorage.getItem('theme') ??
-      window.matchMedia('(prefers-color-scheme: dark)').matches
+      (window.matchMedia('(prefers-color-scheme: dark)').matches
         ? Theme.DARK
-        : Theme.LIGHT
+        : Theme.LIGHT)
     document.documentElement.setAttribute('data-theme', theme)
-    setTheme(theme)
+    setTheme(theme as Theme)
   }, [])
 
   const initialState = {

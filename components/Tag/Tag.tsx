@@ -19,9 +19,7 @@ export default function Tag({ label, searchString }: Props) {
   return (
     <div
       style={{
-        backgroundColor: `${color}33`,
-        borderColor: color,
-        color: color,
+        backgroundColor: color,
       }}
       className={styles.container}
     >
