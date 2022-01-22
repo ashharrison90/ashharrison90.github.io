@@ -13,7 +13,7 @@ export default function ThemeToggle() {
     <div className={styles.toggleContainer}>
       <input
         id='themeToggle'
-        checked={theme === 'dark' ? true : false}
+        checked={theme === Theme.DARK ? true : false}
         className={styles.input}
         onChange={(event) => handleToggleTheme(event.target.checked)}
         type='checkbox'
