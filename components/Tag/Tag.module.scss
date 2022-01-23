@@ -1,7 +1,9 @@
 .container {
+  border: 1px solid;
+
   // need to set a sufficiently high value to ensure the border is circular
   border-radius: 9999px;
-  color: var(--background);
   display: inline-block;
+  font-weight: 500;
   padding: 0.25em 0.5em;
 }

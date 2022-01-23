@@ -12,14 +12,16 @@ export interface Props {
 export default function Tag({ label, searchString }: Props) {
   const { theme } = useContext(ThemeContext)
   const color = randomColor({
-    luminosity: theme === Theme.DARK ? 'light' : 'dark',
+    luminosity: 'light',
     seed: label,
   })
 
   return (
     <div
       style={{
-        backgroundColor: color,
+        borderColor: theme === Theme.DARK ? color : 'var(--text-primary)',
+        backgroundColor: theme === Theme.DARK ? `${color}22` : color,
+        color: theme === Theme.DARK ? color : 'var(--text-primary)',
       }}
       className={styles.container}
     >
