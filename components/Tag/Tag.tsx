@@ -18,6 +18,7 @@ export default function Tag({ label, searchString }: Props) {
 
   return (
     <div
+      data-testid='tag'
       style={{
         borderColor: theme === Theme.DARK ? color : 'var(--text-secondary)',
         backgroundColor: theme === Theme.DARK ? `${color}22` : color,

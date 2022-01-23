@@ -4,9 +4,8 @@ import {
   ThemeContextProvider,
   Theme,
 } from '../../context/ThemeContext/ThemeContext'
-import randomColor from 'randomcolor'
 
-jest.mock('randomcolor', () => jest.fn())
+jest.mock('randomcolor', () => () => '#012345')
 
 describe('Tag', () => {
   it('displays the tag label', () => {
@@ -24,14 +23,12 @@ describe('Tag', () => {
         <Tag label={mockLabel} />
       </ThemeContextProvider>
     )
+    const tag = screen.getByTestId('tag')
     const label = screen.getByText(mockLabel)
     expect(label).toBeInTheDocument()
-    expect(randomColor).toHaveBeenCalledWith(
-      expect.objectContaining({
-        seed: mockLabel,
-        luminosity: 'light',
-      })
-    )
+    expect(tag).toHaveStyle('background-color: #01234522')
+    expect(tag).toHaveStyle('border-color: #012345')
+    expect(tag).toHaveStyle('color: #012345')
   })
 
   it('sets the tag color correctly for the light theme', () => {
@@ -42,13 +39,11 @@ describe('Tag', () => {
         <Tag label={mockLabel} />
       </ThemeContextProvider>
     )
+    const tag = screen.getByTestId('tag')
     const label = screen.getByText(mockLabel)
     expect(label).toBeInTheDocument()
-    expect(randomColor).toHaveBeenCalledWith(
-      expect.objectContaining({
-        seed: mockLabel,
-        luminosity: 'dark',
-      })
-    )
+    expect(tag).toHaveStyle('background-color: #012345')
+    expect(tag).toHaveStyle('border-color: var(--text-secondary')
+    expect(tag).toHaveStyle('color: var(--text-primary')
   })
 })
