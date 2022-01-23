@@ -21,6 +21,10 @@ body,
   box-sizing: border-box;
 }
 
+mark {
+  border-radius: 4px;
+}
+
 a {
   border-radius: 4px;
   color: var(--interactive);

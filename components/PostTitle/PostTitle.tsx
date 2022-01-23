@@ -72,6 +72,12 @@ export default function PostTitle({ date, excerpt, tags, title }: Props) {
             </div>
           </div>
           <div className={styles.rightHandSide}>
+            <div className={styles.date}>
+              {new Date(date).toLocaleDateString(undefined, {
+                month: 'long',
+                year: 'numeric',
+              })}
+            </div>
             <div className={styles.shareLinks}>
               {isNativeShare && (
                 <Button
@@ -97,12 +103,6 @@ export default function PostTitle({ date, excerpt, tags, title }: Props) {
                   {shareData[item].icon}
                 </Button>
               ))}
-            </div>
-            <div className={styles.date}>
-              {new Date(date).toLocaleDateString(undefined, {
-                month: 'long',
-                year: 'numeric',
-              })}
             </div>
           </div>
         </div>

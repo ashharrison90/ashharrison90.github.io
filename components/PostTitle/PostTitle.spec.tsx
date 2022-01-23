@@ -65,7 +65,7 @@ describe('PostTitle', () => {
       />
     )
     mockTags.forEach((mockTag) => {
-      const tag = screen.getByText(`#${mockTag}`)
+      const tag = screen.getByText(mockTag)
       expect(tag).toBeInTheDocument()
     })
   })

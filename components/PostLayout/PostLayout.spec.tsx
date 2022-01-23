@@ -54,9 +54,9 @@ describe('PostLayout', () => {
     expect(date).toBeInTheDocument()
   })
 
-  it('displays the tags with a #', () => {
+  it('displays the tags', () => {
     mockTags.forEach((mockTag) => {
-      const tag = screen.getByText(`#${mockTag}`)
+      const tag = screen.getByText(mockTag)
       expect(tag).toBeInTheDocument()
     })
   })
