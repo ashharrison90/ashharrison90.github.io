@@ -43,7 +43,7 @@ describe('Tag', () => {
     const label = screen.getByText(mockLabel)
     expect(label).toBeInTheDocument()
     expect(tag).toHaveStyle('background-color: #012345')
-    expect(tag).toHaveStyle('border-color: var(--text-secondary')
+    expect(tag).toHaveStyle('border-color: #012345')
     expect(tag).toHaveStyle('color: var(--text-primary')
   })
 })
