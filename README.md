@@ -15,23 +15,23 @@ git clone https://github.com/ashharrison90/ashharrison90.github.io.git
 Install:
 
 ```bash
-yarn install
+npm install
 ```
 
 To run the development server on http://localhost:3000:
 
 ```bash
-yarn start
+npm start
 ```
 
 To statically build the site:
 
 ```bash
-yarn build
+npm run build
 ```
 
 To run the unit tests:
 
 ```bash
-yarn test
+npm test
 ```
