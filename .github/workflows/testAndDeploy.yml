@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout 🛎️
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Install 🔧
         run: npm install
       - name: Lint 🔧
@@ -28,7 +28,7 @@ jobs:
     needs: test
     steps:
       - name: Checkout 🛎️
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Install 🔧
         run: npm install
       - name: Build 🔧
