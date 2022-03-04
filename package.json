@@ -16,7 +16,9 @@
     "typecheck": "tsc",
     "storybook": "start-storybook -p 6006 -s public"
   },
-  "dependencies": {},
+  "dependencies": {
+    "remark-gfm": "^3.0.1"
+  },
   "devDependencies": {
     "@babel/core": "^7.15.5",
     "@fortawesome/fontawesome-free": "^5.15.4",
