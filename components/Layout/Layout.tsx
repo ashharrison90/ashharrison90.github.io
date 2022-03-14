@@ -46,8 +46,8 @@ export default function Layout({
     // and stop once we're past 1
     if (foregroundContent) {
       const height =
-        foregroundContentRef.current?.getBoundingClientRect().height!
-      const top = foregroundContentRef.current?.getBoundingClientRect().top!
+        foregroundContentRef.current!.getBoundingClientRect().height!
+      const top = foregroundContentRef.current!.getBoundingClientRect().top!
       const scrollScaleFactor = Math.round(10 * (Math.abs(top) / height)) / 10
       setBackgroundContentFade(Math.min(scrollScaleFactor, 1))
     }
