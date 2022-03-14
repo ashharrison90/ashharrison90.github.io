@@ -4,7 +4,7 @@ import LinkedIn from '@fortawesome/fontawesome-free/svgs/brands/linkedin.svg'
 import Reddit from '@fortawesome/fontawesome-free/svgs/brands/reddit.svg'
 import Twitter from '@fortawesome/fontawesome-free/svgs/brands/twitter.svg'
 import styles from './PostTitle.module.scss'
-import Share from '@fortawesome/fontawesome-free/svgs/solid/share-alt.svg'
+import Share from '@fortawesome/fontawesome-free/svgs/solid/share.svg'
 import { ReactNode, useEffect, useState } from 'react'
 
 export interface Props {
