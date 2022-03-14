@@ -5,10 +5,6 @@ declare global {
   const browser: Browser
   const browserName: string
 }
-declare module '*.svg' {
-  const content: any
-  export default content
-}
 
 declare module 'highlight.js/lib/core'
 declare module 'highlight.js/lib/languages/javascript'
