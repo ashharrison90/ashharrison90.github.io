@@ -5,10 +5,13 @@ import {
   ThemeContextProvider,
   Theme,
 } from '../../context/ThemeContext/ThemeContext'
+import { UserEvent } from '@testing-library/user-event/dist/types/setup'
 
 describe('ThemeToggle', () => {
+  let user: UserEvent
   beforeEach(() => {
     localStorage.setItem('theme', Theme.DARK)
+    user = userEvent.setup()
     render(
       <ThemeContextProvider>
         <ThemeToggle />
@@ -30,20 +33,20 @@ describe('ThemeToggle', () => {
     expect(toggle.checked).toEqual(true)
   })
 
-  it('toggles the theme when clicked', () => {
+  it('toggles the theme when clicked', async () => {
     const toggle = screen.getByRole('checkbox', {
       name: 'Toggle theme',
     }) as HTMLInputElement
     expect(toggle.checked).toEqual(true)
 
-    userEvent.click(toggle)
+    await user.click(toggle)
     expect(toggle.checked).toEqual(false)
     expect(document.documentElement.getAttribute('data-theme')).toEqual(
       Theme.LIGHT
     )
     expect(localStorage.getItem('theme')).toEqual(Theme.LIGHT)
 
-    userEvent.click(toggle)
+    await user.click(toggle)
     expect(toggle.checked).toEqual(true)
     expect(document.documentElement.getAttribute('data-theme')).toEqual(
       Theme.DARK

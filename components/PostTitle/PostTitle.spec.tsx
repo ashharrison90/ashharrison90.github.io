@@ -109,8 +109,9 @@ describe('PostTitle', () => {
     expect(link).toBeInTheDocument()
   })
 
-  it('has a native "Share" button if it supports it', () => {
+  it('has a native "Share" button if it supports it', async () => {
     navigator.share = jest.fn()
+    const user = userEvent.setup()
     render(
       <PostTitle
         date={mockDate}
@@ -121,7 +122,7 @@ describe('PostTitle', () => {
     )
     const button = screen.getByRole('button', { name: 'Share' })
     expect(button).toBeInTheDocument()
-    userEvent.click(button)
+    await user.click(button)
     expect(navigator.share).toHaveBeenCalledWith({
       title: mockTitle,
       url: 'http://localhost/',

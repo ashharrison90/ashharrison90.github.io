@@ -1,13 +1,16 @@
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
+import { UserEvent } from '@testing-library/user-event/dist/types/setup'
 import Search from './Search'
 
 describe('Search', () => {
   const mockClassName = 'mockClassName'
   const mockPlaceholder = 'mockPlaceholder'
   const mockOnChange = jest.fn()
+  let user: UserEvent
 
   beforeEach(() => {
+    user = userEvent.setup()
     render(
       <Search
         className={mockClassName}
@@ -22,10 +25,10 @@ describe('Search', () => {
     expect(search).toBeInTheDocument()
   })
 
-  it('can type into the search input', () => {
+  it('can type into the search input', async () => {
     const search = screen.getByPlaceholderText(mockPlaceholder)
     expect(search).toBeInTheDocument()
-    userEvent.type(search, 'hello world')
+    await user.type(search, 'hello world')
     expect(search).toHaveValue('hello world')
   })
 })
