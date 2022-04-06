@@ -3,6 +3,7 @@ import Posts, { getStaticProps } from '../../pages/posts'
 import { PostMetadata } from '../../lib/postsApi'
 import userEvent from '@testing-library/user-event'
 import fs from 'fs'
+import { UserEvent } from '@testing-library/user-event/dist/types/setup'
 
 jest.mock('next/router', () => ({
   useRouter() {
@@ -42,6 +43,7 @@ jest.mock('../../pages/posts/bye-bye-popups.mdx', () => ({
 describe('Posts', () => {
   let posts: PostMetadata[]
   let readdirSyncSpy: jest.SpyInstance
+  let user: UserEvent
 
   beforeEach(async () => {
     readdirSyncSpy = jest.spyOn(fs, 'readdirSync')
@@ -50,6 +52,7 @@ describe('Posts', () => {
       'bye-bye-popups.mdx',
     ])
     posts = (await getStaticProps()).props.allPosts
+    user = userEvent.setup()
     render(<Posts allPosts={posts} />)
     await screen.findByRole('heading', { name: 'posts' })
   })
@@ -91,7 +94,7 @@ describe('Posts', () => {
     const postToFilter = posts[0]
     const search = await screen.findByPlaceholderText('Search posts')
     expect(search).toBeInTheDocument()
-    userEvent.type(search, postToFilter.title)
+    await user.type(search, postToFilter.title)
     expect(search).toHaveValue(postToFilter.title)
 
     const filteredPost = screen.getByRole('link', { name: postToFilter.title })
@@ -104,7 +107,7 @@ describe('Posts', () => {
     const postToFilter = posts[0]
     const search = await screen.findByPlaceholderText('Search posts')
     expect(search).toBeInTheDocument()
-    userEvent.type(search, postToFilter.excerpt)
+    await user.type(search, postToFilter.excerpt)
     expect(search).toHaveValue(postToFilter.excerpt)
 
     const filteredPost = screen.getByRole('link', { name: postToFilter.title })
@@ -116,7 +119,7 @@ describe('Posts', () => {
   it('shows the empty state if the search does not match', async () => {
     const search = await screen.findByPlaceholderText('Search posts')
     expect(search).toBeInTheDocument()
-    userEvent.type(search, 'YUNOEXIST')
+    await user.type(search, 'YUNOEXIST')
 
     const emptyState = screen.getByText('Nothing found')
     expect(emptyState).toBeInTheDocument()

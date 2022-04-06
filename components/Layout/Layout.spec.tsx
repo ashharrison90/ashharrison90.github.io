@@ -1,5 +1,6 @@
 import { render, screen, fireEvent, RenderResult } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
+import { UserEvent } from '@testing-library/user-event/dist/types/setup'
 import Layout from './Layout'
 
 jest.mock('next/router', () => ({
@@ -82,7 +83,10 @@ describe('Layout', () => {
 
   describe('when hideHeaderUntilScroll is true', () => {
     describe('when scrolling', () => {
+      let user: UserEvent
+
       beforeEach(async () => {
+        user = userEvent.setup()
         render(
           <Layout
             hideHeaderUntilScroll
@@ -116,7 +120,7 @@ describe('Layout', () => {
         let header = await screen.findByRole('banner')
         expect(header).toBeInTheDocument()
         expect(header).toHaveClass('hide')
-        userEvent.tab()
+        await user.tab()
         header = await screen.findByRole('banner')
         expect(header).toBeInTheDocument()
         expect(header).not.toHaveClass('hide')
