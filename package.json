@@ -40,7 +40,7 @@
     "@types/mdx": "^2.0.1",
     "@types/node": "^17.0.0",
     "@types/randomcolor": "^0.5.6",
-    "@types/react": "^17.0.24",
+    "@types/react": "^18.0.0",
     "@types/react-highlight-words": "^0.16.3",
     "babel-loader": "^8.2.2",
     "classnames": "^2.3.1",
