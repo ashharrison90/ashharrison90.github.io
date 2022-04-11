@@ -33,8 +33,7 @@ export default function Posts({ allPosts }: Props) {
       <h1>posts</h1>
 
       <p>
-        Read my ramblings. I'm aiming for a post every couple of{' '}
-        <del>weeks</del> <ins>months</ins>. Will it happen? No, probably not.
+        A dumping ground for my ramblings. New posts whenever I can be bothered.
       </p>
 
       <div className={styles.searchContainer}>
