@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 
 export enum Theme {
   LIGHT = 'light',
@@ -21,18 +21,16 @@ export const ThemeContextProvider = ({ children }: Props) => {
     setState({ ...state, theme })
   }
 
-  useEffect(() => {
-    const theme =
-      window.localStorage.getItem('theme') ??
-      (window.matchMedia('(prefers-color-scheme: dark)').matches
-        ? Theme.DARK
-        : Theme.LIGHT)
-    document.documentElement.setAttribute('data-theme', theme)
-    setTheme(theme as Theme)
-  }, [])
+  const initialTheme =
+    (window.localStorage.getItem('theme') as Theme) ??
+    (window.matchMedia('(prefers-color-scheme: dark)').matches
+      ? Theme.DARK
+      : Theme.LIGHT)
+  window.localStorage.setItem('theme', initialTheme)
+  document.documentElement.setAttribute('data-theme', initialTheme)
 
   const initialState = {
-    theme: Theme.LIGHT,
+    theme: initialTheme,
     setTheme,
   }
 
@@ -40,3 +38,5 @@ export const ThemeContextProvider = ({ children }: Props) => {
 
   return <ThemeContext.Provider value={state}>{children}</ThemeContext.Provider>
 }
+
+export default ThemeContextProvider
