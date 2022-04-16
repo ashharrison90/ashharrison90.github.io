@@ -45,7 +45,7 @@ export default function PostLayout({ children, metadata }: Props) {
         'ashharrison90/ashharrison90.github.io'
       )
       scriptElement.setAttribute('issue-term', 'pathname')
-      scriptElement.setAttribute('label', 'post-commentsContainer')
+      scriptElement.setAttribute('label', 'post-comments')
       scriptElement.setAttribute('theme', `github-${theme}`)
       scriptElement.setAttribute('crossorigin', 'anonymous')
       scriptElement.setAttribute('async', 'true')
