@@ -5,7 +5,6 @@ import styles from './PostCard.module.scss'
 
 export interface Props {
   coverImage: string
-  date: string
   excerpt: string
   searchString?: string
   slug: string
@@ -15,7 +14,6 @@ export interface Props {
 
 export default function PostCard({
   coverImage,
-  date,
   excerpt,
   searchString,
   slug,
@@ -24,20 +22,12 @@ export default function PostCard({
 }: Props) {
   return (
     <Link as={`/posts/${slug}`} href='/posts/[slug]'>
-      <a
-        aria-label={title}
-        data-testid='PostCard'
-        className={styles.card}
-        style={{ backgroundImage: `url(${coverImage})` }}
-      >
-        <div className={styles.dateContainer}>
-          <div className={styles.date}>
-            {new Date(date).toLocaleDateString(undefined, {
-              month: 'long',
-              year: 'numeric',
-            })}
-          </div>
-        </div>
+      <a aria-label={title} className={styles.card} data-testid='PostCard'>
+        <div
+          data-testid='PostCard-image'
+          style={{ backgroundImage: `url(${coverImage})` }}
+          className={styles.backgroundImage}
+        />
         <div className={styles.titleContainer}>
           <div className={styles.title}>
             <Highlighter
@@ -45,16 +35,16 @@ export default function PostCard({
               textToHighlight={title}
             />
           </div>
+          <div className={styles.tags}>
+            {tags.map((tag) => (
+              <Tag key={tag} label={tag} searchString={searchString} />
+            ))}
+          </div>
           <div className={styles.excerpt}>
             <Highlighter
               searchWords={searchString?.split(' ') ?? []}
               textToHighlight={excerpt}
             />
-          </div>
-          <div className={styles.tags}>
-            {tags.map((tag) => (
-              <Tag key={tag} label={tag} searchString={searchString} />
-            ))}
           </div>
         </div>
       </a>
