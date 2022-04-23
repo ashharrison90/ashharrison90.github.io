@@ -3,18 +3,15 @@ import PostCard from './PostCard'
 
 describe('PostCard', () => {
   const mockCoverImage = 'mockCoverImage'
-  const mockDate = 'mockDate'
   const mockExcerpt = 'mockExcerpt'
   const mockSlug = 'mockSlug'
   const mockTitle = 'mockTitle'
   const mockTags = ['mockTag']
 
   beforeEach(() => {
-    jest.spyOn(Date.prototype, 'toLocaleDateString').mockReturnValue(mockDate)
     render(
       <PostCard
         coverImage={mockCoverImage}
-        date={mockDate}
         excerpt={mockExcerpt}
         slug={mockSlug}
         tags={mockTags}
@@ -37,11 +34,6 @@ describe('PostCard', () => {
     expect(excerpt).toBeInTheDocument()
   })
 
-  it('displays the date in a local format', () => {
-    const date = screen.getByText(mockDate)
-    expect(date).toBeInTheDocument()
-  })
-
   it('displays the tags', () => {
     mockTags.forEach((mockTag) => {
       const tag = screen.getByText(mockTag)
@@ -59,8 +51,8 @@ describe('PostCard', () => {
     expect(link).toHaveAttribute('href', `/posts/${mockSlug}`)
   })
 
-  it('the link displays the coverImage', () => {
-    const link = screen.getByRole('link')
+  it('the card displays the coverImage', () => {
+    const link = screen.getByTestId('PostCard-image')
     expect(link).toHaveAttribute(
       'style',
       `background-image: url(${mockCoverImage});`

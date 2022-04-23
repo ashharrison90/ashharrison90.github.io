@@ -111,7 +111,6 @@ export default function Home({ allPosts }: Props) {
               <PostCard
                 key={post.slug}
                 coverImage={post.coverImage}
-                date={post.date}
                 excerpt={post.excerpt}
                 slug={post.slug}
                 tags={post.tags}
