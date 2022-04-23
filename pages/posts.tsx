@@ -48,7 +48,6 @@ export default function Posts({ allPosts }: Props) {
           <PostCard
             key={post.slug}
             coverImage={post.coverImage}
-            date={post.date}
             excerpt={post.excerpt}
             searchString={searchString}
             slug={post.slug}
