@@ -1,0 +1,113 @@
+import PostLayout from '../../components/PostLayout/PostLayout'
+
+export const metadata = {
+  title: 'Betterer',
+  excerpt: 'My new favourite tool when working in a large codebase.',
+  coverImage: '/assets/blog/betterer/strict-metrics.webp',
+  date: '2022-04-24T17:40:07.322Z',
+  tags: ['tooling', 'ci'],
+}
+
+## Improving incrementally
+
+Part of the pain of working on any collaborative software project comes when trying to introduce big improvements to the codebase.
+
+Imagine you have a large project written in TypeScript. You want to enable [strict type checking](https://www.typescriptlang.org/tsconfig#strict), but you're a long way off fixing all the errors. How do you move forward?
+
+That was the situation at Grafana around 2 years ago. One option is to introduce these fixes gradually and hope you can outpace the rate at which new errors are introduced.
+
+<figure>
+  <video
+    autoPlay
+    loop
+    muted
+    type='video/mp4'
+    src='/assets/blog/betterer/escalator.mp4'
+    alt='Making large changes incrementally can feel like running the wrong way up an escalator.'
+  />
+  <figcaption>
+    Making large changes incrementally can feel like running the wrong way up an
+    escalator.
+  </figcaption>
+</figure>
+
+This feels a bit like running up an escalator. Instead, we [introduced a shell script](https://github.com/grafana/grafana/blob/a7afab4b8aa92c32a05057047d42bcb6a91114aa/scripts/ci-check-strict.sh) that would run in the CI:
+
+```bash
+#!/bin/bash
+set -e
+
+echo -e "Collecting code stats (typescript errors & more)"
+
+ERROR_COUNT_LIMIT=579
+ERROR_COUNT="$(./node_modules/.bin/tsc --project tsconfig.json --noEmit --strict true | grep -oP 'Found \K(\d+)')"
+
+if [ "$ERROR_COUNT" -gt $ERROR_COUNT_LIMIT ]; then
+  echo -e "Typescript strict errors $ERROR_COUNT exceeded $ERROR_COUNT_LIMIT so failing build"
+	exit 1
+fi
+```
+
+There's nothing special about this. It's just a bash script that runs the typescript compiler and checks the number of strict errors against our predefined threshold, similar to a snapshot test. As errors are fixed we would update the threshold to ensure that more errors aren't introduced.
+
+The main problem was that it relied on developers remembering to update the threshold whenever they fixed errors.
+
+**But** it did work. Over the course of 18 months we went from ~800 strict typescript errors to 0.
+
+<figure>
+  <img
+    src='/assets/blog/betterer/strict-metrics.webp'
+    alt='TypeScript strict errors over time for the Grafana project.'
+  />
+  <figcaption>
+    TypeScript strict errors over time for the Grafana project.
+  </figcaption>
+</figure>
+
+You can see from the graph that there are several places where the number of errors went up. This is exactly the sort of thing the script was supposed to avoid. Is there a better(er) way?
+
+## The Betterer way
+
+[Betterer](https://phenomnomnominal.github.io/betterer/) takes this concept of snapshot testing to the next level. At it's core, it does exactly the same thing as we discussed above. **But it does all this automatically for you**.
+
+Setup is a 1-liner:
+
+```bash
+npx @betterer/cli init
+```
+
+This will install the relevant dependencies and create a `.betterer.ts` file in the project root. This `.betterer.ts` file is where you define the criteria you want to test against to improve.
+
+With React 18 now being released and Enzyme [still not officially supporting React 17](https://github.com/enzymejs/enzyme/issues/2429), a good example might be [tracking the conversion of your unit tests from Enzyme to React Testing Library](https://github.com/grafana/grafana/pull/45055). Writing a test for that couldn't be simpler:
+
+```typescript
+import { regexp } from '@betterer/regexp'
+
+export default {
+  'no enzyme tests': () => regexp(/from 'enzyme'/g).include('**/*.test.*'),
+}
+```
+
+This uses the `@betterer/regexp` package to check if how many test files contain the import string `from 'enzyme'`.
+
+Betterer can then be run either as a precommit hook (`betterer precommit`) in combination with `husky`/`lint-staged` or in the CI (`betterer ci`) or both. Running it generates a `.betterer.results` file in the project root. This is effectively a snapshot of the current state of the codebase.
+
+Each time Betterer runs it will compare against the previous snapshot. If a test criteria has got worse, Betterer will fail. If it gets better, Betterer will update the snapshot and tighten the restriction further. Importantly, as there's nothing that an individual developer needs to remember to do, there's no sign of any increases when we look at the graph:
+
+<figure>
+  <img
+    src='/assets/blog/betterer/enzyme-metrics.webp'
+    alt='Number of Enzyme tests over time for the Grafana project.'
+  />
+  <figcaption>
+    Number of Enzyme tests over time for the Grafana project.
+  </figcaption>
+</figure>
+
+There's also support for caching to speed up running Betterer, making [complicated tests more viable](https://github.com/grafana/grafana/pull/45901).
+
+That's it! I thoroughly recommend checking the tool out and giving it a try. Huge shout out to [@phenomnomnominal](https://twitter.com/phenomnominal) for developing the package and being so responsive on [discord](https://discord.gg/YNgtXt6QVX).
+
+export default ({ children }) => (
+  <PostLayout metadata={metadata}>{children}</PostLayout>
+)

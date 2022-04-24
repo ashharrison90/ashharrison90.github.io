@@ -19,6 +19,8 @@
 .DS_Store
 *.pem
 *.svg
+*.mp4
+*.webp
 .gitignore
 .prettierignore
 
