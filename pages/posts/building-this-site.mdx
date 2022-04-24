@@ -1,4 +1,5 @@
 import PostLayout from '../../components/PostLayout/PostLayout'
+import PostCard from '../../components/PostCard/PostCard'
 
 export const metadata = {
   title: 'Building this site',
@@ -42,9 +43,9 @@ I ended up choosing Next.js, primarily because of it's flexibility. Whilst Gatsb
 <figure>
   <img
     src='/assets/blog/building-this-site/people-using-next.webp'
-    alt='Lots of companies are starting to adopt Next.js'
+    alt='Lots of commerical companies have adopted Next.js'
   />
-  <figcaption>Lots of companies are starting to adopt Next.js</figcaption>
+  <figcaption>Lots of commerical companies have adopted Next.js</figcaption>
 </figure>
 
 So if this site ever evolves to the point where it needs a dynamic backend, it can! At the same time, I also gain experience with a framework that a lot of companies are now using. Win-win.
@@ -55,15 +56,25 @@ Didn't have one.
 
 This will probably come as no surprise to anyone, but I'm not a designer. I ended up playing around with most things in the browser until I was happy. The optimal solution is probably to use wireframes up front.
 
-The only thing I'm not quite happy with is the card design for each post. But that's ok - it's good enough for now, and I'm sure it'll be tweaked in the future.
+The only thing I'm not quite happy with is the card design for each post. But that's ok - it's good enough for now, and I'm sure it'll be tweaked in the future:
 
 <figure>
   <img
     src='/assets/blog/building-this-site/card-design.webp'
-    alt='The current card design.'
+    alt='The initial card design.'
   />
-  <figcaption>The current card design.</figcaption>
+  <figcaption>The initial card design.</figcaption>
 </figure>
+
+Compared to the current design:
+
+<PostCard
+  coverImage={metadata.coverImage}
+  excerpt={metadata.excerpt}
+  slug='building-this-site'
+  tags={metadata.tags}
+  title={metadata.title}
+/>
 
 ## Colours
 
