@@ -53,6 +53,10 @@ li {
   line-height: 1.5em;
 }
 
+figcaption p {
+  margin: 0;
+}
+
 @media screen and (min-width: 768px) {
   h1 {
     font-size: 4em;
