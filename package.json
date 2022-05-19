@@ -62,7 +62,7 @@
     "react-highlight-words": "^0.17.0",
     "remark-gfm": "^3.0.1",
     "sass": "^1.42.1",
-    "sass-loader": "^12.1.0",
+    "sass-loader": "^13.0.0",
     "serve": "^13.0.2",
     "start-server-and-test": "^1.14.0",
     "storybook-addon-next-router": "^3.0.8",
