@@ -65,7 +65,7 @@
     "sass-loader": "^13.0.0",
     "serve": "^13.0.2",
     "start-server-and-test": "^1.14.0",
-    "storybook-addon-next-router": "^3.0.8",
+    "storybook-addon-next-router": "^4.0.0",
     "storybook-addon-root-attribute": "^1.0.2",
     "style-loader": "^3.3.0",
     "stylelint": "^14.0.1",
