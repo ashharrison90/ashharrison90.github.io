@@ -59,7 +59,9 @@ export default function About() {
       }
     )
     ;[grafanaRef, ibmRef, qinetiqRef, durhamRef].forEach((ref) => {
-      intersectionObserver.observe(ref.current!)
+      if (ref.current) {
+        intersectionObserver.observe(ref.current)
+      }
     })
     return () => intersectionObserver.disconnect()
   }, [])
