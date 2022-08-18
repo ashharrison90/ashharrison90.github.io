@@ -1,7 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import EmptyState from './EmptyState'
 
-export default {
+const meta: ComponentMeta<typeof EmptyState> = {
   title: 'Components/EmptyState',
   component: EmptyState,
   argTypes: {
@@ -9,8 +9,10 @@ export default {
       defaultValue: 'Nothing found',
     },
   },
-} as ComponentMeta<typeof EmptyState>
+}
 
 export const RendersCorrectly: ComponentStory<typeof EmptyState> = (args) => (
   <EmptyState {...args} />
 )
+
+export default meta

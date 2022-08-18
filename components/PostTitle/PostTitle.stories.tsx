@@ -1,7 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import PostTitle from './PostTitle'
 
-export default {
+const meta: ComponentMeta<typeof PostTitle> = {
   title: 'Components/PostTitle',
   component: PostTitle,
   argTypes: {
@@ -22,8 +22,10 @@ export default {
       defaultValue: 'An interesting title',
     },
   },
-} as ComponentMeta<typeof PostTitle>
+}
 
 export const RendersCorrectly: ComponentStory<typeof PostTitle> = (args) => (
   <PostTitle {...args} />
 )
+
+export default meta

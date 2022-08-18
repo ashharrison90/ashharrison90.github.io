@@ -5,7 +5,7 @@ import {
   ThemeContextProvider,
   Theme,
 } from '../../context/ThemeContext/ThemeContext'
-import { UserEvent } from '@testing-library/user-event/dist/types/setup'
+import { UserEvent } from '@testing-library/user-event/dist/types/setup/setup'
 
 describe('ThemeToggle', () => {
   let user: UserEvent
@@ -27,16 +27,17 @@ describe('ThemeToggle', () => {
   })
 
   it('defaults to the initial theme specified by the ThemeContext', () => {
-    const toggle = screen.getByRole('checkbox', {
+    const toggle: HTMLInputElement = screen.getByRole('checkbox', {
       name: 'Toggle theme',
-    }) as HTMLInputElement
+    })
+    expect(toggle).toBeInstanceOf(HTMLElement)
     expect(toggle.checked).toEqual(true)
   })
 
   it('toggles the theme when clicked', async () => {
-    const toggle = screen.getByRole('checkbox', {
+    const toggle: HTMLInputElement = screen.getByRole('checkbox', {
       name: 'Toggle theme',
-    }) as HTMLInputElement
+    })
     expect(toggle.checked).toEqual(true)
 
     await user.click(toggle)

@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react'
+import preloadAll from 'jest-next-dynamic'
 import About from '../../pages/about'
 
 jest.mock('next/router', () => ({
@@ -15,7 +16,11 @@ jest.mock('next/router', () => ({
 describe('About', () => {
   let mockIntersectionObserver: jest.Mock<any, any>
 
-  beforeEach(async () => {
+  beforeAll(async () => {
+    await preloadAll()
+  })
+
+  beforeEach(() => {
     // IntersectionObserver isn't available in test environment
     mockIntersectionObserver = jest.fn()
     mockIntersectionObserver.mockReturnValue({
@@ -25,34 +30,33 @@ describe('About', () => {
     })
     window.IntersectionObserver = mockIntersectionObserver
     render(<About />)
-    await screen.findByRole('heading', { name: 'about' })
   })
 
-  it('shows the title', async () => {
-    const title = await screen.findByRole('heading', { name: 'about' })
+  it('shows the title', () => {
+    const title = screen.getByRole('heading', { name: 'about' })
     expect(title).toBeInTheDocument()
   })
 
-  it('shows the header', async () => {
-    const header = await screen.findByRole('banner')
+  it('shows the header', () => {
+    const header = screen.getByRole('banner')
     expect(header).toBeInTheDocument()
   })
 
-  it('shows the footer', async () => {
-    const footer = await screen.findByRole('contentinfo')
+  it('shows the footer', () => {
+    const footer = screen.getByRole('contentinfo')
     expect(footer).toBeInTheDocument()
   })
 
-  it('shows the company as a heading for each job', async () => {
+  it('shows the company as a heading for each job', () => {
     const companies = ['Grafana', 'IBM', 'QinetiQ', 'Durham']
     for (const company of companies) {
-      const companyName = await screen.findByRole('heading', { name: company })
+      const companyName = screen.getByRole('heading', { name: company })
       expect(companyName).toBeInTheDocument()
     }
   })
 
-  it("hides the job summaries until they're scrolled into view", async () => {
-    const jobSummaries = await screen.findAllByTestId('job-summary')
+  it("hides the job summaries until they're scrolled into view", () => {
+    const jobSummaries = screen.getAllByTestId('job-summary')
     jobSummaries.forEach((jobSummary) => {
       expect(jobSummary).not.toHaveStyle('opacity: 1')
       expect(jobSummary).not.toHaveStyle('transform: none')
@@ -70,8 +74,8 @@ describe('About', () => {
     expect(jobSummaries[0]).toHaveStyle('transform: none')
   })
 
-  it("leaves the job summaries visible once if they're then scrolled out of view", async () => {
-    const jobSummaries = await screen.findAllByTestId('job-summary')
+  it("leaves the job summaries visible once if they're then scrolled out of view", () => {
+    const jobSummaries = screen.getAllByTestId('job-summary')
     jobSummaries.forEach((jobSummary) => {
       expect(jobSummary).not.toHaveStyle('opacity: 1')
       expect(jobSummary).not.toHaveStyle('transform: none')

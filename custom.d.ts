@@ -1,13 +1,8 @@
-import { Browser, Page } from 'playwright'
-
 declare global {
+  import { Browser, Page } from 'playwright'
   const page: Page
   const browser: Browser
   const browserName: string
 }
 
-declare module 'highlight.js/lib/core'
-declare module 'highlight.js/lib/languages/javascript'
-declare module 'highlight.js/lib/languages/typescript'
-declare module 'highlight.js/lib/languages/python'
-declare module 'highlight.js/lib/languages/scss'
+declare module 'jest-next-dynamic'

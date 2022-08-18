@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react'
+import preloadAll from 'jest-next-dynamic'
 import Header from './Header'
 
 jest.mock('next/router', () => ({
@@ -13,37 +14,41 @@ jest.mock('next/router', () => ({
 }))
 
 describe('Header', () => {
-  it('renders a header element', async () => {
+  beforeAll(async () => {
+    await preloadAll()
+  })
+
+  it('renders a header element', () => {
     render(<Header show />)
-    const header = await screen.findByRole('banner')
+    const header = screen.getByRole('banner')
     expect(header).toBeInTheDocument()
   })
 
-  it('renders a navigation section', async () => {
+  it('renders a navigation section', () => {
     render(<Header show />)
-    const navigation = await screen.findByRole('navigation')
+    const navigation = screen.getByRole('navigation')
     expect(navigation).toBeInTheDocument()
   })
 
-  it('has a link to the home page', async () => {
+  it('has a link to the home page', () => {
     render(<Header show />)
-    const link = await screen.findByRole('link', { name: 'Home' })
+    const link = screen.getByRole('link', { name: 'Home' })
     expect(link).toBeInTheDocument()
   })
 
-  it('has a link to the about page', async () => {
+  it('has a link to the about page', () => {
     render(<Header show />)
-    const link = await screen.findByRole('link', { name: 'About' })
+    const link = screen.getByRole('link', { name: 'About' })
     expect(link).toBeInTheDocument()
   })
 
-  it('has a link to the posts page', async () => {
+  it('has a link to the posts page', () => {
     render(<Header show />)
-    const link = await screen.findByRole('link', { name: 'Posts' })
+    const link = screen.getByRole('link', { name: 'Posts' })
     expect(link).toBeInTheDocument()
   })
 
-  it('renders an extra link when on an individual post', async () => {
+  it('renders an extra link when on an individual post', () => {
     const useRouter = jest.spyOn(require('next/router'), 'useRouter')
     useRouter.mockImplementation(() => ({
       route: '/',
@@ -52,13 +57,13 @@ describe('Header', () => {
       asPath: '/posts/foo',
     }))
     render(<Header show />)
-    const link = await screen.findByRole('link', { name: '/foo' })
+    const link = screen.getByRole('link', { name: '/foo' })
     expect(link).toBeInTheDocument()
   })
 
-  it('contains the theme toggle', async () => {
+  it('contains the theme toggle', () => {
     render(<Header show />)
-    const themeToggle = await screen.findByRole('checkbox', {
+    const themeToggle = screen.getByRole('checkbox', {
       name: 'Toggle theme',
     })
     expect(themeToggle).toBeInTheDocument()

@@ -1,7 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import Tag from './Tag'
 
-export default {
+const meta: ComponentMeta<typeof Tag> = {
   title: 'Components/Tag',
   component: Tag,
   argTypes: {
@@ -9,8 +9,10 @@ export default {
       defaultValue: 'typescript',
     },
   },
-} as ComponentMeta<typeof Tag>
+}
 
 export const RendersCorrectly: ComponentStory<typeof Tag> = (args) => (
   <Tag {...args} />
 )
+
+export default meta

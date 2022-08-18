@@ -1,9 +1,10 @@
 import { render, screen } from '@testing-library/react'
+import preloadAll from 'jest-next-dynamic'
 import Posts, { getStaticProps } from '../../pages/posts'
 import { PostMetadata } from '../../lib/postsApi'
 import userEvent from '@testing-library/user-event'
 import fs from 'fs'
-import { UserEvent } from '@testing-library/user-event/dist/types/setup'
+import { UserEvent } from '@testing-library/user-event/dist/types/setup/setup'
 
 jest.mock('next/router', () => ({
   useRouter() {
@@ -45,6 +46,10 @@ describe('Posts', () => {
   let readdirSyncSpy: jest.SpyInstance
   let user: UserEvent
 
+  beforeAll(async () => {
+    await preloadAll()
+  })
+
   beforeEach(async () => {
     readdirSyncSpy = jest.spyOn(fs, 'readdirSync')
     readdirSyncSpy.mockReturnValue([
@@ -54,45 +59,44 @@ describe('Posts', () => {
     posts = (await getStaticProps()).props.allPosts
     user = userEvent.setup()
     render(<Posts allPosts={posts} />)
-    await screen.findByRole('heading', { name: 'posts' })
   })
 
   afterEach(() => {
     readdirSyncSpy.mockRestore()
   })
 
-  it('shows the title', async () => {
-    const title = await screen.findByRole('heading', { name: 'posts' })
+  it('shows the title', () => {
+    const title = screen.getByRole('heading', { name: 'posts' })
     expect(title).toBeInTheDocument()
   })
 
-  it('shows the header', async () => {
-    const header = await screen.findByRole('banner')
+  it('shows the header', () => {
+    const header = screen.getByRole('banner')
     expect(header).toBeInTheDocument()
   })
 
-  it('shows the footer', async () => {
-    const footer = await screen.findByRole('contentinfo')
+  it('shows the footer', () => {
+    const footer = screen.getByRole('contentinfo')
     expect(footer).toBeInTheDocument()
   })
 
-  it('has a link to each post', async () => {
+  it('has a link to each post', () => {
     for (const post of posts) {
-      const postTitle = await screen.findByRole('link', { name: post.title })
+      const postTitle = screen.getByRole('link', { name: post.title })
       expect(postTitle).toBeInTheDocument()
     }
   })
 
-  it('shows the excerpt from each post', async () => {
+  it('shows the excerpt from each post', () => {
     for (const post of posts) {
-      const postExcerpt = await screen.findByText(post.excerpt)
+      const postExcerpt = screen.getByText(post.excerpt)
       expect(postExcerpt).toBeInTheDocument()
     }
   })
 
   it('can filter posts by title', async () => {
     const postToFilter = posts[0]
-    const search = await screen.findByPlaceholderText('Search posts')
+    const search = screen.getByPlaceholderText('Search posts')
     expect(search).toBeInTheDocument()
     await user.type(search, postToFilter.title)
     expect(search).toHaveValue(postToFilter.title)
@@ -105,7 +109,7 @@ describe('Posts', () => {
 
   it('can filter posts by excerpt', async () => {
     const postToFilter = posts[0]
-    const search = await screen.findByPlaceholderText('Search posts')
+    const search = screen.getByPlaceholderText('Search posts')
     expect(search).toBeInTheDocument()
     await user.type(search, postToFilter.excerpt)
     expect(search).toHaveValue(postToFilter.excerpt)
@@ -117,7 +121,7 @@ describe('Posts', () => {
   })
 
   it('shows the empty state if the search does not match', async () => {
-    const search = await screen.findByPlaceholderText('Search posts')
+    const search = screen.getByPlaceholderText('Search posts')
     expect(search).toBeInTheDocument()
     await user.type(search, 'YUNOEXIST')
 

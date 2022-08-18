@@ -1,7 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import Header from './Header'
 
-export default {
+const meta: ComponentMeta<typeof Header> = {
   title: 'Components/Header',
   component: Header,
   argTypes: {
@@ -9,8 +9,10 @@ export default {
       defaultValue: true,
     },
   },
-} as ComponentMeta<typeof Header>
+}
 
 export const RendersCorrectly: ComponentStory<typeof Header> = (args) => (
   <Header {...args} />
 )
+
+export default meta

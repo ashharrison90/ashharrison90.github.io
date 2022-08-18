@@ -1,7 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import Layout from './Layout'
 
-export default {
+const meta: ComponentMeta<typeof Layout> = {
   title: 'Components/Layout',
   component: Layout,
   argTypes: {
@@ -46,8 +46,10 @@ export default {
       defaultValue: 'The title seen on Google',
     },
   },
-} as ComponentMeta<typeof Layout>
+}
 
 export const RendersCorrectly: ComponentStory<typeof Layout> = (args) => (
   <Layout {...args} />
 )
+
+export default meta
