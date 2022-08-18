@@ -46,9 +46,11 @@ export default function About() {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            const target = entry.target as HTMLDivElement
-            target.style.opacity = '1'
-            target.style.transform = 'none'
+            const target = entry.target
+            if (target instanceof HTMLDivElement) {
+              target.style.opacity = '1'
+              target.style.transform = 'none'
+            }
           }
         })
       },

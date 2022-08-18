@@ -3,7 +3,7 @@ import PostGrid from './PostGrid'
 
 const colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet']
 
-export default {
+const meta: ComponentMeta<typeof PostGrid> = {
   title: 'Components/PostGrid',
   component: PostGrid,
   argTypes: {
@@ -21,8 +21,10 @@ export default {
       defaultValue: 'myCustomClass',
     },
   },
-} as ComponentMeta<typeof PostGrid>
+}
 
 export const RendersCorrectly: ComponentStory<typeof PostGrid> = (args) => (
   <PostGrid {...args} />
 )
+
+export default meta

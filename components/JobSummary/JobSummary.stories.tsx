@@ -12,7 +12,7 @@ const icons = {
   grafana: <Grafana />,
 }
 
-export default {
+const meta: ComponentMeta<typeof JobSummary> = {
   title: 'Components/JobSummary',
   component: JobSummary,
   argTypes: {
@@ -53,8 +53,10 @@ export default {
       defaultValue: 'https://www.google.com',
     },
   },
-} as ComponentMeta<typeof JobSummary>
+}
 
 export const RendersCorrectly: ComponentStory<typeof JobSummary> = (args) => (
   <JobSummary {...args} />
 )
+
+export default meta

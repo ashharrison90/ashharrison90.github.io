@@ -1,7 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import Button from './Button'
 
-export default {
+const meta: ComponentMeta<typeof Button> = {
   title: 'Components/Button',
   component: Button,
   argTypes: {
@@ -15,8 +15,10 @@ export default {
       defaultValue: 'https://www.google.com',
     },
   },
-} as ComponentMeta<typeof Button>
+}
 
 export const RendersCorrectly: ComponentStory<typeof Button> = (args) => (
   <Button {...args} />
 )
+
+export default meta

@@ -1,7 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import PostLayout from './PostLayout'
 
-export default {
+const meta: ComponentMeta<typeof PostLayout> = {
   title: 'Layouts/PostLayout',
   component: PostLayout,
   argTypes: {
@@ -29,8 +29,10 @@ export default {
       ),
     },
   },
-} as ComponentMeta<typeof PostLayout>
+}
 
 export const RendersCorrectly: ComponentStory<typeof PostLayout> = (args) => (
   <PostLayout {...args} />
 )
+
+export default meta

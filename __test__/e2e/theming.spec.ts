@@ -7,7 +7,11 @@ test.describe('theming', () => {
     await page.goto('http://localhost:3000')
   })
 
-  test('should persist across page navigation', async ({ page }) => {
+  test('should persist across page navigation and browser refresh', async ({
+    page,
+  }) => {
+    const mainPage = page.locator('[role="main"]')
+    await expect(mainPage).toBeVisible()
     await page.evaluate(() =>
       document.querySelector('[role="main"]')!.scrollTo(0, 100)
     )
@@ -18,21 +22,8 @@ test.describe('theming', () => {
 
     await page.click('text=about')
     expect(await page.isChecked(themeToggleSelector)).toEqual(true)
-  })
-
-  test('should persist across browser refresh', async ({ page }) => {
-    await page.evaluate(() =>
-      document.querySelector('[role="main"]')!.scrollTo(0, 100)
-    )
-    expect(await page.isChecked(themeToggleSelector)).toEqual(false)
-
-    await page.check(themeToggleSelector)
-    expect(await page.isChecked(themeToggleSelector)).toEqual(true)
 
     await page.reload()
     expect(await page.isChecked(themeToggleSelector)).toEqual(true)
   })
 })
-
-// slight hack to let typescript know this is a module
-export {}

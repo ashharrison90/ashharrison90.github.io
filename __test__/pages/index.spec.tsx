@@ -61,29 +61,29 @@ describe('Homepage', () => {
     expect(title).toBeInTheDocument()
   })
 
-  it('hides the header', async () => {
+  it('hides the header', () => {
     render(<Index allPosts={posts} />)
-    const header = await screen.findByRole('banner')
+    const header = screen.getByRole('banner')
     expect(header).toBeInTheDocument()
     expect(header).toHaveClass('hide')
   })
 
-  it('shows the footer', async () => {
+  it('shows the footer', () => {
     render(<Index allPosts={posts} />)
-    const footer = await screen.findByRole('contentinfo')
+    const footer = screen.getByRole('contentinfo')
     expect(footer).toBeInTheDocument()
   })
 
-  it('shows a fallback until the images have loaded', async () => {
+  it('shows a fallback until the images have loaded', () => {
     Object.defineProperty(document, 'readyState', {
       get() {
         return 'loading'
       },
     })
     render(<Index allPosts={posts} />)
-    const fallback = await screen.findByTestId('heroFallback')
-    const background = await screen.findByTestId('heroBackground')
-    const cutout = await screen.findByTestId('heroCutout')
+    const fallback = screen.getByTestId('heroFallback')
+    const background = screen.getByTestId('heroBackground')
+    const cutout = screen.getByTestId('heroCutout')
     expect(fallback).not.toHaveClass('hide')
     expect(background).toHaveClass('hide')
     expect(cutout).toHaveClass('hide')

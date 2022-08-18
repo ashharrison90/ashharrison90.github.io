@@ -1,6 +1,7 @@
 import { render, screen, fireEvent, RenderResult } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { UserEvent } from '@testing-library/user-event/dist/types/setup'
+import { UserEvent } from '@testing-library/user-event/dist/types/setup/setup'
+import preloadAll from 'jest-next-dynamic'
 import Layout from './Layout'
 
 jest.mock('next/router', () => ({
@@ -25,22 +26,25 @@ describe('Layout', () => {
   const mockMetaDescription = 'mockDescription'
   let component: RenderResult
 
+  beforeAll(async () => {
+    await preloadAll()
+  })
+
   describe('when hideHeaderUntilScroll is false', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
       component = render(
         <Layout metaTitle={mockMetaTitle} metaDescription={mockMetaDescription}>
           {mockChild}
         </Layout>
       )
-      await screen.findByTestId(childId)
     })
 
-    it('renders any children passed to it', async () => {
-      const link = await screen.findByTestId(childId)
+    it('renders any children passed to it', () => {
+      const link = screen.getByTestId(childId)
       expect(link).toBeInTheDocument()
     })
 
-    it('renders the foreground content passed to it', async () => {
+    it('renders the foreground content passed to it', () => {
       component.rerender(
         <Layout
           foregroundContent={mockForeground}
@@ -50,11 +54,11 @@ describe('Layout', () => {
           {mockChild}
         </Layout>
       )
-      const link = await screen.findByTestId(foregroundId)
+      const link = screen.getByTestId(foregroundId)
       expect(link).toBeInTheDocument()
     })
 
-    it('renders the background content passed to it', async () => {
+    it('renders the background content passed to it', () => {
       component.rerender(
         <Layout
           backgroundContent={mockBackground}
@@ -64,18 +68,18 @@ describe('Layout', () => {
           {mockChild}
         </Layout>
       )
-      const link = await screen.findByTestId(backgroundId)
+      const link = screen.getByTestId(backgroundId)
       expect(link).toBeInTheDocument()
     })
 
-    it('renders a header', async () => {
-      const header = await screen.findByRole('banner')
+    it('renders a header', () => {
+      const header = screen.getByRole('banner')
       expect(header).toBeInTheDocument()
       expect(header).toBeVisible()
     })
 
-    it('renders a footer', async () => {
-      const footer = await screen.findByRole('contentinfo')
+    it('renders a footer', () => {
+      const footer = screen.getByRole('contentinfo')
       expect(footer).toBeInTheDocument()
       expect(footer).toBeVisible()
     })
@@ -85,7 +89,7 @@ describe('Layout', () => {
     describe('when scrolling', () => {
       let user: UserEvent
 
-      beforeEach(async () => {
+      beforeEach(() => {
         user = userEvent.setup()
         render(
           <Layout
@@ -96,32 +100,31 @@ describe('Layout', () => {
             {mockChild}
           </Layout>
         )
-        await screen.findByTestId(childId)
       })
 
-      it('hides the header initially', async () => {
-        const header = await screen.findByRole('banner')
+      it('hides the header initially', () => {
+        const header = screen.getByRole('banner')
         expect(header).toBeInTheDocument()
         expect(header).toHaveClass('hide')
       })
 
-      it('shows the header once scrolled', async () => {
-        let header = await screen.findByRole('banner')
+      it('shows the header once scrolled', () => {
+        let header = screen.getByRole('banner')
         expect(header).toBeInTheDocument()
         expect(header).toHaveClass('hide')
-        const scrollContainer = await screen.findByRole('main')
+        const scrollContainer = screen.getByRole('main')
         fireEvent.scroll(scrollContainer, { target: { scrollTop: 100 } })
-        header = await screen.findByRole('banner')
+        header = screen.getByRole('banner')
         expect(header).toBeInTheDocument()
         expect(header).not.toHaveClass('hide')
       })
 
       it('shows the header if any element in the header receives focus', async () => {
-        let header = await screen.findByRole('banner')
+        let header = screen.getByRole('banner')
         expect(header).toBeInTheDocument()
         expect(header).toHaveClass('hide')
         await user.tab()
-        header = await screen.findByRole('banner')
+        header = screen.getByRole('banner')
         expect(header).toBeInTheDocument()
         expect(header).not.toHaveClass('hide')
       })
@@ -129,7 +132,7 @@ describe('Layout', () => {
   })
 
   describe('when there is foregroundContent', () => {
-    beforeEach(async () => {
+    beforeEach(() => {
       render(
         <Layout
           foregroundContent={mockForeground}
@@ -140,16 +143,15 @@ describe('Layout', () => {
           {mockChild}
         </Layout>
       )
-      await screen.findByTestId(childId)
     })
 
-    it('dims the background once scrolled', async () => {
-      let backgroundOverlay = await screen.findByTestId('backgroundOverlay')
+    it('dims the background once scrolled', () => {
+      let backgroundOverlay = screen.getByTestId('backgroundOverlay')
       expect(backgroundOverlay).toBeInTheDocument()
       expect(backgroundOverlay).toHaveStyle({
         backgroundColor: 'rgba(var(--hero-background-rgb), 0)',
       })
-      const scrollContainer = await screen.findByRole('main')
+      const scrollContainer = screen.getByRole('main')
       jest
         .spyOn(global.HTMLElement.prototype, 'getBoundingClientRect')
         .mockReturnValue({
@@ -164,7 +166,7 @@ describe('Layout', () => {
           y: 0,
         })
       fireEvent.scroll(scrollContainer, { target: { scrollTop: 100 } })
-      backgroundOverlay = await screen.findByTestId('backgroundOverlay')
+      backgroundOverlay = screen.getByTestId('backgroundOverlay')
       expect(backgroundOverlay).toBeInTheDocument()
       expect(backgroundOverlay).toHaveStyle({
         backgroundColor: 'rgba(var(--hero-background-rgb), 0.5)',
