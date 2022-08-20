@@ -6,7 +6,7 @@ body {
   color: var(--text-primary);
   padding: 0;
   margin: 0;
-  font-family: "Hind Madurai", sans-serif;
+  font-family: 'Hind Madurai', sans-serif;
   font-size: 112.5%;
 }
 
@@ -22,8 +22,21 @@ body,
   box-sizing: border-box;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   @include font-title;
+}
+
+blockquote {
+  @include font-contrast;
+
+  background-color: var(--container);
+  padding: 1rem;
+  border-radius: 4px;
 }
 
 mark {
@@ -75,7 +88,8 @@ figcaption p {
     font-size: 2em;
   }
 
-  html, body {
+  html,
+  body {
     font-size: 112.5%;
   }
 }
