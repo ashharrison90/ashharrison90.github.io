@@ -1,3 +1,5 @@
+@import '../../styles/mixins';
+
 .container {
   background-color: var(--container);
   border: 1px solid var(--border);
@@ -6,6 +8,8 @@
 }
 
 .title {
+  @include font-title;
+
   min-width: 320px;
 }
 
@@ -37,6 +41,8 @@
 
 .date,
 .jobTitle {
+  @include font-contrast;
+
   color: var(--text-secondary);
   font-size: 80%;
 }

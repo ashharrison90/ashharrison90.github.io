@@ -107,7 +107,7 @@ export default function PostTitle({ date, excerpt, tags, title }: Props) {
           </div>
         </div>
       </div>
-      {excerpt}
+      <p className={styles.excerpt}>{excerpt}</p>
     </>
   )
 }

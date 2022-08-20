@@ -1,11 +1,12 @@
+@import './mixins';
+
 html,
 body {
   background-color: var(--background);
   color: var(--text-primary);
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-    Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-family: "Hind Madurai", sans-serif;
   font-size: 112.5%;
 }
 
@@ -19,6 +20,10 @@ body,
 * {
   -webkit-tap-highlight-color: transparent;
   box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @include font-title;
 }
 
 mark {
@@ -40,6 +45,10 @@ a {
   &:focus-visible {
     outline: 3px solid var(--interactive);
   }
+}
+
+code {
+  @include font-code;
 }
 
 pre code {
@@ -64,6 +73,10 @@ figcaption p {
 
   h2 {
     font-size: 2em;
+  }
+
+  html, body {
+    font-size: 112.5%;
   }
 }
 

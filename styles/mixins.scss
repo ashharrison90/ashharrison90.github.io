@@ -21,3 +21,17 @@
     transform: scale(0.95);
   }
 }
+
+@mixin font-title {
+  font-family: Rubik, sans-serif;
+}
+
+@mixin font-code {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 80%;
+}
+
+@mixin font-contrast {
+  font-family: Lora, serif;
+  font-style: italic;
+}
