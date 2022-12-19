@@ -11,7 +11,7 @@ import json from 'highlight.js/lib/languages/json'
 import typescript from 'highlight.js/lib/languages/typescript'
 import python from 'highlight.js/lib/languages/python'
 import scss from 'highlight.js/lib/languages/scss'
-import { Theme, ThemeContext } from '../../context/ThemeContext/ThemeContext'
+import { ThemeContext } from '../../context/ThemeContext/ThemeContext'
 hljs.registerLanguage('bash', bash)
 hljs.registerLanguage('javascript', javascript)
 hljs.registerLanguage('json', json)

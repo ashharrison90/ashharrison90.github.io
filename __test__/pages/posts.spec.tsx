@@ -1,5 +1,4 @@
 import { render, screen } from '@testing-library/react'
-import preloadAll from 'jest-next-dynamic'
 import Posts, { getStaticProps } from '../../pages/posts'
 import { PostMetadata } from '../../lib/postsApi'
 import userEvent from '@testing-library/user-event'
@@ -46,10 +45,6 @@ describe('Posts', () => {
   let readdirSyncSpy: jest.SpyInstance
   let user: UserEvent
 
-  beforeAll(async () => {
-    await preloadAll()
-  })
-
   beforeEach(async () => {
     readdirSyncSpy = jest.spyOn(fs, 'readdirSync')
     readdirSyncSpy.mockReturnValue([
@@ -59,6 +54,12 @@ describe('Posts', () => {
     posts = (await getStaticProps()).props.allPosts
     user = userEvent.setup()
     render(<Posts allPosts={posts} />)
+
+    // need to wait for the theme toggle to render
+    const themeToggle = await screen.findByRole('checkbox', {
+      name: 'Toggle theme',
+    })
+    expect(themeToggle).toBeInTheDocument()
   })
 
   afterEach(() => {
