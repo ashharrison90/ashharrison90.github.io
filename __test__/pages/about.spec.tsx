@@ -1,5 +1,4 @@
 import { render, screen } from '@testing-library/react'
-import preloadAll from 'jest-next-dynamic'
 import About from '../../pages/about'
 
 jest.mock('next/router', () => ({
@@ -16,11 +15,7 @@ jest.mock('next/router', () => ({
 describe('About', () => {
   let mockIntersectionObserver: jest.Mock<any, any>
 
-  beforeAll(async () => {
-    await preloadAll()
-  })
-
-  beforeEach(() => {
+  beforeEach(async () => {
     // IntersectionObserver isn't available in test environment
     mockIntersectionObserver = jest.fn()
     mockIntersectionObserver.mockReturnValue({
@@ -30,6 +25,12 @@ describe('About', () => {
     })
     window.IntersectionObserver = mockIntersectionObserver
     render(<About />)
+
+    // need to wait for the theme toggle to render
+    const themeToggle = await screen.findByRole('checkbox', {
+      name: 'Toggle theme',
+    })
+    expect(themeToggle).toBeInTheDocument()
   })
 
   it('shows the title', () => {

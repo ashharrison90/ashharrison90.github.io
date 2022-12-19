@@ -1,7 +1,6 @@
 import { render, screen, fireEvent, RenderResult } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { UserEvent } from '@testing-library/user-event/dist/types/setup/setup'
-import preloadAll from 'jest-next-dynamic'
 import Layout from './Layout'
 
 jest.mock('next/router', () => ({
@@ -26,17 +25,19 @@ describe('Layout', () => {
   const mockMetaDescription = 'mockDescription'
   let component: RenderResult
 
-  beforeAll(async () => {
-    await preloadAll()
-  })
-
   describe('when hideHeaderUntilScroll is false', () => {
-    beforeEach(() => {
+    beforeEach(async () => {
       component = render(
         <Layout metaTitle={mockMetaTitle} metaDescription={mockMetaDescription}>
           {mockChild}
         </Layout>
       )
+
+      // need to wait for the theme toggle to render
+      const themeToggle = await screen.findByRole('checkbox', {
+        name: 'Toggle theme',
+      })
+      expect(themeToggle).toBeInTheDocument()
     })
 
     it('renders any children passed to it', () => {
@@ -89,7 +90,7 @@ describe('Layout', () => {
     describe('when scrolling', () => {
       let user: UserEvent
 
-      beforeEach(() => {
+      beforeEach(async () => {
         user = userEvent.setup()
         render(
           <Layout
@@ -100,6 +101,12 @@ describe('Layout', () => {
             {mockChild}
           </Layout>
         )
+
+        // need to wait for the theme toggle to render
+        const themeToggle = await screen.findByRole('checkbox', {
+          name: 'Toggle theme',
+        })
+        expect(themeToggle).toBeInTheDocument()
       })
 
       it('hides the header initially', () => {
@@ -132,7 +139,7 @@ describe('Layout', () => {
   })
 
   describe('when there is foregroundContent', () => {
-    beforeEach(() => {
+    beforeEach(async () => {
       render(
         <Layout
           foregroundContent={mockForeground}
@@ -143,6 +150,12 @@ describe('Layout', () => {
           {mockChild}
         </Layout>
       )
+
+      // need to wait for the theme toggle to render
+      const themeToggle = await screen.findByRole('checkbox', {
+        name: 'Toggle theme',
+      })
+      expect(themeToggle).toBeInTheDocument()
     })
 
     it('dims the background once scrolled', () => {

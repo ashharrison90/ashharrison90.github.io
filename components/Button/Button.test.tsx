@@ -22,7 +22,7 @@ describe('Button', () => {
 
     it('sets the link correctly', () => {
       const button = screen.getByRole('link', { name: myMockLabel })
-      expect(button).toHaveAttribute('href', `/${myMockLink}`)
+      expect(button).toHaveAttribute('href', `${myMockLink}`)
     })
 
     it('attaches any class passed to the button', () => {

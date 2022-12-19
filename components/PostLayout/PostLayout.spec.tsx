@@ -1,5 +1,4 @@
 import { render, screen } from '@testing-library/react'
-import preloadAll from 'jest-next-dynamic'
 import PostLayout from './PostLayout'
 
 jest.mock('next/router', () => ({
@@ -30,13 +29,15 @@ describe('PostLayout', () => {
     title: mockTitle,
   }
 
-  beforeAll(async () => {
-    await preloadAll()
-  })
-
-  beforeEach(() => {
+  beforeEach(async () => {
     jest.spyOn(Date.prototype, 'toLocaleDateString').mockReturnValue(mockDate)
     render(<PostLayout metadata={mockMetadata}>{mockContent}</PostLayout>)
+
+    // need to wait for the theme toggle to render
+    const themeToggle = await screen.findByRole('checkbox', {
+      name: 'Toggle theme',
+    })
+    expect(themeToggle).toBeInTheDocument()
   })
 
   afterEach(() => {
