@@ -59,21 +59,20 @@ export default function Button({
     )
   } else {
     return (
-      <Link href={href}>
-        <a
-          aria-label={ariaLabel}
-          rel={target ? 'noreferrer' : undefined}
-          role='link'
-          target={target}
-          className={classnames(styles.button, className, {
-            [styles.isActive]: isActive,
-            [styles.buttonPrimary]: kind === ButtonType.Primary,
-            [styles.buttonSecondary]: kind === ButtonType.Secondary,
-            [styles.buttonIcon]: kind === ButtonType.Icon,
-          })}
-        >
-          {children}
-        </a>
+      <Link
+        href={href}
+        aria-label={ariaLabel}
+        rel={target ? 'noreferrer' : undefined}
+        role='link'
+        target={target}
+        className={classnames(styles.button, className, {
+          [styles.isActive]: isActive,
+          [styles.buttonPrimary]: kind === ButtonType.Primary,
+          [styles.buttonSecondary]: kind === ButtonType.Secondary,
+          [styles.buttonIcon]: kind === ButtonType.Icon,
+        })}
+      >
+        {children}
       </Link>
     )
   }
