@@ -1,5 +1,6 @@
 import classnames from 'classnames'
-import { useEffect, useRef } from 'react'
+import { useContext, useEffect, useRef } from 'react'
+import { CharacterTileIntersectionContext } from './CharacterTileIntersectionContext'
 import styles from './CharacterTile.module.scss'
 
 export const enum MatchType {
@@ -20,35 +21,21 @@ export default function CharacterTile({
   matchType,
 }: Props) {
   const ref = useRef<HTMLSpanElement>(null)
+  const intersectionObserver = useContext(CharacterTileIntersectionContext)
 
   useEffect(() => {
-    const intersectionObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const target = entry.target
-            if (target instanceof HTMLSpanElement) {
-              target.style.color = '#fff'
-              target.style.transform = 'none'
-            }
-          }
-        })
-      },
-      {
-        threshold: 1,
-      }
-    )
-    if (ref.current) {
+    if (ref.current && intersectionObserver) {
       intersectionObserver.observe(ref.current)
     }
-    return () => intersectionObserver.disconnect()
-  }, [])
+  }, [intersectionObserver])
 
   return (
     <span
+      data-testid='wordle-character'
       style={{ transitionDelay: `${index * 0.1}s` }}
       ref={ref}
       className={classnames(styles.character, {
+        [styles.hidden]: Boolean(intersectionObserver),
         [styles.matchNone]: matchType === MatchType.None,
         [styles.matchExact]: matchType === MatchType.Exact,
         [styles.matchPartial]: matchType === MatchType.Partial,

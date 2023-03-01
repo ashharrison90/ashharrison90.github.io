@@ -1,5 +1,6 @@
 import styles from './WordlePoem.module.scss'
 import Word from './Word'
+import { CharacterTileIntersectionContextProvider } from './CharacterTileIntersectionContext'
 
 export interface Props {
   lines: string[]
@@ -8,17 +9,19 @@ export interface Props {
 
 export default function WordlePoem({ lines, answer }: Props) {
   return (
-    <div className={styles.container}>
-      {lines.map((line, index) => {
-        const words = line.split(' ')
-        return (
-          <div key={index} className={styles.line}>
-            {words.map((word, index) => (
-              <Word key={index} word={word} answer={answer} />
-            ))}
-          </div>
-        )
-      })}
-    </div>
+    <CharacterTileIntersectionContextProvider>
+      <div className={styles.container}>
+        {lines.map((line, index) => {
+          const words = line.split(' ')
+          return (
+            <div key={index} className={styles.line}>
+              {words.map((word, index) => (
+                <Word key={index} word={word} answer={answer} />
+              ))}
+            </div>
+          )
+        })}
+      </div>
+    </CharacterTileIntersectionContextProvider>
   )
 }

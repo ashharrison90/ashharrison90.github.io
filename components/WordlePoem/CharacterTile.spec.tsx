@@ -2,38 +2,23 @@ import { render, screen } from '@testing-library/react'
 import CharacterTile, { MatchType } from './CharacterTile'
 
 describe('CharacterTile', () => {
-  let mockIntersectionObserver: jest.Mock<any, any>
-
-  beforeEach(async () => {
-    // IntersectionObserver isn't available in test environment
-    mockIntersectionObserver = jest.fn()
-    mockIntersectionObserver.mockReturnValue({
-      observe: () => null,
-      unobserve: () => null,
-      disconnect: () => null,
-    })
-    window.IntersectionObserver = mockIntersectionObserver
-  })
-
-  it('hides content initially', () => {
+  it('displays the character passed', () => {
     render(<CharacterTile character='f' matchType={MatchType.None} />)
 
-    const characterTile = screen.getByText('f')
-    expect(characterTile).not.toHaveStyle('color: #fff')
+    expect(screen.getByText('f')).toBeInTheDocument()
   })
 
-  it('makes content visible when the tile is visible', () => {
-    render(<CharacterTile character='f' matchType={MatchType.None} />)
-
+  it('changes the class correctly based on the matchType', () => {
+    const { rerender } = render(
+      <CharacterTile character='f' matchType={MatchType.None} />
+    )
     const characterTile = screen.getByText('f')
-    // Make the first job summary intersect
-    mockIntersectionObserver.mock.calls[0][0]([
-      {
-        target: characterTile,
-        isIntersecting: true,
-      },
-    ])
+    expect(characterTile).toHaveClass('matchNone')
 
-    expect(characterTile).toHaveStyle('color: #fff')
+    rerender(<CharacterTile character='f' matchType={MatchType.Partial} />)
+    expect(characterTile).toHaveClass('matchPartial')
+
+    rerender(<CharacterTile character='f' matchType={MatchType.Exact} />)
+    expect(characterTile).toHaveClass('matchExact')
   })
 })

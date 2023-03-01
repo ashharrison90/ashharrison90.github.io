@@ -47,7 +47,7 @@ export default function About() {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             const target = entry.target
-            if (target instanceof HTMLDivElement) {
+            if (target instanceof HTMLElement) {
               target.style.opacity = '1'
               target.style.transform = 'none'
             }

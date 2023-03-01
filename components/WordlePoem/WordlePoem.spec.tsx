@@ -42,4 +42,40 @@ describe('WordlePoem', () => {
     expect(screen.getByText(customMatcher('whose'))).toBeInTheDocument()
     expect(screen.getByText(customMatcher('moose'))).toBeInTheDocument()
   })
+
+  it('hides content initially', () => {
+    const answer = 'moose'
+    render(
+      <WordlePoem
+        lines={['tread', 'feign blues', 'scope whose moose']}
+        answer={answer}
+      />
+    )
+
+    const characterTiles = screen.getAllByTestId('wordle-character')
+    characterTiles.forEach((characterTile) => {
+      expect(characterTile).toHaveClass('hidden')
+    })
+  })
+
+  it('makes content visible when the individual tile is visible', () => {
+    const answer = 'moose'
+    render(
+      <WordlePoem
+        lines={['tread', 'feign blues', 'scope whose moose']}
+        answer={answer}
+      />
+    )
+
+    const characterTiles = screen.getAllByTestId('wordle-character')
+    // Make the first job summary intersect
+    mockIntersectionObserver.mock.calls[0][0]([
+      {
+        target: characterTiles[0],
+        isIntersecting: true,
+      },
+    ])
+
+    expect(characterTiles[0]).not.toHaveClass('hidden')
+  })
 })
