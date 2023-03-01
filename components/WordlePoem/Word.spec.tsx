@@ -2,6 +2,19 @@ import { render, screen } from '@testing-library/react'
 import Word from './Word'
 
 describe('Word', () => {
+  let mockIntersectionObserver: jest.Mock<any, any>
+
+  beforeEach(async () => {
+    // IntersectionObserver isn't available in test environment
+    mockIntersectionObserver = jest.fn()
+    mockIntersectionObserver.mockReturnValue({
+      observe: () => null,
+      unobserve: () => null,
+      disconnect: () => null,
+    })
+    window.IntersectionObserver = mockIntersectionObserver
+  })
+
   it('splits each word into individual characters and sets the correct classes', () => {
     const answer = 'moose'
     const word = 'scope'

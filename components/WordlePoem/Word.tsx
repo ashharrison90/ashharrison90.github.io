@@ -23,6 +23,7 @@ export default function Word({ word, answer }: Props) {
         return (
           <CharacterTile
             key={index}
+            index={index}
             character={character}
             matchType={matchType}
           />

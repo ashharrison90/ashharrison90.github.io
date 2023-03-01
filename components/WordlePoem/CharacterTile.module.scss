@@ -1,13 +1,15 @@
 .character {
   align-items: center;
   border-radius: 2px;
-  color: white;
+  color: transparent;
   display: flex;
   height: 60px;
   font-family: Rubik, sans-serif;
   font-size: 30px;
   justify-content: center;
   text-transform: uppercase;
+  transition: transform 0.5s ease-in-out, color 0.25s step-end;
+  transform: rotate3d(1, 0, 0, 180deg);
   width: 60px;
 }
 

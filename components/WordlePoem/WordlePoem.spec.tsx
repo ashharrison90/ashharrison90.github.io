@@ -14,6 +14,19 @@ const customMatcher =
   }
 
 describe('WordlePoem', () => {
+  let mockIntersectionObserver: jest.Mock<any, any>
+
+  beforeEach(async () => {
+    // IntersectionObserver isn't available in test environment
+    mockIntersectionObserver = jest.fn()
+    mockIntersectionObserver.mockReturnValue({
+      observe: () => null,
+      unobserve: () => null,
+      disconnect: () => null,
+    })
+    window.IntersectionObserver = mockIntersectionObserver
+  })
+
   it('splits each line into separate words', () => {
     const answer = 'moose'
     render(
