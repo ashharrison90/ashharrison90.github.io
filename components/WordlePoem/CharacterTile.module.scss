@@ -1,0 +1,24 @@
+.character {
+  align-items: center;
+  border-radius: 2px;
+  color: white;
+  display: flex;
+  height: 60px;
+  font-family: Rubik, sans-serif;
+  font-size: 30px;
+  justify-content: center;
+  text-transform: uppercase;
+  width: 60px;
+}
+
+.matchExact {
+  background-color: #538d4e;
+}
+
+.matchPartial {
+  background-color: #b59f3b;
+}
+
+.matchNone {
+  background-color: #787c7e;
+}

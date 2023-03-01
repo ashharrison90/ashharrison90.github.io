@@ -1,0 +1,19 @@
+import PostLayout from '../../components/PostLayout/PostLayout'
+import WordlePoem from '../../components/WordlePoem/WordlePoem'
+
+export const metadata = {
+  title: 'Wordle Poem #1',
+  coverImage: '/assets/blog/wordle-poem-1/wordle.webp',
+  date: '2023-03-01T13:00:00.000Z',
+  excerpt: '',
+  tags: ['wordle'],
+}
+
+<WordlePoem
+  answer='moose'
+  lines={['tread', 'feign blues', 'scope whose moose ?']}
+/>
+
+export default ({ children }) => (
+  <PostLayout metadata={metadata}>{children}</PostLayout>
+)
