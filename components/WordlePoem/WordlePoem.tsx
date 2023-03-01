@@ -9,12 +9,12 @@ export interface Props {
 export default function WordlePoem({ lines, answer }: Props) {
   return (
     <div className={styles.container}>
-      {lines.map((line) => {
+      {lines.map((line, index) => {
         const words = line.split(' ')
         return (
-          <div className={styles.line}>
-            {words.map((word) => (
-              <Word word={word} answer={answer} />
+          <div key={index} className={styles.line}>
+            {words.map((word, index) => (
+              <Word key={index} word={word} answer={answer} />
             ))}
           </div>
         )

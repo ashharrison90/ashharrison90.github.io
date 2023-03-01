@@ -20,7 +20,13 @@ export default function Word({ word, answer }: Props) {
         } else if (answerLower.includes(character)) {
           matchType = MatchType.Partial
         }
-        return <CharacterTile character={character} matchType={matchType} />
+        return (
+          <CharacterTile
+            key={index}
+            character={character}
+            matchType={matchType}
+          />
+        )
       })}
     </div>
   )
