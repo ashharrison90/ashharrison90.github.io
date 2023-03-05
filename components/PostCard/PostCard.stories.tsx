@@ -1,4 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
+
 import PostCard from './PostCard'
 
 const meta: ComponentMeta<typeof PostCard> = {

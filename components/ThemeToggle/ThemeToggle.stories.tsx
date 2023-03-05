@@ -1,4 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
+
 import ThemeToggle from './ThemeToggle'
 
 const meta: ComponentMeta<typeof ThemeToggle> = {

@@ -1,13 +1,13 @@
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { UserEvent } from '@testing-library/user-event/dist/types/setup/setup'
+
 import Search from './Search'
 
 describe('Search', () => {
   const mockClassName = 'mockClassName'
   const mockPlaceholder = 'mockPlaceholder'
   const mockOnChange = jest.fn()
-  let user: UserEvent
+  let user: ReturnType<typeof userEvent.setup>
 
   beforeEach(() => {
     user = userEvent.setup()

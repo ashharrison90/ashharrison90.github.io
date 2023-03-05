@@ -1,11 +1,12 @@
-import { getAllPosts, PostMetadata } from '../lib/postsApi'
-import PostGrid from '../components/PostGrid/PostGrid'
-import PostCard from '../components/PostCard/PostCard'
-import Search from '../components/Search/Search'
-import Layout from '../components/Layout/Layout'
-import EmptyState from '../components/EmptyState/EmptyState'
-import styles from '../styles/Posts.module.scss'
 import { useState } from 'react'
+
+import EmptyState from '../components/EmptyState/EmptyState'
+import Layout from '../components/Layout/Layout'
+import PostCard from '../components/PostCard/PostCard'
+import PostGrid from '../components/PostGrid/PostGrid'
+import Search from '../components/Search/Search'
+import { getAllPosts, PostMetadata } from '../lib/postsApi'
+import styles from '../styles/Posts.module.scss'
 
 export interface Props {
   allPosts: PostMetadata[]

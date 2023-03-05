@@ -1,9 +1,10 @@
-import { render, screen } from '@testing-library/react'
-import Posts, { getStaticProps } from '../../pages/posts'
-import { PostMetadata } from '../../lib/postsApi'
-import userEvent from '@testing-library/user-event'
 import fs from 'fs'
-import { UserEvent } from '@testing-library/user-event/dist/types/setup/setup'
+
+import { render, screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
+
+import { PostMetadata } from '../../lib/postsApi'
+import Posts, { getStaticProps } from '../../pages/posts'
 
 jest.mock('next/router', () => ({
   useRouter() {
@@ -43,7 +44,7 @@ jest.mock('../../pages/posts/bye-bye-popups.mdx', () => ({
 describe('Posts', () => {
   let posts: PostMetadata[]
   let readdirSyncSpy: jest.SpyInstance
-  let user: UserEvent
+  let user: ReturnType<typeof userEvent.setup>
 
   beforeEach(async () => {
     readdirSyncSpy = jest.spyOn(fs, 'readdirSync')

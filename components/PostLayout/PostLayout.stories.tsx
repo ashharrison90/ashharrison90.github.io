@@ -1,4 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
+
 import PostLayout from './PostLayout'
 
 const meta: ComponentMeta<typeof PostLayout> = {

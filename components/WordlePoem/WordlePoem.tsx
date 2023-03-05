@@ -1,6 +1,6 @@
-import styles from './WordlePoem.module.scss'
-import Word from './Word'
 import { CharacterTileIntersectionContextProvider } from './CharacterTileIntersectionContext'
+import Word from './Word'
+import styles from './WordlePoem.module.scss'
 
 export interface Props {
   lines: string[]

@@ -1,12 +1,13 @@
 import { FunctionComponent, useEffect, useRef } from 'react'
 import Typewriter, { Options, TypewriterClass } from 'typewriter-effect'
-import Layout from '../components/Layout/Layout'
+
 import JobSummary from '../components/JobSummary/JobSummary'
-import styles from '../styles/About.module.scss'
+import Layout from '../components/Layout/Layout'
 import Durham from '../public/assets/about/durham.svg'
 import Grafana from '../public/assets/about/grafana.svg'
 import Ibm from '../public/assets/about/ibm.svg'
 import Qinetiq from '../public/assets/about/qinetiq.svg'
+import styles from '../styles/About.module.scss'
 
 const skills = [
   'TypeScript',

@@ -1,7 +1,8 @@
 import classnames from 'classnames'
 import { useContext, useEffect, useRef } from 'react'
-import { CharacterTileIntersectionContext } from './CharacterTileIntersectionContext'
+
 import styles from './CharacterTile.module.scss'
+import { CharacterTileIntersectionContext } from './CharacterTileIntersectionContext'
 
 export const enum MatchType {
   Exact = 'exact',

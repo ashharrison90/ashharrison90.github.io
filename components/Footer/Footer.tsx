@@ -1,12 +1,14 @@
-import { ReactNode } from 'react'
-import socialData from './assets/socialData.json'
-import Button, { ButtonType } from '../Button/Button'
 import Facebook from '@fortawesome/fontawesome-free/svgs/brands/facebook.svg'
 import Github from '@fortawesome/fontawesome-free/svgs/brands/github.svg'
 import Instagram from '@fortawesome/fontawesome-free/svgs/brands/instagram.svg'
 import LinkedIn from '@fortawesome/fontawesome-free/svgs/brands/linkedin.svg'
 import Twitter from '@fortawesome/fontawesome-free/svgs/brands/twitter.svg'
+import { ReactNode } from 'react'
+
+import Button, { ButtonType } from '../Button/Button'
+
 import styles from './Footer.module.scss'
+import socialData from './assets/socialData.json'
 
 const iconMap: Record<string, ReactNode> = {
   facebook: <Facebook />,

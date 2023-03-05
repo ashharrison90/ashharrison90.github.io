@@ -1,5 +1,6 @@
-import styles from './EmptyState.module.scss'
 import classNames from 'classnames'
+
+import styles from './EmptyState.module.scss'
 
 export interface Props {
   className?: string

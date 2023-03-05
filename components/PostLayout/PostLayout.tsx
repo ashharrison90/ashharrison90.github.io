@@ -1,17 +1,18 @@
-import { ReactNode, useContext, useEffect, useRef } from 'react'
-import { PostMetadata } from '../../lib/postsApi'
-import Layout from '../Layout/Layout'
-import PostTitle from '../PostTitle/PostTitle'
-import styles from './PostLayout.module.scss'
-
 import hljs from 'highlight.js/lib/core'
 import bash from 'highlight.js/lib/languages/bash'
 import javascript from 'highlight.js/lib/languages/javascript'
 import json from 'highlight.js/lib/languages/json'
-import typescript from 'highlight.js/lib/languages/typescript'
 import python from 'highlight.js/lib/languages/python'
 import scss from 'highlight.js/lib/languages/scss'
+import typescript from 'highlight.js/lib/languages/typescript'
+import { ReactNode, useContext, useEffect, useRef } from 'react'
+
 import { ThemeContext } from '../../context/ThemeContext/ThemeContext'
+import { PostMetadata } from '../../lib/postsApi'
+import Layout from '../Layout/Layout'
+import PostTitle from '../PostTitle/PostTitle'
+
+import styles from './PostLayout.module.scss'
 hljs.registerLanguage('bash', bash)
 hljs.registerLanguage('javascript', javascript)
 hljs.registerLanguage('json', json)

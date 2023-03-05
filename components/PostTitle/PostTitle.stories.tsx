@@ -1,4 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
+
 import PostTitle from './PostTitle'
 
 const meta: ComponentMeta<typeof PostTitle> = {

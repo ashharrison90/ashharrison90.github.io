@@ -1,4 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
+
 import Tag from './Tag'
 
 const meta: ComponentMeta<typeof Tag> = {

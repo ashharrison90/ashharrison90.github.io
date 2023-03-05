@@ -1,5 +1,6 @@
-import { forwardRef, ReactNode } from 'react'
 import classNames from 'classnames'
+import { forwardRef, ReactNode } from 'react'
+
 import styles from './JobSummary.module.scss'
 
 const formatDate = (dateString: string | undefined) => {

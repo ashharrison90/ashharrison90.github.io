@@ -1,11 +1,12 @@
-import { useState, useEffect } from 'react'
 import classnames from 'classnames'
-import { getAllPosts, PostMetadata } from '../lib/postsApi'
-import PostGrid from '../components/PostGrid/PostGrid'
-import PostCard from '../components/PostCard/PostCard'
-import Layout from '../components/Layout/Layout'
-import Button, { ButtonType } from '../components/Button/Button'
+import { useState, useEffect } from 'react'
 import Typewriter from 'typewriter-effect'
+
+import Button, { ButtonType } from '../components/Button/Button'
+import Layout from '../components/Layout/Layout'
+import PostCard from '../components/PostCard/PostCard'
+import PostGrid from '../components/PostGrid/PostGrid'
+import { getAllPosts, PostMetadata } from '../lib/postsApi'
 import styles from '../styles/Home.module.scss'
 
 export interface Props {

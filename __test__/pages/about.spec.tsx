@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react'
+
 import About from '../../pages/about'
 
 jest.mock('next/router', () => ({
@@ -13,7 +14,7 @@ jest.mock('next/router', () => ({
 }))
 
 describe('About', () => {
-  let mockIntersectionObserver: jest.Mock<any, any>
+  let mockIntersectionObserver: jest.Mock
 
   beforeEach(async () => {
     // IntersectionObserver isn't available in test environment
