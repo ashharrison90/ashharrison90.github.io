@@ -1,4 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
+
 import EmptyState from './EmptyState'
 
 const meta: ComponentMeta<typeof EmptyState> = {

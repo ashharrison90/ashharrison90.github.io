@@ -1,17 +1,24 @@
-import React, { useState } from 'react'
+import { createContext, ReactNode, useState } from 'react'
 
 export enum Theme {
   LIGHT = 'light',
   DARK = 'dark',
 }
 
-export const ThemeContext = React.createContext({
+export interface ThemeContextProps {
+  theme: Theme
+  setTheme: (theme: Theme) => void
+}
+
+export const ThemeContext = createContext<ThemeContextProps>({
   theme: Theme.LIGHT,
-  setTheme: (theme: Theme) => {},
+  setTheme: () => {
+    /* noop */
+  },
 })
 
 export interface Props {
-  children: React.ReactNode
+  children: ReactNode
 }
 
 export const ThemeContextProvider = ({ children }: Props) => {

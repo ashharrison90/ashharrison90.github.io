@@ -1,4 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
+
 import Search from './Search'
 
 const meta: ComponentMeta<typeof Search> = {

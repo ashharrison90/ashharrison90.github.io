@@ -1,6 +1,6 @@
 import { render, screen, fireEvent, RenderResult } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { UserEvent } from '@testing-library/user-event/dist/types/setup/setup'
+
 import Layout from './Layout'
 
 jest.mock('next/router', () => ({
@@ -88,7 +88,7 @@ describe('Layout', () => {
 
   describe('when hideHeaderUntilScroll is true', () => {
     describe('when scrolling', () => {
-      let user: UserEvent
+      let user: ReturnType<typeof userEvent.setup>
 
       beforeEach(async () => {
         user = userEvent.setup()
@@ -172,7 +172,7 @@ describe('Layout', () => {
           height: 1000,
           left: 0,
           right: 0,
-          toJSON: () => {},
+          toJSON: jest.fn(),
           top: 500,
           width: 0,
           x: 0,

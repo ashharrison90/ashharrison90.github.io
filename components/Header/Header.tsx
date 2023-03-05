@@ -1,8 +1,10 @@
-import { forwardRef } from 'react'
+import classnames from 'classnames'
 import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
-import classnames from 'classnames'
+import { forwardRef } from 'react'
+
 import Button, { ButtonType } from '../Button/Button'
+
 import styles from './Header.module.scss'
 
 const ThemeToggle = dynamic(() => import('../ThemeToggle/ThemeToggle'), {

@@ -1,5 +1,6 @@
-import { ReactNode } from 'react'
 import classnames from 'classnames'
+import { ReactNode } from 'react'
+
 import styles from './PostGrid.module.scss'
 
 export interface Props {

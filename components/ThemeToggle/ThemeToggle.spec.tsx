@@ -1,14 +1,15 @@
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import ThemeToggle from './ThemeToggle'
+
 import {
   ThemeContextProvider,
   Theme,
 } from '../../context/ThemeContext/ThemeContext'
-import { UserEvent } from '@testing-library/user-event/dist/types/setup/setup'
+
+import ThemeToggle from './ThemeToggle'
 
 describe('ThemeToggle', () => {
-  let user: UserEvent
+  let user: ReturnType<typeof userEvent.setup>
   beforeEach(() => {
     localStorage.setItem('theme', Theme.DARK)
     user = userEvent.setup()

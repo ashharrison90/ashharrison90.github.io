@@ -1,7 +1,8 @@
-import { ChangeEvent } from 'react'
-import classnames from 'classnames'
-import styles from './Search.module.scss'
 import SearchIcon from '@fortawesome/fontawesome-free/svgs/solid/magnifying-glass.svg'
+import classnames from 'classnames'
+import { ChangeEvent } from 'react'
+
+import styles from './Search.module.scss'
 
 export interface Props {
   className?: string

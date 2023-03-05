@@ -1,4 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
+
 import Word from './Word'
 
 const meta: ComponentMeta<typeof Word> = {

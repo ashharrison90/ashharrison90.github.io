@@ -1,5 +1,7 @@
 import { useContext } from 'react'
+
 import { Theme, ThemeContext } from '../../context/ThemeContext/ThemeContext'
+
 import styles from './ThemeToggle.module.scss'
 
 export default function ThemeToggle() {

@@ -1,5 +1,6 @@
-import styles from '../styles/404.module.scss'
 import classnames from 'classnames'
+
+import styles from '../styles/404.module.scss'
 
 const notFoundString = '40404040404040404040404040404040404040404'
 

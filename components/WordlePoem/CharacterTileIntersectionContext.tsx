@@ -1,17 +1,18 @@
-import React, { useEffect, useRef } from 'react'
+import { createContext, ReactNode, useEffect, useRef } from 'react'
+
 import styles from './CharacterTile.module.scss'
 
 export const CharacterTileIntersectionContext =
-  React.createContext<IntersectionObserver | null>(null)
+  createContext<IntersectionObserver | null>(null)
 
 export interface Props {
-  children: React.ReactNode
+  children: ReactNode
 }
 
 export const CharacterTileIntersectionContextProvider = ({
   children,
 }: Props) => {
-  const observer = useRef(
+  const observerRef = useRef(
     new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -30,11 +31,12 @@ export const CharacterTileIntersectionContextProvider = ({
   )
 
   useEffect(() => {
-    return () => observer.current.disconnect()
+    const intersectionObserver = observerRef.current
+    return () => intersectionObserver.disconnect()
   }, [])
 
   return (
-    <CharacterTileIntersectionContext.Provider value={observer.current}>
+    <CharacterTileIntersectionContext.Provider value={observerRef.current}>
       {children}
     </CharacterTileIntersectionContext.Provider>
   )

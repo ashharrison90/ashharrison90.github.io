@@ -1,6 +1,8 @@
 import Link from 'next/link'
 import Highlighter from 'react-highlight-words'
+
 import Tag from '../Tag/Tag'
+
 import styles from './PostCard.module.scss'
 
 export interface Props {

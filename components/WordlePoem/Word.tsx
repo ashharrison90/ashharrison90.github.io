@@ -1,5 +1,5 @@
-import styles from './Word.module.scss'
 import CharacterTile, { MatchType } from './CharacterTile'
+import styles from './Word.module.scss'
 
 export interface Props {
   word: string

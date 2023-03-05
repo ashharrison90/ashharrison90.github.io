@@ -1,8 +1,9 @@
 import { render, screen } from '@testing-library/react'
+
 import Word from './Word'
 
 describe('Word', () => {
-  let mockIntersectionObserver: jest.Mock<any, any>
+  let mockIntersectionObserver: jest.Mock
 
   beforeEach(async () => {
     // IntersectionObserver isn't available in test environment

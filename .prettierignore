@@ -23,6 +23,7 @@
 *.webp
 .gitignore
 .prettierignore
+/.lighthouseci/
 
 # debug
 npm-debug.log*

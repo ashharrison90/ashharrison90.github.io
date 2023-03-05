@@ -1,6 +1,7 @@
+import classnames from 'classnames'
 import Link from 'next/link'
 import { ReactNode } from 'react'
-import classnames from 'classnames'
+
 import styles from './Button.module.scss'
 
 export enum ButtonType {

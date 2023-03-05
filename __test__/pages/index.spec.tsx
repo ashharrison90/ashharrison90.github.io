@@ -1,7 +1,9 @@
+import fs from 'fs'
+
 import { render, screen } from '@testing-library/react'
+
 import { PostMetadata } from '../../lib/postsApi'
 import Index, { getStaticProps } from '../../pages/index'
-import fs from 'fs'
 
 jest.mock('next/router', () => ({
   useRouter() {

@@ -1,11 +1,13 @@
-import Button, { ButtonType } from '../Button/Button'
-import Tag from '../Tag/Tag'
 import LinkedIn from '@fortawesome/fontawesome-free/svgs/brands/linkedin.svg'
 import Reddit from '@fortawesome/fontawesome-free/svgs/brands/reddit.svg'
 import Twitter from '@fortawesome/fontawesome-free/svgs/brands/twitter.svg'
-import styles from './PostTitle.module.scss'
 import Share from '@fortawesome/fontawesome-free/svgs/solid/share-nodes.svg'
 import { ReactNode, useEffect, useState } from 'react'
+
+import Button, { ButtonType } from '../Button/Button'
+import Tag from '../Tag/Tag'
+
+import styles from './PostTitle.module.scss'
 
 export interface Props {
   date: string
@@ -51,12 +53,10 @@ export default function PostTitle({ date, excerpt, tags, title }: Props) {
   }, [])
 
   const onShareClick = async () => {
-    try {
-      await navigator.share({
-        title,
-        url: pageUrl,
-      })
-    } catch {}
+    await navigator.share({
+      title,
+      url: pageUrl,
+    })
   }
 
   return (

@@ -1,7 +1,9 @@
+import randomColor from 'randomcolor'
 import { useContext } from 'react'
 import Highlighter from 'react-highlight-words'
-import randomColor from 'randomcolor'
+
 import { Theme, ThemeContext } from '../../context/ThemeContext/ThemeContext'
+
 import styles from './Tag.module.scss'
 
 export interface Props {

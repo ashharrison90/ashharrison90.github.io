@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react'
+
 import WordlePoem from './WordlePoem'
 
 // Need a custom matcher since the text is split into individual characters
@@ -14,7 +15,7 @@ const customMatcher =
   }
 
 describe('WordlePoem', () => {
-  let mockIntersectionObserver: jest.Mock<any, any>
+  let mockIntersectionObserver: jest.Mock
 
   beforeEach(async () => {
     // IntersectionObserver isn't available in test environment

@@ -1,4 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
+
 import PostGrid from './PostGrid'
 
 const colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet']

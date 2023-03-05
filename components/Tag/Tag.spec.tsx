@@ -1,9 +1,11 @@
 import { render, screen } from '@testing-library/react'
-import Tag from './Tag'
+
 import {
   ThemeContextProvider,
   Theme,
 } from '../../context/ThemeContext/ThemeContext'
+
+import Tag from './Tag'
 
 jest.mock('randomcolor', () => () => '#012345')
 

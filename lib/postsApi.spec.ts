@@ -1,5 +1,6 @@
-import { getAllPosts, getPostMetadata } from './postsApi'
 import fs from 'fs'
+
+import { getAllPosts, getPostMetadata } from './postsApi'
 
 jest.mock('../pages/posts/building-this-site.mdx', () => ({
   metadata: {

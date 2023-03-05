@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react'
+
 import PostGrid from './PostGrid'
 
 describe('PostGrid', () => {

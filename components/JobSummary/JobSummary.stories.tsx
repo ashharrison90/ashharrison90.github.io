@@ -1,9 +1,11 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import JobSummary from './JobSummary'
-import Ibm from '../../public/assets/about/ibm.svg'
-import Qinetiq from '../../public/assets/about/qinetiq.svg'
+
 import Durham from '../../public/assets/about/durham.svg'
 import Grafana from '../../public/assets/about/grafana.svg'
+import Ibm from '../../public/assets/about/ibm.svg'
+import Qinetiq from '../../public/assets/about/qinetiq.svg'
+
+import JobSummary from './JobSummary'
 
 const icons = {
   ibm: <Ibm />,

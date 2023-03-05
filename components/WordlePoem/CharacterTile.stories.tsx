@@ -1,4 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
+
 import CharacterTile, { MatchType } from './CharacterTile'
 
 const meta: ComponentMeta<typeof CharacterTile> = {
