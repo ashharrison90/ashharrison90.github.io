@@ -9,6 +9,7 @@ const jestConfig = async () => {
     coverageDirectory: 'coverage',
     coveragePathIgnorePatterns: [
       '/node_modules/',
+      '/.storybook/',
       '/pages/_app.tsx',
       '/pages/_document.tsx',
       '/context/',

@@ -1,25 +1,17 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { StoryFn, Meta } from '@storybook/react'
 
 import Button from './Button'
 
-const meta: ComponentMeta<typeof Button> = {
+const meta: Meta<typeof Button> = {
   title: 'Components/Button',
   component: Button,
-  argTypes: {
-    children: {
-      defaultValue: 'Click me',
-    },
-    className: {
-      defaultValue: 'myCustomClass',
-    },
-    href: {
-      defaultValue: 'https://www.google.com',
-    },
+  args: {
+    children: 'Click me',
+    className: 'myCustomClass',
+    href: 'https://www.google.com',
   },
 }
 
-export const RendersCorrectly: ComponentStory<typeof Button> = (args) => (
-  <Button {...args} />
-)
+export const Story: StoryFn<typeof Button> = (args) => <Button {...args} />
 
 export default meta

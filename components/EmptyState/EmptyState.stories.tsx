@@ -1,18 +1,16 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { StoryFn, Meta } from '@storybook/react'
 
 import EmptyState from './EmptyState'
 
-const meta: ComponentMeta<typeof EmptyState> = {
+const meta: Meta<typeof EmptyState> = {
   title: 'Components/EmptyState',
   component: EmptyState,
-  argTypes: {
-    message: {
-      defaultValue: 'Nothing found',
-    },
+  args: {
+    message: 'Nothing found',
   },
 }
 
-export const RendersCorrectly: ComponentStory<typeof EmptyState> = (args) => (
+export const Story: StoryFn<typeof EmptyState> = (args) => (
   <EmptyState {...args} />
 )
 

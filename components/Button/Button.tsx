@@ -1,6 +1,6 @@
 import classnames from 'classnames'
 import Link from 'next/link'
-import { ReactNode } from 'react'
+import { HTMLAttributeAnchorTarget, ReactNode } from 'react'
 
 import styles from './Button.module.scss'
 
@@ -27,7 +27,7 @@ interface ButtonProps extends ButtonBaseProps {
 interface ButtonLinkProps extends ButtonBaseProps {
   onClick?: never
   href?: string
-  target?: string
+  target?: HTMLAttributeAnchorTarget
 }
 
 export type Props = ButtonProps | ButtonLinkProps

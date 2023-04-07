@@ -9,7 +9,8 @@
     "plugin:react/jsx-runtime",
     "plugin:@typescript-eslint/recommended",
     "plugin:import/recommended",
-    "plugin:import/typescript"
+    "plugin:import/typescript",
+    "plugin:storybook/recommended"
   ],
   "overrides": [],
   "parser": "@typescript-eslint/parser",
@@ -22,7 +23,9 @@
     "import/order": [
       "error",
       {
-        "alphabetize": { "order": "asc" },
+        "alphabetize": {
+          "order": "asc"
+        },
         "newlines-between": "always"
       }
     ],
