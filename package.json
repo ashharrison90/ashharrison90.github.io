@@ -28,7 +28,6 @@
     "@storybook/addon-essentials": "^7.0.2",
     "@storybook/addon-links": "^7.0.2",
     "@storybook/addon-mdx-gfm": "^7.0.2",
-    "@storybook/addon-postcss": "^2.0.0",
     "@storybook/nextjs": "^7.0.2",
     "@storybook/react": "^7.0.2",
     "@svgr/webpack": "^7.0.0",
