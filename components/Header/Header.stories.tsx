@@ -1,19 +1,15 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { StoryFn, Meta } from '@storybook/react'
 
 import Header from './Header'
 
-const meta: ComponentMeta<typeof Header> = {
+const meta: Meta<typeof Header> = {
   title: 'Components/Header',
   component: Header,
-  argTypes: {
-    show: {
-      defaultValue: true,
-    },
+  args: {
+    show: true,
   },
 }
 
-export const RendersCorrectly: ComponentStory<typeof Header> = (args) => (
-  <Header {...args} />
-)
+export const Story: StoryFn<typeof Header> = (args) => <Header {...args} />
 
 export default meta

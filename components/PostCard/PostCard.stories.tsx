@@ -1,32 +1,19 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { StoryFn, Meta } from '@storybook/react'
 
 import PostCard from './PostCard'
 
-const meta: ComponentMeta<typeof PostCard> = {
+const meta: Meta<typeof PostCard> = {
   title: 'Components/PostCard',
   component: PostCard,
-  argTypes: {
-    coverImage: {
-      defaultValue: '/assets/blog/building-this-site/code.webp',
-    },
-    excerpt: {
-      defaultValue:
-        'Some more interesting information that expands on the title',
-    },
-    slug: {
-      defaultValue: 'an-interesting-title',
-    },
-    tags: {
-      defaultValue: ['typescript', 'react'],
-    },
-    title: {
-      defaultValue: 'An interesting title',
-    },
+  args: {
+    coverImage: '/assets/blog/building-this-site/code.webp',
+    excerpt: 'Some more interesting information that expands on the title',
+    slug: 'an-interesting-title',
+    tags: ['typescript', 'react'],
+    title: 'An interesting title',
   },
 }
 
-export const RendersCorrectly: ComponentStory<typeof PostCard> = (args) => (
-  <PostCard {...args} />
-)
+export const Story: StoryFn<typeof PostCard> = (args) => <PostCard {...args} />
 
 export default meta

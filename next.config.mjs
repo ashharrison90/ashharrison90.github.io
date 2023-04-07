@@ -1,5 +1,5 @@
-import remarkGfm from 'remark-gfm'
 import nextMdx from '@next/mdx'
+import remarkGfm from 'remark-gfm'
 
 const withMDX = nextMdx({
   extension: /\.mdx?$/,

@@ -1,19 +1,15 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { StoryFn, Meta } from '@storybook/react'
 
 import Search from './Search'
 
-const meta: ComponentMeta<typeof Search> = {
+const meta: Meta<typeof Search> = {
   title: 'Components/Search',
   component: Search,
-  argTypes: {
-    placeholder: {
-      defaultValue: 'Search',
-    },
+  args: {
+    placeholder: 'Search',
   },
 }
 
-export const RendersCorrectly: ComponentStory<typeof Search> = (args) => (
-  <Search {...args} />
-)
+export const Story: StoryFn<typeof Search> = (args) => <Search {...args} />
 
 export default meta

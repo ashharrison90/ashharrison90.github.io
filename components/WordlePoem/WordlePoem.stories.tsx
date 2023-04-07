@@ -1,21 +1,17 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { StoryFn, Meta } from '@storybook/react'
 
 import WordlePoem from './WordlePoem'
 
-const meta: ComponentMeta<typeof WordlePoem> = {
+const meta: Meta<typeof WordlePoem> = {
   title: 'Components/WordlePoem',
   component: WordlePoem,
-  argTypes: {
-    lines: {
-      defaultValue: ['tread', 'feign blues', 'scope whose moose ?'],
-    },
-    answer: {
-      defaultValue: 'moose',
-    },
+  args: {
+    lines: ['tread', 'feign blues', 'scope whose moose ?'],
+    answer: 'moose',
   },
 }
 
-export const RendersCorrectly: ComponentStory<typeof WordlePoem> = (args) => (
+export const Story: StoryFn<typeof WordlePoem> = (args) => (
   <WordlePoem {...args} />
 )
 

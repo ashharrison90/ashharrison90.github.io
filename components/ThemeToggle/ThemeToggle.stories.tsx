@@ -1,14 +1,12 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { StoryFn, Meta } from '@storybook/react'
 
 import ThemeToggle from './ThemeToggle'
 
-const meta: ComponentMeta<typeof ThemeToggle> = {
+const meta: Meta<typeof ThemeToggle> = {
   title: 'Components/Header/ThemeToggle',
   component: ThemeToggle,
 }
 
-export const RendersCorrectly: ComponentStory<typeof ThemeToggle> = () => (
-  <ThemeToggle />
-)
+export const Story: StoryFn<typeof ThemeToggle> = () => <ThemeToggle />
 
 export default meta
