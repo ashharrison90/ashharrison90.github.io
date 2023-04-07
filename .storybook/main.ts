@@ -5,9 +5,8 @@ const config: StorybookConfig = {
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',
-    'storybook-addon-root-attribute/register',
     '@storybook/addon-mdx-gfm',
-    '@storybook/addon-postcss',
+    'storybook-dark-mode',
   ],
   core: {},
   staticDirs: ['../public'],
