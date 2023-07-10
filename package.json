@@ -62,7 +62,7 @@
     "next": "^13.0.0",
     "playwright": "^1.25.0",
     "postcss": "^8.4.16",
-    "prettier": "^2.7.1",
+    "prettier": "^3.0.0",
     "randomcolor": "^0.6.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
