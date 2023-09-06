@@ -23,7 +23,7 @@ describe('JobSummary', () => {
         website={mockWebsite}
       >
         {mockSummary}
-      </JobSummary>
+      </JobSummary>,
     )
   })
 
@@ -65,7 +65,7 @@ describe('JobSummary', () => {
         website={mockWebsite}
       >
         {mockSummary}
-      </JobSummary>
+      </JobSummary>,
     )
     const dateRange = screen.getByText('January 2020 - Present')
     expect(dateRange).toBeInTheDocument()

@@ -24,7 +24,7 @@ describe('PostTitle', () => {
         excerpt={mockExcerpt}
         tags={mockTags}
         title={mockTitle}
-      />
+      />,
     )
     const title = screen.getByText(mockTitle)
     expect(title).toBeInTheDocument()
@@ -37,7 +37,7 @@ describe('PostTitle', () => {
         excerpt={mockExcerpt}
         tags={mockTags}
         title={mockTitle}
-      />
+      />,
     )
     const date = screen.getByText(mockDate)
     expect(date).toBeInTheDocument()
@@ -50,7 +50,7 @@ describe('PostTitle', () => {
         excerpt={mockExcerpt}
         tags={mockTags}
         title={mockTitle}
-      />
+      />,
     )
     const excerpt = screen.getByText(mockExcerpt)
     expect(excerpt).toBeInTheDocument()
@@ -63,7 +63,7 @@ describe('PostTitle', () => {
         excerpt={mockExcerpt}
         tags={mockTags}
         title={mockTitle}
-      />
+      />,
     )
     mockTags.forEach((mockTag) => {
       const tag = screen.getByText(mockTag)
@@ -78,7 +78,7 @@ describe('PostTitle', () => {
         excerpt={mockExcerpt}
         tags={mockTags}
         title={mockTitle}
-      />
+      />,
     )
     const link = screen.getByRole('link', { name: 'Share to LinkedIn' })
     expect(link).toBeInTheDocument()
@@ -91,7 +91,7 @@ describe('PostTitle', () => {
         excerpt={mockExcerpt}
         tags={mockTags}
         title={mockTitle}
-      />
+      />,
     )
     const link = screen.getByRole('link', { name: 'Share to Reddit' })
     expect(link).toBeInTheDocument()
@@ -104,7 +104,7 @@ describe('PostTitle', () => {
         excerpt={mockExcerpt}
         tags={mockTags}
         title={mockTitle}
-      />
+      />,
     )
     const link = screen.getByRole('link', { name: 'Share to Twitter' })
     expect(link).toBeInTheDocument()
@@ -119,7 +119,7 @@ describe('PostTitle', () => {
         excerpt={mockExcerpt}
         tags={mockTags}
         title={mockTitle}
-      />
+      />,
     )
     const button = screen.getByRole('button', { name: 'Share' })
     expect(button).toBeInTheDocument()

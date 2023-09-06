@@ -96,7 +96,7 @@ export default function PostTitle({ date, excerpt, tags, title }: Props) {
                   ariaLabel={`Share to ${shareData[item].label}`}
                   href={shareData[item].getShareLink(
                     encodeURIComponent(pageUrl),
-                    encodeURIComponent(title)
+                    encodeURIComponent(title),
                   )}
                   kind={ButtonType.Icon}
                 >

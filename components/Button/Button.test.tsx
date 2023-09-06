@@ -12,7 +12,7 @@ describe('Button', () => {
       render(
         <Button href={myMockLink} className={myMockClass}>
           {myMockLabel}
-        </Button>
+        </Button>,
       )
     })
 

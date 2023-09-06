@@ -57,7 +57,7 @@ export default function About() {
       },
       {
         threshold: 0.5,
-      }
+      },
     )
     ;[grafanaRef, ibmRef, qinetiqRef, durhamRef].forEach((ref) => {
       if (ref.current) {

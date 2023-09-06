@@ -26,10 +26,10 @@ describe('sticky header and breadcrumbs', () => {
         cy.get('.expression-editor-popup-next__source-heading-title').should(
           'have.attr',
           'title',
-          'Workday / Operation / Operation'
+          'Workday / Operation / Operation',
         )
         const titleParts = cy.get(
-          '.expression-editor-popup-next__source-heading-title-part'
+          '.expression-editor-popup-next__source-heading-title-part',
         )
         titleParts.should('have.length', 3)
         titleParts.eq(0).should('have.text', 'Workday')

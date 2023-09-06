@@ -20,7 +20,7 @@ export default function Posts({ allPosts }: Props) {
       post.title.toLowerCase().includes(searchString.toLowerCase()) ||
       post.excerpt.toLowerCase().includes(searchString.toLowerCase()) ||
       post.tags.some((tag) =>
-        tag.toLowerCase().includes(searchString.toLowerCase())
+        tag.toLowerCase().includes(searchString.toLowerCase()),
       )
     )
   }

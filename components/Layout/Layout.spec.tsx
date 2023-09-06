@@ -30,7 +30,7 @@ describe('Layout', () => {
       component = render(
         <Layout metaTitle={mockMetaTitle} metaDescription={mockMetaDescription}>
           {mockChild}
-        </Layout>
+        </Layout>,
       )
 
       // need to wait for the theme toggle to render
@@ -53,7 +53,7 @@ describe('Layout', () => {
           metaDescription={mockMetaDescription}
         >
           {mockChild}
-        </Layout>
+        </Layout>,
       )
       const link = screen.getByTestId(foregroundId)
       expect(link).toBeInTheDocument()
@@ -67,7 +67,7 @@ describe('Layout', () => {
           metaDescription={mockMetaDescription}
         >
           {mockChild}
-        </Layout>
+        </Layout>,
       )
       const link = screen.getByTestId(backgroundId)
       expect(link).toBeInTheDocument()
@@ -99,7 +99,7 @@ describe('Layout', () => {
             metaDescription={mockMetaDescription}
           >
             {mockChild}
-          </Layout>
+          </Layout>,
         )
 
         // need to wait for the theme toggle to render
@@ -148,7 +148,7 @@ describe('Layout', () => {
           metaDescription={mockMetaDescription}
         >
           {mockChild}
-        </Layout>
+        </Layout>,
       )
 
       // need to wait for the theme toggle to render

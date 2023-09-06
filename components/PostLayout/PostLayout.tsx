@@ -43,7 +43,7 @@ export default function PostLayout({ children, metadata }: Props) {
       scriptElement.setAttribute('src', 'https://utteranc.es/client.js')
       scriptElement.setAttribute(
         'repo',
-        'ashharrison90/ashharrison90.github.io'
+        'ashharrison90/ashharrison90.github.io',
       )
       scriptElement.setAttribute('issue-term', 'pathname')
       scriptElement.setAttribute('label', 'post-comments')

@@ -24,7 +24,7 @@ const config: StorybookConfig = {
       (rule) =>
         typeof rule !== 'string' &&
         rule.test instanceof RegExp &&
-        rule.test.test('.svg')
+        rule.test.test('.svg'),
     )
     if (imageRule && typeof imageRule !== 'string') {
       imageRule.exclude = /\.svg$/

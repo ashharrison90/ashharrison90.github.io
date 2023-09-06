@@ -8,7 +8,9 @@
   font-size: 30px;
   justify-content: center;
   text-transform: uppercase;
-  transition: transform 0.5s ease-in-out, color 0.25s step-end;
+  transition:
+    transform 0.5s ease-in-out,
+    color 0.25s step-end;
   width: 60px;
 }
 

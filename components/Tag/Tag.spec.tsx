@@ -23,7 +23,7 @@ describe('Tag', () => {
     render(
       <ThemeContextProvider>
         <Tag label={mockLabel} />
-      </ThemeContextProvider>
+      </ThemeContextProvider>,
     )
     const tag = screen.getByTestId('tag')
     const label = screen.getByText(mockLabel)
@@ -39,7 +39,7 @@ describe('Tag', () => {
     render(
       <ThemeContextProvider>
         <Tag label={mockLabel} />
-      </ThemeContextProvider>
+      </ThemeContextProvider>,
     )
     const tag = screen.getByTestId('tag')
     const label = screen.getByText(mockLabel)

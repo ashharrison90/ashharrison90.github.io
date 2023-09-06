@@ -7,7 +7,7 @@ const ThemeContextProvider = dynamic(
   () => import('../context/ThemeContext/ThemeContext'),
   {
     ssr: false,
-  }
+  },
 )
 
 function MyApp({ Component, pageProps }: AppProps) {
