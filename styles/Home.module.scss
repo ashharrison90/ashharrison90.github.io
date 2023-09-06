@@ -72,13 +72,13 @@
     font-size: 4em;
   }
 
-  @media screen and (min-width: 768px) {
+  @media screen and (width >= 768px) {
     h1 {
       font-size: 5em;
     }
   }
 
-  @media screen and (min-width: 1024px) {
+  @media screen and (width >= 1024px) {
     h1 {
       font-size: 8em;
     }
