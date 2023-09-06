@@ -12,8 +12,8 @@ test.describe('theming', () => {
   }) => {
     const mainPage = page.locator('[role="main"]')
     await expect(mainPage).toBeVisible()
-    await page.evaluate(() =>
-      document.querySelector('[role="main"]')?.scrollTo(0, 100)
+    await page.evaluate(
+      () => document.querySelector('[role="main"]')?.scrollTo(0, 100),
     )
     expect(await page.isChecked(themeToggleSelector)).toEqual(false)
 

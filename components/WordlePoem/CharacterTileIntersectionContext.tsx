@@ -26,8 +26,8 @@ export const CharacterTileIntersectionContextProvider = ({
       },
       {
         threshold: 1,
-      }
-    )
+      },
+    ),
   )
 
   useEffect(() => {

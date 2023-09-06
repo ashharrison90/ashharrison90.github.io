@@ -35,7 +35,7 @@ const JobSummary = forwardRef<HTMLDivElement, Props>(
       endDate,
       website,
     },
-    ref
+    ref,
   ) => {
     return (
       <div
@@ -63,7 +63,7 @@ const JobSummary = forwardRef<HTMLDivElement, Props>(
         {children}
       </div>
     )
-  }
+  },
 )
 
 export default JobSummary

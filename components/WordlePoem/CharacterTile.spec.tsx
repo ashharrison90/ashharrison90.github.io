@@ -11,7 +11,7 @@ describe('CharacterTile', () => {
 
   it('changes the class correctly based on the matchType', () => {
     const { rerender } = render(
-      <CharacterTile character='f' matchType={MatchType.None} />
+      <CharacterTile character='f' matchType={MatchType.None} />,
     )
     const characterTile = screen.getByText('f')
     expect(characterTile).toHaveClass('matchNone')

@@ -16,7 +16,7 @@ describe('Search', () => {
         className={mockClassName}
         placeholder={mockPlaceholder}
         onChange={mockOnChange}
-      />
+      />,
     )
   })
 

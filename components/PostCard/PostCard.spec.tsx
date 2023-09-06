@@ -17,7 +17,7 @@ describe('PostCard', () => {
         slug={mockSlug}
         tags={mockTags}
         title={mockTitle}
-      />
+      />,
     )
   })
 
@@ -56,7 +56,7 @@ describe('PostCard', () => {
     const link = screen.getByTestId('PostCard-image')
     expect(link).toHaveAttribute(
       'style',
-      `background-image: url(${mockCoverImage});`
+      `background-image: url(${mockCoverImage});`,
     )
   })
 })

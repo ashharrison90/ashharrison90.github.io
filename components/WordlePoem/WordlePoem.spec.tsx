@@ -34,7 +34,7 @@ describe('WordlePoem', () => {
       <WordlePoem
         lines={['tread', 'feign blues', 'scope whose moose']}
         answer={answer}
-      />
+      />,
     )
     expect(screen.getByText(customMatcher('tread'))).toBeInTheDocument()
     expect(screen.getByText(customMatcher('feign'))).toBeInTheDocument()
@@ -50,7 +50,7 @@ describe('WordlePoem', () => {
       <WordlePoem
         lines={['tread', 'feign blues', 'scope whose moose']}
         answer={answer}
-      />
+      />,
     )
 
     const characterTiles = screen.getAllByTestId('wordle-character')
@@ -65,7 +65,7 @@ describe('WordlePoem', () => {
       <WordlePoem
         lines={['tread', 'feign blues', 'scope whose moose']}
         answer={answer}
-      />
+      />,
     )
 
     const characterTiles = screen.getAllByTestId('wordle-character')

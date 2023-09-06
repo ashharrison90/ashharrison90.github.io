@@ -16,7 +16,7 @@ describe('ThemeToggle', () => {
     render(
       <ThemeContextProvider>
         <ThemeToggle />
-      </ThemeContextProvider>
+      </ThemeContextProvider>,
     )
   })
 
@@ -44,14 +44,14 @@ describe('ThemeToggle', () => {
     await user.click(toggle)
     expect(toggle.checked).toEqual(false)
     expect(document.documentElement.getAttribute('data-theme')).toEqual(
-      Theme.LIGHT
+      Theme.LIGHT,
     )
     expect(localStorage.getItem('theme')).toEqual(Theme.LIGHT)
 
     await user.click(toggle)
     expect(toggle.checked).toEqual(true)
     expect(document.documentElement.getAttribute('data-theme')).toEqual(
-      Theme.DARK
+      Theme.DARK,
     )
     expect(localStorage.getItem('theme')).toEqual(Theme.DARK)
   })
