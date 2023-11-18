@@ -76,7 +76,12 @@ export default function Layout({
             [styles.blur]: blurBackground,
           })}
           style={{
-            backgroundColor: `rgba(var(--hero-background-rgb), ${backgroundContentFade})`,
+            backgroundColor: `rgba(var(--hero-background-rgb), ${
+              Math.max(0, backgroundContentFade - 0.2) * 0.5
+            })`,
+            backdropFilter: `blur(${
+              Math.max(0, backgroundContentFade - 0.2) * 20
+            }px)`,
           }}
         >
           <div
