@@ -82,7 +82,7 @@
     "stylelint-scss": "^5.0.0",
     "ts-node": "^10.9.1",
     "typescript": "^5.0.2",
-    "typewriter-effect": "^2.19.0",
+    "typewriter-effect": "^2.21.0",
     "util": "^0.12.5",
     "webpack": "^5.76.0"
   },

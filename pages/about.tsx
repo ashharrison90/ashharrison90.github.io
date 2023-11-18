@@ -1,5 +1,5 @@
-import { FunctionComponent, useEffect, useRef } from 'react'
-import Typewriter, { Options, TypewriterClass } from 'typewriter-effect'
+import { useEffect, useRef } from 'react'
+import Typewriter from 'typewriter-effect'
 
 import JobSummary from '../components/JobSummary/JobSummary'
 import Layout from '../components/Layout/Layout'
@@ -28,13 +28,6 @@ const skills = [
   'Python',
   'Bash',
 ]
-
-// Need to extend Typewriter's types until https://github.com/tameemsafi/typewriterjs/pull/106 is merged
-const TypewriterWithComponent = Typewriter as FunctionComponent<{
-  component?: string
-  onInit?: (typewriter: TypewriterClass) => void
-  options?: Partial<Options>
-}>
 
 export default function About() {
   const grafanaRef = useRef<HTMLDivElement>(null)
@@ -75,7 +68,7 @@ export default function About() {
         I specialise in all things frontend, with a focus on <b>clean</b>,{' '}
         <b>testable</b> and <b>maintainable</b> code.
         <br />I work with{' '}
-        <TypewriterWithComponent
+        <Typewriter
           component='span'
           options={{
             cursor: '',
