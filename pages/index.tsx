@@ -16,19 +16,19 @@ export interface Props {
 export default function Home({ allPosts }: Props) {
   const [pageLoaded, setPageLoaded] = useState(false)
 
-  const backgroundContent = (
+  const hero = (
     <>
+      {!pageLoaded && (
+        <img
+          data-speed='1.05'
+          alt=''
+          src='/assets/home/hero-fallback.webp'
+          data-testid='heroFallback'
+          className={classnames(styles.fallback)}
+        />
+      )}
       <img
-        data-speed='0.15'
-        alt=''
-        src='/assets/home/hero-fallback.webp'
-        data-testid='heroFallback'
-        className={classnames(styles.fallback, {
-          [styles.hide]: pageLoaded,
-        })}
-      />
-      <img
-        data-speed='0.15'
+        data-speed='1.05'
         onLoad={() => setPageLoaded(true)}
         alt='A nice background'
         src='/assets/home/hero-background.webp'
@@ -38,7 +38,7 @@ export default function Home({ allPosts }: Props) {
         })}
       />
       <img
-        data-speed='0.30'
+        data-speed='1.15'
         alt='Me'
         src='/assets/home/hero-cutout.webp'
         data-testid='heroCutout'
@@ -46,34 +46,30 @@ export default function Home({ allPosts }: Props) {
           [styles.hide]: !pageLoaded,
         })}
       />
+      <div className={styles.heroTitleContainer}>
+        <h1>
+          <Typewriter
+            options={{
+              cursor: '',
+            }}
+            onInit={(typewriter) => {
+              typewriter
+                .typeString('hi')
+                .pauseFor(1000)
+                .typeString("<br />i'm ash")
+                .start()
+            }}
+          />
+        </h1>
+      </div>
     </>
-  )
-
-  const foregroundContent = (
-    <div className={styles.heroTitleContainer}>
-      <h1>
-        <Typewriter
-          options={{
-            cursor: '',
-          }}
-          onInit={(typewriter) => {
-            typewriter
-              .typeString('hi')
-              .pauseFor(1000)
-              .typeString("<br />i'm ash")
-              .start()
-          }}
-        />
-      </h1>
-    </div>
   )
 
   return (
     <Layout
       hideHeaderUntilScroll
-      backgroundContent={backgroundContent}
-      backgroundHeight={100}
-      foregroundContent={foregroundContent}
+      heroContent={hero}
+      heroHeight={100}
       metaDescription="Hi, I'm Ash. I'm a frontend software developer based in the UK."
       metaTitle='Ashley Harrison - Frontend developer'
     >

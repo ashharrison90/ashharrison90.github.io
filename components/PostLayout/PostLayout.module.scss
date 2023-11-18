@@ -60,10 +60,10 @@
 }
 
 .coverImage {
-  height: 100%;
+  height: 100vh;
   object-fit: cover;
   object-position: top;
-  position: absolute;
+  position: fixed;
   width: 100%;
 }
 

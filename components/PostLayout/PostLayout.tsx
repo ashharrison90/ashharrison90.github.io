@@ -33,7 +33,7 @@ export default function PostLayout({ children, metadata }: Props) {
 
   useEffect(() => {
     hljs.highlightAll()
-    gsap.from(`.${layoutStyles.foregroundContentRef}`, {
+    gsap.from(`.${layoutStyles.heroContent}`, {
       duration: 0.5,
       height: '100%',
       ease: 'back',
@@ -64,21 +64,19 @@ export default function PostLayout({ children, metadata }: Props) {
 
   const { coverImage, date, excerpt, tags, title } = metadata
 
-  const backgroundContent = (
+  const hero = (
     <img
       alt=''
-      data-speed='0.15'
+      data-speed='1.05'
       className={styles.coverImage}
       src={coverImage}
     />
   )
-  const foregroundContent = <div className={styles.padder} />
 
   return (
     <Layout
-      backgroundContent={backgroundContent}
-      backgroundHeight={65}
-      foregroundContent={foregroundContent}
+      heroContent={hero}
+      heroHeight={65}
       metaDescription={excerpt}
       metaTitle={title}
     >

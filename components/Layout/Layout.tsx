@@ -10,11 +10,9 @@ import Header from '../Header/Header'
 import styles from './Layout.module.scss'
 
 export interface Props {
-  backgroundContent?: ReactNode
-  backgroundHeight?: number
-  blurBackground?: boolean
   children: ReactNode
-  foregroundContent?: ReactNode
+  heroContent?: ReactNode
+  heroHeight?: number
   hideHeaderUntilScroll?: boolean
   metaDescription: string
   metaTitle: string
@@ -23,10 +21,9 @@ export interface Props {
 let prevScrollTop = 0
 
 export default function Layout({
-  backgroundContent,
-  backgroundHeight = 0,
   children,
-  foregroundContent,
+  heroContent,
+  heroHeight = 0,
   hideHeaderUntilScroll = false,
   metaDescription,
   metaTitle,
@@ -65,19 +62,18 @@ export default function Layout({
         <meta name='description' content={metaDescription} />
       </Head>
       <Header show={showHeader} ref={headerRef} />
-      {backgroundContent}
       <div
         style={{
-          height: `${backgroundHeight}%`,
+          height: `${heroHeight}%`,
         }}
-        className={styles.foregroundContentRef}
+        className={styles.heroContent}
       >
-        {foregroundContent}
+        {heroContent}
       </div>
       <div className={styles.contentContainer} role='main'>
         <div
           className={classnames(styles.content, {
-            [styles.padContent]: !foregroundContent && !hideHeaderUntilScroll,
+            [styles.padContent]: !heroContent && !hideHeaderUntilScroll,
           })}
         >
           {children}

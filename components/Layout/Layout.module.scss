@@ -3,23 +3,7 @@
   width: 100%;
 }
 
-.foreground {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  transform-origin: bottom right;
-  transform: translateZ(0);
-  transition:
-    backdrop-filter 200ms linear,
-    background-color 200ms linear;
-  width: 100%;
-}
-
-.blur {
-  backdrop-filter: blur(20px);
-}
-
-.foregroundContentRef {
+.heroContent {
   box-shadow: inset 0 0 60px 0 black;
   display: flex;
   flex-direction: column;
