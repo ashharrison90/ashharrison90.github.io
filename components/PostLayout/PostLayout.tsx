@@ -35,7 +35,7 @@ export default function PostLayout({ children, metadata }: Props) {
     hljs.highlightAll()
     gsap.from(`.${layoutStyles.foregroundContentRef}`, {
       duration: 0.5,
-      minHeight: '100%',
+      height: '100%',
       ease: 'back',
       delay: 0.1,
     })
@@ -65,14 +65,19 @@ export default function PostLayout({ children, metadata }: Props) {
   const { coverImage, date, excerpt, tags, title } = metadata
 
   const backgroundContent = (
-    <img alt='' className={styles.coverImage} src={coverImage} />
+    <img
+      alt=''
+      data-speed='0.15'
+      className={styles.coverImage}
+      src={coverImage}
+    />
   )
   const foregroundContent = <div className={styles.padder} />
 
   return (
     <Layout
       backgroundContent={backgroundContent}
-      backgroundHeight={50}
+      backgroundHeight={65}
       foregroundContent={foregroundContent}
       metaDescription={excerpt}
       metaTitle={title}

@@ -1,5 +1,5 @@
 import classnames from 'classnames'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import Typewriter from 'typewriter-effect'
 
 import Button, { ButtonType } from '../components/Button/Button'
@@ -15,20 +15,11 @@ export interface Props {
 
 export default function Home({ allPosts }: Props) {
   const [pageLoaded, setPageLoaded] = useState(false)
-  useEffect(() => {
-    function handlePageLoad() {
-      setPageLoaded(true)
-    }
-    if (document.readyState === 'complete') {
-      handlePageLoad()
-    } else {
-      window.addEventListener('load', handlePageLoad)
-      return () => window.removeEventListener('load', handlePageLoad)
-    }
-  }, [])
+
   const backgroundContent = (
     <>
       <img
+        data-speed='0.15'
         alt=''
         src='/assets/home/hero-fallback.webp'
         data-testid='heroFallback'
@@ -37,6 +28,8 @@ export default function Home({ allPosts }: Props) {
         })}
       />
       <img
+        data-speed='0.15'
+        onLoad={() => setPageLoaded(true)}
         alt='A nice background'
         src='/assets/home/hero-background.webp'
         data-testid='heroBackground'
@@ -45,6 +38,7 @@ export default function Home({ allPosts }: Props) {
         })}
       />
       <img
+        data-speed='0.30'
         alt='Me'
         src='/assets/home/hero-cutout.webp'
         data-testid='heroCutout'
@@ -77,7 +71,6 @@ export default function Home({ allPosts }: Props) {
   return (
     <Layout
       hideHeaderUntilScroll
-      blurBackground={!pageLoaded}
       backgroundContent={backgroundContent}
       backgroundHeight={100}
       foregroundContent={foregroundContent}

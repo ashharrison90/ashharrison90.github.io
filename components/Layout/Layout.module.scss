@@ -3,15 +3,6 @@
   width: 100%;
 }
 
-.parallaxContainer {
-  height: 100%;
-  overflow-x: hidden;
-  overflow-y: scroll;
-  perspective: 1px;
-  perspective-origin: bottom right;
-  width: 100%;
-}
-
 .foreground {
   display: flex;
   flex-direction: column;
@@ -29,8 +20,10 @@
 }
 
 .foregroundContentRef {
+  box-shadow: inset 0 0 60px 0 black;
   display: flex;
   flex-direction: column;
+  position: relative;
   width: 100%;
 }
 
@@ -38,8 +31,8 @@
   align-items: center;
   background-color: var(--background);
   display: flex;
-  flex: 1;
   flex-direction: column;
+  position: relative;
 }
 
 .content {

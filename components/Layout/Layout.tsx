@@ -1,6 +1,8 @@
 import classnames from 'classnames'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 import Head from 'next/head'
-import { useEffect, useRef, useState, ReactNode } from 'react'
+import { ReactNode, useEffect, useRef, useState } from 'react'
 
 import Footer from '../Footer/Footer'
 import Header from '../Header/Header'
@@ -23,7 +25,6 @@ let prevScrollTop = 0
 export default function Layout({
   backgroundContent,
   backgroundHeight = 0,
-  blurBackground,
   children,
   foregroundContent,
   hideHeaderUntilScroll = false,
@@ -31,36 +32,32 @@ export default function Layout({
   metaTitle,
 }: Props) {
   const [showHeader, setShowHeader] = useState(!hideHeaderUntilScroll)
-  const [backgroundContentFade, setBackgroundContentFade] = useState(0)
-  const containerRef = useRef<HTMLDivElement>(null)
-  const foregroundContentRef = useRef<HTMLDivElement>(null)
   const headerRef = useRef<HTMLElement>(null)
   useEffect(() => {
+    gsap.to('[data-speed]', {
+      y: (i, el) =>
+        (1 - parseFloat(el.getAttribute('data-speed'))) *
+        ScrollTrigger.maxScroll(window),
+      ease: 'none',
+      scrollTrigger: {
+        start: 0,
+        end: 'max',
+        scrub: true,
+      },
+    })
+
     const handleScroll = () => {
-      if (containerRef.current) {
-        if (hideHeaderUntilScroll) {
-          setShowHeader(containerRef.current.scrollTop > 0)
-        } else {
-          setShowHeader(containerRef.current.scrollTop < prevScrollTop)
-          prevScrollTop = containerRef.current.scrollTop
-        }
-      }
-      // doing this all the time wouldn't be very good for perfomance
-      // let's split it into intervals of 0.1
-      // and stop once we're past 1
-      if (foregroundContent && foregroundContentRef.current) {
-        const height =
-          foregroundContentRef.current.getBoundingClientRect().height
-        const top = foregroundContentRef.current.getBoundingClientRect().top
-        const scrollScaleFactor = Math.round(10 * (Math.abs(top) / height)) / 10
-        setBackgroundContentFade(Math.min(scrollScaleFactor, 1))
+      if (hideHeaderUntilScroll) {
+        setShowHeader(window.scrollY > 0)
+      } else {
+        setShowHeader(window.scrollY < prevScrollTop)
+        prevScrollTop = window.scrollY
       }
     }
 
     headerRef.current?.addEventListener('focusin', () => setShowHeader(true))
-    containerRef.current?.addEventListener('scroll', handleScroll)
-  }, [foregroundContent, hideHeaderUntilScroll])
-
+    document.addEventListener('scroll', handleScroll)
+  }, [hideHeaderUntilScroll])
   return (
     <div className={styles.container}>
       <Head>
@@ -68,45 +65,25 @@ export default function Layout({
         <meta name='description' content={metaDescription} />
       </Head>
       <Header show={showHeader} ref={headerRef} />
-      <div className={styles.parallaxContainer} ref={containerRef} role='main'>
-        {backgroundContent}
+      {backgroundContent}
+      <div
+        style={{
+          height: `${backgroundHeight}%`,
+        }}
+        className={styles.foregroundContentRef}
+      >
+        {foregroundContent}
+      </div>
+      <div className={styles.contentContainer} role='main'>
         <div
-          data-testid='backgroundOverlay'
-          className={classnames(styles.foreground, {
-            [styles.blur]: blurBackground,
+          className={classnames(styles.content, {
+            [styles.padContent]: !foregroundContent && !hideHeaderUntilScroll,
           })}
-          style={{
-            backgroundColor: `rgba(var(--hero-background-rgb), ${
-              Math.max(0, backgroundContentFade - 0.2) * 0.5
-            })`,
-            backdropFilter: `blur(${
-              Math.max(0, backgroundContentFade - 0.2) * 20
-            }px)`,
-          }}
         >
-          <div
-            ref={foregroundContentRef}
-            style={{
-              height: `${backgroundHeight}%`,
-              minHeight: `${backgroundHeight}%`,
-            }}
-            className={styles.foregroundContentRef}
-          >
-            {foregroundContent}
-          </div>
-          <div className={styles.contentContainer}>
-            <div
-              className={classnames(styles.content, {
-                [styles.padContent]:
-                  !foregroundContent && !hideHeaderUntilScroll,
-              })}
-            >
-              {children}
-            </div>
-          </div>
-          <Footer />
+          {children}
         </div>
       </div>
+      <Footer />
     </div>
   )
 }
