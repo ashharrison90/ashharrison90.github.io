@@ -10,6 +10,7 @@ const withMDX = nextMdx({
 
 export default withMDX({
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
+  output: 'export',
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/,

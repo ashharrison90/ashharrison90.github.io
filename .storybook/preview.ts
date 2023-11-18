@@ -1,7 +1,7 @@
 import '../styles/globals.scss'
 import './globals.scss'
 import { Preview } from '@storybook/react'
-import { RouterContext } from 'next/dist/shared/lib/router-context'
+import { RouterContext } from 'next/dist/shared/lib/router-context.shared-runtime'
 import { withTheme } from './withTheme'
 
 const preview: Preview = {
