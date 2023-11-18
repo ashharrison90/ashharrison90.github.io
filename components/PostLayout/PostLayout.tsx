@@ -1,3 +1,4 @@
+import { gsap } from 'gsap'
 import hljs from 'highlight.js/lib/core'
 import bash from 'highlight.js/lib/languages/bash'
 import javascript from 'highlight.js/lib/languages/javascript'
@@ -10,6 +11,7 @@ import { ReactNode, useContext, useEffect, useRef } from 'react'
 import { ThemeContext } from '../../context/ThemeContext/ThemeContext'
 import { PostMetadata } from '../../lib/postsApi'
 import Layout from '../Layout/Layout'
+import layoutStyles from '../Layout/Layout.module.scss'
 import PostTitle from '../PostTitle/PostTitle'
 
 import styles from './PostLayout.module.scss'
@@ -31,6 +33,12 @@ export default function PostLayout({ children, metadata }: Props) {
 
   useEffect(() => {
     hljs.highlightAll()
+    gsap.from(`.${layoutStyles.foregroundContentRef}`, {
+      duration: 0.5,
+      minHeight: '100%',
+      ease: 'back',
+      delay: 0.1,
+    })
   }, [])
 
   useEffect(() => {
