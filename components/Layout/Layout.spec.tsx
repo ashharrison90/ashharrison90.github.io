@@ -63,6 +63,19 @@ describe('Layout', () => {
       expect(header).toBeVisible()
     })
 
+    it('hides the header once scrolled', () => {
+      let header = screen.getByRole('banner')
+      expect(header).toBeInTheDocument()
+      expect(header).not.toHaveClass('hide')
+
+      window.scrollY = 100
+      fireEvent.scroll(document, {})
+
+      header = screen.getByRole('banner')
+      expect(header).toBeInTheDocument()
+      expect(header).toHaveClass('hide')
+    })
+
     it('renders a footer', () => {
       const footer = screen.getByRole('contentinfo')
       expect(footer).toBeInTheDocument()
