@@ -22,11 +22,13 @@ export default function Home({ allPosts }: Props) {
     const ctx = gsap.context(() => {
       gsap.to('[data-speed]', {
         y: (i, el) =>
-          (1 - parseFloat(el.getAttribute('data-speed'))) *
-          ScrollTrigger.maxScroll(window),
+          -(
+            parseFloat(el.getAttribute('data-speed')) *
+            ScrollTrigger.maxScroll(window)
+          ),
         ease: 'none',
         scrollTrigger: {
-          start: 0,
+          start: '0',
           end: 'max',
           scrub: true,
         },
@@ -42,7 +44,7 @@ export default function Home({ allPosts }: Props) {
     <>
       {!pageLoaded && (
         <img
-          data-speed='1.05'
+          data-speed='0.05'
           alt=''
           src='/assets/home/hero-fallback.webp'
           data-testid='heroFallback'
@@ -50,7 +52,7 @@ export default function Home({ allPosts }: Props) {
         />
       )}
       <img
-        data-speed='1.05'
+        data-speed='0.05'
         onLoad={() => setPageLoaded(true)}
         alt='A nice background'
         src='/assets/home/hero-background.webp'
@@ -60,7 +62,7 @@ export default function Home({ allPosts }: Props) {
         })}
       />
       <img
-        data-speed='1.15'
+        data-speed='0.15'
         alt='Me'
         src='/assets/home/hero-cutout.webp'
         data-testid='heroCutout'
@@ -68,7 +70,7 @@ export default function Home({ allPosts }: Props) {
           [styles.hide]: !pageLoaded,
         })}
       />
-      <div className={styles.heroTitleContainer}>
+      <div data-speed='1' className={styles.heroTitleContainer}>
         <h1>
           <Typewriter
             options={{

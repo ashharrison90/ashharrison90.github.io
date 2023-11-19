@@ -65,7 +65,7 @@ const Layout = forwardRef<HTMLDivElement, Props>(
     }, [hideHeaderUntilScroll])
 
     return (
-      <div ref={containerRef} className={styles.container}>
+      <div ref={containerRef}>
         <Head>
           <title>{metaTitle}</title>
           <meta name='description' content={metaDescription} />
@@ -73,7 +73,7 @@ const Layout = forwardRef<HTMLDivElement, Props>(
         <Header show={showHeader} ref={headerRef} />
         <div
           style={{
-            height: `${heroHeight}%`,
+            height: `${heroHeight}vh`,
           }}
           className={styles.heroContent}
         >

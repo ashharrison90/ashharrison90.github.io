@@ -43,18 +43,20 @@ export default function PostLayout({ children, metadata }: Props) {
     const ctx = gsap.context(() => {
       gsap.from(`.${layoutStyles.heroContent}`, {
         duration: 0.5,
-        height: '100%',
+        height: '100vh',
         ease: 'back',
         delay: 0.1,
       })
 
       gsap.to('[data-speed]', {
         y: (i, el) =>
-          (1 - parseFloat(el.getAttribute('data-speed'))) *
-          ScrollTrigger.maxScroll(window),
+          -(
+            parseFloat(el.getAttribute('data-speed')) *
+            ScrollTrigger.maxScroll(window)
+          ),
         ease: 'none',
         scrollTrigger: {
-          start: 0,
+          start: '0',
           end: 'max',
           scrub: true,
         },
@@ -90,7 +92,7 @@ export default function PostLayout({ children, metadata }: Props) {
   const hero = (
     <img
       alt=''
-      data-speed='1.05'
+      data-speed='0.05'
       className={styles.coverImage}
       src={coverImage}
     />

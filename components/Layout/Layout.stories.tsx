@@ -6,7 +6,7 @@ const meta: Meta<typeof Layout> = {
   title: 'Components/Layout',
   component: Layout,
   args: {
-    backgroundContent: (
+    heroContent: (
       <div
         style={{
           backgroundColor: 'red',
@@ -16,7 +16,7 @@ const meta: Meta<typeof Layout> = {
         }}
       />
     ),
-    backgroundHeight: 50,
+    heroHeight: 50,
     children: (
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
@@ -28,7 +28,6 @@ const meta: Meta<typeof Layout> = {
         mollit anim id est laborum.
       </p>
     ),
-    foregroundContent: <h1>HELLO</h1>,
     hideHeaderUntilScroll: false,
     metaDescription: 'The description seen on Google',
     metaTitle: 'The title seen on Google',
