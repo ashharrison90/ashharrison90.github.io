@@ -31,7 +31,8 @@ const jestConfig = async () => {
       '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
         '<rootDir>/__mocks__/fileMock.js',
     },
-    setupFilesAfterEnv: ['<rootDir>/config/jest-setup.ts'],
+    setupFilesAfterEnv: ['<rootDir>/config/jest-setup-after-env.ts'],
+    setupFiles: ['<rootDir>/config/jest-setup.ts'],
     testEnvironment: 'jest-environment-jsdom',
     testPathIgnorePatterns: ['/node_modules/', '/__test__/e2e/'],
   }

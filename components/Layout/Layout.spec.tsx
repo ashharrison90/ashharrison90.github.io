@@ -16,11 +16,9 @@ jest.mock('next/router', () => ({
 
 describe('Layout', () => {
   const childId = 'childId'
-  const backgroundId = 'backgroundId'
-  const foregroundId = 'foregroundId'
+  const heroId = 'heroId'
   const mockChild = <div data-testid={childId} />
-  const mockBackground = <div data-testid={backgroundId} />
-  const mockForeground = <div data-testid={foregroundId} />
+  const mockHeroContent = <div data-testid={heroId} />
   const mockMetaTitle = 'mockTitle'
   const mockMetaDescription = 'mockDescription'
   let component: RenderResult
@@ -45,31 +43,17 @@ describe('Layout', () => {
       expect(link).toBeInTheDocument()
     })
 
-    it('renders the foreground content passed to it', () => {
+    it('renders the hero content passed to it', () => {
       component.rerender(
         <Layout
-          foregroundContent={mockForeground}
+          heroContent={mockHeroContent}
           metaTitle={mockMetaTitle}
           metaDescription={mockMetaDescription}
         >
           {mockChild}
         </Layout>,
       )
-      const link = screen.getByTestId(foregroundId)
-      expect(link).toBeInTheDocument()
-    })
-
-    it('renders the background content passed to it', () => {
-      component.rerender(
-        <Layout
-          backgroundContent={mockBackground}
-          metaTitle={mockMetaTitle}
-          metaDescription={mockMetaDescription}
-        >
-          {mockChild}
-        </Layout>,
-      )
-      const link = screen.getByTestId(backgroundId)
+      const link = screen.getByTestId(heroId)
       expect(link).toBeInTheDocument()
     })
 
@@ -77,6 +61,19 @@ describe('Layout', () => {
       const header = screen.getByRole('banner')
       expect(header).toBeInTheDocument()
       expect(header).toBeVisible()
+    })
+
+    it('hides the header once scrolled', () => {
+      let header = screen.getByRole('banner')
+      expect(header).toBeInTheDocument()
+      expect(header).not.toHaveClass('hide')
+
+      window.scrollY = 100
+      fireEvent.scroll(document, {})
+
+      header = screen.getByRole('banner')
+      expect(header).toBeInTheDocument()
+      expect(header).toHaveClass('hide')
     })
 
     it('renders a footer', () => {
@@ -119,8 +116,8 @@ describe('Layout', () => {
         let header = screen.getByRole('banner')
         expect(header).toBeInTheDocument()
         expect(header).toHaveClass('hide')
-        const scrollContainer = screen.getByRole('main')
-        fireEvent.scroll(scrollContainer, { target: { scrollTop: 100 } })
+        window.scrollY = 100
+        fireEvent.scroll(document, {})
         header = screen.getByRole('banner')
         expect(header).toBeInTheDocument()
         expect(header).not.toHaveClass('hide')
@@ -134,55 +131,6 @@ describe('Layout', () => {
         header = screen.getByRole('banner')
         expect(header).toBeInTheDocument()
         expect(header).not.toHaveClass('hide')
-      })
-    })
-  })
-
-  describe('when there is foregroundContent', () => {
-    beforeEach(async () => {
-      render(
-        <Layout
-          foregroundContent={mockForeground}
-          backgroundContent={mockBackground}
-          metaTitle={mockMetaTitle}
-          metaDescription={mockMetaDescription}
-        >
-          {mockChild}
-        </Layout>,
-      )
-
-      // need to wait for the theme toggle to render
-      const themeToggle = await screen.findByRole('checkbox', {
-        name: 'Toggle theme',
-      })
-      expect(themeToggle).toBeInTheDocument()
-    })
-
-    it('dims the background once scrolled', () => {
-      let backgroundOverlay = screen.getByTestId('backgroundOverlay')
-      expect(backgroundOverlay).toBeInTheDocument()
-      expect(backgroundOverlay).toHaveStyle({
-        backgroundColor: 'rgba(var(--hero-background-rgb), 0)',
-      })
-      const scrollContainer = screen.getByRole('main')
-      jest
-        .spyOn(global.HTMLElement.prototype, 'getBoundingClientRect')
-        .mockReturnValue({
-          bottom: 0,
-          height: 1000,
-          left: 0,
-          right: 0,
-          toJSON: jest.fn(),
-          top: 500,
-          width: 0,
-          x: 0,
-          y: 0,
-        })
-      fireEvent.scroll(scrollContainer, { target: { scrollTop: 100 } })
-      backgroundOverlay = screen.getByTestId('backgroundOverlay')
-      expect(backgroundOverlay).toBeInTheDocument()
-      expect(backgroundOverlay).toHaveStyle({
-        backgroundColor: 'rgba(var(--hero-background-rgb), 0.5)',
       })
     })
   })

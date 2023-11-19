@@ -1,8 +1,9 @@
-import { useEffect, useRef } from 'react'
+import { useLayoutEffect, useRef } from 'react'
 import Typewriter from 'typewriter-effect'
 
 import JobSummary from '../components/JobSummary/JobSummary'
 import Layout from '../components/Layout/Layout'
+import { gsap } from '../lib/gsap'
 import Durham from '../public/assets/about/durham.svg'
 import Grafana from '../public/assets/about/grafana.svg'
 import Ibm from '../public/assets/about/ibm.svg'
@@ -30,38 +31,34 @@ const skills = [
 ]
 
 export default function About() {
-  const grafanaRef = useRef<HTMLDivElement>(null)
-  const ibmRef = useRef<HTMLDivElement>(null)
-  const qinetiqRef = useRef<HTMLDivElement>(null)
-  const durhamRef = useRef<HTMLDivElement>(null)
+  const layoutRef = useRef<HTMLDivElement>(null)
 
-  useEffect(() => {
-    const intersectionObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const target = entry.target
-            if (target instanceof HTMLElement) {
-              target.style.opacity = '1'
-              target.style.transform = 'none'
-            }
-          }
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      const jobSummaries = gsap.utils.toArray<string>(`.${styles.jobSummary}`)
+      jobSummaries.forEach((jobSummary) => {
+        gsap.from(jobSummary, {
+          scrollTrigger: {
+            trigger: jobSummary,
+            start: 'center bottom',
+          },
+          opacity: 0,
+          x: '-5%',
+          duration: 1,
+          ease: 'power3.out',
         })
-      },
-      {
-        threshold: 0.5,
-      },
-    )
-    ;[grafanaRef, ibmRef, qinetiqRef, durhamRef].forEach((ref) => {
-      if (ref.current) {
-        intersectionObserver.observe(ref.current)
-      }
-    })
-    return () => intersectionObserver.disconnect()
+      })
+    }, layoutRef)
+
+    return () => ctx.revert()
   }, [])
 
   return (
-    <Layout metaDescription='More about my career so far.' metaTitle='About'>
+    <Layout
+      ref={layoutRef}
+      metaDescription='More about my career so far.'
+      metaTitle='About'
+    >
       <h1>about</h1>
 
       <p>
@@ -96,7 +93,6 @@ export default function About() {
       <p>But did Mark Twain ever develop software? No. Stupid.</p>
 
       <JobSummary
-        ref={grafanaRef}
         className={styles.jobSummary}
         company='Grafana'
         icon={<Grafana />}
@@ -133,7 +129,6 @@ export default function About() {
       </JobSummary>
 
       <JobSummary
-        ref={ibmRef}
         className={styles.jobSummary}
         company='IBM'
         icon={<Ibm />}
@@ -202,7 +197,6 @@ export default function About() {
       </JobSummary>
 
       <JobSummary
-        ref={qinetiqRef}
         className={styles.jobSummary}
         company='QinetiQ'
         icon={<Qinetiq />}
@@ -227,7 +221,6 @@ export default function About() {
       </JobSummary>
 
       <JobSummary
-        ref={durhamRef}
         className={styles.jobSummary}
         company='Durham'
         icon={<Durham />}

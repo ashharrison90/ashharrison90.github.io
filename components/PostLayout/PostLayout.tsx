@@ -1,4 +1,3 @@
-import { gsap } from 'gsap'
 import hljs from 'highlight.js/lib/core'
 import bash from 'highlight.js/lib/languages/bash'
 import javascript from 'highlight.js/lib/languages/javascript'
@@ -6,9 +5,16 @@ import json from 'highlight.js/lib/languages/json'
 import python from 'highlight.js/lib/languages/python'
 import scss from 'highlight.js/lib/languages/scss'
 import typescript from 'highlight.js/lib/languages/typescript'
-import { ReactNode, useContext, useEffect, useRef } from 'react'
+import {
+  ReactNode,
+  useContext,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+} from 'react'
 
 import { ThemeContext } from '../../context/ThemeContext/ThemeContext'
+import { gsap, ScrollTrigger } from '../../lib/gsap'
 import { PostMetadata } from '../../lib/postsApi'
 import Layout from '../Layout/Layout'
 import layoutStyles from '../Layout/Layout.module.scss'
@@ -30,15 +36,34 @@ export interface Props {
 export default function PostLayout({ children, metadata }: Props) {
   const { theme } = useContext(ThemeContext)
   const commentsContainer = useRef<HTMLDivElement>(null)
+  const layoutRef = useRef<HTMLDivElement>(null)
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     hljs.highlightAll()
-    gsap.from(`.${layoutStyles.foregroundContentRef}`, {
-      duration: 0.5,
-      minHeight: '100%',
-      ease: 'back',
-      delay: 0.1,
-    })
+    const ctx = gsap.context(() => {
+      gsap.from(`.${layoutStyles.heroContent}`, {
+        duration: 0.5,
+        height: '100vh',
+        ease: 'back',
+        delay: 0.1,
+      })
+
+      gsap.to('[data-speed]', {
+        y: (i, el) =>
+          -(
+            parseFloat(el.getAttribute('data-speed')) *
+            ScrollTrigger.maxScroll(window)
+          ),
+        ease: 'none',
+        scrollTrigger: {
+          start: '0',
+          end: 'max',
+          scrub: true,
+        },
+      })
+    }, layoutRef)
+
+    return () => ctx.revert()
   }, [])
 
   useEffect(() => {
@@ -64,18 +89,22 @@ export default function PostLayout({ children, metadata }: Props) {
 
   const { coverImage, date, excerpt, tags, title } = metadata
 
-  const backgroundContent = (
-    <img alt='' className={styles.coverImage} src={coverImage} />
+  const hero = (
+    <img
+      alt=''
+      data-speed='0.05'
+      className={styles.coverImage}
+      src={coverImage}
+    />
   )
-  const foregroundContent = <div className={styles.padder} />
 
   return (
     <Layout
-      backgroundContent={backgroundContent}
-      backgroundHeight={50}
-      foregroundContent={foregroundContent}
+      heroContent={hero}
+      heroHeight={65}
       metaDescription={excerpt}
       metaTitle={title}
+      ref={layoutRef}
     >
       <PostTitle date={date} excerpt={excerpt} tags={tags} title={title} />
       <div className={styles.postLayout}>{children}</div>

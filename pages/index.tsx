@@ -1,11 +1,12 @@
 import classnames from 'classnames'
-import { useState, useEffect } from 'react'
+import { useLayoutEffect, useRef, useState } from 'react'
 import Typewriter from 'typewriter-effect'
 
 import Button, { ButtonType } from '../components/Button/Button'
 import Layout from '../components/Layout/Layout'
 import PostCard from '../components/PostCard/PostCard'
 import PostGrid from '../components/PostGrid/PostGrid'
+import { gsap, ScrollTrigger } from '../lib/gsap'
 import { getAllPosts, PostMetadata } from '../lib/postsApi'
 import styles from '../styles/Home.module.scss'
 
@@ -15,28 +16,44 @@ export interface Props {
 
 export default function Home({ allPosts }: Props) {
   const [pageLoaded, setPageLoaded] = useState(false)
-  useEffect(() => {
-    function handlePageLoad() {
-      setPageLoaded(true)
-    }
-    if (document.readyState === 'complete') {
-      handlePageLoad()
-    } else {
-      window.addEventListener('load', handlePageLoad)
-      return () => window.removeEventListener('load', handlePageLoad)
+  const layoutRef = useRef<HTMLDivElement>(null)
+
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.to('[data-speed]', {
+        y: (i, el) =>
+          -(
+            parseFloat(el.getAttribute('data-speed')) *
+            ScrollTrigger.maxScroll(window)
+          ),
+        ease: 'none',
+        scrollTrigger: {
+          start: '0',
+          end: 'max',
+          scrub: true,
+        },
+      })
+    }, layoutRef)
+
+    return () => {
+      ctx.revert()
     }
   }, [])
-  const backgroundContent = (
+
+  const hero = (
     <>
+      {!pageLoaded && (
+        <img
+          data-speed='0.05'
+          alt=''
+          src='/assets/home/hero-fallback.webp'
+          data-testid='heroFallback'
+          className={classnames(styles.fallback)}
+        />
+      )}
       <img
-        alt=''
-        src='/assets/home/hero-fallback.webp'
-        data-testid='heroFallback'
-        className={classnames(styles.fallback, {
-          [styles.hide]: pageLoaded,
-        })}
-      />
-      <img
+        data-speed='0.05'
+        onLoad={() => setPageLoaded(true)}
         alt='A nice background'
         src='/assets/home/hero-background.webp'
         data-testid='heroBackground'
@@ -45,6 +62,7 @@ export default function Home({ allPosts }: Props) {
         })}
       />
       <img
+        data-speed='0.15'
         alt='Me'
         src='/assets/home/hero-cutout.webp'
         data-testid='heroCutout'
@@ -52,37 +70,33 @@ export default function Home({ allPosts }: Props) {
           [styles.hide]: !pageLoaded,
         })}
       />
+      <div data-speed='1' className={styles.heroTitleContainer}>
+        <h1>
+          <Typewriter
+            options={{
+              cursor: '',
+            }}
+            onInit={(typewriter) => {
+              typewriter
+                .typeString('hi')
+                .pauseFor(1000)
+                .typeString("<br />i'm ash")
+                .start()
+            }}
+          />
+        </h1>
+      </div>
     </>
-  )
-
-  const foregroundContent = (
-    <div className={styles.heroTitleContainer}>
-      <h1>
-        <Typewriter
-          options={{
-            cursor: '',
-          }}
-          onInit={(typewriter) => {
-            typewriter
-              .typeString('hi')
-              .pauseFor(1000)
-              .typeString("<br />i'm ash")
-              .start()
-          }}
-        />
-      </h1>
-    </div>
   )
 
   return (
     <Layout
       hideHeaderUntilScroll
-      blurBackground={!pageLoaded}
-      backgroundContent={backgroundContent}
-      backgroundHeight={100}
-      foregroundContent={foregroundContent}
+      heroContent={hero}
+      heroHeight={100}
       metaDescription="Hi, I'm Ash. I'm a frontend software developer based in the UK."
       metaTitle='Ashley Harrison - Frontend developer'
+      ref={layoutRef}
     >
       <main>
         <div className={styles.about}>

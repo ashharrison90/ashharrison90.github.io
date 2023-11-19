@@ -1,6 +1,13 @@
 import classnames from 'classnames'
 import Head from 'next/head'
-import { useEffect, useRef, useState, ReactNode } from 'react'
+import {
+  ReactNode,
+  forwardRef,
+  useImperativeHandle,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from 'react'
 
 import Footer from '../Footer/Footer'
 import Header from '../Header/Header'
@@ -8,11 +15,9 @@ import Header from '../Header/Header'
 import styles from './Layout.module.scss'
 
 export interface Props {
-  backgroundContent?: ReactNode
-  backgroundHeight?: number
-  blurBackground?: boolean
   children: ReactNode
-  foregroundContent?: ReactNode
+  heroContent?: ReactNode
+  heroHeight?: number
   hideHeaderUntilScroll?: boolean
   metaDescription: string
   metaTitle: string
@@ -20,93 +25,74 @@ export interface Props {
 
 let prevScrollTop = 0
 
-export default function Layout({
-  backgroundContent,
-  backgroundHeight = 0,
-  blurBackground,
-  children,
-  foregroundContent,
-  hideHeaderUntilScroll = false,
-  metaDescription,
-  metaTitle,
-}: Props) {
-  const [showHeader, setShowHeader] = useState(!hideHeaderUntilScroll)
-  const [backgroundContentFade, setBackgroundContentFade] = useState(0)
-  const containerRef = useRef<HTMLDivElement>(null)
-  const foregroundContentRef = useRef<HTMLDivElement>(null)
-  const headerRef = useRef<HTMLElement>(null)
-  useEffect(() => {
-    const handleScroll = () => {
-      if (containerRef.current) {
+const Layout = forwardRef<HTMLDivElement, Props>(
+  (
+    {
+      children,
+      heroContent,
+      heroHeight = 0,
+      hideHeaderUntilScroll = false,
+      metaDescription,
+      metaTitle,
+    },
+    ref,
+  ) => {
+    const [showHeader, setShowHeader] = useState(!hideHeaderUntilScroll)
+    const headerRef = useRef<HTMLElement>(null)
+    const containerRef = useRef<HTMLDivElement>(null)
+
+    useImperativeHandle(ref, () => containerRef.current!)
+
+    useLayoutEffect(() => {
+      const handleFocus = () => setShowHeader(true)
+      const handleScroll = () => {
         if (hideHeaderUntilScroll) {
-          setShowHeader(containerRef.current.scrollTop > 0)
+          setShowHeader(window.scrollY > 0)
         } else {
-          setShowHeader(containerRef.current.scrollTop < prevScrollTop)
-          prevScrollTop = containerRef.current.scrollTop
+          setShowHeader(window.scrollY <= prevScrollTop)
+          prevScrollTop = window.scrollY
         }
       }
-      // doing this all the time wouldn't be very good for perfomance
-      // let's split it into intervals of 0.1
-      // and stop once we're past 1
-      if (foregroundContent && foregroundContentRef.current) {
-        const height =
-          foregroundContentRef.current.getBoundingClientRect().height
-        const top = foregroundContentRef.current.getBoundingClientRect().top
-        const scrollScaleFactor = Math.round(10 * (Math.abs(top) / height)) / 10
-        setBackgroundContentFade(Math.min(scrollScaleFactor, 1))
+
+      const header = headerRef.current
+      header?.addEventListener('focusin', handleFocus)
+      document.addEventListener('scroll', handleScroll)
+
+      return () => {
+        header?.removeEventListener('focusin', handleFocus)
+        document.removeEventListener('scroll', handleScroll)
       }
-    }
+    }, [hideHeaderUntilScroll])
 
-    headerRef.current?.addEventListener('focusin', () => setShowHeader(true))
-    containerRef.current?.addEventListener('scroll', handleScroll)
-  }, [foregroundContent, hideHeaderUntilScroll])
-
-  return (
-    <div className={styles.container}>
-      <Head>
-        <title>{metaTitle}</title>
-        <meta name='description' content={metaDescription} />
-      </Head>
-      <Header show={showHeader} ref={headerRef} />
-      <div className={styles.parallaxContainer} ref={containerRef} role='main'>
-        {backgroundContent}
+    return (
+      <div ref={containerRef}>
+        <Head>
+          <title>{metaTitle}</title>
+          <meta name='description' content={metaDescription} />
+        </Head>
+        <Header show={showHeader} ref={headerRef} />
         <div
-          data-testid='backgroundOverlay'
-          className={classnames(styles.foreground, {
-            [styles.blur]: blurBackground,
-          })}
           style={{
-            backgroundColor: `rgba(var(--hero-background-rgb), ${
-              Math.max(0, backgroundContentFade - 0.2) * 0.5
-            })`,
-            backdropFilter: `blur(${
-              Math.max(0, backgroundContentFade - 0.2) * 20
-            }px)`,
+            height: `${heroHeight}vh`,
           }}
+          className={styles.heroContent}
         >
-          <div
-            ref={foregroundContentRef}
-            style={{
-              height: `${backgroundHeight}%`,
-              minHeight: `${backgroundHeight}%`,
-            }}
-            className={styles.foregroundContentRef}
-          >
-            {foregroundContent}
-          </div>
-          <div className={styles.contentContainer}>
-            <div
-              className={classnames(styles.content, {
-                [styles.padContent]:
-                  !foregroundContent && !hideHeaderUntilScroll,
-              })}
-            >
-              {children}
-            </div>
-          </div>
-          <Footer />
+          {heroContent}
         </div>
+        <div className={styles.contentContainer} role='main'>
+          <div
+            className={classnames(styles.content, {
+              [styles.padContent]: !heroContent && !hideHeaderUntilScroll,
+            })}
+          >
+            {children}
+          </div>
+        </div>
+        <Footer />
       </div>
-    </div>
-  )
-}
+    )
+  },
+)
+Layout.displayName = 'Layout'
+
+export default Layout

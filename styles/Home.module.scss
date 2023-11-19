@@ -15,44 +15,22 @@
   align-self: center;
 }
 
+.fallback {
+  filter: blur(20px);
+}
+
 .fallback,
 .heroBackground,
 .heroCutout {
-  height: 100%;
+  height: 100vh;
   object-fit: cover;
   object-position: 75%;
-  position: absolute;
-  transform-origin: bottom right;
+  position: fixed;
   width: 100%;
 }
 
 .hide {
   opacity: 0;
-}
-
-.fallback {
-  box-shadow: inset 0 0 60px 0 black;
-
-  // why is this scale so weird?
-  // because windows doesn't calculate the scale properly.
-  // so we have to overscale slightly to prevent an ugly gap
-  transform: translateZ(-4px) scale(5.1);
-}
-
-.heroBackground {
-  // why is this scale so weird?
-  // because windows doesn't calculate the scale properly.
-  // so we have to overscale slightly to prevent an ugly gap
-  transform: translateZ(-4px) scale(5.1);
-}
-
-.heroCutout {
-  box-shadow: inset 0 0 60px 0 black;
-
-  // why is this scale so weird?
-  // because windows doesn't calculate the scale properly.
-  // so we have to overscale slightly to prevent an ugly gap
-  transform: translateZ(-2px) scale(3.06);
 }
 
 .heroTitleContainer {
@@ -65,7 +43,7 @@
   justify-content: flex-end;
   max-width: 1024px;
   padding: 0 1em;
-  position: relative;
+  position: fixed;
   width: 100%;
 
   h1 {

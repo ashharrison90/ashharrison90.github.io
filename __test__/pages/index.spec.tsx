@@ -1,6 +1,6 @@
 import fs from 'fs'
 
-import { render, screen } from '@testing-library/react'
+import { render, screen, waitFor, fireEvent } from '@testing-library/react'
 
 import { PostMetadata } from '../../lib/postsApi'
 import Index, { getStaticProps } from '../../pages/index'
@@ -76,18 +76,24 @@ describe('Homepage', () => {
     expect(footer).toBeInTheDocument()
   })
 
-  it('shows a fallback until the images have loaded', () => {
-    Object.defineProperty(document, 'readyState', {
-      get() {
-        return 'loading'
-      },
-    })
+  it('shows a fallback until the main image has loaded', async () => {
     render(<Index allPosts={posts} />)
+
     const fallback = screen.getByTestId('heroFallback')
-    const background = screen.getByTestId('heroBackground')
-    const cutout = screen.getByTestId('heroCutout')
+    let background = screen.getByTestId('heroBackground')
+    let cutout = screen.getByTestId('heroCutout')
     expect(fallback).not.toHaveClass('hide')
     expect(background).toHaveClass('hide')
     expect(cutout).toHaveClass('hide')
+
+    fireEvent.load(background)
+
+    await waitFor(() => {
+      background = screen.getByTestId('heroBackground')
+      cutout = screen.getByTestId('heroCutout')
+      expect(screen.queryByTestId('heroFallback')).not.toBeInTheDocument()
+      expect(background).not.toHaveClass('hide')
+      expect(cutout).not.toHaveClass('hide')
+    })
   })
 })
