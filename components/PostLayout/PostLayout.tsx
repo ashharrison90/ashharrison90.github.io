@@ -1,4 +1,3 @@
-import { gsap } from 'gsap'
 import hljs from 'highlight.js/lib/core'
 import bash from 'highlight.js/lib/languages/bash'
 import javascript from 'highlight.js/lib/languages/javascript'
@@ -15,6 +14,7 @@ import {
 } from 'react'
 
 import { ThemeContext } from '../../context/ThemeContext/ThemeContext'
+import { gsap, ScrollTrigger } from '../../lib/gsap'
 import { PostMetadata } from '../../lib/postsApi'
 import Layout from '../Layout/Layout'
 import layoutStyles from '../Layout/Layout.module.scss'
@@ -46,6 +46,18 @@ export default function PostLayout({ children, metadata }: Props) {
         height: '100%',
         ease: 'back',
         delay: 0.1,
+      })
+
+      gsap.to('[data-speed]', {
+        y: (i, el) =>
+          (1 - parseFloat(el.getAttribute('data-speed'))) *
+          ScrollTrigger.maxScroll(window),
+        ease: 'none',
+        scrollTrigger: {
+          start: 0,
+          end: 'max',
+          scrub: true,
+        },
       })
     }, layoutRef)
 

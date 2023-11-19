@@ -1,9 +1,9 @@
-import { gsap } from 'gsap'
 import { useLayoutEffect, useRef } from 'react'
 import Typewriter from 'typewriter-effect'
 
 import JobSummary from '../components/JobSummary/JobSummary'
 import Layout from '../components/Layout/Layout'
+import { gsap } from '../lib/gsap'
 import Durham from '../public/assets/about/durham.svg'
 import Grafana from '../public/assets/about/grafana.svg'
 import Ibm from '../public/assets/about/ibm.svg'

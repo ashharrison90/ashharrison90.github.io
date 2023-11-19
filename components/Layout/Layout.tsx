@@ -1,6 +1,4 @@
 import classnames from 'classnames'
-import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 import Head from 'next/head'
 import {
   ReactNode,
@@ -46,20 +44,6 @@ const Layout = forwardRef<HTMLDivElement, Props>(
     useImperativeHandle(ref, () => containerRef.current!)
 
     useLayoutEffect(() => {
-      const ctx = gsap.context(() => {
-        gsap.to('[data-speed]', {
-          y: (i, el) =>
-            (1 - parseFloat(el.getAttribute('data-speed'))) *
-            ScrollTrigger.maxScroll(window),
-          ease: 'none',
-          scrollTrigger: {
-            start: 0,
-            end: 'max',
-            scrub: true,
-          },
-        })
-      }, containerRef)
-
       const handleFocus = () => setShowHeader(true)
       const handleScroll = () => {
         if (hideHeaderUntilScroll) {
@@ -75,7 +59,6 @@ const Layout = forwardRef<HTMLDivElement, Props>(
       document.addEventListener('scroll', handleScroll)
 
       return () => {
-        ctx.revert()
         header?.removeEventListener('focusin', handleFocus)
         document.removeEventListener('scroll', handleScroll)
       }

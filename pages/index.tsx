@@ -1,11 +1,12 @@
 import classnames from 'classnames'
-import { useState } from 'react'
+import { useLayoutEffect, useRef, useState } from 'react'
 import Typewriter from 'typewriter-effect'
 
 import Button, { ButtonType } from '../components/Button/Button'
 import Layout from '../components/Layout/Layout'
 import PostCard from '../components/PostCard/PostCard'
 import PostGrid from '../components/PostGrid/PostGrid'
+import { gsap, ScrollTrigger } from '../lib/gsap'
 import { getAllPosts, PostMetadata } from '../lib/postsApi'
 import styles from '../styles/Home.module.scss'
 
@@ -15,6 +16,27 @@ export interface Props {
 
 export default function Home({ allPosts }: Props) {
   const [pageLoaded, setPageLoaded] = useState(false)
+  const layoutRef = useRef<HTMLDivElement>(null)
+
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.to('[data-speed]', {
+        y: (i, el) =>
+          (1 - parseFloat(el.getAttribute('data-speed'))) *
+          ScrollTrigger.maxScroll(window),
+        ease: 'none',
+        scrollTrigger: {
+          start: 0,
+          end: 'max',
+          scrub: true,
+        },
+      })
+    }, layoutRef)
+
+    return () => {
+      ctx.revert()
+    }
+  }, [])
 
   const hero = (
     <>
@@ -72,6 +94,7 @@ export default function Home({ allPosts }: Props) {
       heroHeight={100}
       metaDescription="Hi, I'm Ash. I'm a frontend software developer based in the UK."
       metaTitle='Ashley Harrison - Frontend developer'
+      ref={layoutRef}
     >
       <main>
         <div className={styles.about}>
