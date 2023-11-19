@@ -1,5 +1,5 @@
 import { gsap } from 'gsap'
-import { useEffect } from 'react'
+import { useLayoutEffect, useRef } from 'react'
 import Typewriter from 'typewriter-effect'
 
 import JobSummary from '../components/JobSummary/JobSummary'
@@ -31,24 +31,34 @@ const skills = [
 ]
 
 export default function About() {
-  useEffect(() => {
-    const jobSummaries = gsap.utils.toArray<string>(`.${styles.jobSummary}`)
-    jobSummaries.forEach((jobSummary) => {
-      gsap.from(jobSummary, {
-        scrollTrigger: {
-          trigger: jobSummary,
-          start: 'center bottom',
-        },
-        opacity: 0,
-        x: '-5%',
-        duration: 1,
-        ease: 'power3.out',
+  const layoutRef = useRef<HTMLDivElement>(null)
+
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      const jobSummaries = gsap.utils.toArray<string>(`.${styles.jobSummary}`)
+      jobSummaries.forEach((jobSummary) => {
+        gsap.from(jobSummary, {
+          scrollTrigger: {
+            trigger: jobSummary,
+            start: 'center bottom',
+          },
+          opacity: 0,
+          x: '-5%',
+          duration: 1,
+          ease: 'power3.out',
+        })
       })
-    })
+    }, layoutRef)
+
+    return () => ctx.revert()
   }, [])
 
   return (
-    <Layout metaDescription='More about my career so far.' metaTitle='About'>
+    <Layout
+      ref={layoutRef}
+      metaDescription='More about my career so far.'
+      metaTitle='About'
+    >
       <h1>about</h1>
 
       <p>

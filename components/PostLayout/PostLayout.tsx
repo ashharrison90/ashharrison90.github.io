@@ -6,7 +6,13 @@ import json from 'highlight.js/lib/languages/json'
 import python from 'highlight.js/lib/languages/python'
 import scss from 'highlight.js/lib/languages/scss'
 import typescript from 'highlight.js/lib/languages/typescript'
-import { ReactNode, useContext, useEffect, useRef } from 'react'
+import {
+  ReactNode,
+  useContext,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+} from 'react'
 
 import { ThemeContext } from '../../context/ThemeContext/ThemeContext'
 import { PostMetadata } from '../../lib/postsApi'
@@ -30,15 +36,20 @@ export interface Props {
 export default function PostLayout({ children, metadata }: Props) {
   const { theme } = useContext(ThemeContext)
   const commentsContainer = useRef<HTMLDivElement>(null)
+  const layoutRef = useRef<HTMLDivElement>(null)
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     hljs.highlightAll()
-    gsap.from(`.${layoutStyles.heroContent}`, {
-      duration: 0.5,
-      height: '100%',
-      ease: 'back',
-      delay: 0.1,
-    })
+    const ctx = gsap.context(() => {
+      gsap.from(`.${layoutStyles.heroContent}`, {
+        duration: 0.5,
+        height: '100%',
+        ease: 'back',
+        delay: 0.1,
+      })
+    }, layoutRef)
+
+    return () => ctx.revert()
   }, [])
 
   useEffect(() => {
@@ -79,6 +90,7 @@ export default function PostLayout({ children, metadata }: Props) {
       heroHeight={65}
       metaDescription={excerpt}
       metaTitle={title}
+      ref={layoutRef}
     >
       <PostTitle date={date} excerpt={excerpt} tags={tags} title={title} />
       <div className={styles.postLayout}>{children}</div>
