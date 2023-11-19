@@ -74,5 +74,6 @@ const Header = forwardRef<HTMLElement, Props>(({ show }, ref) => {
     </header>
   )
 })
+Header.displayName = 'Header'
 
 export default Header

@@ -60,6 +60,7 @@ const Layout = forwardRef<HTMLDivElement, Props>(
         })
       }, containerRef)
 
+      const handleFocus = () => setShowHeader(true)
       const handleScroll = () => {
         if (hideHeaderUntilScroll) {
           setShowHeader(window.scrollY > 0)
@@ -69,10 +70,7 @@ const Layout = forwardRef<HTMLDivElement, Props>(
         }
       }
 
-      const handleFocus = () => setShowHeader(true)
-
       const header = headerRef.current
-
       header?.addEventListener('focusin', handleFocus)
       document.addEventListener('scroll', handleScroll)
 
@@ -82,6 +80,7 @@ const Layout = forwardRef<HTMLDivElement, Props>(
         document.removeEventListener('scroll', handleScroll)
       }
     }, [hideHeaderUntilScroll])
+
     return (
       <div ref={containerRef} className={styles.container}>
         <Head>
@@ -111,5 +110,6 @@ const Layout = forwardRef<HTMLDivElement, Props>(
     )
   },
 )
+Layout.displayName = 'Layout'
 
 export default Layout
