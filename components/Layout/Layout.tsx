@@ -65,7 +65,7 @@ const Layout = forwardRef<HTMLDivElement, Props>(
         if (hideHeaderUntilScroll) {
           setShowHeader(window.scrollY > 0)
         } else {
-          setShowHeader(window.scrollY < prevScrollTop)
+          setShowHeader(window.scrollY <= prevScrollTop)
           prevScrollTop = window.scrollY
         }
       }
