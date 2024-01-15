@@ -70,7 +70,7 @@
     "react-highlight-words": "^0.18.0",
     "remark-gfm": "^4.0.0",
     "sass": "^1.54.4",
-    "sass-loader": "^13.0.2",
+    "sass-loader": "^14.0.0",
     "serve": "^14.1.2",
     "start-server-and-test": "^2.0.3",
     "storybook": "^7.5.0",
