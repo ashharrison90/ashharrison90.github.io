@@ -73,7 +73,7 @@ const Layout = forwardRef<HTMLDivElement, Props>(
         <Header show={showHeader} ref={headerRef} />
         <div
           style={{
-            height: `${heroHeight}vh`,
+            height: `${heroHeight}svh`,
           }}
           className={styles.heroContent}
         >
