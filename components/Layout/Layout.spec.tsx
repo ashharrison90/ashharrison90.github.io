@@ -3,7 +3,7 @@ import userEvent from '@testing-library/user-event'
 
 import Layout from './Layout'
 
-jest.mock('next/router', () => ({
+vi.mock('next/router', () => ({
   useRouter() {
     return {
       route: '/',

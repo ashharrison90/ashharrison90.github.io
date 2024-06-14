@@ -1,19 +1,20 @@
 import { render, screen } from '@testing-library/react'
+import { MockInstance } from 'vitest'
 
 import Word from './Word'
 
 describe('Word', () => {
-  let mockIntersectionObserver: jest.Mock
+  let mockIntersectionObserver: MockInstance
 
   beforeEach(async () => {
     // IntersectionObserver isn't available in test environment
-    mockIntersectionObserver = jest.fn()
+    mockIntersectionObserver = vi.fn()
     mockIntersectionObserver.mockReturnValue({
       observe: () => null,
       unobserve: () => null,
       disconnect: () => null,
     })
-    window.IntersectionObserver = mockIntersectionObserver
+    vi.stubGlobal(`IntersectionObserver`, mockIntersectionObserver)
   })
 
   it('splits each word into individual characters and sets the correct classes', () => {

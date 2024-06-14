@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react'
 
 import About from '../../pages/about'
 
-jest.mock('next/router', () => ({
+vi.mock('next/router', () => ({
   useRouter() {
     return {
       route: '/',

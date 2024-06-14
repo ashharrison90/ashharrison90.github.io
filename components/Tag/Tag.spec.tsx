@@ -7,7 +7,9 @@ import {
 
 import Tag from './Tag'
 
-jest.mock('randomcolor', () => () => '#012345')
+vi.mock('randomcolor', () => ({
+  default: () => '#012345',
+}))
 
 describe('Tag', () => {
   it('displays the tag label', () => {

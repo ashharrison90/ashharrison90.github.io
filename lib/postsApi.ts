@@ -13,12 +13,11 @@ export interface PostMetadata {
 }
 
 export async function getPostMetadata(slug: string) {
-  const realSlug = slug.replace(/\.mdx$/, '')
-  const { metadata } = await import(`../pages/posts/${realSlug}.mdx`)
+  const { metadata } = await import(`../pages/posts/${slug}`)
 
   return {
     ...metadata,
-    slug: realSlug,
+    slug: slug.replace(/\.mdx$/, ''),
   }
 }
 

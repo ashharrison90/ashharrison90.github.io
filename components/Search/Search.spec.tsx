@@ -6,7 +6,7 @@ import Search from './Search'
 describe('Search', () => {
   const mockClassName = 'mockClassName'
   const mockPlaceholder = 'mockPlaceholder'
-  const mockOnChange = jest.fn()
+  const mockOnChange = vi.fn()
   let user: ReturnType<typeof userEvent.setup>
 
   beforeEach(() => {
