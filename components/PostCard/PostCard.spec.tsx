@@ -22,7 +22,7 @@ describe('PostCard', () => {
   })
 
   afterEach(() => {
-    jest.restoreAllMocks()
+    vi.restoreAllMocks()
   })
 
   it('displays the title', () => {

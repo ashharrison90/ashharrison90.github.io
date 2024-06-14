@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom'
-import failOnConsole from 'jest-fail-on-console'
+import failOnConsole from 'vitest-fail-on-console'
 
 failOnConsole({
   shouldFailOnLog: true,

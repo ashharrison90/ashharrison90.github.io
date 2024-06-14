@@ -2,11 +2,12 @@ import fs from 'fs'
 
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
+import { MockInstance } from 'vitest'
 
 import { PostMetadata } from '../../lib/postsApi'
 import Posts, { getStaticProps } from '../../pages/posts'
 
-jest.mock('next/router', () => ({
+vi.mock('next/router', () => ({
   useRouter() {
     return {
       route: '/',
@@ -17,7 +18,7 @@ jest.mock('next/router', () => ({
   },
 }))
 
-jest.mock('../../pages/posts/building-this-site.mdx', () => ({
+vi.mock('../../pages/posts/building-this-site.mdx', () => ({
   metadata: {
     coverImage: '/assets/blog/building-this-site/code.webp',
     date: '2021-05-09T15:40:07.322Z',
@@ -29,7 +30,7 @@ jest.mock('../../pages/posts/building-this-site.mdx', () => ({
   },
 }))
 
-jest.mock('../../pages/posts/bye-bye-popups.mdx', () => ({
+vi.mock('../../pages/posts/bye-bye-popups.mdx', () => ({
   metadata: {
     title: 'Bye bye popups',
     excerpt:
@@ -43,11 +44,11 @@ jest.mock('../../pages/posts/bye-bye-popups.mdx', () => ({
 
 describe('Posts', () => {
   let posts: PostMetadata[]
-  let readdirSyncSpy: jest.SpyInstance
+  let readdirSyncSpy: MockInstance
   let user: ReturnType<typeof userEvent.setup>
 
   beforeEach(async () => {
-    readdirSyncSpy = jest.spyOn(fs, 'readdirSync')
+    readdirSyncSpy = vi.spyOn(fs, 'readdirSync')
     readdirSyncSpy.mockReturnValue([
       'building-this-site.mdx',
       'bye-bye-popups.mdx',

@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react'
 
 import Header from './Header'
 
-jest.mock('next/router', () => ({
+vi.mock('next/router', () => ({
   useRouter() {
     return {
       route: '/',
@@ -55,13 +55,15 @@ describe('Header', () => {
   })
 
   it('renders an extra link when on an individual post', async () => {
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
-    const useRouter = jest.spyOn(require('next/router'), 'useRouter')
-    useRouter.mockImplementation(() => ({
-      route: '/',
-      pathname: '/',
-      query: '',
-      asPath: '/posts/foo',
+    vi.mock('next/router', () => ({
+      useRouter() {
+        return {
+          route: '/',
+          pathname: '/',
+          query: '',
+          asPath: '/posts/foo',
+        }
+      },
     }))
     await setup()
     const link = screen.getByRole('link', { name: '/foo' })

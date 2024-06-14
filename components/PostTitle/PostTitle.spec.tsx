@@ -10,11 +10,11 @@ describe('PostTitle', () => {
   const mockTitle = 'mockTitle'
 
   beforeEach(() => {
-    jest.spyOn(Date.prototype, 'toLocaleDateString').mockReturnValue(mockDate)
+    vi.spyOn(Date.prototype, 'toLocaleDateString').mockReturnValue(mockDate)
   })
 
   afterEach(() => {
-    jest.restoreAllMocks()
+    vi.restoreAllMocks()
   })
 
   it('displays the title', () => {
@@ -111,7 +111,7 @@ describe('PostTitle', () => {
   })
 
   it('has a native "Share" button if it supports it', async () => {
-    navigator.share = jest.fn()
+    navigator.share = vi.fn()
     const user = userEvent.setup()
     render(
       <PostTitle
@@ -126,7 +126,7 @@ describe('PostTitle', () => {
     await user.click(button)
     expect(navigator.share).toHaveBeenCalledWith({
       title: mockTitle,
-      url: 'http://localhost/',
+      url: 'http://localhost:3000/',
     })
   })
 })

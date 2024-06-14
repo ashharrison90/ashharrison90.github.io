@@ -4,5 +4,3 @@ declare global {
   const browser: Browser
   const browserName: string
 }
-
-declare module 'jest-next-dynamic'

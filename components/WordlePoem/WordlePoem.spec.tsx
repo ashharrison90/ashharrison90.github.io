@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react'
+import { MockInstance } from 'vitest'
 
 import WordlePoem from './WordlePoem'
 
@@ -15,17 +16,17 @@ const customMatcher =
   }
 
 describe('WordlePoem', () => {
-  let mockIntersectionObserver: jest.Mock
+  let mockIntersectionObserver: MockInstance
 
   beforeEach(async () => {
     // IntersectionObserver isn't available in test environment
-    mockIntersectionObserver = jest.fn()
+    mockIntersectionObserver = vi.fn()
     mockIntersectionObserver.mockReturnValue({
       observe: () => null,
       unobserve: () => null,
       disconnect: () => null,
     })
-    window.IntersectionObserver = mockIntersectionObserver
+    vi.stubGlobal(`IntersectionObserver`, mockIntersectionObserver)
   })
 
   it('splits each line into separate words', () => {

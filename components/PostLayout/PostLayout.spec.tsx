@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react'
 
 import PostLayout from './PostLayout'
 
-jest.mock('next/router', () => ({
+vi.mock('next/router', () => ({
   useRouter() {
     return {
       route: '/',
@@ -31,7 +31,7 @@ describe('PostLayout', () => {
   }
 
   beforeEach(async () => {
-    jest.spyOn(Date.prototype, 'toLocaleDateString').mockReturnValue(mockDate)
+    vi.spyOn(Date.prototype, 'toLocaleDateString').mockReturnValue(mockDate)
     render(<PostLayout metadata={mockMetadata}>{mockContent}</PostLayout>)
 
     // need to wait for the theme toggle to render
@@ -42,7 +42,7 @@ describe('PostLayout', () => {
   })
 
   afterEach(() => {
-    jest.restoreAllMocks()
+    vi.restoreAllMocks()
   })
 
   it('displays the title', () => {

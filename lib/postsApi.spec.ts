@@ -1,8 +1,10 @@
 import fs from 'fs'
 
+import { MockInstance } from 'vitest'
+
 import { getAllPosts, getPostMetadata } from './postsApi'
 
-jest.mock('../pages/posts/building-this-site.mdx', () => ({
+vi.mock('../pages/posts/building-this-site.mdx', () => ({
   metadata: {
     coverImage: '/assets/blog/building-this-site/code.webp',
     date: '2021-05-09T15:40:07.322Z',
@@ -14,7 +16,7 @@ jest.mock('../pages/posts/building-this-site.mdx', () => ({
   },
 }))
 
-jest.mock('../pages/posts/bye-bye-popups.mdx', () => ({
+vi.mock('../pages/posts/bye-bye-popups.mdx', () => ({
   metadata: {
     title: 'Bye bye popups',
     excerpt:
@@ -43,10 +45,10 @@ describe('postsApi', () => {
   })
 
   describe('getAllPosts', () => {
-    let readdirSyncSpy: jest.SpyInstance
+    let readdirSyncSpy: MockInstance
 
     beforeEach(() => {
-      readdirSyncSpy = jest.spyOn(fs, 'readdirSync')
+      readdirSyncSpy = vi.spyOn(fs, 'readdirSync')
     })
 
     afterEach(() => {
