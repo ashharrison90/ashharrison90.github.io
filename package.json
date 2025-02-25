@@ -41,7 +41,7 @@
     "@types/react": "^18.0.17",
     "@types/react-highlight-words": "^0.16.4",
     "@typescript-eslint/eslint-plugin": "^6.6.0",
-    "@typescript-eslint/parser": "^6.6.0",
+    "@typescript-eslint/parser": "^8.25.0",
     "@vitejs/plugin-react": "^4.3.1",
     "@vitest/coverage-v8": "^1.6.1",
     "babel-loader": "^9.0.0",
