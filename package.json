@@ -28,7 +28,7 @@
     "@storybook/addon-essentials": "^7.5.0",
     "@storybook/addon-links": "^7.0.2",
     "@storybook/addon-mdx-gfm": "^7.0.2",
-    "@storybook/nextjs": "^7.5.3",
+    "@storybook/nextjs": "^8.6.0",
     "@storybook/react": "^7.5.3",
     "@svgr/webpack": "^8.0.1",
     "@testing-library/dom": "^9.0.0",
