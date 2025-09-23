@@ -70,7 +70,7 @@
     "remark-gfm": "^4.0.0",
     "sass": "^1.54.4",
     "sass-loader": "^14.0.0",
-    "serve": "^14.1.2",
+    "serve": "^14.2.5",
     "start-server-and-test": "^2.0.3",
     "storybook": "^7.5.0",
     "storybook-dark-mode": "^3.0.0",
