@@ -55,7 +55,7 @@
     "eslint-plugin-storybook": "^0.6.11",
     "gsap": "^3.12.2",
     "highlight.js": "^11.6.0",
-    "husky": "^8.0.1",
+    "husky": "^9.1.7",
     "identity-obj-proxy": "^3.0.0",
     "jsdom": "^24.1.0",
     "lint-staged": "^15.0.2",
